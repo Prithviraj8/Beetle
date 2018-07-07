@@ -7,6 +7,51 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0DFE9F9D4769F0A19B2B2BCC /* Pods_HateDatingAppUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1CDABB83A909E43F109EB8DF /* Pods_HateDatingAppUITests.framework */; };
+		35CD94D3703A7F44FAB61DE4 /* Pods_HateDatingApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84AFE670824B9B78D819ADF5 /* Pods_HateDatingApp.framework */; };
+		790A554920EA09BD00590C96 /* DateOfBirthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 790A554820EA09BD00590C96 /* DateOfBirthViewController.swift */; };
+		7927F4AC20F0BFD400F35778 /* RoundButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 799C641720DBD15A002D9B6E /* RoundButton.swift */; };
+		7927F4AD20F0BFD400F35778 /* RoundButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 799C641720DBD15A002D9B6E /* RoundButton.swift */; };
+		7927F4B020F0CD1B00F35778 /* SearchPartnerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7927F4AE20F0CD1B00F35778 /* SearchPartnerViewController.swift */; };
+		7927F4B120F0CD1B00F35778 /* SearchPartnerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7927F4AF20F0CD1B00F35778 /* SearchPartnerViewController.xib */; };
+		792FEEA620E76AFA0057BD54 /* AuthProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 792FEEA520E76AFA0057BD54 /* AuthProvider.swift */; };
+		7943099C20E4E64600FA38C3 /* YourProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7943099A20E4E64600FA38C3 /* YourProfileViewController.swift */; };
+		7943099D20E4E64600FA38C3 /* YourProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7943099B20E4E64600FA38C3 /* YourProfileViewController.xib */; };
+		798ADDAC20E2CC8D00265A97 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 798ADDAB20E2CC8D00265A97 /* GoogleService-Info.plist */; };
+		798ADDAE20E2CE2000265A97 /* profileSetUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 798ADDAD20E2CE2000265A97 /* profileSetUpViewController.swift */; };
+		799C641220DBCCFB002D9B6E /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 799C641120DBCCFB002D9B6E /* LoginViewController.swift */; };
+		799C641420DBCD19002D9B6E /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 799C641320DBCD19002D9B6E /* SignUpViewController.swift */; };
+		799C641820DBD15A002D9B6E /* RoundButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 799C641720DBD15A002D9B6E /* RoundButton.swift */; };
+		79C72EA920DE5B490037A9CD /* UIButtonX.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79C72E9F20DE5B480037A9CD /* UIButtonX.swift */; };
+		79C72EAA20DE5B490037A9CD /* UIButtonX.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79C72E9F20DE5B480037A9CD /* UIButtonX.swift */; };
+		79C72EAB20DE5B490037A9CD /* UIButtonX.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79C72E9F20DE5B480037A9CD /* UIButtonX.swift */; };
+		79C72EAC20DE5B490037A9CD /* UIViewXRadialGradient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79C72EA020DE5B480037A9CD /* UIViewXRadialGradient.swift */; };
+		79C72EAD20DE5B490037A9CD /* UIViewXRadialGradient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79C72EA020DE5B480037A9CD /* UIViewXRadialGradient.swift */; };
+		79C72EAE20DE5B490037A9CD /* UIViewXRadialGradient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79C72EA020DE5B480037A9CD /* UIViewXRadialGradient.swift */; };
+		79C72EAF20DE5B490037A9CD /* UISliderX.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79C72EA120DE5B480037A9CD /* UISliderX.swift */; };
+		79C72EB020DE5B490037A9CD /* UISliderX.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79C72EA120DE5B480037A9CD /* UISliderX.swift */; };
+		79C72EB120DE5B490037A9CD /* UISliderX.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79C72EA120DE5B480037A9CD /* UISliderX.swift */; };
+		79C72EB220DE5B490037A9CD /* UIImageViewX.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79C72EA220DE5B480037A9CD /* UIImageViewX.swift */; };
+		79C72EB320DE5B490037A9CD /* UIImageViewX.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79C72EA220DE5B480037A9CD /* UIImageViewX.swift */; };
+		79C72EB420DE5B490037A9CD /* UIImageViewX.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79C72EA220DE5B480037A9CD /* UIImageViewX.swift */; };
+		79C72EB520DE5B490037A9CD /* UITextFieldX.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79C72EA320DE5B480037A9CD /* UITextFieldX.swift */; };
+		79C72EB620DE5B490037A9CD /* UITextFieldX.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79C72EA320DE5B480037A9CD /* UITextFieldX.swift */; };
+		79C72EB720DE5B490037A9CD /* UITextFieldX.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79C72EA320DE5B480037A9CD /* UITextFieldX.swift */; };
+		79C72EB820DE5B490037A9CD /* UIViewControllerX.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79C72EA420DE5B480037A9CD /* UIViewControllerX.swift */; };
+		79C72EB920DE5B490037A9CD /* UIViewControllerX.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79C72EA420DE5B480037A9CD /* UIViewControllerX.swift */; };
+		79C72EBA20DE5B490037A9CD /* UIViewControllerX.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79C72EA420DE5B480037A9CD /* UIViewControllerX.swift */; };
+		79C72EBB20DE5B490037A9CD /* UIVisualEffectViewX.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79C72EA520DE5B480037A9CD /* UIVisualEffectViewX.swift */; };
+		79C72EBC20DE5B490037A9CD /* UIVisualEffectViewX.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79C72EA520DE5B480037A9CD /* UIVisualEffectViewX.swift */; };
+		79C72EBD20DE5B490037A9CD /* UIVisualEffectViewX.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79C72EA520DE5B480037A9CD /* UIVisualEffectViewX.swift */; };
+		79C72EBE20DE5B490037A9CD /* UIViewX.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79C72EA620DE5B490037A9CD /* UIViewX.swift */; };
+		79C72EBF20DE5B490037A9CD /* UIViewX.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79C72EA620DE5B490037A9CD /* UIViewX.swift */; };
+		79C72EC020DE5B490037A9CD /* UIViewX.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79C72EA620DE5B490037A9CD /* UIViewX.swift */; };
+		79C72EC120DE5B490037A9CD /* UIViewAnchorPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79C72EA720DE5B490037A9CD /* UIViewAnchorPoint.swift */; };
+		79C72EC220DE5B490037A9CD /* UIViewAnchorPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79C72EA720DE5B490037A9CD /* UIViewAnchorPoint.swift */; };
+		79C72EC320DE5B490037A9CD /* UIViewAnchorPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79C72EA720DE5B490037A9CD /* UIViewAnchorPoint.swift */; };
+		79C72EC420DE5B490037A9CD /* UILabelX.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79C72EA820DE5B490037A9CD /* UILabelX.swift */; };
+		79C72EC520DE5B490037A9CD /* UILabelX.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79C72EA820DE5B490037A9CD /* UILabelX.swift */; };
+		79C72EC620DE5B490037A9CD /* UILabelX.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79C72EA820DE5B490037A9CD /* UILabelX.swift */; };
 		79DF8CD320D7FF5D009A40B0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79DF8CD220D7FF5D009A40B0 /* AppDelegate.swift */; };
 		79DF8CD520D7FF5D009A40B0 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79DF8CD420D7FF5D009A40B0 /* ViewController.swift */; };
 		79DF8CD820D7FF5D009A40B0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 79DF8CD620D7FF5D009A40B0 /* Main.storyboard */; };
@@ -14,6 +59,7 @@
 		79DF8CDD20D7FF5F009A40B0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 79DF8CDB20D7FF5F009A40B0 /* LaunchScreen.storyboard */; };
 		79DF8CE820D7FF5F009A40B0 /* HateDatingAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79DF8CE720D7FF5F009A40B0 /* HateDatingAppTests.swift */; };
 		79DF8CF320D7FF5F009A40B0 /* HateDatingAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79DF8CF220D7FF5F009A40B0 /* HateDatingAppUITests.swift */; };
+		D4991AC9BE07084010A1F828 /* Pods_HateDatingAppTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 47F49119123981CFAA45C7D4 /* Pods_HateDatingAppTests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -34,6 +80,33 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		03CC6FF69A969836911F5B9C /* Pods-HateDatingAppTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HateDatingAppTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-HateDatingAppTests/Pods-HateDatingAppTests.release.xcconfig"; sourceTree = "<group>"; };
+		1CDABB83A909E43F109EB8DF /* Pods_HateDatingAppUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HateDatingAppUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		281FDE93318C6B8DB50271AC /* Pods-HateDatingAppUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HateDatingAppUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-HateDatingAppUITests/Pods-HateDatingAppUITests.release.xcconfig"; sourceTree = "<group>"; };
+		2950623F3F6D4876AE8AEC6A /* Pods-HateDatingApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HateDatingApp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-HateDatingApp/Pods-HateDatingApp.debug.xcconfig"; sourceTree = "<group>"; };
+		47F49119123981CFAA45C7D4 /* Pods_HateDatingAppTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HateDatingAppTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		6C5D01093C1940957130A017 /* Pods-HateDatingAppTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HateDatingAppTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-HateDatingAppTests/Pods-HateDatingAppTests.debug.xcconfig"; sourceTree = "<group>"; };
+		790A554820EA09BD00590C96 /* DateOfBirthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateOfBirthViewController.swift; sourceTree = "<group>"; };
+		7927F4AE20F0CD1B00F35778 /* SearchPartnerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchPartnerViewController.swift; sourceTree = "<group>"; };
+		7927F4AF20F0CD1B00F35778 /* SearchPartnerViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchPartnerViewController.xib; sourceTree = "<group>"; };
+		792FEEA520E76AFA0057BD54 /* AuthProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthProvider.swift; sourceTree = "<group>"; };
+		7943099A20E4E64600FA38C3 /* YourProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YourProfileViewController.swift; sourceTree = "<group>"; };
+		7943099B20E4E64600FA38C3 /* YourProfileViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = YourProfileViewController.xib; sourceTree = "<group>"; };
+		798ADDAB20E2CC8D00265A97 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		798ADDAD20E2CE2000265A97 /* profileSetUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = profileSetUpViewController.swift; sourceTree = "<group>"; };
+		799C641120DBCCFB002D9B6E /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		799C641320DBCD19002D9B6E /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
+		799C641720DBD15A002D9B6E /* RoundButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundButton.swift; sourceTree = "<group>"; };
+		79C72E9F20DE5B480037A9CD /* UIButtonX.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UIButtonX.swift; path = ../../../ChainAnimations/ChainAnimations/Designs/UIButtonX.swift; sourceTree = "<group>"; };
+		79C72EA020DE5B480037A9CD /* UIViewXRadialGradient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UIViewXRadialGradient.swift; path = ../../../ChainAnimations/ChainAnimations/Designs/UIViewXRadialGradient.swift; sourceTree = "<group>"; };
+		79C72EA120DE5B480037A9CD /* UISliderX.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UISliderX.swift; path = ../../../ChainAnimations/ChainAnimations/Designs/UISliderX.swift; sourceTree = "<group>"; };
+		79C72EA220DE5B480037A9CD /* UIImageViewX.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UIImageViewX.swift; path = ../../../ChainAnimations/ChainAnimations/Designs/UIImageViewX.swift; sourceTree = "<group>"; };
+		79C72EA320DE5B480037A9CD /* UITextFieldX.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UITextFieldX.swift; path = ../../../ChainAnimations/ChainAnimations/Designs/UITextFieldX.swift; sourceTree = "<group>"; };
+		79C72EA420DE5B480037A9CD /* UIViewControllerX.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UIViewControllerX.swift; path = ../../../ChainAnimations/ChainAnimations/Designs/UIViewControllerX.swift; sourceTree = "<group>"; };
+		79C72EA520DE5B480037A9CD /* UIVisualEffectViewX.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UIVisualEffectViewX.swift; path = ../../../ChainAnimations/ChainAnimations/Designs/UIVisualEffectViewX.swift; sourceTree = "<group>"; };
+		79C72EA620DE5B490037A9CD /* UIViewX.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UIViewX.swift; path = ../../../ChainAnimations/ChainAnimations/Designs/UIViewX.swift; sourceTree = "<group>"; };
+		79C72EA720DE5B490037A9CD /* UIViewAnchorPoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UIViewAnchorPoint.swift; path = ../../../ChainAnimations/ChainAnimations/Designs/UIViewAnchorPoint.swift; sourceTree = "<group>"; };
+		79C72EA820DE5B490037A9CD /* UILabelX.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UILabelX.swift; path = ../../../ChainAnimations/ChainAnimations/Designs/UILabelX.swift; sourceTree = "<group>"; };
 		79DF8CCF20D7FF5D009A40B0 /* HateDatingApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HateDatingApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		79DF8CD220D7FF5D009A40B0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		79DF8CD420D7FF5D009A40B0 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -47,6 +120,9 @@
 		79DF8CEE20D7FF5F009A40B0 /* HateDatingAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HateDatingAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		79DF8CF220D7FF5F009A40B0 /* HateDatingAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HateDatingAppUITests.swift; sourceTree = "<group>"; };
 		79DF8CF420D7FF5F009A40B0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		84AFE670824B9B78D819ADF5 /* Pods_HateDatingApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HateDatingApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E009223C70EB748B5FA68CE2 /* Pods-HateDatingAppUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HateDatingAppUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-HateDatingAppUITests/Pods-HateDatingAppUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		E6D716189541BE793CB03A5F /* Pods-HateDatingApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HateDatingApp.release.xcconfig"; path = "Pods/Target Support Files/Pods-HateDatingApp/Pods-HateDatingApp.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,6 +130,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				35CD94D3703A7F44FAB61DE4 /* Pods_HateDatingApp.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -61,6 +138,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D4991AC9BE07084010A1F828 /* Pods_HateDatingAppTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -68,12 +146,65 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0DFE9F9D4769F0A19B2B2BCC /* Pods_HateDatingAppUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		792FEEA420E76AD00057BD54 /* Plugins */ = {
+			isa = PBXGroup;
+			children = (
+				792FEEA520E76AFA0057BD54 /* AuthProvider.swift */,
+			);
+			path = Plugins;
+			sourceTree = "<group>";
+		};
+		7943099E20E4E64F00FA38C3 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				79DF8CD620D7FF5D009A40B0 /* Main.storyboard */,
+				79DF8CDB20D7FF5F009A40B0 /* LaunchScreen.storyboard */,
+				7943099B20E4E64600FA38C3 /* YourProfileViewController.xib */,
+				7927F4AF20F0CD1B00F35778 /* SearchPartnerViewController.xib */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		799C641020DBCCB5002D9B6E /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				79DF8CD220D7FF5D009A40B0 /* AppDelegate.swift */,
+				79DF8CD420D7FF5D009A40B0 /* ViewController.swift */,
+				799C641120DBCCFB002D9B6E /* LoginViewController.swift */,
+				799C641320DBCD19002D9B6E /* SignUpViewController.swift */,
+				798ADDAD20E2CE2000265A97 /* profileSetUpViewController.swift */,
+				7943099A20E4E64600FA38C3 /* YourProfileViewController.swift */,
+				790A554820EA09BD00590C96 /* DateOfBirthViewController.swift */,
+				7927F4AE20F0CD1B00F35778 /* SearchPartnerViewController.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		79C72E9E20DE5B310037A9CD /* Designs */ = {
+			isa = PBXGroup;
+			children = (
+				799C641720DBD15A002D9B6E /* RoundButton.swift */,
+				79C72E9F20DE5B480037A9CD /* UIButtonX.swift */,
+				79C72EA220DE5B480037A9CD /* UIImageViewX.swift */,
+				79C72EA820DE5B490037A9CD /* UILabelX.swift */,
+				79C72EA120DE5B480037A9CD /* UISliderX.swift */,
+				79C72EA320DE5B480037A9CD /* UITextFieldX.swift */,
+				79C72EA720DE5B490037A9CD /* UIViewAnchorPoint.swift */,
+				79C72EA420DE5B480037A9CD /* UIViewControllerX.swift */,
+				79C72EA620DE5B490037A9CD /* UIViewX.swift */,
+				79C72EA020DE5B480037A9CD /* UIViewXRadialGradient.swift */,
+				79C72EA520DE5B480037A9CD /* UIVisualEffectViewX.swift */,
+			);
+			path = Designs;
+			sourceTree = "<group>";
+		};
 		79DF8CC620D7FF5D009A40B0 = {
 			isa = PBXGroup;
 			children = (
@@ -81,6 +212,8 @@
 				79DF8CE620D7FF5F009A40B0 /* HateDatingAppTests */,
 				79DF8CF120D7FF5F009A40B0 /* HateDatingAppUITests */,
 				79DF8CD020D7FF5D009A40B0 /* Products */,
+				8492A788EB12EE7D82490014 /* Pods */,
+				C9D8152DE2A0C8EE0ABC9162 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -97,12 +230,13 @@
 		79DF8CD120D7FF5D009A40B0 /* HateDatingApp */ = {
 			isa = PBXGroup;
 			children = (
-				79DF8CD220D7FF5D009A40B0 /* AppDelegate.swift */,
-				79DF8CD420D7FF5D009A40B0 /* ViewController.swift */,
-				79DF8CD620D7FF5D009A40B0 /* Main.storyboard */,
+				792FEEA420E76AD00057BD54 /* Plugins */,
+				7943099E20E4E64F00FA38C3 /* Models */,
+				79C72E9E20DE5B310037A9CD /* Designs */,
+				799C641020DBCCB5002D9B6E /* Views */,
 				79DF8CD920D7FF5F009A40B0 /* Assets.xcassets */,
-				79DF8CDB20D7FF5F009A40B0 /* LaunchScreen.storyboard */,
 				79DF8CDE20D7FF5F009A40B0 /* Info.plist */,
+				798ADDAB20E2CC8D00265A97 /* GoogleService-Info.plist */,
 			);
 			path = HateDatingApp;
 			sourceTree = "<group>";
@@ -125,6 +259,29 @@
 			path = HateDatingAppUITests;
 			sourceTree = "<group>";
 		};
+		8492A788EB12EE7D82490014 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				2950623F3F6D4876AE8AEC6A /* Pods-HateDatingApp.debug.xcconfig */,
+				E6D716189541BE793CB03A5F /* Pods-HateDatingApp.release.xcconfig */,
+				6C5D01093C1940957130A017 /* Pods-HateDatingAppTests.debug.xcconfig */,
+				03CC6FF69A969836911F5B9C /* Pods-HateDatingAppTests.release.xcconfig */,
+				E009223C70EB748B5FA68CE2 /* Pods-HateDatingAppUITests.debug.xcconfig */,
+				281FDE93318C6B8DB50271AC /* Pods-HateDatingAppUITests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		C9D8152DE2A0C8EE0ABC9162 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				84AFE670824B9B78D819ADF5 /* Pods_HateDatingApp.framework */,
+				47F49119123981CFAA45C7D4 /* Pods_HateDatingAppTests.framework */,
+				1CDABB83A909E43F109EB8DF /* Pods_HateDatingAppUITests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -132,9 +289,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 79DF8CF720D7FF5F009A40B0 /* Build configuration list for PBXNativeTarget "HateDatingApp" */;
 			buildPhases = (
+				999CBAFAEFC193D3E687CF9E /* [CP] Check Pods Manifest.lock */,
 				79DF8CCB20D7FF5D009A40B0 /* Sources */,
 				79DF8CCC20D7FF5D009A40B0 /* Frameworks */,
 				79DF8CCD20D7FF5D009A40B0 /* Resources */,
+				D5D642FAC04D56B5DB529955 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -149,6 +308,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 79DF8CFA20D7FF5F009A40B0 /* Build configuration list for PBXNativeTarget "HateDatingAppTests" */;
 			buildPhases = (
+				CFCFA16AD27F5C21E1F77863 /* [CP] Check Pods Manifest.lock */,
 				79DF8CDF20D7FF5F009A40B0 /* Sources */,
 				79DF8CE020D7FF5F009A40B0 /* Frameworks */,
 				79DF8CE120D7FF5F009A40B0 /* Resources */,
@@ -167,6 +327,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 79DF8CFD20D7FF5F009A40B0 /* Build configuration list for PBXNativeTarget "HateDatingAppUITests" */;
 			buildPhases = (
+				BD794D22BD73103F75A8620A /* [CP] Check Pods Manifest.lock */,
 				79DF8CEA20D7FF5F009A40B0 /* Sources */,
 				79DF8CEB20D7FF5F009A40B0 /* Frameworks */,
 				79DF8CEC20D7FF5F009A40B0 /* Resources */,
@@ -230,7 +391,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				79DF8CDD20D7FF5F009A40B0 /* LaunchScreen.storyboard in Resources */,
+				7927F4B120F0CD1B00F35778 /* SearchPartnerViewController.xib in Resources */,
+				7943099D20E4E64600FA38C3 /* YourProfileViewController.xib in Resources */,
 				79DF8CDA20D7FF5F009A40B0 /* Assets.xcassets in Resources */,
+				798ADDAC20E2CC8D00265A97 /* GoogleService-Info.plist in Resources */,
 				79DF8CD820D7FF5D009A40B0 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -251,12 +415,127 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		999CBAFAEFC193D3E687CF9E /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-HateDatingApp-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		BD794D22BD73103F75A8620A /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-HateDatingAppUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		CFCFA16AD27F5C21E1F77863 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-HateDatingAppTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D5D642FAC04D56B5DB529955 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-HateDatingApp/Pods-HateDatingApp-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/ChameleonFramework/ChameleonFramework.framework",
+				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
+				"${BUILT_PRODUCTS_DIR}/JSQMessagesViewController/JSQMessagesViewController.framework",
+				"${BUILT_PRODUCTS_DIR}/JSQSystemSoundPlayer/JSQSystemSoundPlayer.framework",
+				"${BUILT_PRODUCTS_DIR}/Realm/Realm.framework",
+				"${BUILT_PRODUCTS_DIR}/RealmSwift/RealmSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
+				"${BUILT_PRODUCTS_DIR}/SVProgressHUD/SVProgressHUD.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftKeychainWrapper/SwiftKeychainWrapper.framework",
+				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ChameleonFramework.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/JSQMessagesViewController.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/JSQSystemSoundPlayer.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RealmSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SVProgressHUD.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftKeychainWrapper.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-HateDatingApp/Pods-HateDatingApp-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		79DF8CCB20D7FF5D009A40B0 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				799C641820DBD15A002D9B6E /* RoundButton.swift in Sources */,
+				799C641220DBCCFB002D9B6E /* LoginViewController.swift in Sources */,
+				79C72EBB20DE5B490037A9CD /* UIVisualEffectViewX.swift in Sources */,
+				79C72EA920DE5B490037A9CD /* UIButtonX.swift in Sources */,
+				79C72EAF20DE5B490037A9CD /* UISliderX.swift in Sources */,
+				79C72EAC20DE5B490037A9CD /* UIViewXRadialGradient.swift in Sources */,
+				792FEEA620E76AFA0057BD54 /* AuthProvider.swift in Sources */,
+				7927F4B020F0CD1B00F35778 /* SearchPartnerViewController.swift in Sources */,
 				79DF8CD520D7FF5D009A40B0 /* ViewController.swift in Sources */,
+				79C72EB820DE5B490037A9CD /* UIViewControllerX.swift in Sources */,
+				7943099C20E4E64600FA38C3 /* YourProfileViewController.swift in Sources */,
+				798ADDAE20E2CE2000265A97 /* profileSetUpViewController.swift in Sources */,
+				79C72EC120DE5B490037A9CD /* UIViewAnchorPoint.swift in Sources */,
+				79C72EB220DE5B490037A9CD /* UIImageViewX.swift in Sources */,
+				799C641420DBCD19002D9B6E /* SignUpViewController.swift in Sources */,
+				79C72EBE20DE5B490037A9CD /* UIViewX.swift in Sources */,
+				790A554920EA09BD00590C96 /* DateOfBirthViewController.swift in Sources */,
+				79C72EC420DE5B490037A9CD /* UILabelX.swift in Sources */,
+				79C72EB520DE5B490037A9CD /* UITextFieldX.swift in Sources */,
 				79DF8CD320D7FF5D009A40B0 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -265,7 +544,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7927F4AC20F0BFD400F35778 /* RoundButton.swift in Sources */,
+				79C72EC520DE5B490037A9CD /* UILabelX.swift in Sources */,
+				79C72EC220DE5B490037A9CD /* UIViewAnchorPoint.swift in Sources */,
+				79C72EB620DE5B490037A9CD /* UITextFieldX.swift in Sources */,
+				79C72EAA20DE5B490037A9CD /* UIButtonX.swift in Sources */,
+				79C72EB920DE5B490037A9CD /* UIViewControllerX.swift in Sources */,
+				79C72EB320DE5B490037A9CD /* UIImageViewX.swift in Sources */,
 				79DF8CE820D7FF5F009A40B0 /* HateDatingAppTests.swift in Sources */,
+				79C72EAD20DE5B490037A9CD /* UIViewXRadialGradient.swift in Sources */,
+				79C72EBC20DE5B490037A9CD /* UIVisualEffectViewX.swift in Sources */,
+				79C72EB020DE5B490037A9CD /* UISliderX.swift in Sources */,
+				79C72EBF20DE5B490037A9CD /* UIViewX.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -273,7 +563,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7927F4AD20F0BFD400F35778 /* RoundButton.swift in Sources */,
+				79C72EC620DE5B490037A9CD /* UILabelX.swift in Sources */,
+				79C72EC320DE5B490037A9CD /* UIViewAnchorPoint.swift in Sources */,
+				79C72EB720DE5B490037A9CD /* UITextFieldX.swift in Sources */,
+				79C72EAB20DE5B490037A9CD /* UIButtonX.swift in Sources */,
+				79C72EBA20DE5B490037A9CD /* UIViewControllerX.swift in Sources */,
+				79C72EB420DE5B490037A9CD /* UIImageViewX.swift in Sources */,
 				79DF8CF320D7FF5F009A40B0 /* HateDatingAppUITests.swift in Sources */,
+				79C72EAE20DE5B490037A9CD /* UIViewXRadialGradient.swift in Sources */,
+				79C72EBD20DE5B490037A9CD /* UIVisualEffectViewX.swift in Sources */,
+				79C72EB120DE5B490037A9CD /* UISliderX.swift in Sources */,
+				79C72EC020DE5B490037A9CD /* UIViewX.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -428,6 +729,7 @@
 		};
 		79DF8CF820D7FF5F009A40B0 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2950623F3F6D4876AE8AEC6A /* Pods-HateDatingApp.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -437,7 +739,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.prithviraj8.HateDatingApp;
+				PRODUCT_BUNDLE_IDENTIFIER = com.prithviraj8.HateDateApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -446,6 +748,7 @@
 		};
 		79DF8CF920D7FF5F009A40B0 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E6D716189541BE793CB03A5F /* Pods-HateDatingApp.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -455,7 +758,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.prithviraj8.HateDatingApp;
+				PRODUCT_BUNDLE_IDENTIFIER = com.prithviraj8.HateDateApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -464,6 +767,7 @@
 		};
 		79DF8CFB20D7FF5F009A40B0 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6C5D01093C1940957130A017 /* Pods-HateDatingAppTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -485,6 +789,7 @@
 		};
 		79DF8CFC20D7FF5F009A40B0 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 03CC6FF69A969836911F5B9C /* Pods-HateDatingAppTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -506,6 +811,7 @@
 		};
 		79DF8CFE20D7FF5F009A40B0 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E009223C70EB748B5FA68CE2 /* Pods-HateDatingAppUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -526,6 +832,7 @@
 		};
 		79DF8CFF20D7FF5F009A40B0 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 281FDE93318C6B8DB50271AC /* Pods-HateDatingAppUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
