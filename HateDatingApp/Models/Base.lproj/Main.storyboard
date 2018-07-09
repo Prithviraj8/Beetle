@@ -354,29 +354,6 @@
                                     <segue destination="gvL-sh-gM4" kind="show" id="8FQ-yv-KPG"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9UY-8H-kbr">
-                                <rect key="frame" x="143" y="333" width="129" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Man">
-                                    <color key="titleColor" red="0.98431372549999996" green="0.50980392159999999" blue="0.31372549020000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                </state>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                        <real key="value" value="15"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
-                                        <real key="value" value="1"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
-                                        <color key="value" red="0.98431372549999996" green="0.07317004849" blue="0.099343723130000006" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                                <connections>
-                                    <action selector="Man:" destination="F4T-jA-5FJ" eventType="touchUpInside" id="Jnt-fZ-pJG"/>
-                                    <action selector="ManPressed:" destination="F4T-jA-5FJ" eventType="touchUpInside" id="PWR-bJ-dXF"/>
-                                    <segue destination="iPn-tw-F5a" kind="show" id="7om-yO-Jyw"/>
-                                </connections>
-                            </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="   I am a " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cl7-vo-5mE">
                                 <rect key="frame" x="88" y="106" width="169" height="104"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -384,6 +361,27 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KYd-zb-MRr" customClass="UIButtonX" customModule="HateDatingApp" customModuleProvider="target">
+                                <rect key="frame" x="143" y="353" width="129" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Man">
+                                    <color key="titleColor" red="0.98431372549019602" green="0.50980392156862742" blue="0.31372549019607843" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                        <real key="value" value="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="15"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                        <color key="value" red="0.98431372549999996" green="0.07317004849" blue="0.099343723130000006" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <segue destination="iPn-tw-F5a" kind="show" id="Gfl-DW-5gN"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="wWp-jo-NAG"/>
@@ -392,6 +390,21 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Xpn-5v-gOs" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3385.507246376812" y="-576.35869565217399"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="Lxc-6N-NyC">
+            <objects>
+                <viewController id="UTB-gW-rEb" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="UUq-Bn-0hn">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="LuY-YK-f5p"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="BJw-0D-oUl" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3543" y="-1789"/>
         </scene>
         <!--Profile Set Up View Controller-->
         <scene sceneID="lMd-uI-ZSp">
@@ -617,6 +630,76 @@
             </objects>
             <point key="canvasLocation" x="4262" y="133"/>
         </scene>
+        <!--Search Partner View Controller-->
+        <scene sceneID="7tI-Gk-bRr">
+            <objects>
+                <viewController id="9Jb-t7-4WI" customClass="SearchPartnerViewController" customModule="HateDatingApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="9hy-bg-Iu4">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Sf8-ih-hKu" customClass="UIViewX" customModule="HateDatingApp" customModuleProvider="target">
+                                <rect key="frame" x="40" y="132" width="335" height="413"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="oUy-S4-dA7" customClass="UIImageViewX" customModule="HateDatingApp" customModuleProvider="target">
+                                        <rect key="frame" x="33" y="35" width="268" height="343"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="10"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                <real key="value" value="1"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </imageView>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="ThumbsUp" translatesAutoresizingMaskIntoConstraints="NO" id="gPN-8X-bgk">
+                                        <rect key="frame" x="95" y="146" width="144" height="121"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <gestureRecognizers/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                        <real key="value" value="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="ymM-KX-52e" appends="YES" id="Gbs-Gh-EeT"/>
+                                </connections>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="X2t-Md-LS8">
+                                <rect key="frame" x="188" y="643" width="39" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Reset"/>
+                                <connections>
+                                    <action selector="ResetCard:" destination="9Jb-t7-4WI" eventType="touchUpInside" id="Wd6-KG-wAp"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="8mg-6t-npS"/>
+                    </view>
+                    <connections>
+                        <outlet property="Card" destination="Sf8-ih-hKu" id="bpQ-9g-OxC"/>
+                        <outlet property="ThumbsImageView" destination="gPN-8X-bgk" id="Rd0-r9-Czl"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="KmD-4N-tch" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <panGestureRecognizer minimumNumberOfTouches="1" id="ymM-KX-52e">
+                    <connections>
+                        <action selector="panGestureCard:" destination="9Jb-t7-4WI" id="X5J-5F-CLV"/>
+                    </connections>
+                </panGestureRecognizer>
+            </objects>
+            <point key="canvasLocation" x="6407" y="-721"/>
+        </scene>
         <!--Your Profile View Controller-->
         <scene sceneID="PhL-LD-nhW">
             <objects>
@@ -674,6 +757,8 @@
         <!--Search Partner View Controller-->
         <scene sceneID="CYM-xu-iZ2">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hFl-jN-Hhn" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <panGestureRecognizer minimumNumberOfTouches="1" id="lDb-Nh-MUx"/>
                 <viewController id="2LL-9P-xca" customClass="SearchPartnerViewController" customModule="HateDatingApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="d9q-Qf-VRW">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
@@ -685,7 +770,8 @@
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="TuX-ze-DGN" customClass="UIImageViewX" customModule="HateDatingApp" customModuleProvider="target">
                                         <rect key="frame" x="20" y="16" width="305" height="379"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" red="1" green="0.43388650966098063" blue="0.3079818176713407" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
                                                 <real key="value" value="1"/>
@@ -695,8 +781,12 @@
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                     </imageView>
+                                    <imageView userInteractionEnabled="NO" alpha="0.0" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="ThumbsUp" adjustsImageSizeForAccessibilityContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Q21-CR-jif">
+                                        <rect key="frame" x="52" y="141" width="240" height="128"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    </imageView>
                                 </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <gestureRecognizers/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
@@ -706,23 +796,26 @@
                                         <real key="value" value="10"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
-                                <connections>
-                                    <outletCollection property="gestureRecognizers" destination="lDb-Nh-MUx" appends="YES" id="i4E-uO-D6z"/>
-                                </connections>
+                            </view>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="MnQ-MB-0Uz">
+                                <rect key="frame" x="0.0" y="614" width="414" height="122"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SLX-i8-kPG">
+                                        <rect key="frame" x="188" y="46" width="39" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" title="Reset"/>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="TIx-nC-f6B"/>
                     </view>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="hFl-jN-Hhn" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <panGestureRecognizer minimumNumberOfTouches="1" id="lDb-Nh-MUx">
-                    <connections>
-                        <action selector="panGestureCard:" destination="2LL-9P-xca" id="CIs-m8-k9z"/>
-                    </connections>
-                </panGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="6221.739130434783" y="-536.41304347826087"/>
+            <point key="canvasLocation" x="7788" y="1003"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="f1C-Dn-dPR">
@@ -820,6 +913,7 @@
                                 </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="LogInButtonPress:" destination="pOQ-VO-OBs" eventType="touchUpInside" id="rMS-pr-Fto"/>
+                                    <segue destination="9Jb-t7-4WI" kind="show" id="vfm-tX-WDc"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -858,6 +952,7 @@
         <image name="Attachment" width="100" height="100"/>
         <image name="Female Profile" width="50" height="50"/>
         <image name="Male profile" width="50" height="50"/>
+        <image name="ThumbsUp" width="90" height="90"/>
         <image name="background1" width="1200" height="795"/>
         <image name="couple" width="5760" height="3840"/>
     </resources>

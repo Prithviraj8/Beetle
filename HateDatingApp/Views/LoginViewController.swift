@@ -53,6 +53,7 @@ class LoginViewController: UIViewController {
                     self.alertTheUser(title: "Problem with Authentication", message: message!)
                 } else {
                     print("Login Completed")
+                    //self.performSegue(withIdentifier: "goToSelectPartner", sender: self)
                 }
             }
         } else {
