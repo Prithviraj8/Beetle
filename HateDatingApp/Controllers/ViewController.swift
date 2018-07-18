@@ -7,7 +7,9 @@
 //
 
 import UIKit
+import MapKit
 import SwiftKeychainWrapper
+
 
 class ViewController: UIViewController {
 
@@ -18,11 +20,14 @@ class ViewController: UIViewController {
     @IBOutlet weak var SignUp: UIButton!
     @IBOutlet weak var Login: UIButton!
     
-    
+    var locationManager = CLLocationManager()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+//        locationManager.delegate = self
+//        locationManager.desiredAccuracy = kCLLocationAccuracyThreeKilometers
+//        locationManager.requestAlwaysAuthorization()
+//        locationManager.requestLocation()
         SignUp.alpha = 0
         Login.alpha = 0
         // Do any additional setup after loading the view, typically from a nib.
@@ -73,4 +78,24 @@ class ViewController: UIViewController {
         performSegue(withIdentifier: "goToProfile", sender: self)
     }
 }
+
+//extension ViewController : CLLocationManagerDelegate {
+//
+//    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
+//        if status == .authorizedWhenInUse {
+//            locationManager.requestLocation()
+//
+//        }
+//    }
+//    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+//        if let location = locations.first {
+//            print(location)
+//        }
+//    }
+//    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
+//        print(error)
+//    }
+//
+//
+//}
 

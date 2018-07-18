@@ -26,6 +26,10 @@
 	<string>Main</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>Add an image to your profile pic</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>The app would like to use your location.</string>
+	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+	<string>The app would like to use your location.</string>
 	<key>UIRequiredDeviceCapabilities</key>
 	<array>
 		<string>armv7</string>

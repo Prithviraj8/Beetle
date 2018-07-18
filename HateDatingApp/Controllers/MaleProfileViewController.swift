@@ -10,24 +10,21 @@ import UIKit
 import Firebase
 
 
-class YourProfileViewController: UIViewController {
+class MaleProfileViewController: UIViewController {
 
     @IBOutlet weak var ProfilePic: UIImageView!
-    @IBOutlet weak var ForFemaleProfilePic: UIImageView!
     
     @IBOutlet weak var firstNametextLable: UILabel!
-    var stringHolder: String = ""
+    var stringHolder: String!
         
-    @IBOutlet weak var ForFemaleFirstNameTextLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         firstNametextLable.text = stringHolder
-        firstNametextLable.text = stringHolder
-        
+        ProfilePic.layer.cornerRadius = 75
+        ProfilePic.layer.masksToBounds = true
         ProfilePic.image = ProfilePic.image
-        ForFemaleProfilePic.image = ForFemaleProfilePic.image
     }
 
     

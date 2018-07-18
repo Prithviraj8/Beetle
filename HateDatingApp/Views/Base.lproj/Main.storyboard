@@ -37,7 +37,7 @@
                                         </userDefinedRuntimeAttributes>
                                     </view>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YHO-GG-WIf">
-                                        <rect key="frame" x="167.66666666666666" y="20" width="80" height="30"/>
+                                        <rect key="frame" x="167.33333333333334" y="20" width="80" height="30"/>
                                         <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <state key="normal">
                                             <attributedString key="attributedTitle">
@@ -134,18 +134,18 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="background1" translatesAutoresizingMaskIntoConstraints="NO" id="K8l-8S-EI4">
-                                <rect key="frame" x="20" y="0.0" width="375" height="812"/>
+                                <rect key="frame" x="0.0" y="64" width="414" height="748"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" preservesSuperviewLayoutMargins="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="center" adjustsFontForContentSizeCategory="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ShI-Yh-1FG">
-                                <rect key="frame" x="44" y="229" width="325" height="30"/>
+                                <rect key="frame" x="54" y="229" width="304" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" textContentType="email"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7Ma-4j-InJ" customClass="UIButtonX" customModule="HateDatingApp" customModuleProvider="target">
-                                <rect key="frame" x="44" y="379" width="325" height="23"/>
+                                <rect key="frame" x="54" y="379" width="304" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.99215686274509807" green="0.50980392156862742" blue="0.28627450980392155" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <state key="normal" title="Sign In">
@@ -161,15 +161,15 @@
                                 </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="SignInPressed:" destination="CBI-S1-OHW" eventType="touchUpInside" id="HxS-0C-ggz"/>
-                                    <segue destination="F3m-8I-NBH" kind="show" id="cGR-Ru-Mqb"/>
+                                    <segue destination="F3m-8I-NBH" kind="show" identifier="segueToFirstName" id="41y-GB-CNF"/>
                                 </connections>
                             </button>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" preservesSuperviewLayoutMargins="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="zW8-KZ-oWA">
-                                <rect key="frame" x="44" y="283" width="325" height="30"/>
+                                <rect key="frame" x="54" y="283" width="304" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" textContentType="password"/>
+                                <textInputTraits key="textInputTraits" secureTextEntry="YES" textContentType="password"/>
                             </textField>
                         </subviews>
                         <color key="backgroundColor" red="0.089283056557178497" green="0.53060019016265869" blue="0.70559388399124146" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -182,7 +182,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kXV-Op-pbc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="951.20000000000005" y="-577.83251231527095"/>
+            <point key="canvasLocation" x="949.27536231884062" y="-578.804347826087"/>
         </scene>
         <!--Profile Set Up View Controller-->
         <scene sceneID="qhT-EW-vyY">
@@ -208,6 +208,7 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
+                                    <action selector="ContinuePressed:" destination="F3m-8I-NBH" eventType="touchUpInside" id="Q1g-fI-AVK"/>
                                     <segue destination="pvX-fF-VlJ" kind="show" id="u37-ja-6FN"/>
                                 </connections>
                             </button>
@@ -244,30 +245,17 @@
             </objects>
             <point key="canvasLocation" x="1789.8550724637682" y="-576.35869565217399"/>
         </scene>
-        <!--Date Of Birth View Controller-->
+        <!--View Controller-->
         <scene sceneID="nVs-Ka-0vx">
             <objects>
-                <viewController id="pvX-fF-VlJ" customClass="DateOfBirthViewController" customModule="HateDatingApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="pvX-fF-VlJ" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Duv-Pi-dq5">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="l67-fn-BBL" customClass="UIViewX" customModule="HateDatingApp" customModuleProvider="target">
-                                <rect key="frame" x="78" y="393" width="268" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
-                                        <real key="value" value="1"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                        <real key="value" value="15"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                            </view>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xzU-uS-Ddi" customClass="UIButtonX" customModule="HateDatingApp" customModuleProvider="target">
-                                <rect key="frame" x="78" y="393" width="268" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <rect key="frame" x="86" y="393" width="240" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.99215686274509807" green="0.50980392156862742" blue="0.28627450980392155" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <state key="normal" title="Continue">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -331,7 +319,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qSV-fH-oGU">
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qSV-fH-oGU" customClass="UIButtonX" customModule="HateDatingApp" customModuleProvider="target">
                                 <rect key="frame" x="143" y="258" width="129" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Woman">
@@ -355,8 +343,8 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="   I am a " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cl7-vo-5mE">
-                                <rect key="frame" x="88" y="106" width="169" height="104"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <rect key="frame" x="117" y="106" width="169" height="104"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="38"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -414,30 +402,18 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="JTa-us-rXw" customClass="UIImageViewX" customModule="HateDatingApp" customModuleProvider="target">
-                                <rect key="frame" x="113" y="246" width="189" height="189"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
-                                        <real key="value" value="1"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                        <real key="value" value="94.5"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                            </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Male profile" translatesAutoresizingMaskIntoConstraints="NO" id="s23-dW-ZvW">
-                                <rect key="frame" x="132" y="275" width="150" height="130"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Male profile" translatesAutoresizingMaskIntoConstraints="NO" id="s23-dW-ZvW" customClass="UIImageViewX" customModule="HateDatingApp" customModuleProvider="target">
+                                <rect key="frame" x="132" y="275" width="150" height="150"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                        <real key="value" value="75"/>
-                                    </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
                                         <real key="value" value="1"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
-                                        <color key="value" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="value" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="75"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </imageView>
@@ -474,7 +450,7 @@
                                 </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="nextToProfileVcPressed:" destination="iPn-tw-F5a" eventType="touchUpInside" id="FxA-7h-34e"/>
-                                    <segue destination="Qur-bO-haA" kind="push" identifier="goToProfileVC" id="7Eb-eQ-NN0"/>
+                                    <segue destination="Qur-bO-haA" kind="push" identifier="goToMaleProfileVC" id="7Eb-eQ-NN0"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -489,10 +465,10 @@
             </objects>
             <point key="canvasLocation" x="4185.507246376812" y="-1193.4782608695652"/>
         </scene>
-        <!--Your Profile View Controller-->
+        <!--Male Profile View Controller-->
         <scene sceneID="Dsa-CD-Vfq">
             <objects>
-                <viewController id="Qur-bO-haA" customClass="YourProfileViewController" customModule="HateDatingApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="Qur-bO-haA" customClass="MaleProfileViewController" customModule="HateDatingApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="cSK-nu-U4o">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -503,9 +479,6 @@
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
                                         <real key="value" value="75"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
-                                        <real key="value" value="1"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
                                         <color key="value" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -555,25 +528,10 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="b4t-og-sea" customClass="UIImageViewX" customModule="HateDatingApp" customModuleProvider="target">
-                                <rect key="frame" x="112" y="250" width="189" height="189"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
-                                        <real key="value" value="1"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                        <real key="value" value="94.5"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                            </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Female Profile" translatesAutoresizingMaskIntoConstraints="NO" id="vBV-si-hsb">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Female Profile" translatesAutoresizingMaskIntoConstraints="NO" id="vBV-si-hsb" customClass="UIImageViewX" customModule="HateDatingApp" customModuleProvider="target">
                                 <rect key="frame" x="132" y="269" width="150" height="150"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
-                                        <real key="value" value="1"/>
-                                    </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
                                         <real key="value" value="75"/>
                                     </userDefinedRuntimeAttribute>
@@ -688,6 +646,7 @@
                     </view>
                     <connections>
                         <outlet property="Card" destination="Sf8-ih-hKu" id="bpQ-9g-OxC"/>
+                        <outlet property="PartnerImage" destination="oUy-S4-dA7" id="4Al-RD-s87"/>
                         <outlet property="ThumbsImageView" destination="gPN-8X-bgk" id="Rd0-r9-Czl"/>
                     </connections>
                 </viewController>
@@ -698,12 +657,12 @@
                     </connections>
                 </panGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="6407" y="-721"/>
+            <point key="canvasLocation" x="6301" y="-578"/>
         </scene>
-        <!--Your Profile View Controller-->
+        <!--Female Profile View Controller-->
         <scene sceneID="PhL-LD-nhW">
             <objects>
-                <viewController id="JQ5-oS-OyP" customClass="YourProfileViewController" customModule="HateDatingApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="JQ5-oS-OyP" customClass="FemaleProfileViewController" customModule="HateDatingApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="88U-Qe-ij1">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -712,9 +671,6 @@
                                 <rect key="frame" x="130" y="118" width="150" height="150"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
-                                        <real key="value" value="1"/>
-                                    </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
                                         <real key="value" value="75"/>
                                     </userDefinedRuntimeAttribute>
@@ -757,8 +713,6 @@
         <!--Search Partner View Controller-->
         <scene sceneID="CYM-xu-iZ2">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="hFl-jN-Hhn" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <panGestureRecognizer minimumNumberOfTouches="1" id="lDb-Nh-MUx"/>
                 <viewController id="2LL-9P-xca" customClass="SearchPartnerViewController" customModule="HateDatingApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="d9q-Qf-VRW">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
@@ -814,6 +768,8 @@
                         <viewLayoutGuide key="safeArea" id="TIx-nC-f6B"/>
                     </view>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hFl-jN-Hhn" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <panGestureRecognizer minimumNumberOfTouches="1" id="lDb-Nh-MUx"/>
             </objects>
             <point key="canvasLocation" x="7788" y="1003"/>
         </scene>
@@ -890,11 +846,11 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="KB8-i0-E6s">
-                                <rect key="frame" x="53" y="286" width="304" height="30"/>
+                                <rect key="frame" x="53" y="259" width="304" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Bcl-mu-Sow" customClass="UIButtonX" customModule="HateDatingApp" customModuleProvider="target">
                                 <rect key="frame" x="53" y="376" width="304" height="30"/>
@@ -913,7 +869,7 @@
                                 </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="LogInButtonPress:" destination="pOQ-VO-OBs" eventType="touchUpInside" id="rMS-pr-Fto"/>
-                                    <segue destination="9Jb-t7-4WI" kind="show" id="vfm-tX-WDc"/>
+                                    <segue destination="9Jb-t7-4WI" kind="show" id="EZc-zw-s7L"/>
                                 </connections>
                             </button>
                         </subviews>

@@ -16,8 +16,13 @@ class SignUpViewController: UIViewController {
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     
+   // var userUid: String! = NSUUID
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+//        var ref : DatabaseReference!
+//        ref = Database.database().reference(fromURL: "https://hatedateapp-ea81a.firebaseio.com/")
+//        ref.updateChildValues(["SomeValue" : 123123])
 
         // Do any additional setup after loading the view.
     }
@@ -60,6 +65,20 @@ class SignUpViewController: UIViewController {
                 } else {
                     print("User successfully created")
                 }
+                
+//                var ref : DatabaseReference!
+//                ref = Database.database().reference(fromURL: "https://hatedateapp-ea81a.firebaseio.com/")
+//                let usersChildRef = ref.child("users").childByAutoId()
+//                let values = ["Email": self.emailTextField.text]
+//                
+//                usersChildRef.updateChildValues(values, withCompletionBlock: { (error, ref) in
+//                    if error != nil {
+//                        print(error)
+//                    }else {
+//                        print("Successfully saved user in Firebase database")
+//                    }
+//                })
+                
             }
             
         } else {
@@ -71,6 +90,14 @@ class SignUpViewController: UIViewController {
         
         
     }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "segueToFirstName" {
+            let destinationVC = segue.destination as! profileSetUpViewController
+            destinationVC.emailTextField = emailTextField.text!
+        } else {
+            print("View controller not found")
+        }
+    }
     
      func alertTheUser(title: String, message: String){
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
@@ -79,6 +106,7 @@ class SignUpViewController: UIViewController {
         present(alert, animated: true, completion: nil)
         
     }
+    
     
 
 }
