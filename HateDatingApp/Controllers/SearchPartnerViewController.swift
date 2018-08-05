@@ -11,25 +11,36 @@ import AVKit
 import MapKit
 import Firebase
 import FirebaseStorage
-
+import Alamofire
+import AlamofireImage
 
 class SearchPartnerViewController: UIViewController, CLLocationManagerDelegate {
 
-
-
+    @IBOutlet weak var ToggleMenuView: UIView!
+    @IBOutlet weak var ResetButton: UIButton!
+    
+    @IBOutlet weak var ToggleButton: UIButton!
+    
+    @IBOutlet weak var clearFillView: UIViewX!
     @IBOutlet weak var Card: UIViewX!
     @IBOutlet weak var ThumbsImageView: UIImageView!
     @IBOutlet weak var PartnerImage: UIImageViewX!
     
+    //let userid = Auth.auth().currentUser?.uid
+
+    var profilePic = [String]()
+    var userid : String = ""
+   
     let locationManager = CLLocationManager()
     var divisor: CGFloat!
-    var ref: StorageReference!
-    var users : [User] = [User]()
+    var storageRef: StorageReference!
     //var profileImageUrl: String!
+    var ref : DatabaseReference!
+   
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
-     //   fetchImagesFromDatabase()
         
         locationManager.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyThreeKilometers
@@ -84,16 +95,17 @@ class SearchPartnerViewController: UIViewController, CLLocationManagerDelegate {
         let point = sender.translation(in: view)
         let xFromCenter = card.center.x - view.center.x
         
-        fetchUsersFromFirebase()
         
-       // PartnerImage.image = DataSnapshot().childSnapshot(forPath: "users")
+        
         let scale = min(100/abs(xFromCenter), 1)
             
         //100/2 = 50/0.61 = 81.9672
         card.center = CGPoint(x: view.center.x + point.x, y: view.center.y + point.y)
         //Affine means it preserves parellel relationships in an objext when it is rotated.
         card.transform = CGAffineTransform(rotationAngle: xFromCenter/divisor).scaledBy(x: scale, y: scale)
-        
+
+//        card.transform = CGAffineTransform(rotationAngle: ((view.frame.width)/2)/0.61)
+
         if xFromCenter > 0 {
         
             ThumbsImageView.image = #imageLiteral(resourceName: "ThumbsUp")
@@ -108,6 +120,7 @@ class SearchPartnerViewController: UIViewController, CLLocationManagerDelegate {
         
         ThumbsImageView.alpha = abs(xFromCenter) / view.center.x
         
+        
         if sender.state == UIGestureRecognizerState.ended {
         
             if card.center.x < 75 {
@@ -117,6 +130,15 @@ class SearchPartnerViewController: UIViewController, CLLocationManagerDelegate {
                     card.alpha = 0
 
                 }
+//                UIView.animate(withDuration: 1) {
+//
+//                    self.Card.center = self.view.center
+//                    self.ThumbsImageView.alpha = 0
+//                    self.Card.alpha = 1
+//                    self.Card.transform = CGAffineTransform.identity//Restore original scale, rotation of the object.
+//                //    self.PartnerImage.alpha = 1
+//                }
+            
                 return//So that the reset code does not run
 
             }else if card.center.x > (view.frame.width - 75) {
@@ -125,39 +147,61 @@ class SearchPartnerViewController: UIViewController, CLLocationManagerDelegate {
                     card.center = CGPoint(x: card.center.x + 200.0, y: card.center.y + 75)
                     card.alpha = 0
                 }
+//                UIView.animate(withDuration: 1) {
+//
+//                    self.Card.center = self.view.center
+//                    self.ThumbsImageView.alpha = 0
+//                    self.Card.alpha = 1
+//                    self.Card.transform = CGAffineTransform.identity//Restore original scale, rotation of the object.
+//                    //self.PartnerImage.alpha = 1
+//                }
                 return//So that the reset code does not run
 
+                }
             }
             resetCard()
+
             
-        }
 
 
        
     }
 
-    
 
-//    if let profileImageUrl = User().profileImageURL {
-//        let url = NSURL(string: profileImageUrl)
-//        let request = URLRequest(url: url as! URL)
+//    @IBAction func ToggleMenuPressed(_ sender: UIButton) {
 //
-//        URLSession.shared.dataTask(with: request) { (data, responce, error) in
-//
-//            //Download hit an error so lets return out.
-//            if error != nil {
-//                print(error)
-//                return
+//        if self.clearFillView.transform == .identity {
+//            UIView.animate(withDuration: 1, animations: {
+//                self.clearFillView.transform = CGAffineTransform(scaleX: 10, y: 10)
+//                self.ToggleMenuView.transform = CGAffineTransform(translationX: 0, y: -88)
+//                self.ToggleButton.transform = CGAffineTransform(rotationAngle: 3.14)
+//            }) { (true) in
+////                UIView.animate(withDuration: 0.5, animations: {
+////                    self.toggleShareButtons()
+////                })
 //            }
-//            self.PartnerImage.image = UIImage(data: data!)
+//        } else {
+//            UIView.animate(withDuration: 1, animations: {
+//                self.ToggleMenuView.transform = .identity
+//                self.ToggleButton.transform = .identity
+//                self.clearFillView.transform = .identity
+//            }) { (true) in
 //
-//            }.resume()
-//
+//            }
+//        }
 //    }
-//
+ 
+//    func toggleShareButtons() {
+////        let alpha = CGFloat(ResetButton.alpha == 0 ? 1 : 0)
+////        ResetButton.alpha = alpha
+//        //Login.alpha = alpha
+
+//    }
     
-    @IBAction func ResetCard(_ sender: UIButton) {
+    
+    @IBAction func ResetCard(_ sender: Any) {
         resetCard()
+
     }
     
     func resetCard() {
@@ -168,65 +212,124 @@ class SearchPartnerViewController: UIViewController, CLLocationManagerDelegate {
             self.ThumbsImageView.alpha = 0
             self.Card.alpha = 1
             self.Card.transform = CGAffineTransform.identity//Restore original scale, rotation of the object.
+            self.PartnerImage.alpha = 1
+            
+
         }
     }
-
 
     func fetchUsersFromFirebase() {
         
         Firebase.Database.database().reference().child("users").observe(.childAdded, with: { (snapshot) in
             
-            print("Users found")
+            print("Users found : ")
             print(snapshot)
-        }, withCancel: nil)
-        
-}
-    //    let dbRef = database.reference().child("myFiles")
-    //    dbRef.observeEventType(.ChildAdded, withBlock: { (snapshot) in
-    //    // Get download URL from snapshot
-    //    let downloadURL = snapshot.value() as! String
-    //    // Create a storage reference from the URL
-    //    let storageRef = storage.referenceFromURL(downloadURL)
-    //    // Download the data, assuming a max size of 1MB (you can change this as necessary)
-    //    storageRef.dataWithMaxSize(1 * 1024 * 1024) { (data, error) -> Void in
-    //    // Create a UIImage, add it to the array
-    //    let pic = UIImage(data: data)
-    //    picArray.append(pic)
-    //    })
-    //    })
-//    func fetchImagesFromDatabase() {
-//        ref = Storage.storage().reference(forURL: "gs://hatedateapp-ea81a.appspot.com")
-//        ref.observe(.childAdded) { (snapshot),<#arg#>  in
-//            let downloadURL = snapshot.value as! String
-//            let storageRef = Storage.storage().reference(forURL: downloadURL)
-//            storageRef.getData(maxSize: 1 * 1024 * 1024, completion: { (data, error) in
-//                self.PartnerImage.image = UIImage(data: data!)
-//            })
-//        }
-//    }
-//
-    
-}
+            
+       let snapshotValue = snapshot.value as! Dictionary<String,String>
+ 
+            let pic = snapshotValue["Profile Pic "]
+            let users =  User()
+            self.profilePic.append(pic!)
+            users.profileImageURL = pic
+       
+            print("This is pic :::::: \(String(describing: pic?.description))")
+            print("This is the 1st image : \(String(describing: self.profilePic.first))")
+            
+//            let lowerBound = self.profilePic.index(self.profilePic.startIndex, offsetBy: 0)
+//            let upperBound = self.profilePic.index(self.profilePic.startIndex, offsetBy: self.profilePic.endIndex)
+           // let mySubstring = self.profilePic[lowerBound..<upperBound]
 
-//extension ViewController : CLLocationManagerDelegate {
+          //  for indexOfProfilePic in 0..<self.profilePic.count {
+               
+//                let myString: String!
+//                myString = self.profilePic[indexOfProfilePic]
+//                print("The pic in the array we picked is : \(myString)")
+
+            
+            
+            if let actualPic = self.profilePic.first {
+              
+                guard let url = URL(string: actualPic) else {
+                    
+                    return
+                }
+                
+               // self.postImage(url: url)
+                
+                URLSession.shared.dataTask(with: url, completionHandler: { (data, response, error) in
+                    if error != nil {
+                        print("Failed while fetching images : \(error?.localizedDescription)")
+                        return
+                    } else {
+                        print("Successfully fetched images from database ")
+                        //Posting the downloaded image from firbase database onto the imageView.
+                        DispatchQueue.main.async {
+                            self.PartnerImage.layer.cornerRadius = 10
+                            self.PartnerImage.layer.masksToBounds = true
+                            self.PartnerImage.contentMode = .scaleAspectFill
+
+
+                            self.PartnerImage.image = UIImage(data: data!)
+
+
+
+                            //self.PartnerImage.image = UIImage(named: actualPic)
+
+                        }
+                    }
+
+                }).resume()
+                
+            }
+              
+            //}
+            
+        }, withCancel: nil)
+    
+
+    
+   }
+    
+//    func postImage(url : URL) {
+//        URLSession.shared.dataTask(with: url, completionHandler: { (data, response, error) in
+//            if error != nil {
+//                print("Failed while fetching images : \(error?.localizedDescription)")
+//                return
+//            } else {
+//                print("Successfully fetched images from database ")
+//                //Posting the downloaded image from firbase database onto the imageView.
+//                DispatchQueue.main.async {
+//                    self.PartnerImage.layer.cornerRadius = 10
+//                    self.PartnerImage.layer.masksToBounds = true
+//                    self.PartnerImage.contentMode = .scaleAspectFill
 //
-//    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
-//        if status == .authorizedWhenInUse {
-//            locationManager.requestLocation()
 //
-//        }
+//                    self.PartnerImage.image = UIImage(data: data!)
+//
+//
+//
+//                    //self.PartnerImage.image = UIImage(named: actualPic)
+//
+//                }
+//            }
+//
+//        }).resume()
 //    }
-//    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-//        if let location = locations.first {
-//            print(location)
-//        }
-//    }
-//    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
-//        print(error)
-//    }
+
+}
+//extension String {
+//    subscript (bounds: CountableClosedRange<Int>) -> String {
 //
+//        let start = index(startIndex, offsetBy: bounds.lowerBound)
+//        let end = index(startIndex, offsetBy: bounds.upperBound)
+//        return String(self[start...end])
 //
-// }
+//    }
+//}
+
+
+
+
 
 
 

@@ -15,8 +15,8 @@ class MaleProfileViewController: UIViewController {
     @IBOutlet weak var ProfilePic: UIImageView!
     
     @IBOutlet weak var firstNametextLable: UILabel!
-    var stringHolder: String!
-        
+    var stringHolder: String = ""
+    var MaleProfilPicImage : UIImage!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,7 +24,7 @@ class MaleProfileViewController: UIViewController {
         firstNametextLable.text = stringHolder
         ProfilePic.layer.cornerRadius = 75
         ProfilePic.layer.masksToBounds = true
-        ProfilePic.image = ProfilePic.image
+        ProfilePic.image = MaleProfilPicImage
     }
 
     

@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import RealmSwift
+//import RealmSwift
 import Firebase
 import SVProgressHUD
 
@@ -15,6 +15,8 @@ import SVProgressHUD
 class LoginViewController: UIViewController {
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
+    
+    var userid = Auth.auth().currentUser?.uid
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -68,6 +70,16 @@ class LoginViewController: UIViewController {
                 alert.addAction(OK)
         present(alert, animated: true, completion: nil)
         
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    
+        if segue.identifier == "goToSearchPartner" {
+            
+            let destinationVC = segue.destination as! SearchPartnerViewController
+          //      destinationVC.userid = userid!
+            
+        }
     }
     
 }

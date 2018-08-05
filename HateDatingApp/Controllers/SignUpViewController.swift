@@ -15,7 +15,7 @@ import ChameleonFramework
 class SignUpViewController: UIViewController {
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
-    
+    var user: [User] = [User]()
    // var userUid: String! = NSUUID
     
     override func viewDidLoad() {
@@ -35,7 +35,6 @@ class SignUpViewController: UIViewController {
 
     @IBAction func SignInPressed(_ sender: UIButton) {
         
-//       SVProgressHUD.show()
 //
 //        //TODO: Set up a new user on our Firbase database
 //
@@ -56,48 +55,33 @@ class SignUpViewController: UIViewController {
 //            }
 //        }
 //
+             //  SVProgressHUD.show()
+
         if emailTextField.text != "" && passwordTextField.text != "" {
             
             AuthProvider.Instance.signUp(withEmail: emailTextField.text!, password: passwordTextField.text!) { (message) in
                 
                 if message != nil {
                     self.alertTheUser(title: "Problem with creating a new user", message: message!)
+                 //   self.navigationController?.popViewController(animated: true)
+
                 } else {
                     print("User successfully created")
                 }
                 
-//                var ref : DatabaseReference!
-//                ref = Database.database().reference(fromURL: "https://hatedateapp-ea81a.firebaseio.com/")
-//                let usersChildRef = ref.child("users").childByAutoId()
-//                let values = ["Email": self.emailTextField.text]
-//                
-//                usersChildRef.updateChildValues(values, withCompletionBlock: { (error, ref) in
-//                    if error != nil {
-//                        print(error)
-//                    }else {
-//                        print("Successfully saved user in Firebase database")
-//                    }
-//                })
-                
+
             }
             
         } else {
             alertTheUser(title: "Email and Password required", message: "Please Provide an email id and a password")
-            //SVProgressHUD.dismiss()
+           // SVProgressHUD.dismiss()
 
         }
 
         
         
     }
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "segueToFirstName" {
-            let destinationVC = segue.destination as! profileSetUpViewController
-            destinationVC.emailTextField = emailTextField.text!
-        } else {
-            print("View controller not found")
-        }
-    }
+  
     
      func alertTheUser(title: String, message: String){
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
@@ -106,7 +90,17 @@ class SignUpViewController: UIViewController {
         present(alert, animated: true, completion: nil)
         
     }
-    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+
+        if segue.identifier == "segueToFirstName" {
+            let destinationVC = segue.destination as! FirstNameViewController
+            
+            destinationVC.emailTextField = emailTextField.text!
+        }else{
+               print("View controller not found")
+
+        }
+    }
     
 
 }

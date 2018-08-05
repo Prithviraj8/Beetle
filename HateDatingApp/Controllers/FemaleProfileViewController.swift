@@ -12,15 +12,16 @@ class FemaleProfileViewController: UIViewController {
 
     @IBOutlet weak var ForFemaleProfilePic: UIImageView!
     @IBOutlet weak var ForFemaleFirstNameTextLabel: UILabel!
+    
     var stringHolder: String = ""
-
+    var femaleProfilePicImage : UIImage!
     
     override func viewDidLoad() {
         super.viewDidLoad()
          ForFemaleFirstNameTextLabel.text = stringHolder
         ForFemaleProfilePic.layer.cornerRadius = 75
         ForFemaleProfilePic.layer.masksToBounds = true
-        ForFemaleProfilePic.image = ForFemaleProfilePic.image
+        ForFemaleProfilePic.image = femaleProfilePicImage
 
     }
 

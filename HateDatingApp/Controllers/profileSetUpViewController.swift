@@ -8,33 +8,29 @@
 
 import UIKit
 import Firebase
-import FirebaseDatabase
-import FirebaseStorage
-import ChameleonFramework
+//import ChameleonFramework
 import SDWebImage
 import MobileCoreServices
 import AVKit
 import SwiftKeychainWrapper
+import FirebaseStorage
+//import FirebaseDatabase
 
 class profileSetUpViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
     @IBOutlet weak var maleImageView: UIImageViewX!
     @IBOutlet weak var femaleImageView: UIImageViewX!
     
-    @IBOutlet weak var firstNameTextLabel: UITextField!
-    
+    var firstNameTextLabel : String = ""
+    var emailTextFields : String = ""
+
     let user : [User] = [User]()
     var userUid: String!
     var imagePicker: UIImagePickerController!
     var imageSelected = false
-    var emailTextField : String?
-//    private static let _instance1 = profileSetUpViewController()
-//
-//    static var Instance: profileSetUpViewController {
-//        return _instance1
-//    }
-//
+    var ref: DatabaseReference!
     
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -60,20 +56,43 @@ class profileSetUpViewController: UIViewController, UIImagePickerControllerDeleg
         
     
         //self.performSegue(withIdentifier: "goToMaleProfileVC", sender: self)
-        //Saving image to Firebase
-        let imageName = NSUUID().uuidString
-        let storageRef: StorageReference!
-        storageRef = Storage.storage().reference(forURL: "gs://hatedateapp-ea81a.appspot.com").child("\(imageName).png").child("Male Image")
+        
+
+        //let username = firstNameTextLabel.text!
+        //uploadData.contentType = "image/jpeg"
       
-        let uploadData = NSData()
-        storageRef.putData(uploadData as Data, metadata: nil) { (metaData, error) in
-            if error != nil {
-                print("Error while uploading image")
-            } else {
-            print("Successfully saved images to database")
-                
-            }
-        }
+//        storageRef.putData(data as Data, metadata: uploadData) { (metadata, error) in
+//            if error != nil {
+//                print("Error while uploading image : \(String(describing: error?.localizedDescription))")
+//            } else {
+//                print("Successfully saved images to database : \(String(describing: metadata))")
+//               // let size = metadata?.size
+//
+//                self.ref = Database.database().reference(fromURL: "https://hatedateapp-ea81a.firebaseio.com/")
+//                let usersChildRef = self.ref.child("users").childByAutoId()
+//                let values = ["Name " : self.maleImageView , "Email " : self.emailTextField, "Profile Pic " : metadata!] as [String : Any]
+//
+//                usersChildRef.updateChildValues(values, withCompletionBlock: { (error, ref) in
+//
+//                    if error != nil {
+//                        print("ERROR WHILE SAVING information of user : \(error?.localizedDescription)")
+//                    } else {
+//                        print("Successfully saving information of the user.")
+//                    }
+//                })
+//                //Download URL of image
+//                storageRef.downloadURL(completion: { (url, err) in
+//                    guard let downloadURL = url else {
+//                        print("Error \(err?.localizedDescription)")
+//                     //   let values = ["Name " : self.firstNameTextLabel , "Email " : self.emailTextField, "Profile Pic " : url!] as [String : Any]
+//                     //   self.saveInfoOfUserToFirebase(values: values)
+//
+//                        return
+//                    }
+//                })
+//
+//            }
+//        }
         
         
 //        if let uploadData = UIImagePNGRepresentation(self.maleImageView.image!) {
@@ -103,105 +122,152 @@ class profileSetUpViewController: UIViewController, UIImagePickerControllerDeleg
 //            }
 //
 //        }
-        
+    uploadImageForMale()
     }
     
+    func uploadImageForMale() {
+        //Saving image to Firebase======================
 
+        let imageName = NSUUID().uuidString
+        var storageRef: StorageReference!
+       // let data = NSData()
+        storageRef = Storage.storage().reference(forURL: "gs://hatedateapp-ea81a.appspot.com").child("\(imageName).png")
+
+        // let uploadData = StorageMetadata()
+
+        if let uploadData = UIImagePNGRepresentation(maleImageView.image!) {
+
+            storageRef.putData(uploadData as Data, metadata: nil) { (metadata, error) in
+                if error != nil {
+                    print("Error while uploading image : \(String(describing: error?.localizedDescription))")
+                } else {
+                    print("Successfully saved images to database : \(String(describing: metadata))")
+                    // let size = metadata?.size
+                    //
+
+                    //Download URL of image
+                    storageRef.downloadURL(completion: { (url, err) in
+
+                        if err != nil {
+
+                            print("Error while downloadingURL : \(err?.localizedDescription)")
+                            return
+                        }
+                        let downloadURL = url?.absoluteString
+                        print("The URL of the image is :\(downloadURL)")
+                        let values = ["Name ": self.firstNameTextLabel, "Email " : self.emailTextFields, "Profile Pic " : downloadURL!] as [String : AnyObject]
+                        self.saveInfoOfUserToFirebase(values: values)
+
+                    })
+
+                }
+            }
+            //return
+        }
+    }
+
+    func uploadImageForFemale() {
+        //Saving image to Firebase======================
+
+        let imageName = NSUUID().uuidString
+        var storageRef: StorageReference!
+        // let data = NSData()
+        storageRef = Storage.storage().reference(forURL: "gs://hatedateapp-ea81a.appspot.com").child("\(imageName).png")
+
+        // let uploadData = StorageMetadata()
+
+        if let uploadData = UIImagePNGRepresentation(femaleImageView.image!) {
+
+            storageRef.putData(uploadData as Data, metadata: nil) { (metadata, error) in
+                if error != nil {
+                    print("Error while uploading image : \(String(describing: error?.localizedDescription))")
+                } else {
+                    print("Successfully saved images to database : \(String(describing: metadata))")
+                    // let size = metadata?.size
+                    //
+
+                    //Download URL of image
+                    storageRef.downloadURL(completion: { (url, err) in
+
+                        if err != nil {
+
+                            print("Error while downloadingURL : \(err?.localizedDescription)")
+                            return
+                        }
+                        let downloadURL = url?.absoluteString
+                        print("The URL of the image is :\(downloadURL)")
+                        let values = ["Name ": self.firstNameTextLabel, "Email " : self.emailTextFields, "Profile Pic " : downloadURL!] as [String : AnyObject]
+                        self.saveInfoOfUserToFirebase(values: values)
+
+                    })
+
+                }
+            }
+            //return
+        }
+    }
     @IBAction func ContinuePressed(_ sender: Any) {
     
-        let ref: DatabaseReference!
-        ref = Database.database().reference(fromURL: "https://hatedateapp-ea81a.firebaseio.com/")
-        let values = ["Name": firstNameTextLabel.text, "Email": emailTextField]
-        let usersChildRef = ref.child("users").childByAutoId()
-        usersChildRef.updateChildValues(values) { (error, ref) in
-            if error != nil {
-                print(error)
-            }else{
-                print("Successfully saved email and name in Firebase database")
-                
-            }
-        }
+//        let ref: DatabaseReference!
+//        ref = Database.database().reference(fromURL: "https://hatedateapp-ea81a.firebaseio.com/")
+//        let values = ["Name": firstNameTextLabel.text, "Email": emailTextField]
+//        let usersChildRef = ref.child("users").childByAutoId()
+//        usersChildRef.updateChildValues(values) { (error, ref) in
+//            if error != nil {
+//                print(error)
+//            }else{
+//                print("Successfully saved email and name in Firebase database")
+//
+//            }
+//        }
+        
+//        let vc = profileSetUpViewController(nibName: "profileSetUpViewController", bundle: nil)
+//        vc.firstNameTextLabel = firstNameTextLabel.text!
+//
+        
+        
     }
     
     
     @IBAction func femaleNextToProfileVcPressed(_ sender: Any) {
         
         //Saving image to Firebase
-        let imageName = NSUUID().uuidString
-        let storageRef: StorageReference!
-        storageRef = Storage.storage().reference(forURL: "gs://hatedateapp-ea81a.appspot.com").child("\(imageName).png").child("Female Image")
-        
-        let uploadData = NSData()
-        storageRef.putData(uploadData as Data, metadata: nil) { (metaData, error) in
-            if error != nil {
-                print("Error while uploading image")
-            } else {
-                print("Successfully saved images to database")
-                //self.performSegue(withIdentifier: "goToFemaleProfileVC", sender: self)
-
-            }
-        }
-//        if let uploadData = UIImagePNGRepresentation(self.femaleImageView.image!) {
 //
-//            storageRef.putData(uploadData, metadata: nil) { (metadata, error) in
-//                if error != nil {
-//                    print("ERROR while uploading image: \(error)")
-//                    return
-//                }
-//                print("Successfully saved image to firebase")
-////                let ref: DatabaseReference!
-////                ref = Database.database().reference(fromURL: "https://hatedateapp-ea81a.firebaseio.com/")
-////                let usersChildRef = ref.child("users").child(self.userUid)
+//        let data = NSData()
+//       // let imageName = NSUUID().uuidString
+//        let username = firstNameTextLabel
 //
-//                if let profileImageURL = metadata {
-//                    metadata?.contentType = "img/jpeg"
-//                    let values = ["Profile Image": metadata]
-//                  //  usersChildRef.updateChildValues(values)
+//        let storageRef = Storage.storage().reference(withPath: "\(firstNameTextLabel).png/Female Image")
+//        let uploadData = StorageMetadata()
+//        uploadData.contentType = "image/jpeg"
 //
-//                    print(metadata)
-//                    self.registerUserIntoDatabaseWithUID( values: values as [String : AnyObject])
+//        storageRef.putData(data as Data, metadata: uploadData) { (metadata, error) in
+//            if error != nil {
+//                print(error?.localizedDescription)
+//            } else {
+//                print("Successfully Image saved to firebase \(String(describing: metadata))")
+//                
+//                
+//                //let size = metadata?.size
+//                
+//                storageRef.downloadURL(completion: { (url, err) in
+//                    guard let downloadURL = url else {
+//                        print("Error \(err?.localizedDescription)")
+//                        return
+//                    }
+//            //self.performSegue(withIdentifier: "goToFemaleProfileVC", sender: self)
 //
-//                }
-////            }
-//
+//            })
 //        }
-       
-    }
-    
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        if segue.identifier == "goToMaleProfileVC" && firstNameTextLabel.text != nil {
-//            let destinationVC = segue.destination as! MaleProfileViewController
-//
-//            destinationVC.stringHolder = firstNameTextLabel.text!
-//            destinationVC.ProfilePic = maleImageView
-//
-//        }  else if segue.identifier == "goToFemaleProfileVC" {
-//
-//            let destinationVC = segue.destination as! FemaleProfileViewController
-//            destinationVC.stringHolder = firstNameTextLabel.text!
-//            destinationVC.ForFemaleProfilePic = femaleImageView
-//
-//        }
-//    }
-//
+//  }
+    uploadImageForFemale()
+}
+ 
 
     
    
-//    private func registerUserIntoDatabaseWithUID(values: [String: AnyObject]){
-//
-//        var ref : DatabaseReference!
-//        ref = Database.database().reference(fromURL: "https://hatedateapp-ea81a.firebaseio.com/")
-//        let usersChildRef = ref.child("users").childByAutoId()
-//      //  let values = ["Profile Image": metadata.downloadUrl()]
-//        usersChildRef.updateChildValues(values) { (error, ref) in
-//            if error != nil {
-//                print(error)
-//            }else {
-//                print("Saved image to database.")
-//            }
-//        }
-//    }
-    
+
+
     @IBAction func maleAttachmentPressed(_ sender: UIButton) {
         let uiimage = UIImagePickerController()
         uiimage.delegate = self
@@ -209,10 +275,10 @@ class profileSetUpViewController: UIViewController, UIImagePickerControllerDeleg
         uiimage.sourceType = UIImagePickerControllerSourceType.photoLibrary
         
         uiimage.allowsEditing = true
-        
+        present(uiimage, animated: true, completion: nil)
         self.present(uiimage, animated: true)
         {
-            self.maleImageView.layer.cornerRadius = 75
+            self.maleImageView.layer.cornerRadius = 10
             self.maleImageView.layer.masksToBounds = true
             //Code after it is completed
             
@@ -234,10 +300,10 @@ class profileSetUpViewController: UIViewController, UIImagePickerControllerDeleg
         uiimage.sourceType = UIImagePickerControllerSourceType.photoLibrary
         
         uiimage.allowsEditing = true
-        
+        present(uiimage, animated: true, completion: nil)
         self.present(uiimage, animated: true)
         {
-            self.femaleImageView.layer.cornerRadius = 75
+            self.femaleImageView.layer.cornerRadius = 10
             self.femaleImageView.layer.masksToBounds = true
         }
         
@@ -245,14 +311,18 @@ class profileSetUpViewController: UIViewController, UIImagePickerControllerDeleg
     
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
-        
+
 
         if let uiimage = info[UIImagePickerControllerOriginalImage] as? UIImage {
-        
-            maleImageView.image = uiimage
-            //femaleImageView.image = uiimage
-            
-        
+
+                let imageData = UIImagePNGRepresentation(uiimage)
+                maleImageView.image = uiimage
+                //femaleImageView.image = uiimage
+             //  uploadImageForMale(data: imageData as! NSData)
+
+
+
+
         } else {
           //Print error
         }
@@ -260,60 +330,47 @@ class profileSetUpViewController: UIViewController, UIImagePickerControllerDeleg
 
     }
     
-//    func uploadImg() {
-//
-//        guard let img = maleImageView.image , imageSelected == true else {
-//            print("Image must be selected")
-//            return
-//        }
-//        //Posting data to server
-//        func setUpUser() {
-//            let userData = [
-//                "username": NSUserName(),
-//                "userImage": img
-//                ] as [String : Any]
-//            keyChain()
-//            let setLocation = Database.database().reference().child("users").child(userUid)
-//            setLocation.setValue(userData)
-//        }
-//
-//        if let imgData = UIImageJPEGRepresentation(img, 0.2) {
-//            let imgUid = NSUUID().uuidString
-//            let storageReference = Storage().reference().child(imgUid)
-//
-//            let localFile = URL(string: "path/to/image")!
-//            let metaData = StorageMetadata()
-//            metaData.contentType = "img/jpeg"
-//
-//            storageReference.putData(imgData, metadata: metaData)
-//
-//            storageReference.putFile(from: localFile, metadata: metaData)
-//
-//           // let downloadURL =
-//
-//
-//
-//        }
-//    }
+
+
+    func saveInfoOfUserToFirebase(values: [String: AnyObject]) {
+        ref = Database.database().reference(fromURL: "https://hatedateapp-ea81a.firebaseio.com/")
+        let usersChildRef = ref.child("users").childByAutoId()
+        //let values = ["Name " : maleImageView , "Email " : emailTextField, "Profile Pic " : profilePic] as [String : Any]
+
+        usersChildRef.updateChildValues(values) { (error, ref) in
+
+            if error != nil {
+                print("ERROR WHILE SAVING information of user : \(error?.localizedDescription)")
+            } else {
+                print("Successfully saving information of the user.")
+            }
+        }
+
+        
+    }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "goToMaleProfileVC"  {
             let destinationVC = segue.destination as! MaleProfileViewController
-            
-            if firstNameTextLabel.text != nil {
-           
-                destinationVC.stringHolder = firstNameTextLabel.text!
-                destinationVC.ProfilePic = maleImageView
-            }
-            
+
+              if firstNameTextLabel != nil {
+
+                 destinationVC.stringHolder = firstNameTextLabel
+                destinationVC.MaleProfilPicImage = maleImageView.image
+              }
+
         }  else if segue.identifier == "goToFemaleProfileVC" {
-            
+
             let destinationVC = segue.destination as! FemaleProfileViewController
-            destinationVC.stringHolder = firstNameTextLabel.text!
-            destinationVC.ForFemaleProfilePic = femaleImageView
-            
+
+            if firstNameTextLabel != nil {
+            destinationVC.stringHolder = firstNameTextLabel
+            destinationVC.femaleProfilePicImage = femaleImageView.image
+ 
+            }
         }
     }
+
     
     
 }

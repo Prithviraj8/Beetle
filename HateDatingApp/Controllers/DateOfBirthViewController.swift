@@ -7,29 +7,45 @@
 //
 
 import UIKit
+import Firebase
 
-class DateOfBirthViewController: UIViewController, UITextFieldDelegate {
+class DateOfBirthViewController: UIViewController {
 
+    var emailTextField : String = ""
+    var firstNameLabelText : String = ""
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
     }
 
+    
+//    @IBAction func ContinuePressed(_ sender: UIButtonX) {
+//        
+////        let vc = profileSetUpViewController(nibName: "profileSetUpViewController", bundle: nil)
+////        vc.firstNameTextLabel = firstNameLabelText.text!
+////        vc.emailTextFields = emailTextField
+////
+////        navigationController?.popViewController(animated: true)
+//        
+//    }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "goToGenderChange" {
+            let destinationVC = segue.destination as! GenderViewController
+         
+            destinationVC.firstNameLabelText = firstNameLabelText
+            destinationVC.emailTextField = emailTextField
+
+    }
+}
+    
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

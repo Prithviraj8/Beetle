@@ -19,6 +19,8 @@
 		792FEEA620E76AFA0057BD54 /* AuthProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 792FEEA520E76AFA0057BD54 /* AuthProvider.swift */; };
 		7943099C20E4E64600FA38C3 /* MaleProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7943099A20E4E64600FA38C3 /* MaleProfileViewController.swift */; };
 		7943099D20E4E64600FA38C3 /* YourProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7943099B20E4E64600FA38C3 /* YourProfileViewController.xib */; };
+		797352A6210A04E500BB8C84 /* GenderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 797352A5210A04E500BB8C84 /* GenderViewController.swift */; };
+		797352AA210A05C000BB8C84 /* FirstNameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 797352A9210A05C000BB8C84 /* FirstNameViewController.swift */; };
 		798ADDAC20E2CC8D00265A97 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 798ADDAB20E2CC8D00265A97 /* GoogleService-Info.plist */; };
 		798ADDAE20E2CE2000265A97 /* profileSetUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 798ADDAD20E2CE2000265A97 /* profileSetUpViewController.swift */; };
 		799C641220DBCCFB002D9B6E /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 799C641120DBCCFB002D9B6E /* LoginViewController.swift */; };
@@ -98,6 +100,8 @@
 		792FEEA520E76AFA0057BD54 /* AuthProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthProvider.swift; sourceTree = "<group>"; };
 		7943099A20E4E64600FA38C3 /* MaleProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MaleProfileViewController.swift; sourceTree = "<group>"; };
 		7943099B20E4E64600FA38C3 /* YourProfileViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = YourProfileViewController.xib; sourceTree = "<group>"; };
+		797352A5210A04E500BB8C84 /* GenderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenderViewController.swift; sourceTree = "<group>"; };
+		797352A9210A05C000BB8C84 /* FirstNameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstNameViewController.swift; sourceTree = "<group>"; };
 		798ADDAB20E2CC8D00265A97 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		798ADDAD20E2CE2000265A97 /* profileSetUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = profileSetUpViewController.swift; sourceTree = "<group>"; };
 		799C641120DBCCFB002D9B6E /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -162,6 +166,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		790F367521162B1B0008202E /* SwipeGesture */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = SwipeGesture;
+			sourceTree = "<group>";
+		};
 		792FEEA420E76AD00057BD54 /* Plugins */ = {
 			isa = PBXGroup;
 			children = (
@@ -194,6 +205,8 @@
 				790A554820EA09BD00590C96 /* DateOfBirthViewController.swift */,
 				7927F4AE20F0CD1B00F35778 /* SearchPartnerViewController.swift */,
 				7912D69F20FCDAD900ABF4E3 /* FemaleProfileViewController.swift */,
+				797352A5210A04E500BB8C84 /* GenderViewController.swift */,
+				797352A9210A05C000BB8C84 /* FirstNameViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -249,6 +262,7 @@
 		79DF8CD120D7FF5D009A40B0 /* HateDatingApp */ = {
 			isa = PBXGroup;
 			children = (
+				790F367521162B1B0008202E /* SwipeGesture */,
 				799E3F3A20F6927A00426ACA /* Models */,
 				792FEEA420E76AD00057BD54 /* Plugins */,
 				7943099E20E4E64F00FA38C3 /* Views */,
@@ -504,6 +518,8 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-HateDatingApp/Pods-HateDatingApp-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/AlamofireImage/AlamofireImage.framework",
 				"${BUILT_PRODUCTS_DIR}/ChameleonFramework/ChameleonFramework.framework",
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
@@ -519,6 +535,8 @@
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AlamofireImage.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ChameleonFramework.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
@@ -548,8 +566,10 @@
 				799C641220DBCCFB002D9B6E /* LoginViewController.swift in Sources */,
 				79C72EBB20DE5B490037A9CD /* UIVisualEffectViewX.swift in Sources */,
 				79C72EA920DE5B490037A9CD /* UIButtonX.swift in Sources */,
+				797352A6210A04E500BB8C84 /* GenderViewController.swift in Sources */,
 				79C72EAF20DE5B490037A9CD /* UISliderX.swift in Sources */,
 				79C72EAC20DE5B490037A9CD /* UIViewXRadialGradient.swift in Sources */,
+				797352AA210A05C000BB8C84 /* FirstNameViewController.swift in Sources */,
 				7912D6A120FCDAD900ABF4E3 /* FemaleProfileViewController.swift in Sources */,
 				792FEEA620E76AFA0057BD54 /* AuthProvider.swift in Sources */,
 				7927F4B020F0CD1B00F35778 /* SearchPartnerViewController.swift in Sources */,
