@@ -17,6 +17,7 @@ class MaleProfileViewController: UIViewController {
     @IBOutlet weak var firstNametextLable: UILabel!
     var stringHolder: String = ""
     var MaleProfilPicImage : UIImage!
+    var count : Int = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,7 +28,14 @@ class MaleProfileViewController: UIViewController {
         ProfilePic.image = MaleProfilPicImage
     }
 
-    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "goToSearchPartner" {
+            let destinationVC = segue.destination as! SearchPartnerViewController
+            
+            destinationVC.firstNametextLable = stringHolder
+             destinationVC.count = count
+        }
+    }
     
     
     

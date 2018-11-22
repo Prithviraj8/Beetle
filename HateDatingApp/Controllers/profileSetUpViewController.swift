@@ -18,12 +18,14 @@ import FirebaseStorage
 
 class profileSetUpViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
-    @IBOutlet weak var maleImageView: UIImageViewX!
-    @IBOutlet weak var femaleImageView: UIImageViewX!
+    @IBOutlet weak var maleImageView: UIImageViewX?
+    @IBOutlet weak var femaleImageView: UIImageViewX?
     
     var firstNameTextLabel : String = ""
     var emailTextFields : String = ""
-
+    var gender : String = ""
+    var count : Int = 0
+    
     let user : [User] = [User]()
     var userUid: String!
     var imagePicker: UIImagePickerController!
@@ -135,7 +137,7 @@ class profileSetUpViewController: UIViewController, UIImagePickerControllerDeleg
 
         // let uploadData = StorageMetadata()
 
-        if let uploadData = UIImagePNGRepresentation(maleImageView.image!) {
+        if let uploadData = UIImagePNGRepresentation((maleImageView?.image!)!) {
 
             storageRef.putData(uploadData as Data, metadata: nil) { (metadata, error) in
                 if error != nil {
@@ -155,9 +157,8 @@ class profileSetUpViewController: UIViewController, UIImagePickerControllerDeleg
                         }
                         let downloadURL = url?.absoluteString
                         print("The URL of the image is :\(downloadURL)")
-                        let values = ["Name ": self.firstNameTextLabel, "Email " : self.emailTextFields, "Profile Pic " : downloadURL!] as [String : AnyObject]
-                        self.saveInfoOfUserToFirebase(values: values)
-
+                        let values = ["Name ": self.firstNameTextLabel, "Email " : self.emailTextFields, "Profile Pic " : downloadURL!, "Gender " : self.gender] as [String : AnyObject]
+                        self.saveMaleUserToFirebase(values: values)
                     })
 
                 }
@@ -176,7 +177,7 @@ class profileSetUpViewController: UIViewController, UIImagePickerControllerDeleg
 
         // let uploadData = StorageMetadata()
 
-        if let uploadData = UIImagePNGRepresentation(femaleImageView.image!) {
+        if let uploadData = UIImagePNGRepresentation((femaleImageView?.image)!) {
 
             storageRef.putData(uploadData as Data, metadata: nil) { (metadata, error) in
                 if error != nil {
@@ -196,36 +197,14 @@ class profileSetUpViewController: UIViewController, UIImagePickerControllerDeleg
                         }
                         let downloadURL = url?.absoluteString
                         print("The URL of the image is :\(downloadURL)")
-                        let values = ["Name ": self.firstNameTextLabel, "Email " : self.emailTextFields, "Profile Pic " : downloadURL!] as [String : AnyObject]
-                        self.saveInfoOfUserToFirebase(values: values)
-
+                        let values = ["Name ": self.firstNameTextLabel, "Email " : self.emailTextFields, "Profile Pic " : downloadURL!, "Gender " : self.gender] as [String : AnyObject]
+                        self.saveFemaleUserToFirebase(values: values)
                     })
 
                 }
             }
             //return
         }
-    }
-    @IBAction func ContinuePressed(_ sender: Any) {
-    
-//        let ref: DatabaseReference!
-//        ref = Database.database().reference(fromURL: "https://hatedateapp-ea81a.firebaseio.com/")
-//        let values = ["Name": firstNameTextLabel.text, "Email": emailTextField]
-//        let usersChildRef = ref.child("users").childByAutoId()
-//        usersChildRef.updateChildValues(values) { (error, ref) in
-//            if error != nil {
-//                print(error)
-//            }else{
-//                print("Successfully saved email and name in Firebase database")
-//
-//            }
-//        }
-        
-//        let vc = profileSetUpViewController(nibName: "profileSetUpViewController", bundle: nil)
-//        vc.firstNameTextLabel = firstNameTextLabel.text!
-//
-        
-        
     }
     
     
@@ -278,8 +257,8 @@ class profileSetUpViewController: UIViewController, UIImagePickerControllerDeleg
         present(uiimage, animated: true, completion: nil)
         self.present(uiimage, animated: true)
         {
-            self.maleImageView.layer.cornerRadius = 10
-            self.maleImageView.layer.masksToBounds = true
+            self.maleImageView?.layer.cornerRadius = 10
+            self.maleImageView?.layer.masksToBounds = true
             //Code after it is completed
             
         }
@@ -303,8 +282,8 @@ class profileSetUpViewController: UIViewController, UIImagePickerControllerDeleg
         present(uiimage, animated: true, completion: nil)
         self.present(uiimage, animated: true)
         {
-            self.femaleImageView.layer.cornerRadius = 10
-            self.femaleImageView.layer.masksToBounds = true
+            self.femaleImageView?.layer.cornerRadius = 10
+            self.femaleImageView?.layer.masksToBounds = true
         }
         
     }
@@ -316,8 +295,11 @@ class profileSetUpViewController: UIViewController, UIImagePickerControllerDeleg
         if let uiimage = info[UIImagePickerControllerOriginalImage] as? UIImage {
 
                 let imageData = UIImagePNGRepresentation(uiimage)
-                maleImageView.image = uiimage
-                //femaleImageView.image = uiimage
+            
+           
+            
+            maleImageView?.image = uiimage
+            femaleImageView?.image = uiimage
              //  uploadImageForMale(data: imageData as! NSData)
 
 
@@ -330,12 +312,27 @@ class profileSetUpViewController: UIViewController, UIImagePickerControllerDeleg
 
     }
     
-
-
-    func saveInfoOfUserToFirebase(values: [String: AnyObject]) {
+    func saveMaleUserToFirebase(values: [String: AnyObject]) {
         ref = Database.database().reference(fromURL: "https://hatedateapp-ea81a.firebaseio.com/")
-        let usersChildRef = ref.child("users").childByAutoId()
-        //let values = ["Name " : maleImageView , "Email " : emailTextField, "Profile Pic " : profilePic] as [String : Any]
+        let usersChildRef = ref.child("users").child("Male").childByAutoId()
+        
+        
+        usersChildRef.updateChildValues(values) { (error, ref) in
+            
+            if error != nil {
+                print("ERROR WHILE SAVING information of user : \(error?.localizedDescription)")
+            } else {
+                print("Successfully saving information of the user.")
+                self.count += 1
+            }
+        }
+
+    }
+
+    func saveFemaleUserToFirebase(values: [String: AnyObject]) {
+        ref = Database.database().reference(fromURL: "https://hatedateapp-ea81a.firebaseio.com/")
+        let usersChildRef = ref.child("users").child("Female").childByAutoId()
+     
 
         usersChildRef.updateChildValues(values) { (error, ref) in
 
@@ -343,11 +340,14 @@ class profileSetUpViewController: UIViewController, UIImagePickerControllerDeleg
                 print("ERROR WHILE SAVING information of user : \(error?.localizedDescription)")
             } else {
                 print("Successfully saving information of the user.")
+                self.count += 1
             }
+       
         }
 
-        
     }
+    
+   
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "goToMaleProfileVC"  {
@@ -355,8 +355,9 @@ class profileSetUpViewController: UIViewController, UIImagePickerControllerDeleg
 
               if firstNameTextLabel != nil {
 
-                 destinationVC.stringHolder = firstNameTextLabel
-                destinationVC.MaleProfilPicImage = maleImageView.image
+                destinationVC.count = count
+                destinationVC.stringHolder = firstNameTextLabel
+                destinationVC.MaleProfilPicImage = maleImageView?.image
               }
 
         }  else if segue.identifier == "goToFemaleProfileVC" {
@@ -364,8 +365,9 @@ class profileSetUpViewController: UIViewController, UIImagePickerControllerDeleg
             let destinationVC = segue.destination as! FemaleProfileViewController
 
             if firstNameTextLabel != nil {
-            destinationVC.stringHolder = firstNameTextLabel
-            destinationVC.femaleProfilePicImage = femaleImageView.image
+                destinationVC.count = count
+                destinationVC.stringHolder = firstNameTextLabel
+                destinationVC.femaleProfilePicImage = femaleImageView?.image
  
             }
         }

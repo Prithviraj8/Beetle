@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="h2u-AX-alb">
-    <device id="retina5_5" orientation="portrait">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina6_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -16,15 +15,14 @@
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="HateDatingApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="couple" translatesAutoresizingMaskIntoConstraints="NO" id="rpH-qC-x2F">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="couple" translatesAutoresizingMaskIntoConstraints="NO" id="rpH-qC-x2F">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                             </imageView>
                             <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EQc-Kz-qzM">
-                                <rect key="frame" x="0.0" y="661" width="414" height="153"/>
+                                <rect key="frame" x="0.0" y="821" width="414" height="153"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9yk-Tb-7Xt" customClass="UIViewX" customModule="HateDatingApp" customModuleProvider="target">
                                         <rect key="frame" x="151" y="8" width="112" height="54"/>
@@ -32,13 +30,13 @@
                                         <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                <real key="value" value="15"/>
+                                                <real key="value" value="10"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                     </view>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YHO-GG-WIf">
-                                        <rect key="frame" x="167.33333333333334" y="20" width="80" height="30"/>
-                                        <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <rect key="frame" x="149" y="20" width="119" height="30"/>
+                                        <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <state key="normal">
                                             <attributedString key="attributedTitle">
                                                 <fragment content="Get Started">
@@ -86,29 +84,38 @@
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="YHO-GG-WIf" secondAttribute="trailing" constant="146" id="4pn-GD-VI4"/>
+                                    <constraint firstItem="YHO-GG-WIf" firstAttribute="leading" secondItem="EQc-Kz-qzM" secondAttribute="leading" constant="149" id="5ep-Cd-Jm8"/>
+                                    <constraint firstItem="9yk-Tb-7Xt" firstAttribute="leading" secondItem="EQc-Kz-qzM" secondAttribute="leading" constant="151" id="CjW-Yx-ILg"/>
                                     <constraint firstAttribute="height" constant="153" id="GyI-b0-dnI"/>
-                                    <constraint firstItem="YHO-GG-WIf" firstAttribute="centerY" secondItem="EQc-Kz-qzM" secondAttribute="centerY" constant="-41.5" id="dVu-12-Lcb"/>
-                                    <constraint firstItem="9yk-Tb-7Xt" firstAttribute="top" secondItem="EQc-Kz-qzM" secondAttribute="topMargin" id="fqQ-wh-Gqu"/>
-                                    <constraint firstItem="9yk-Tb-7Xt" firstAttribute="leading" secondItem="EQc-Kz-qzM" secondAttribute="leading" constant="151" id="itL-LE-0qc"/>
-                                    <constraint firstItem="9yk-Tb-7Xt" firstAttribute="centerX" secondItem="EQc-Kz-qzM" secondAttribute="centerX" id="rQe-Uf-2DH"/>
-                                    <constraint firstItem="YHO-GG-WIf" firstAttribute="centerX" secondItem="EQc-Kz-qzM" secondAttribute="centerX" constant="110" id="sDr-0g-6RD"/>
-                                    <constraint firstItem="9yk-Tb-7Xt" firstAttribute="centerX" secondItem="YHO-GG-WIf" secondAttribute="centerX" id="vX3-7H-ByR"/>
-                                    <constraint firstItem="9yk-Tb-7Xt" firstAttribute="centerY" secondItem="YHO-GG-WIf" secondAttribute="centerY" id="x5z-7g-qzN"/>
+                                    <constraint firstItem="9yk-Tb-7Xt" firstAttribute="top" secondItem="EQc-Kz-qzM" secondAttribute="topMargin" id="O9m-qH-JQS"/>
+                                    <constraint firstItem="9yk-Tb-7Xt" firstAttribute="centerX" secondItem="EQc-Kz-qzM" secondAttribute="centerX" id="Zoc-sf-RZP"/>
+                                    <constraint firstItem="YHO-GG-WIf" firstAttribute="top" secondItem="EQc-Kz-qzM" secondAttribute="top" constant="20" id="qQC-54-4Tt"/>
+                                    <constraint firstItem="YHO-GG-WIf" firstAttribute="centerY" secondItem="9yk-Tb-7Xt" secondAttribute="centerY" id="sb6-Hs-IgO"/>
                                 </constraints>
                             </view>
-                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="49Q-PS-GMR">
-                                <rect key="frame" x="0.0" y="20" width="414" height="44"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                                <items>
-                                    <navigationItem title="Welcome" id="67F-V4-XNX"/>
-                                </items>
-                            </navigationBar>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c9p-K1-GDX">
+                                <rect key="frame" x="0.0" y="44" width="414" height="41"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="41" id="7Kq-oz-o11"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="c9p-K1-GDX" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="1ti-Ok-IVG"/>
                             <constraint firstItem="EQc-Kz-qzM" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="9NK-VU-K3C"/>
+                            <constraint firstItem="rpH-qC-x2F" firstAttribute="trailing" secondItem="EQc-Kz-qzM" secondAttribute="trailing" id="YCv-Qm-KFk"/>
+                            <constraint firstItem="c9p-K1-GDX" firstAttribute="trailing" secondItem="rpH-qC-x2F" secondAttribute="trailing" id="Yhf-8L-pBp"/>
                             <constraint firstAttribute="bottom" secondItem="EQc-Kz-qzM" secondAttribute="bottom" constant="-78" id="e3e-XP-dVj"/>
+                            <constraint firstItem="c9p-K1-GDX" firstAttribute="leading" secondItem="rpH-qC-x2F" secondAttribute="leading" id="fsW-nM-nIF"/>
                             <constraint firstItem="EQc-Kz-qzM" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="hcM-TT-veA"/>
+                            <constraint firstItem="rpH-qC-x2F" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" constant="34" id="iSe-qO-vEo"/>
+                            <constraint firstItem="rpH-qC-x2F" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="uKE-6g-sVX"/>
+                            <constraint firstItem="rpH-qC-x2F" firstAttribute="leading" secondItem="EQc-Kz-qzM" secondAttribute="leading" id="xFF-aq-Qq7"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
@@ -123,30 +130,27 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="26" y="133"/>
+            <point key="canvasLocation" x="24.800000000000001" y="132.26600985221674"/>
         </scene>
         <!--Sign Up View Controller-->
         <scene sceneID="z71-Bd-HuL">
             <objects>
                 <viewController id="CBI-S1-OHW" customClass="SignUpViewController" customModule="HateDatingApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" id="Lab-Qc-amI">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="background1" translatesAutoresizingMaskIntoConstraints="NO" id="K8l-8S-EI4">
-                                <rect key="frame" x="0.0" y="64" width="414" height="748"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background1" translatesAutoresizingMaskIntoConstraints="NO" id="K8l-8S-EI4">
+                                <rect key="frame" x="-15" y="0.0" width="444" height="896"/>
                             </imageView>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" preservesSuperviewLayoutMargins="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="center" adjustsFontForContentSizeCategory="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ShI-Yh-1FG">
-                                <rect key="frame" x="54" y="229" width="304" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <textField opaque="NO" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="center" adjustsFontForContentSizeCategory="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ShI-Yh-1FG">
+                                <rect key="frame" x="35" y="229" width="344" height="30"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" textContentType="email"/>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7Ma-4j-InJ" customClass="UIButtonX" customModule="HateDatingApp" customModuleProvider="target">
-                                <rect key="frame" x="54" y="379" width="304" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7Ma-4j-InJ" customClass="UIButtonX" customModule="HateDatingApp" customModuleProvider="target">
+                                <rect key="frame" x="35" y="379" width="344" height="30"/>
                                 <color key="backgroundColor" red="0.99215686274509807" green="0.50980392156862742" blue="0.28627450980392155" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <state key="normal" title="Sign In">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -164,15 +168,29 @@
                                     <segue destination="F3m-8I-NBH" kind="show" identifier="segueToFirstName" id="41y-GB-CNF"/>
                                 </connections>
                             </button>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" preservesSuperviewLayoutMargins="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="zW8-KZ-oWA">
-                                <rect key="frame" x="54" y="283" width="304" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="zW8-KZ-oWA">
+                                <rect key="frame" x="35" y="283" width="344" height="30"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" secureTextEntry="YES" textContentType="password"/>
                             </textField>
                         </subviews>
                         <color key="backgroundColor" red="0.089283056557178497" green="0.53060019016265869" blue="0.70559388399124146" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="ShI-Yh-1FG" firstAttribute="centerX" secondItem="Lab-Qc-amI" secondAttribute="centerX" id="2Nz-7B-ozW"/>
+                            <constraint firstItem="ShI-Yh-1FG" firstAttribute="leading" secondItem="zW8-KZ-oWA" secondAttribute="leading" id="40s-pq-TTr"/>
+                            <constraint firstItem="zW8-KZ-oWA" firstAttribute="top" secondItem="ShI-Yh-1FG" secondAttribute="bottom" constant="24" id="58X-FE-WFx"/>
+                            <constraint firstItem="ShI-Yh-1FG" firstAttribute="leading" secondItem="Ig3-du-zkK" secondAttribute="leading" constant="35" id="5bI-6l-hid"/>
+                            <constraint firstItem="K8l-8S-EI4" firstAttribute="centerX" secondItem="Lab-Qc-amI" secondAttribute="centerX" id="KnV-6d-eM5"/>
+                            <constraint firstItem="K8l-8S-EI4" firstAttribute="leading" secondItem="Lab-Qc-amI" secondAttribute="leadingMargin" constant="-35" id="NwF-Lj-j4h"/>
+                            <constraint firstItem="ShI-Yh-1FG" firstAttribute="leading" secondItem="7Ma-4j-InJ" secondAttribute="leading" id="c9j-PS-dbo"/>
+                            <constraint firstItem="ShI-Yh-1FG" firstAttribute="trailing" secondItem="zW8-KZ-oWA" secondAttribute="trailing" id="dC4-OA-3KE"/>
+                            <constraint firstItem="ShI-Yh-1FG" firstAttribute="trailing" secondItem="7Ma-4j-InJ" secondAttribute="trailing" id="ns7-Ro-iu9"/>
+                            <constraint firstItem="7Ma-4j-InJ" firstAttribute="top" secondItem="zW8-KZ-oWA" secondAttribute="bottom" constant="66" id="oUK-gt-IeW"/>
+                            <constraint firstItem="K8l-8S-EI4" firstAttribute="top" secondItem="Ig3-du-zkK" secondAttribute="top" constant="-44" id="pUD-tf-Enh"/>
+                            <constraint firstAttribute="bottom" secondItem="K8l-8S-EI4" secondAttribute="bottom" id="rGU-j9-Sf2"/>
+                            <constraint firstItem="ShI-Yh-1FG" firstAttribute="top" secondItem="Ig3-du-zkK" secondAttribute="top" constant="185" id="yjD-49-H2u"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="Ig3-du-zkK"/>
                     </view>
                     <connections>
@@ -182,19 +200,42 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kXV-Op-pbc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="949.27536231884062" y="-578.804347826087"/>
+            <point key="canvasLocation" x="948" y="-579.31034482758628"/>
         </scene>
         <!--First Name View Controller-->
         <scene sceneID="qhT-EW-vyY">
             <objects>
                 <viewController id="F3m-8I-NBH" customClass="FirstNameViewController" customModule="HateDatingApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="oT0-hD-HuF">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QCH-Xv-3Ah" customClass="UIButtonX" customModule="HateDatingApp" customModuleProvider="target">
-                                <rect key="frame" x="87" y="394" width="240" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="This is how it will appear in app." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8tl-f6-htY">
+                                <rect key="frame" x="71" y="364" width="304" height="46"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="46" id="sh4-Wl-mB2"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="My first name is" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P6s-uP-ndi">
+                                <rect key="frame" x="67" y="144" width="313" height="147"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="147" id="PxB-k8-mo9"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="38"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="First name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="rkU-wb-CEY">
+                                <rect key="frame" x="52" y="299" width="240" height="33"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                <textInputTraits key="textInputTraits" textContentType="name"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QCH-Xv-3Ah" customClass="UIButtonX" customModule="HateDatingApp" customModuleProvider="target">
+                                <rect key="frame" x="87" y="458" width="240" height="30"/>
                                 <color key="backgroundColor" red="1" green="0.39154092787733596" blue="0.069711703344146225" alpha="0.80455372431506844" colorSpace="custom" customColorSpace="sRGB"/>
                                 <state key="normal" title="Continue">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -211,29 +252,22 @@
                                     <segue destination="pvX-fF-VlJ" kind="show" identifier="goToDOB" id="u37-ja-6FN"/>
                                 </connections>
                             </button>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="First name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="rkU-wb-CEY">
-                                <rect key="frame" x="86" y="299" width="240" height="33"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
-                                <textInputTraits key="textInputTraits" textContentType="name"/>
-                            </textField>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="This is how it will appear in app." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8tl-f6-htY">
-                                <rect key="frame" x="87" y="340" width="265" height="46"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="My first name is" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P6s-uP-ndi">
-                                <rect key="frame" x="78" y="134" width="274" height="147"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="38"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="2ZG-oC-NwL" firstAttribute="trailing" secondItem="QCH-Xv-3Ah" secondAttribute="trailing" constant="87" id="23d-bV-xxj"/>
+                            <constraint firstItem="QCH-Xv-3Ah" firstAttribute="centerX" secondItem="oT0-hD-HuF" secondAttribute="centerX" id="72u-hJ-ahX"/>
+                            <constraint firstItem="2ZG-oC-NwL" firstAttribute="trailing" secondItem="P6s-uP-ndi" secondAttribute="trailing" constant="34" id="En5-k0-GnU"/>
+                            <constraint firstItem="P6s-uP-ndi" firstAttribute="top" secondItem="2ZG-oC-NwL" secondAttribute="top" constant="100" id="JHg-Yf-5jG"/>
+                            <constraint firstItem="QCH-Xv-3Ah" firstAttribute="top" secondItem="8tl-f6-htY" secondAttribute="bottom" constant="48" id="LHv-YX-Lhx"/>
+                            <constraint firstItem="P6s-uP-ndi" firstAttribute="leading" secondItem="8tl-f6-htY" secondAttribute="leading" constant="-4" id="Mwg-A8-dSw"/>
+                            <constraint firstItem="rkU-wb-CEY" firstAttribute="top" secondItem="P6s-uP-ndi" secondAttribute="bottom" constant="8" id="V2s-qV-ZiZ"/>
+                            <constraint firstItem="QCH-Xv-3Ah" firstAttribute="leading" secondItem="2ZG-oC-NwL" secondAttribute="leading" constant="87" id="eHx-S2-uo8"/>
+                            <constraint firstItem="P6s-uP-ndi" firstAttribute="leading" secondItem="2ZG-oC-NwL" secondAttribute="leading" constant="67" id="esd-as-d4p"/>
+                            <constraint firstItem="8tl-f6-htY" firstAttribute="top" secondItem="rkU-wb-CEY" secondAttribute="bottom" constant="32" id="gBV-sv-ePd"/>
+                            <constraint firstItem="2ZG-oC-NwL" firstAttribute="trailing" secondItem="8tl-f6-htY" secondAttribute="trailing" constant="39" id="vB8-ig-6ne"/>
+                            <constraint firstItem="P6s-uP-ndi" firstAttribute="leading" secondItem="rkU-wb-CEY" secondAttribute="leading" constant="15" id="zt7-o6-fCe"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="2ZG-oC-NwL"/>
                     </view>
                     <connections>
@@ -249,12 +283,11 @@
             <objects>
                 <viewController id="pvX-fF-VlJ" customClass="DateOfBirthViewController" customModule="HateDatingApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Duv-Pi-dq5">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xzU-uS-Ddi" customClass="UIButtonX" customModule="HateDatingApp" customModuleProvider="target">
-                                <rect key="frame" x="86" y="393" width="240" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xzU-uS-Ddi" customClass="UIButtonX" customModule="HateDatingApp" customModuleProvider="target">
+                                <rect key="frame" x="67" y="477" width="280" height="30"/>
                                 <color key="backgroundColor" red="0.99215686274509807" green="0.50980392156862742" blue="0.28627450980392155" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <state key="normal" title="Continue">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -272,36 +305,54 @@
                                     <segue destination="F4T-jA-5FJ" kind="show" identifier="goToGenderChange" id="FDH-E5-Jeg"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Enter date of birth" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cEF-LB-wSG">
-                                <rect key="frame" x="48" y="134" width="336" height="81"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="DD" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Evb-WG-kVl">
+                                <rect key="frame" x="20" y="259" width="97" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="97" id="URV-q4-SyB"/>
+                                </constraints>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="MM" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="tHC-Qx-uFh">
+                                <rect key="frame" x="143" y="259" width="128" height="30"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="YYYY" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Qn6-bQ-zMx">
+                                <rect key="frame" x="297" y="259" width="97" height="30"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Enter date of birth" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cEF-LB-wSG">
+                                <rect key="frame" x="20" y="131" width="371" height="81"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="81" id="6jR-um-fOo"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="42"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="DD" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Evb-WG-kVl">
-                                <rect key="frame" x="48" y="259" width="97" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="MM" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="tHC-Qx-uFh">
-                                <rect key="frame" x="168" y="259" width="97" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="YYYY" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Qn6-bQ-zMx">
-                                <rect key="frame" x="297" y="259" width="97" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="QmJ-xY-ixq" firstAttribute="trailing" secondItem="cEF-LB-wSG" secondAttribute="trailing" constant="23" id="3XN-GL-zjp"/>
+                            <constraint firstItem="tHC-Qx-uFh" firstAttribute="centerX" secondItem="xzU-uS-Ddi" secondAttribute="centerX" id="CrH-S7-npY"/>
+                            <constraint firstItem="cEF-LB-wSG" firstAttribute="leading" secondItem="Duv-Pi-dq5" secondAttribute="leadingMargin" id="EPz-gI-ilH"/>
+                            <constraint firstItem="QmJ-xY-ixq" firstAttribute="bottom" secondItem="xzU-uS-Ddi" secondAttribute="bottom" constant="355" id="FU3-0z-9jF"/>
+                            <constraint firstItem="Evb-WG-kVl" firstAttribute="top" secondItem="cEF-LB-wSG" secondAttribute="bottom" constant="47" id="Fgc-aI-zGt"/>
+                            <constraint firstItem="tHC-Qx-uFh" firstAttribute="baseline" secondItem="Qn6-bQ-zMx" secondAttribute="baseline" id="FyG-2Z-4sD"/>
+                            <constraint firstItem="cEF-LB-wSG" firstAttribute="leading" secondItem="Evb-WG-kVl" secondAttribute="leading" id="QER-0E-MbZ"/>
+                            <constraint firstItem="Evb-WG-kVl" firstAttribute="baseline" secondItem="tHC-Qx-uFh" secondAttribute="baseline" id="Zoe-My-Rwv"/>
+                            <constraint firstItem="cEF-LB-wSG" firstAttribute="top" secondItem="QmJ-xY-ixq" secondAttribute="top" constant="87" id="aLc-gT-CgE"/>
+                            <constraint firstItem="tHC-Qx-uFh" firstAttribute="leading" secondItem="Evb-WG-kVl" secondAttribute="trailing" constant="26" id="kIU-Bb-EeO"/>
+                            <constraint firstItem="xzU-uS-Ddi" firstAttribute="leading" secondItem="QmJ-xY-ixq" secondAttribute="leading" constant="67" id="keF-if-WS7"/>
+                            <constraint firstItem="tHC-Qx-uFh" firstAttribute="centerX" secondItem="Duv-Pi-dq5" secondAttribute="centerX" id="o05-6D-gcE"/>
+                            <constraint firstItem="Qn6-bQ-zMx" firstAttribute="trailing" secondItem="Duv-Pi-dq5" secondAttribute="trailingMargin" id="oT5-Se-T9D"/>
+                            <constraint firstItem="Qn6-bQ-zMx" firstAttribute="leading" secondItem="tHC-Qx-uFh" secondAttribute="trailing" constant="26" id="u6D-fb-Z5k"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="QmJ-xY-ixq"/>
                     </view>
                 </viewController>
@@ -315,40 +366,20 @@
             <objects>
                 <viewController id="F4T-jA-5FJ" customClass="GenderViewController" customModule="HateDatingApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Myl-CR-Fmd">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="   I am a " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cl7-vo-5mE">
-                                <rect key="frame" x="117" y="106" width="169" height="104"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="   I am a " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cl7-vo-5mE">
+                                <rect key="frame" x="98" y="106" width="208" height="188"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="38"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KYd-zb-MRr" customClass="UIButtonX" customModule="HateDatingApp" customModuleProvider="target">
-                                <rect key="frame" x="141.70208772192018" y="353" width="129.00000000000045" height="29.999999999999773"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Man">
-                                    <color key="titleColor" red="0.98431372549019602" green="0.50980392156862742" blue="0.31372549019607843" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                </state>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
-                                        <real key="value" value="1"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                        <real key="value" value="15"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
-                                        <color key="value" red="0.98431372549999996" green="0.07317004849" blue="0.099343723130000006" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                                <connections>
-                                    <segue destination="iPn-tw-F5a" kind="show" identifier="goToProfileVC" id="Gfl-DW-5gN"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="iWM-wF-HTE" customClass="UIButtonX" customModule="HateDatingApp" customModuleProvider="target">
-                                <rect key="frame" x="142" y="280" width="129" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="iWM-wF-HTE" customClass="UIButtonX" customModule="HateDatingApp" customModuleProvider="target">
+                                <rect key="frame" x="123" y="364" width="168" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="YoG-wV-uwC"/>
+                                </constraints>
                                 <color key="tintColor" red="0.98431372549019602" green="0.50980392156862742" blue="0.31372549019607843" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <state key="normal">
                                     <attributedString key="attributedTitle">
@@ -372,13 +403,52 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <segue destination="gvL-sh-gM4" kind="show" identifier="goToFemaleProfileVC" id="258-oE-tHe"/>
+                                    <segue destination="gvL-sh-gM4" kind="show" identifier="goToFemaleProfileVC" id="qHb-3S-3aW"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KYd-zb-MRr" customClass="UIButtonX" customModule="HateDatingApp" customModuleProvider="target">
+                                <rect key="frame" x="122" y="431" width="168" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="Ejx-bH-osr"/>
+                                </constraints>
+                                <state key="normal" title="Man">
+                                    <color key="titleColor" red="0.98431372549019602" green="0.50980392156862742" blue="0.31372549019607843" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                        <real key="value" value="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="15"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                        <color key="value" red="0.98431372549999996" green="0.07317004849" blue="0.099343723130000006" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <segue destination="iPn-tw-F5a" kind="show" identifier="goToProfileVC" id="Gfl-DW-5gN"/>
                                 </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="wWp-jo-NAG" firstAttribute="trailing" secondItem="KYd-zb-MRr" secondAttribute="trailing" constant="124" id="11v-Ah-jUo"/>
+                            <constraint firstItem="cl7-vo-5mE" firstAttribute="top" secondItem="wWp-jo-NAG" secondAttribute="top" constant="62" id="8WB-bp-mxv"/>
+                            <constraint firstItem="iWM-wF-HTE" firstAttribute="centerX" secondItem="Myl-CR-Fmd" secondAttribute="centerX" id="Pzn-rk-bNa"/>
+                            <constraint firstItem="iWM-wF-HTE" firstAttribute="top" secondItem="cl7-vo-5mE" secondAttribute="bottom" constant="70" id="ZmB-G6-jHc"/>
+                            <constraint firstItem="wWp-jo-NAG" firstAttribute="bottom" secondItem="KYd-zb-MRr" secondAttribute="bottom" constant="401" id="hIV-uS-wrg"/>
+                            <constraint firstItem="KYd-zb-MRr" firstAttribute="top" secondItem="iWM-wF-HTE" secondAttribute="bottom" constant="37" id="lf2-K4-idu"/>
+                            <constraint firstItem="cl7-vo-5mE" firstAttribute="leading" secondItem="wWp-jo-NAG" secondAttribute="leading" constant="98" id="rJR-FO-AjT"/>
+                            <constraint firstItem="KYd-zb-MRr" firstAttribute="leading" secondItem="wWp-jo-NAG" secondAttribute="leading" constant="122" id="tIi-rc-g9m"/>
+                            <constraint firstItem="wWp-jo-NAG" firstAttribute="trailing" secondItem="cl7-vo-5mE" secondAttribute="trailing" constant="108" id="tIp-K5-5ZF"/>
+                            <constraint firstItem="iWM-wF-HTE" firstAttribute="leading" secondItem="wWp-jo-NAG" secondAttribute="leading" constant="123" id="w0n-jE-9Ly"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="wWp-jo-NAG"/>
                     </view>
+                    <connections>
+                        <outlet property="manButton" destination="KYd-zb-MRr" id="deZ-8j-gKw"/>
+                        <outlet property="womanButton" destination="iWM-wF-HTE" id="DTB-Ui-xfs"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Xpn-5v-gOs" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -389,7 +459,7 @@
             <objects>
                 <viewController id="UTB-gW-rEb" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="UUq-Bn-0hn">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="LuY-YK-f5p"/>
@@ -404,13 +474,16 @@
             <objects>
                 <viewController id="iPn-tw-F5a" customClass="profileSetUpViewController" customModule="HateDatingApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="25p-8T-lf3">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Icon" translatesAutoresizingMaskIntoConstraints="NO" id="s23-dW-ZvW" customClass="UIImageViewX" customModule="HateDatingApp" customModuleProvider="target">
-                                <rect key="frame" x="113" y="245" width="189" height="228"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="Icon" translatesAutoresizingMaskIntoConstraints="NO" id="s23-dW-ZvW" customClass="UIImageViewX" customModule="HateDatingApp" customModuleProvider="target">
+                                <rect key="frame" x="93" y="329" width="214" height="228"/>
                                 <color key="backgroundColor" red="0.4756349325" green="0.47564673419999998" blue="0.47564041610000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="228" id="G0Y-kT-SFi"/>
+                                    <constraint firstAttribute="width" constant="189" id="WtO-9m-FU2"/>
+                                </constraints>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
                                         <real key="value" value="1"/>
@@ -423,17 +496,29 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gtE-Ca-5lH">
-                                <rect key="frame" x="185" y="338" width="45" height="43"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gtE-Ca-5lH" customClass="UIButtonX" customModule="HateDatingApp" customModuleProvider="target">
+                                <rect key="frame" x="93" y="329" width="214" height="228"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                        <color key="value" red="1" green="0.46989833660000002" blue="0.13716961180000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                        <real key="value" value="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="maleAttachmentPressed:" destination="iPn-tw-F5a" eventType="touchUpInside" id="KgI-Xq-St0"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="r1Q-O4-NpG" customClass="UIButtonX" customModule="HateDatingApp" customModuleProvider="target">
-                                <rect key="frame" x="132" y="532" width="150" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="r1Q-O4-NpG" customClass="UIButtonX" customModule="HateDatingApp" customModuleProvider="target">
+                                <rect key="frame" x="93" y="617" width="214" height="30"/>
                                 <color key="backgroundColor" red="0.21465350778441591" green="0.98431372549019602" blue="0.9165797603840018" alpha="0.45181399828767121" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="hNJ-aj-CH5"/>
+                                </constraints>
                                 <state key="normal" title="Next"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
@@ -445,18 +530,32 @@
                                 </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="nextToProfileVcPressed:" destination="iPn-tw-F5a" eventType="touchUpInside" id="FxA-7h-34e"/>
-                                    <segue destination="Qur-bO-haA" kind="push" identifier="goToMaleProfileVC" id="7Eb-eQ-NN0"/>
+                                    <segue destination="Qur-bO-haA" kind="show" identifier="goToMaleProfileVC" id="7Eb-eQ-NN0"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="My best pic is" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TxV-Ey-7Hd">
-                                <rect key="frame" x="81" y="82" width="292" height="155"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="My best pic is" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TxV-Ey-7Hd">
+                                <rect key="frame" x="74" y="82" width="233" height="239"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="38"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="waX-MP-ICP" firstAttribute="trailing" secondItem="TxV-Ey-7Hd" secondAttribute="trailing" constant="903" id="0Qz-lV-hff"/>
+                            <constraint firstItem="s23-dW-ZvW" firstAttribute="trailing" secondItem="r1Q-O4-NpG" secondAttribute="trailing" id="1Hl-uw-Npx"/>
+                            <constraint firstItem="waX-MP-ICP" firstAttribute="bottom" secondItem="r1Q-O4-NpG" secondAttribute="bottom" constant="215" id="EZG-vv-omd"/>
+                            <constraint firstItem="TxV-Ey-7Hd" firstAttribute="leading" secondItem="waX-MP-ICP" secondAttribute="leading" constant="74" id="NPG-OM-S0J"/>
+                            <constraint firstItem="s23-dW-ZvW" firstAttribute="leading" secondItem="r1Q-O4-NpG" secondAttribute="leading" id="SoE-ng-bsq"/>
+                            <constraint firstItem="gtE-Ca-5lH" firstAttribute="top" secondItem="s23-dW-ZvW" secondAttribute="top" id="Ucr-hs-rMW"/>
+                            <constraint firstItem="gtE-Ca-5lH" firstAttribute="leading" secondItem="s23-dW-ZvW" secondAttribute="leading" id="Vax-0D-j6f"/>
+                            <constraint firstItem="r1Q-O4-NpG" firstAttribute="leading" secondItem="waX-MP-ICP" secondAttribute="leading" constant="93" id="YnA-Ze-Y0v"/>
+                            <constraint firstItem="r1Q-O4-NpG" firstAttribute="top" secondItem="s23-dW-ZvW" secondAttribute="bottom" constant="60" id="ahH-gO-wCd"/>
+                            <constraint firstItem="gtE-Ca-5lH" firstAttribute="bottom" secondItem="s23-dW-ZvW" secondAttribute="bottom" id="d4E-4I-hIF"/>
+                            <constraint firstItem="waX-MP-ICP" firstAttribute="trailing" secondItem="r1Q-O4-NpG" secondAttribute="trailing" constant="903" id="hx4-Qd-Ow8"/>
+                            <constraint firstItem="TxV-Ey-7Hd" firstAttribute="top" secondItem="waX-MP-ICP" secondAttribute="top" constant="38" id="lzq-Jo-BBI"/>
+                            <constraint firstItem="gtE-Ca-5lH" firstAttribute="trailing" secondItem="s23-dW-ZvW" secondAttribute="trailing" id="zUY-hV-lyj"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="waX-MP-ICP"/>
                     </view>
                     <connections>
@@ -465,51 +564,91 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ewP-iP-pHy" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4185.507246376812" y="-1193.4782608695652"/>
+            <point key="canvasLocation" x="4184.057971014493" y="-1194.6428571428571"/>
         </scene>
         <!--Male Profile View Controller-->
         <scene sceneID="Dsa-CD-Vfq">
             <objects>
                 <viewController id="Qur-bO-haA" customClass="MaleProfileViewController" customModule="HateDatingApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="cSK-nu-U4o">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="98A-nY-ReZ" customClass="UIImageViewX" customModule="HateDatingApp" customModuleProvider="target">
-                                <rect key="frame" x="132" y="79" width="150" height="150"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="98A-nY-ReZ" customClass="UIImageViewX" customModule="HateDatingApp" customModuleProvider="target">
+                                <rect key="frame" x="39" y="51" width="336" height="377"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                        <real key="value" value="75"/>
+                                        <real key="value" value="10"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
                                         <color key="value" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5vD-09-mzQ">
-                                <rect key="frame" x="154" y="267" width="240" height="33"/>
-                                <autoresizingMask key="autoresizingMask"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="A2e-Kx-2F9" customClass="UIButtonX" customModule="HateDatingApp" customModuleProvider="target">
+                                <rect key="frame" x="92" y="573" width="192" height="36"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <state key="normal" title="All done! Lets Begin">
+                                    <color key="titleColor" red="0.98431372549999996" green="0.46502487218696398" blue="0.10938822499346078" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                        <real key="value" value="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                        <color key="value" red="0.98431372549999996" green="0.60156682912839832" blue="0.062773803652385551" alpha="0.45181399830000002" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <segue destination="9Jb-t7-4WI" kind="show" identifier="goToSearchPartner" id="iv0-GY-YbD"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5vD-09-mzQ">
+                                <rect key="frame" x="154" y="447" width="244" height="33"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Hi there," textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FaZ-4w-U9z">
-                                <rect key="frame" x="86" y="262" width="66" height="42"/>
-                                <autoresizingMask key="autoresizingMask"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome to the app" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aWi-Dq-NCF">
+                                <rect key="frame" x="128" y="492" width="193" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="41v-QX-osz"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Welcome to the app" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aWi-Dq-NCF">
-                                <rect key="frame" x="130" y="323" width="154" height="21"/>
-                                <autoresizingMask key="autoresizingMask"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hi there," textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FaZ-4w-U9z">
+                                <rect key="frame" x="61" y="447" width="75" height="37"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="37" id="no0-qA-Lhl"/>
+                                    <constraint firstAttribute="width" constant="75" id="r77-rM-vp4"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="aWi-Dq-NCF" firstAttribute="leading" secondItem="wcD-e9-maL" secondAttribute="leading" constant="128" id="7tj-IZ-NYk"/>
+                            <constraint firstItem="5vD-09-mzQ" firstAttribute="leading" secondItem="FaZ-4w-U9z" secondAttribute="trailing" constant="18" id="9FG-Ci-RW0"/>
+                            <constraint firstItem="5vD-09-mzQ" firstAttribute="top" secondItem="FaZ-4w-U9z" secondAttribute="top" id="BMw-Cz-bjp"/>
+                            <constraint firstItem="wcD-e9-maL" firstAttribute="trailing" secondItem="5vD-09-mzQ" secondAttribute="trailing" constant="16" id="Cy0-cN-ncR"/>
+                            <constraint firstItem="98A-nY-ReZ" firstAttribute="top" secondItem="wcD-e9-maL" secondAttribute="top" constant="7" id="DMt-pc-uOr"/>
+                            <constraint firstItem="wcD-e9-maL" firstAttribute="trailing" secondItem="aWi-Dq-NCF" secondAttribute="trailing" constant="93" id="Mry-lJ-Hk4"/>
+                            <constraint firstItem="98A-nY-ReZ" firstAttribute="leading" secondItem="wcD-e9-maL" secondAttribute="leading" constant="39" id="PHA-4m-HHL"/>
+                            <constraint firstItem="FaZ-4w-U9z" firstAttribute="leading" secondItem="wcD-e9-maL" secondAttribute="leading" constant="61" id="PMA-8j-DDW"/>
+                            <constraint firstItem="wcD-e9-maL" firstAttribute="bottom" secondItem="98A-nY-ReZ" secondAttribute="bottom" constant="434" id="Q1h-pV-3iV"/>
+                            <constraint firstItem="aWi-Dq-NCF" firstAttribute="top" secondItem="FaZ-4w-U9z" secondAttribute="bottom" constant="8" id="VZG-11-Ylp"/>
+                            <constraint firstItem="wcD-e9-maL" firstAttribute="trailing" secondItem="98A-nY-ReZ" secondAttribute="trailing" constant="39" id="cyx-V9-eTc"/>
+                            <constraint firstItem="aWi-Dq-NCF" firstAttribute="top" secondItem="5vD-09-mzQ" secondAttribute="bottom" constant="12" id="oMQ-fi-PFi"/>
+                            <constraint firstItem="FaZ-4w-U9z" firstAttribute="top" secondItem="wcD-e9-maL" secondAttribute="top" constant="403" id="yCS-du-cbe"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="wcD-e9-maL"/>
                     </view>
                     <navigationItem key="navigationItem" id="Sg0-EI-GMz"/>
@@ -520,19 +659,21 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="v6W-zT-ch4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5201" y="-1193"/>
+            <point key="canvasLocation" x="5197.1014492753629" y="-1194.6428571428571"/>
         </scene>
         <!--Profile Set Up View Controller-->
         <scene sceneID="BND-4q-Fpo">
             <objects>
                 <viewController id="gvL-sh-gM4" customClass="profileSetUpViewController" customModule="HateDatingApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="osz-Hs-4MB">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Femal Profile Pic" translatesAutoresizingMaskIntoConstraints="NO" id="vBV-si-hsb" customClass="UIImageViewX" customModule="HateDatingApp" customModuleProvider="target">
-                                <rect key="frame" x="110" y="269" width="189" height="228"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Femal Profile Pic" translatesAutoresizingMaskIntoConstraints="NO" id="vBV-si-hsb" customClass="UIImageViewX" customModule="HateDatingApp" customModuleProvider="target">
+                                <rect key="frame" x="91" y="371" width="228" height="228"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="228" id="CVH-YA-CR9"/>
+                                </constraints>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
                                         <real key="value" value="10"/>
@@ -545,16 +686,23 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="My best pic is" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4s3-ie-OM2">
-                                <rect key="frame" x="110" y="143" width="222" height="67"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="My best pic is" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4s3-ie-OM2">
+                                <rect key="frame" x="74" y="166" width="266" height="155"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="155" id="vd5-MO-Wf3"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="38"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2pN-Nf-s9K" customClass="UIButtonX" customModule="HateDatingApp" customModuleProvider="target">
-                                <rect key="frame" x="132" y="590" width="150" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5jU-MU-Dlw">
+                                <rect key="frame" x="91" y="371" width="228" height="228"/>
+                                <connections>
+                                    <action selector="femaleAttachmentPressed:" destination="gvL-sh-gM4" eventType="touchUpInside" id="9I3-CE-10e"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2pN-Nf-s9K" customClass="UIButtonX" customModule="HateDatingApp" customModuleProvider="target">
+                                <rect key="frame" x="93" y="676" width="228" height="30"/>
                                 <color key="backgroundColor" red="0.82352941176470584" green="0.396078431372549" blue="0.77254901960784317" alpha="0.67396190068493156" colorSpace="custom" customColorSpace="sRGB"/>
                                 <state key="normal" title="Next"/>
                                 <userDefinedRuntimeAttributes>
@@ -570,15 +718,23 @@
                                     <segue destination="JQ5-oS-OyP" kind="show" identifier="goToFemaleProfileVC" id="Vwc-bb-YHW"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5jU-MU-Dlw">
-                                <rect key="frame" x="180" y="361" width="48" height="45"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <connections>
-                                    <action selector="femaleAttachmentPressed:" destination="gvL-sh-gM4" eventType="touchUpInside" id="9I3-CE-10e"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="5jU-MU-Dlw" firstAttribute="leading" secondItem="Ij9-yf-VMy" secondAttribute="leading" constant="91" id="4Xb-mw-OHO"/>
+                            <constraint firstItem="4s3-ie-OM2" firstAttribute="centerX" secondItem="2pN-Nf-s9K" secondAttribute="centerX" id="AMd-KY-i34"/>
+                            <constraint firstItem="Ij9-yf-VMy" firstAttribute="trailing" secondItem="5jU-MU-Dlw" secondAttribute="trailing" constant="95" id="C1w-SR-OHZ"/>
+                            <constraint firstItem="Ij9-yf-VMy" firstAttribute="bottom" secondItem="2pN-Nf-s9K" secondAttribute="bottom" constant="156" id="CCu-kN-OGV"/>
+                            <constraint firstItem="vBV-si-hsb" firstAttribute="top" secondItem="5jU-MU-Dlw" secondAttribute="top" id="Q8Y-UN-XyU"/>
+                            <constraint firstItem="2pN-Nf-s9K" firstAttribute="leading" secondItem="Ij9-yf-VMy" secondAttribute="leading" constant="93" id="QgR-xr-33X"/>
+                            <constraint firstItem="2pN-Nf-s9K" firstAttribute="top" secondItem="5jU-MU-Dlw" secondAttribute="bottom" constant="77" id="YL6-5v-21H"/>
+                            <constraint firstItem="vBV-si-hsb" firstAttribute="trailing" secondItem="5jU-MU-Dlw" secondAttribute="trailing" id="g2x-jB-XIt"/>
+                            <constraint firstItem="vBV-si-hsb" firstAttribute="leading" secondItem="5jU-MU-Dlw" secondAttribute="leading" id="iaw-en-0Rb"/>
+                            <constraint firstItem="5jU-MU-Dlw" firstAttribute="top" secondItem="4s3-ie-OM2" secondAttribute="bottom" constant="50" id="ldz-MI-9XY"/>
+                            <constraint firstItem="vBV-si-hsb" firstAttribute="bottom" secondItem="5jU-MU-Dlw" secondAttribute="bottom" id="oqn-ed-DbY"/>
+                            <constraint firstItem="Ij9-yf-VMy" firstAttribute="trailing" secondItem="2pN-Nf-s9K" secondAttribute="trailing" constant="93" id="rx7-Nj-3qe"/>
+                            <constraint firstItem="4s3-ie-OM2" firstAttribute="leading" secondItem="Ij9-yf-VMy" secondAttribute="leading" constant="74" id="wd0-bv-T0g"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="Ij9-yf-VMy"/>
                     </view>
                     <connections>
@@ -587,85 +743,146 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fLh-Vj-vtu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4260.8695652173919" y="132.88043478260872"/>
+            <point key="canvasLocation" x="4260" y="132.26600985221674"/>
         </scene>
         <!--Search Partner View Controller-->
         <scene sceneID="7tI-Gk-bRr">
             <objects>
                 <viewController id="9Jb-t7-4WI" customClass="SearchPartnerViewController" customModule="HateDatingApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="9hy-bg-Iu4">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Sf8-ih-hKu" customClass="UIViewX" customModule="HateDatingApp" customModuleProvider="target">
-                                <rect key="frame" x="36" y="164" width="336" height="413"/>
-                                <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="oUy-S4-dA7" customClass="UIImageViewX" customModule="HateDatingApp" customModuleProvider="target">
-                                        <rect key="frame" x="33" y="35" width="268" height="343"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                <real key="value" value="10"/>
-                                            </userDefinedRuntimeAttribute>
-                                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
-                                                <real key="value" value="1"/>
-                                            </userDefinedRuntimeAttribute>
-                                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
-                                                <color key="value" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                            </userDefinedRuntimeAttribute>
-                                        </userDefinedRuntimeAttributes>
-                                    </imageView>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gPN-8X-bgk">
-                                        <rect key="frame" x="95" y="146" width="144" height="121"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    </imageView>
-                                </subviews>
-                                <color key="backgroundColor" red="0.79352395304568524" green="0.79352395304568524" blue="0.79352395304568524" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <rect key="frame" x="15" y="224" width="384" height="518"/>
+                                <color key="backgroundColor" red="0.10001682080734614" green="0.3711841884049335" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <gestureRecognizers/>
                                 <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
-                                        <real key="value" value="1"/>
-                                    </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
                                         <real key="value" value="10"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
-                                <connections>
-                                    <outletCollection property="gestureRecognizers" destination="ymM-KX-52e" appends="YES" id="Gbs-Gh-EeT"/>
-                                </connections>
                             </view>
-                            <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="X2t-Md-LS8" userLabel="Reset">
-                                <rect key="frame" x="39" y="640" width="50" height="50"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vLt-HS-yti">
+                                <rect key="frame" x="0.0" y="762" width="414" height="100"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RlR-R5-pbQ" userLabel="Like Button">
+                                        <rect key="frame" x="310.66666666666669" y="13" width="75" height="74"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="75" id="WAj-sS-BW6"/>
+                                            <constraint firstAttribute="height" constant="74" id="tXk-9N-1A7"/>
+                                        </constraints>
+                                        <state key="normal" image="yesButton"/>
+                                        <connections>
+                                            <action selector="LikeButtonAction:" destination="9Jb-t7-4WI" eventType="touchUpInside" id="ht3-ba-NAF"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="doC-RQ-za6">
+                                        <rect key="frame" x="40.666666666666657" y="13" width="75" height="74"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="75" id="SDp-OZ-vI3"/>
+                                            <constraint firstAttribute="height" constant="74" id="yas-25-xbJ"/>
+                                        </constraints>
+                                        <state key="normal" image="noButton"/>
+                                        <connections>
+                                            <action selector="disLikeButtonAction:" destination="9Jb-t7-4WI" eventType="touchUpInside" id="SWF-If-Ecu"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hyv-p9-6CM">
+                                        <rect key="frame" x="169.66666666666666" y="13" width="75" height="74"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="74" id="B6f-DN-nrP"/>
+                                            <constraint firstAttribute="width" constant="75" id="uKn-sT-yYt"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                        <state key="normal" image="buttonUndo"/>
+                                        <connections>
+                                            <action selector="undoButtonAction:" destination="9Jb-t7-4WI" eventType="touchUpInside" id="txK-nC-Hhc"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="50" id="Oei-lu-pIV"/>
+                                    <constraint firstItem="RlR-R5-pbQ" firstAttribute="width" secondItem="hyv-p9-6CM" secondAttribute="width" id="3YB-0o-vIn"/>
+                                    <constraint firstItem="hyv-p9-6CM" firstAttribute="centerY" secondItem="vLt-HS-yti" secondAttribute="centerY" id="4ED-Xw-EgU"/>
+                                    <constraint firstItem="RlR-R5-pbQ" firstAttribute="leading" secondItem="hyv-p9-6CM" secondAttribute="trailing" constant="66" id="4FH-m3-4xz"/>
+                                    <constraint firstItem="doC-RQ-za6" firstAttribute="width" secondItem="hyv-p9-6CM" secondAttribute="width" id="553-Kz-sro"/>
+                                    <constraint firstAttribute="height" constant="100" id="BvO-48-xz2"/>
+                                    <constraint firstItem="hyv-p9-6CM" firstAttribute="centerX" secondItem="vLt-HS-yti" secondAttribute="centerX" id="KI0-3O-o6x"/>
+                                    <constraint firstItem="hyv-p9-6CM" firstAttribute="leading" secondItem="doC-RQ-za6" secondAttribute="trailing" constant="54" id="M5U-Rd-6Ru"/>
+                                    <constraint firstItem="hyv-p9-6CM" firstAttribute="top" secondItem="RlR-R5-pbQ" secondAttribute="top" id="Xkw-JU-Fa5"/>
+                                    <constraint firstItem="RlR-R5-pbQ" firstAttribute="height" secondItem="hyv-p9-6CM" secondAttribute="height" id="bZd-VX-YNq"/>
+                                    <constraint firstItem="hyv-p9-6CM" firstAttribute="top" secondItem="doC-RQ-za6" secondAttribute="top" id="ubT-Cs-gTc"/>
+                                    <constraint firstItem="doC-RQ-za6" firstAttribute="height" secondItem="hyv-p9-6CM" secondAttribute="height" id="urs-RB-n8i"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                <state key="normal" backgroundImage="Reset"/>
-                                <connections>
-                                    <action selector="ResetCard:" destination="9Jb-t7-4WI" eventType="touchUpInside" id="HZp-Hg-zGO"/>
-                                </connections>
-                            </button>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="V2x-9K-KW8" userLabel="TopView">
+                                <rect key="frame" x="0.0" y="54" width="414" height="150"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9UB-r7-xAu" customClass="EmojiRateView" customModule="HateDatingApp" customModuleProvider="target">
+                                        <rect key="frame" x="147" y="15" width="120" height="120"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="120" id="Ht5-Dx-vyj"/>
+                                            <constraint firstAttribute="width" constant="120" id="YuT-Yh-nyM"/>
+                                        </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="rateLineWidth">
+                                                <real key="value" value="3"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="rateColor">
+                                                <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="rateDynamicColor" value="YES"/>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="rateMouthWidth">
+                                                <real key="value" value="0.59999999999999998"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="rateMouthVerticalPosition">
+                                                <real key="value" value="0.29999999999999999"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="rateEyeWidth">
+                                                <real key="value" value="0.20000000000000001"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="rateEyeVerticalPosition">
+                                                <real key="value" value="0.59999999999999998"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="rateShowEyes" value="YES"/>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="rateValue">
+                                                <real key="value" value="0.0"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="9UB-r7-xAu" firstAttribute="centerY" secondItem="V2x-9K-KW8" secondAttribute="centerY" id="2Up-ua-XBP"/>
+                                    <constraint firstAttribute="height" constant="150" id="Hcy-lr-2UA"/>
+                                    <constraint firstItem="9UB-r7-xAu" firstAttribute="centerX" secondItem="V2x-9K-KW8" secondAttribute="centerX" id="avR-KJ-XCs"/>
+                                </constraints>
+                            </view>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" red="0.066666666666666666" green="0.31764705882352939" blue="0.43137254901960786" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="Sf8-ih-hKu" firstAttribute="leading" secondItem="8mg-6t-npS" secondAttribute="leading" constant="36" id="0TE-De-MiA"/>
-                            <constraint firstAttribute="bottom" secondItem="Sf8-ih-hKu" secondAttribute="bottom" constant="159" id="57q-DP-xvT"/>
-                            <constraint firstItem="Sf8-ih-hKu" firstAttribute="top" secondItem="8mg-6t-npS" secondAttribute="top" constant="100" id="Rmo-UT-BNw"/>
-                            <constraint firstItem="8mg-6t-npS" firstAttribute="trailing" secondItem="Sf8-ih-hKu" secondAttribute="trailing" constant="42" id="SBR-eb-zbK"/>
-                            <constraint firstItem="X2t-Md-LS8" firstAttribute="leading" secondItem="8mg-6t-npS" secondAttribute="leading" constant="39" id="UCd-lg-7N1"/>
-                            <constraint firstItem="8mg-6t-npS" firstAttribute="bottom" secondItem="X2t-Md-LS8" secondAttribute="bottom" constant="46" id="rhA-lf-ZQb"/>
-                            <constraint firstItem="X2t-Md-LS8" firstAttribute="top" secondItem="Sf8-ih-hKu" secondAttribute="bottom" constant="63" id="z7A-E9-2TR"/>
+                            <constraint firstItem="Sf8-ih-hKu" firstAttribute="leading" secondItem="8mg-6t-npS" secondAttribute="leading" constant="15" id="6BF-lp-tJO"/>
+                            <constraint firstItem="V2x-9K-KW8" firstAttribute="top" secondItem="8mg-6t-npS" secondAttribute="top" constant="10" id="D1R-hi-iLN"/>
+                            <constraint firstItem="8mg-6t-npS" firstAttribute="trailing" secondItem="vLt-HS-yti" secondAttribute="trailing" id="Jjy-ph-a2c"/>
+                            <constraint firstItem="8mg-6t-npS" firstAttribute="trailing" secondItem="Sf8-ih-hKu" secondAttribute="trailing" constant="15" id="MKf-4M-wqh"/>
+                            <constraint firstItem="V2x-9K-KW8" firstAttribute="leading" secondItem="8mg-6t-npS" secondAttribute="leading" id="R6U-DZ-eSP"/>
+                            <constraint firstItem="vLt-HS-yti" firstAttribute="leading" secondItem="8mg-6t-npS" secondAttribute="leading" id="SPN-AB-w00"/>
+                            <constraint firstItem="Sf8-ih-hKu" firstAttribute="top" secondItem="V2x-9K-KW8" secondAttribute="bottom" constant="20" id="VpQ-9v-aqM"/>
+                            <constraint firstItem="vLt-HS-yti" firstAttribute="leading" secondItem="9hy-bg-Iu4" secondAttribute="leading" id="esy-Ro-T3U"/>
+                            <constraint firstItem="vLt-HS-yti" firstAttribute="top" secondItem="Sf8-ih-hKu" secondAttribute="bottom" constant="20" id="fwh-ra-FgP"/>
+                            <constraint firstItem="8mg-6t-npS" firstAttribute="trailing" secondItem="V2x-9K-KW8" secondAttribute="trailing" id="nyH-Pa-yZK"/>
+                            <constraint firstItem="vLt-HS-yti" firstAttribute="bottom" secondItem="8mg-6t-npS" secondAttribute="bottom" id="vbo-mF-dS8"/>
+                            <constraint firstItem="V2x-9K-KW8" firstAttribute="top" secondItem="8mg-6t-npS" secondAttribute="top" constant="10" id="zmG-IA-u3r"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="8mg-6t-npS"/>
                     </view>
                     <connections>
-                        <outlet property="Card" destination="Sf8-ih-hKu" id="bpQ-9g-OxC"/>
-                        <outlet property="PartnerImage" destination="oUy-S4-dA7" id="4Al-RD-s87"/>
-                        <outlet property="ResetButton" destination="X2t-Md-LS8" id="eTU-pJ-Uww"/>
-                        <outlet property="ThumbsImageView" destination="gPN-8X-bgk" id="Rd0-r9-Czl"/>
+                        <outlet property="buttonUndo" destination="hyv-p9-6CM" id="OVq-jy-gCh"/>
+                        <outlet property="emojiView" destination="9UB-r7-xAu" id="Vmi-wv-pL2"/>
+                        <outlet property="viewActions" destination="vLt-HS-yti" id="DYm-ek-AdD"/>
+                        <outlet property="viewTinderBackGround" destination="Sf8-ih-hKu" id="223-VM-uTN"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KmD-4N-tch" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -676,48 +893,203 @@
                     </connections>
                 </panGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="6050.7246376811599" y="-648.09782608695662"/>
+            <point key="canvasLocation" x="6759" y="-1195"/>
+        </scene>
+        <!--Female Search Partner View Controller-->
+        <scene sceneID="9xT-h9-4Yp">
+            <objects>
+                <viewController id="ixP-hw-WAh" customClass="FemaleSearchPartnerViewController" customModule="HateDatingApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="YQB-3S-z4E">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fql-d4-VYy">
+                                <rect key="frame" x="15" y="224" width="384" height="518"/>
+                                <color key="backgroundColor" red="0.099314041435718536" green="0.37440973520278931" blue="0.50352746248245239" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <gestureRecognizers/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="icI-t7-AwI" appends="YES" id="ODb-aB-97k"/>
+                                </connections>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Bkd-fO-SeU">
+                                <rect key="frame" x="0.0" y="762" width="414" height="100"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2X5-jK-1a1">
+                                        <rect key="frame" x="21" y="13" width="75" height="75"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" image="noButton"/>
+                                        <connections>
+                                            <action selector="disLikeButtonAction:" destination="ixP-hw-WAh" eventType="touchUpInside" id="cpk-v8-EBt"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gQE-Wa-Wx9" userLabel="Undo Button">
+                                        <rect key="frame" x="150" y="13" width="75" height="75"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" image="buttonUndo"/>
+                                        <connections>
+                                            <action selector="undoButtonAction:" destination="ixP-hw-WAh" eventType="touchUpInside" id="AJG-wW-o58"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="obK-gz-7Rb">
+                                        <rect key="frame" x="291" y="13" width="75" height="75"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" image="yesButton"/>
+                                        <connections>
+                                            <action selector="LikeButtonAction:" destination="ixP-hw-WAh" eventType="touchUpInside" id="1sf-yK-Utc"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="100" id="qBY-1G-gUy"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="i9L-Xa-ssI">
+                                <rect key="frame" x="0.0" y="54" width="414" height="150"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="C9F-Jr-DcO" customClass="EmojiRateView" customModule="HateDatingApp" customModuleProvider="target">
+                                        <rect key="frame" x="147" y="15" width="120" height="120"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="120" id="i4n-0l-WGj"/>
+                                            <constraint firstAttribute="height" constant="120" id="r5c-c4-nhy"/>
+                                        </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="rateLineWidth">
+                                                <real key="value" value="3"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="rateMouthWidth">
+                                                <real key="value" value="0.59999999999999998"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="rateMouthVerticalPosition">
+                                                <real key="value" value="0.29999999999999999"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="rateEyeWidth">
+                                                <real key="value" value="0.20000000000000001"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="rateEyeVerticalPosition">
+                                                <real key="value" value="0.59999999999999998"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="rateShowEyes" value="YES"/>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="rateDynamicColor" value="YES"/>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="rateColor">
+                                                <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="rateValue">
+                                                <real key="value" value="0.0"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="C9F-Jr-DcO" firstAttribute="top" secondItem="i9L-Xa-ssI" secondAttribute="top" constant="15" id="O5Z-9J-4xb"/>
+                                    <constraint firstItem="C9F-Jr-DcO" firstAttribute="centerX" secondItem="i9L-Xa-ssI" secondAttribute="centerX" id="VOI-WE-LZb"/>
+                                    <constraint firstAttribute="height" constant="150" id="bcX-Es-YaA"/>
+                                    <constraint firstItem="C9F-Jr-DcO" firstAttribute="centerY" secondItem="i9L-Xa-ssI" secondAttribute="centerY" id="h1p-4h-Qd8"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" red="0.086274509803921567" green="0.31764705882352939" blue="0.42745098039215684" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="Bkd-fO-SeU" firstAttribute="centerX" secondItem="yJF-Dl-QBC" secondAttribute="centerX" id="0FA-5q-IvS"/>
+                            <constraint firstItem="fql-d4-VYy" firstAttribute="top" secondItem="i9L-Xa-ssI" secondAttribute="bottom" constant="20" id="Awl-Kg-xhq"/>
+                            <constraint firstItem="i9L-Xa-ssI" firstAttribute="trailing" secondItem="Bkd-fO-SeU" secondAttribute="trailing" id="GLe-kM-Kv0"/>
+                            <constraint firstItem="Bkd-fO-SeU" firstAttribute="top" secondItem="fql-d4-VYy" secondAttribute="bottom" constant="20" id="N6t-3z-ICu"/>
+                            <constraint firstItem="i9L-Xa-ssI" firstAttribute="leading" secondItem="yJF-Dl-QBC" secondAttribute="leading" id="TBb-hZ-iEj"/>
+                            <constraint firstItem="yJF-Dl-QBC" firstAttribute="trailing" secondItem="fql-d4-VYy" secondAttribute="trailing" constant="15" id="bCS-MW-096"/>
+                            <constraint firstItem="yJF-Dl-QBC" firstAttribute="bottom" secondItem="Bkd-fO-SeU" secondAttribute="bottom" id="dfX-OO-ICS"/>
+                            <constraint firstItem="fql-d4-VYy" firstAttribute="leading" secondItem="yJF-Dl-QBC" secondAttribute="leading" constant="15" id="guX-zD-Lqg"/>
+                            <constraint firstItem="i9L-Xa-ssI" firstAttribute="top" secondItem="yJF-Dl-QBC" secondAttribute="top" constant="10" id="nPs-G4-fCz"/>
+                            <constraint firstItem="Bkd-fO-SeU" firstAttribute="leading" secondItem="yJF-Dl-QBC" secondAttribute="leading" id="wwX-m2-lAy"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="yJF-Dl-QBC"/>
+                    </view>
+                    <connections>
+                        <outlet property="buttonUndo" destination="gQE-Wa-Wx9" id="K3g-2J-amY"/>
+                        <outlet property="emojiView" destination="C9F-Jr-DcO" id="aOq-Cb-Y27"/>
+                        <outlet property="viewActions" destination="Bkd-fO-SeU" id="3pY-8R-Iio"/>
+                        <outlet property="viewTinderBackGround" destination="fql-d4-VYy" id="BdK-Ov-k9t"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="cIw-7d-XJd" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <panGestureRecognizer minimumNumberOfTouches="1" id="icI-t7-AwI"/>
+            </objects>
+            <point key="canvasLocation" x="6432" y="150"/>
         </scene>
         <!--Female Profile View Controller-->
         <scene sceneID="PhL-LD-nhW">
             <objects>
                 <viewController id="JQ5-oS-OyP" customClass="FemaleProfileViewController" customModule="HateDatingApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="88U-Qe-ij1">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6j7-bR-zwl" customClass="UIImageViewX" customModule="HateDatingApp" customModuleProvider="target">
-                                <rect key="frame" x="130" y="118" width="150" height="150"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="6j7-bR-zwl" customClass="UIImageViewX" customModule="HateDatingApp" customModuleProvider="target">
+                                <rect key="frame" x="39" y="57" width="336" height="293"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
                                         <real key="value" value="75"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NzW-RU-nKm" customClass="UILabelX" customModule="HateDatingApp" customModuleProvider="target">
-                                <rect key="frame" x="169" y="292" width="240" height="33"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hi there," textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9ep-aX-CmX">
+                                <rect key="frame" x="52" y="365" width="114" height="39"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="39" id="QIE-Yo-Zdj"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Hi there," textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9ep-aX-CmX">
-                                <rect key="frame" x="95" y="298" width="66" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome to the app" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2CT-tr-Uiu">
+                                <rect key="frame" x="130" y="412" width="154" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Welcome to the app" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2CT-tr-Uiu">
-                                <rect key="frame" x="130" y="349" width="154" height="21"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Kvk-t9-6qQ" customClass="UIButtonX" customModule="HateDatingApp" customModuleProvider="target">
+                                <rect key="frame" x="52" y="538" width="284" height="49"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="All right! Lets begin"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                        <real key="value" value="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                        <color key="value" red="0.39229058230000002" green="0.35948119429999997" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <segue destination="ixP-hw-WAh" kind="show" identifier="goToSearchPartner" id="ebH-QO-0WY"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NzW-RU-nKm" customClass="UILabelX" customModule="HateDatingApp" customModuleProvider="target">
+                                <rect key="frame" x="125" y="365" width="279" height="39"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="6j7-bR-zwl" firstAttribute="top" secondItem="KTK-O5-yfg" secondAttribute="top" constant="13" id="3uX-bZ-w9R"/>
+                            <constraint firstItem="NzW-RU-nKm" firstAttribute="leading" secondItem="KTK-O5-yfg" secondAttribute="leading" constant="125" id="6Mc-Vf-fvR"/>
+                            <constraint firstItem="6j7-bR-zwl" firstAttribute="leading" secondItem="KTK-O5-yfg" secondAttribute="leading" constant="39" id="Ibu-7J-mJN"/>
+                            <constraint firstItem="9ep-aX-CmX" firstAttribute="top" secondItem="88U-Qe-ij1" secondAttribute="top" constant="365" id="Rsy-VR-sRZ"/>
+                            <constraint firstItem="KTK-O5-yfg" firstAttribute="trailing" secondItem="9ep-aX-CmX" secondAttribute="trailing" constant="248" id="Z1Q-AT-Moh"/>
+                            <constraint firstItem="NzW-RU-nKm" firstAttribute="top" secondItem="9ep-aX-CmX" secondAttribute="top" id="eDj-Xd-Ccx"/>
+                            <constraint firstItem="2CT-tr-Uiu" firstAttribute="top" secondItem="9ep-aX-CmX" secondAttribute="bottom" constant="8" symbolic="YES" id="gUz-a7-762"/>
+                            <constraint firstItem="KTK-O5-yfg" firstAttribute="trailing" secondItem="NzW-RU-nKm" secondAttribute="trailing" constant="10" id="hZv-oq-KVO"/>
+                            <constraint firstItem="9ep-aX-CmX" firstAttribute="leading" secondItem="KTK-O5-yfg" secondAttribute="leading" constant="52" id="ju7-6O-5Oy"/>
+                            <constraint firstItem="2CT-tr-Uiu" firstAttribute="centerX" secondItem="6j7-bR-zwl" secondAttribute="centerX" id="qVc-2N-q53"/>
+                            <constraint firstItem="6j7-bR-zwl" firstAttribute="centerX" secondItem="88U-Qe-ij1" secondAttribute="centerX" id="rxJ-cO-hgn"/>
+                            <constraint firstItem="2CT-tr-Uiu" firstAttribute="top" secondItem="NzW-RU-nKm" secondAttribute="bottom" constant="8" symbolic="YES" id="sfL-Gk-bVm"/>
+                            <constraint firstItem="9ep-aX-CmX" firstAttribute="top" secondItem="6j7-bR-zwl" secondAttribute="bottom" constant="15" id="uTJ-qK-pSi"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="KTK-O5-yfg"/>
                     </view>
                     <connections>
@@ -727,62 +1099,15 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dwF-4n-ZcE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5102.898550724638" y="132.88043478260872"/>
+            <point key="canvasLocation" x="5101.6000000000004" y="132.26600985221674"/>
         </scene>
-        <!--Search Partner View Controller-->
+        <!--View Controller-->
         <scene sceneID="CYM-xu-iZ2">
             <objects>
-                <viewController id="2LL-9P-xca" customClass="SearchPartnerViewController" customModule="HateDatingApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="2LL-9P-xca" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="d9q-Qf-VRW">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Nzl-KU-kgP" userLabel="Card" customClass="UIViewX" customModule="HateDatingApp" customModuleProvider="target">
-                                <rect key="frame" x="34" y="113" width="345" height="411"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="TuX-ze-DGN" customClass="UIImageViewX" customModule="HateDatingApp" customModuleProvider="target">
-                                        <rect key="frame" x="20" y="16" width="305" height="379"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <color key="backgroundColor" red="1" green="0.43388650966098063" blue="0.3079818176713407" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
-                                                <real key="value" value="1"/>
-                                            </userDefinedRuntimeAttribute>
-                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                <real key="value" value="10"/>
-                                            </userDefinedRuntimeAttribute>
-                                        </userDefinedRuntimeAttributes>
-                                    </imageView>
-                                    <imageView userInteractionEnabled="NO" alpha="0.0" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="ThumbsUp" adjustsImageSizeForAccessibilityContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Q21-CR-jif">
-                                        <rect key="frame" x="52" y="141" width="240" height="128"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    </imageView>
-                                </subviews>
-                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <gestureRecognizers/>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
-                                        <real key="value" value="1"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                        <real key="value" value="10"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                            </view>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="MnQ-MB-0Uz">
-                                <rect key="frame" x="0.0" y="614" width="414" height="122"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SLX-i8-kPG">
-                                        <rect key="frame" x="188" y="46" width="39" height="30"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <state key="normal" title="Reset"/>
-                                    </button>
-                                </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            </view>
-                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="TIx-nC-f6B"/>
                     </view>
@@ -790,14 +1115,14 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hFl-jN-Hhn" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <panGestureRecognizer minimumNumberOfTouches="1" id="lDb-Nh-MUx"/>
             </objects>
-            <point key="canvasLocation" x="7788" y="1003"/>
+            <point key="canvasLocation" x="8110" y="-501"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="f1C-Dn-dPR">
             <objects>
                 <viewController id="02G-aI-dns" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="eNQ-b7-K0I">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="What is your age ?" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="qX6-TU-Qdu">
@@ -843,37 +1168,33 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uAu-zF-1gF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="7245" y="-17"/>
+            <point key="canvasLocation" x="8953" y="132"/>
         </scene>
         <!--Login View Controller-->
         <scene sceneID="3PV-NA-QFQ">
             <objects>
                 <viewController id="pOQ-VO-OBs" customClass="LoginViewController" customModule="HateDatingApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="aoR-dg-AvJ">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="background1" translatesAutoresizingMaskIntoConstraints="NO" id="PHE-n7-28i">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background1" translatesAutoresizingMaskIntoConstraints="NO" id="PHE-n7-28i">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                             </imageView>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email id" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="A3z-1V-kFB">
-                                <rect key="frame" x="53" y="190" width="304" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email id" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="A3z-1V-kFB">
+                                <rect key="frame" x="55" y="298" width="304" height="30"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" textContentType="username"/>
                             </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="KB8-i0-E6s">
-                                <rect key="frame" x="53" y="259" width="304" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="KB8-i0-E6s">
+                                <rect key="frame" x="55" y="385" width="304" height="30"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" secureTextEntry="YES" textContentType="password"/>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Bcl-mu-Sow" customClass="UIButtonX" customModule="HateDatingApp" customModuleProvider="target">
-                                <rect key="frame" x="53" y="376" width="304" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Bcl-mu-Sow" customClass="UIButtonX" customModule="HateDatingApp" customModuleProvider="target">
+                                <rect key="frame" x="55" y="481" width="304" height="30"/>
                                 <color key="backgroundColor" red="0.089283056557178497" green="0.53060019016265869" blue="0.70559388399124146" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <state key="normal" title="Log in">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -888,11 +1209,26 @@
                                 </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="LogInButtonPress:" destination="pOQ-VO-OBs" eventType="touchUpInside" id="rMS-pr-Fto"/>
-                                    <segue destination="9Jb-t7-4WI" kind="show" identifier="goToSearchPartner" id="9DC-AK-K1C"/>
+                                    <segue destination="9Jb-t7-4WI" kind="show" id="7GK-Co-Lfs"/>
                                 </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="Bcl-mu-Sow" firstAttribute="trailing" secondItem="KB8-i0-E6s" secondAttribute="trailing" id="BZh-Ve-V6K"/>
+                            <constraint firstItem="PHE-n7-28i" firstAttribute="leading" secondItem="aoR-dg-AvJ" secondAttribute="leading" id="CKy-Ii-VDI"/>
+                            <constraint firstItem="KB8-i0-E6s" firstAttribute="top" secondItem="A3z-1V-kFB" secondAttribute="bottom" constant="57" id="Gyg-XC-uaX"/>
+                            <constraint firstItem="A3z-1V-kFB" firstAttribute="trailing" secondItem="KB8-i0-E6s" secondAttribute="trailing" id="KiL-rY-GxQ"/>
+                            <constraint firstItem="PHE-n7-28i" firstAttribute="bottom" secondItem="QxU-KE-gw2" secondAttribute="bottom" constant="34" id="Kkb-4e-VuK"/>
+                            <constraint firstItem="PHE-n7-28i" firstAttribute="top" secondItem="aoR-dg-AvJ" secondAttribute="top" id="Nuf-s7-DEs"/>
+                            <constraint firstItem="QxU-KE-gw2" firstAttribute="bottom" secondItem="Bcl-mu-Sow" secondAttribute="bottom" constant="351" id="Vws-U3-gEy"/>
+                            <constraint firstItem="A3z-1V-kFB" firstAttribute="leading" secondItem="KB8-i0-E6s" secondAttribute="leading" id="dgV-4g-oKC"/>
+                            <constraint firstItem="Bcl-mu-Sow" firstAttribute="centerX" secondItem="aoR-dg-AvJ" secondAttribute="centerX" id="ji4-EP-ZQd"/>
+                            <constraint firstItem="Bcl-mu-Sow" firstAttribute="top" secondItem="KB8-i0-E6s" secondAttribute="bottom" constant="66" id="lQy-RG-9WT"/>
+                            <constraint firstItem="Bcl-mu-Sow" firstAttribute="centerX" secondItem="PHE-n7-28i" secondAttribute="centerX" id="lT7-Zb-FBa"/>
+                            <constraint firstItem="Bcl-mu-Sow" firstAttribute="leading" secondItem="QxU-KE-gw2" secondAttribute="leading" constant="55" id="t5I-xL-WtO"/>
+                            <constraint firstItem="Bcl-mu-Sow" firstAttribute="leading" secondItem="KB8-i0-E6s" secondAttribute="leading" id="uQI-YE-0Gq"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="QxU-KE-gw2"/>
                     </view>
                     <connections>
@@ -902,7 +1238,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VvJ-Lp-o2t" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="953.62318840579712" y="836.41304347826099"/>
+            <point key="canvasLocation" x="951.20000000000005" y="834.97536945812806"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="bhj-Ye-nV2">
@@ -910,25 +1246,26 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="h2u-AX-alb" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="lAK-JB-gBS">
-                        <rect key="frame" x="0.0" y="20" width="414" height="44"/>
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="GnQ-Fs-7Bo"/>
-                    </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TIm-2t-95e" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-786" y="133"/>
+            <point key="canvasLocation" x="-986" y="67"/>
         </scene>
     </scenes>
     <resources>
         <image name="Femal Profile Pic" width="1024" height="1024"/>
         <image name="Icon" width="1024" height="1024"/>
-        <image name="Reset" width="1200" height="1200"/>
-        <image name="ThumbsUp" width="90" height="90"/>
         <image name="background1" width="1200" height="795"/>
-        <image name="couple" width="5760" height="3840"/>
+        <image name="buttonUndo" width="75" height="75"/>
+        <image name="couple" width="1382.4000244140625" height="921.5999755859375"/>
+        <image name="noButton" width="75" height="75"/>
+        <image name="yesButton" width="75" height="75"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="iv0-GY-YbD"/>
+    </inferredMetricsTieBreakers>
 </document>

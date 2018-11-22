@@ -55,6 +55,7 @@ class LoginViewController: UIViewController {
                     self.alertTheUser(title: "Problem with Authentication", message: message!)
                 } else {
                     print("Login Completed")
+                    Handler.Instance.female = self.emailTextField.text!
                     //self.performSegue(withIdentifier: "goToSelectPartner", sender: self)
                 }
             }
@@ -78,6 +79,7 @@ class LoginViewController: UIViewController {
             
             let destinationVC = segue.destination as! SearchPartnerViewController
           //      destinationVC.userid = userid!
+            
             
         }
     }

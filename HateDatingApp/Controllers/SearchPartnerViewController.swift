@@ -1,344 +1,563 @@
+////
+////  SearchPartnerViewController.swift
+////  HateDatingApp
+////
+////  Created by Prithviraj Murthy on 07/07/18.
+////  Copyright © 2018 Prithviraj Murthy. All rights reserved.
+////
 //
-//  SearchPartnerViewController.swift
-//  HateDatingApp
 //
-//  Created by Prithviraj Murthy on 07/07/18.
-//  Copyright © 2018 Prithviraj Murthy. All rights reserved.
+//let  MAX_BUFFER_SIZE = 3;
+//let  SEPERATOR_DISTANCE = 8;
+//let  TOPYAXIS = 75;
 //
-import Foundation
-import UIKit
-import AVKit
-import MapKit
-import Firebase
-import FirebaseStorage
-import Alamofire
-import AlamofireImage
-
-class SearchPartnerViewController: UIViewController, CLLocationManagerDelegate {
-
-    @IBOutlet weak var ToggleMenuView: UIView!
-    @IBOutlet weak var ResetButton: UIButton!
-    
-    @IBOutlet weak var ToggleButton: UIButton!
-    
-    @IBOutlet weak var clearFillView: UIViewX!
-    @IBOutlet weak var Card: UIViewX!
-    @IBOutlet weak var ThumbsImageView: UIImageView!
-    @IBOutlet weak var PartnerImage: UIImageViewX!
-    
-    //let userid = Auth.auth().currentUser?.uid
-
-    var profilePic = [String]()
-    var userid : String = ""
-   
-    let locationManager = CLLocationManager()
-    var divisor: CGFloat!
-    var storageRef: StorageReference!
-    //var profileImageUrl: String!
-    var ref : DatabaseReference!
-   
-    
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        locationManager.delegate = self
-        locationManager.desiredAccuracy = kCLLocationAccuracyThreeKilometers
-        locationManager.requestAlwaysAuthorization()
-        locationManager.requestLocation()
-        
-        divisor = ((view.frame.width) / 2) / (0.61)
-        
-        fetchUsersFromFirebase()
-        // Do any additional setup after loading the view.
-    }
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
-    //========================LOCATION MANAGER FUNCTIONS=============================
-    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
-        if status == .authorizedWhenInUse{
-            locationManager.requestLocation()
-            
-        
-            }
-    }
-    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        if locations.first != nil {
-            
-            let locationValue: CLLocationCoordinate2D = (manager.location?.coordinate)!
-            
-            let currentLocation = CLLocation()
-            let locationLatitude = currentLocation.coordinate.latitude
-            let locationLongitude = currentLocation.coordinate.longitude
-            
-            print("Location : \(locations) , \(locationValue.latitude) , \(locationValue.longitude)")
-            print("locations == \(locationLatitude)\(locationLongitude)\(currentLocation.coordinate.latitude)\(currentLocation.coordinate.longitude)")
-            
-           
-            
-            
-
-        }
-    }
-    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
-        print("ERROR: \(error)")
-    }
-    
-    //==========================================================================
-    
-    @IBAction func panGestureCard(_ sender: UIPanGestureRecognizer) {
-        
-        let card = sender.view!
-        let point = sender.translation(in: view)
-        let xFromCenter = card.center.x - view.center.x
-        
-        
-        
-        let scale = min(100/abs(xFromCenter), 1)
-            
-        //100/2 = 50/0.61 = 81.9672
-        card.center = CGPoint(x: view.center.x + point.x, y: view.center.y + point.y)
-        //Affine means it preserves parellel relationships in an objext when it is rotated.
-        card.transform = CGAffineTransform(rotationAngle: xFromCenter/divisor).scaledBy(x: scale, y: scale)
-
-//        card.transform = CGAffineTransform(rotationAngle: ((view.frame.width)/2)/0.61)
-
-        if xFromCenter > 0 {
-        
-            ThumbsImageView.image = #imageLiteral(resourceName: "ThumbsUp")
-            ThumbsImageView.tintColor = UIColor.green
-            
-        }else{
-            
-            ThumbsImageView.image = #imageLiteral(resourceName: "thumbsDown-1")
-            ThumbsImageView.tintColor = UIColor.red
-            
-        }
-        
-        ThumbsImageView.alpha = abs(xFromCenter) / view.center.x
-        
-        
-        if sender.state == UIGestureRecognizerState.ended {
-        
-            if card.center.x < 75 {
-                // Move off to the left side.
-                UIView.animate(withDuration: 0.3) {
-                    card.center = CGPoint(x: card.center.x - 200.0, y: card.center.y + 75)
-                    card.alpha = 0
-
-                }
-//                UIView.animate(withDuration: 1) {
+//import Foundation
+//import UIKit
+//import AVKit
+//import MapKit
+//import Firebase
+//import FirebaseStorage
+//import Alamofire
+//import AlamofireImage
 //
-//                    self.Card.center = self.view.center
-//                    self.ThumbsImageView.alpha = 0
-//                    self.Card.alpha = 1
-//                    self.Card.transform = CGAffineTransform.identity//Restore original scale, rotation of the object.
-//                //    self.PartnerImage.alpha = 1
-//                }
-            
-                return//So that the reset code does not run
-
-            }else if card.center.x > (view.frame.width - 75) {
-                //Move off to the right side.
-                UIView.animate(withDuration: 0.3) {
-                    card.center = CGPoint(x: card.center.x + 200.0, y: card.center.y + 75)
-                    card.alpha = 0
-                }
-//                UIView.animate(withDuration: 1) {
+//class SearchPartnerViewController1: UIViewController, CLLocationManagerDelegate {
 //
-//                    self.Card.center = self.view.center
-//                    self.ThumbsImageView.alpha = 0
-//                    self.Card.alpha = 1
-//                    self.Card.transform = CGAffineTransform.identity//Restore original scale, rotation of the object.
-//                    //self.PartnerImage.alpha = 1
-//                }
-                return//So that the reset code does not run
-
-                }
-            }
-            resetCard()
-
-            
-
-
-       
-    }
-
-
-//    @IBAction func ToggleMenuPressed(_ sender: UIButton) {
+//    @IBOutlet weak var ToggleMenuView: UIView!
+//    @IBOutlet weak var ResetButton: UIButton!
 //
-//        if self.clearFillView.transform == .identity {
-//            UIView.animate(withDuration: 1, animations: {
-//                self.clearFillView.transform = CGAffineTransform(scaleX: 10, y: 10)
-//                self.ToggleMenuView.transform = CGAffineTransform(translationX: 0, y: -88)
-//                self.ToggleButton.transform = CGAffineTransform(rotationAngle: 3.14)
-//            }) { (true) in
-////                UIView.animate(withDuration: 0.5, animations: {
-////                    self.toggleShareButtons()
-////                })
+//    @IBOutlet weak var ToggleButton: UIButton!
+//
+//    @IBOutlet weak var clearFillView: UIViewX!
+//    @IBOutlet weak var Card: UIViewX!
+//    @IBOutlet weak var ThumbsImageView: UIImageView!
+//    @IBOutlet weak var PartnerImage: UIImageViewX!
+//
+//    @IBOutlet weak var emojiView: EmojiRateView!
+//    @IBOutlet weak var viewActions: UIView!
+//    @IBOutlet weak var undoButton: UIButton!
+//    @IBOutlet weak var likeButton: UIButton!
+//    @IBOutlet weak var dislikeButton: UIButton!
+//    //let userid = Auth.auth().currentUser?.uid
+//
+//    var userid : String = ""
+//
+//    let locationManager = CLLocationManager()
+//    var userLocation : CLLocationCoordinate2D?
+//    var divisor: CGFloat!
+//    var storageRef: StorageReference!
+//    //var profileImageUrl: String!
+//    var ref : DatabaseReference!
+//
+////    var currentLoadedCardsArray = [TinderCard]()
+////    var allCardsArray = [TinderCard]()
+////    var cardArray = [UIView]()
+////    var valueArray = ["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24","25","26","27","28","29","30","31","32","33","34","35","36"]
+//
+//    var currentIndex = 0
+//    var handler : Handler!
+//
+//    var tinderCard : TinderCard!
+//    var profilePic = [String]()
+//    var name = [String]()
+//
+//
+//    var currentLoadedCardsArray = [TinderCard]()
+//    var allCardsArray = [TinderCard]()
+//    var cardArray = [UIView]()
+//    var valueArray = ["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24","25","26","27","28","29","30","31","32","33","34","35","36"]
+//
+////    var Count = [Int]()
+//    var count : Int = 0
+//
+//
+//    override func viewDidLoad() {
+//        super.viewDidLoad()
+//
+//        locationManager.delegate = self
+//        locationManager.desiredAccuracy = kCLLocationAccuracyThreeKilometers
+//        locationManager.requestAlwaysAuthorization()
+//        locationManager.requestLocation()
+//        locationManager.startUpdatingLocation()
+//
+//        divisor = ((view.frame.width) / 2) / (0.61)
+//        viewActions.alpha = 0
+//        undoButton.alpha = 0
+//
+////        getImageCount()
+//        fetchImagesAndPostThem()
+//
+//
+//        // Do any additional setup after loading the view.
+//    }
+//
+//
+//    override func viewWillAppear(_ animated: Bool) {
+//        super.viewWillAppear(true)
+//        view.layoutIfNeeded()
+////        loadCardValues()
+//
+//    }
+//
+//    @objc func animateEmojiView(timer : Timer){
+//        let sender = timer.userInfo as! EmojiRateView
+//        emojiView.rateValue =  emojiView.rateValue + 0.2
+//        if sender.rateValue >= 5 {
+//            timer.invalidate()
+//            emojiView.rateValue = 2.5
+//        }
+//    }
+//    //========================LOCATION MANAGER FUNCTIONS=============================
+//    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
+//        if status == .authorizedWhenInUse{
+//            locationManager.requestLocation()
+//
+//
 //            }
-//        } else {
-//            UIView.animate(withDuration: 1, animations: {
-//                self.ToggleMenuView.transform = .identity
-//                self.ToggleButton.transform = .identity
-//                self.clearFillView.transform = .identity
-//            }) { (true) in
+//    }
 //
+//    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+////        if locations.first != nil {
+//
+//        if let location = locationManager.location?.coordinate {
+//
+//            let locationValue: CLLocationCoordinate2D = (manager.location?.coordinate)!
+//
+//            let currentLocation = CLLocation()
+//            let locationLatitude = currentLocation.coordinate.latitude
+//            let locationLongitude = currentLocation.coordinate.longitude
+//            userLocation = CLLocationCoordinate2D(latitude: location.latitude, longitude: location.longitude)
+//
+//
+//            print("Location : \(locations) , \(locationValue.latitude) , \(locationValue.longitude)")
+//            print("locations == \(locationLatitude)\(locationLongitude)\(currentLocation.coordinate.latitude)\(currentLocation.coordinate.longitude)")
+//
+//
+//
+////            Handler.Instance.observeMessagesForMale(latitude: Double(locationLatitude), longitude: Double(locationLongitude))
+//
+//        }
+//    }
+//    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
+//        print("ERROR: \(error)")
+//    }
+//
+//    //==========================================================================
+//
+//    @IBAction func panGestureCard(_ sender: UIPanGestureRecognizer) {
+////
+//////        let card = sender.view!
+//////        let point = sender.translation(in: view)
+//////        let xFromCenter = card.center.x - view.center.x
+//////
+//////
+//////
+//////        let scale = min(100/abs(xFromCenter), 1)
+//////
+//////        //100/2 = 50/0.61 = 81.9672
+//////        card.center = CGPoint(x: view.center.x + point.x, y: view.center.y + point.y)
+//////        //Affine means it preserves parellel relationships in an objext when it is rotated.
+//////        card.transform = CGAffineTransform(rotationAngle: xFromCenter/divisor).scaledBy(x: scale, y: scale)
+//////
+////////        card.transform = CGAffineTransform(rotationAngle: ((view.frame.width)/2)/0.61)
+//////
+//////        if xFromCenter > 0 {
+//////
+//////            ThumbsImageView.image = #imageLiteral(resourceName: "ThumbsUp")
+//////            ThumbsImageView.tintColor = UIColor.green
+//////
+//////        }else{
+//////
+//////            ThumbsImageView.image = #imageLiteral(resourceName: "thumbsDown-1")
+//////            ThumbsImageView.tintColor = UIColor.red
+//////
+//////        }
+//////
+//////        ThumbsImageView.alpha = abs(xFromCenter) / view.center.x
+//////
+//////
+//////        if sender.state == UIGestureRecognizerState.ended {
+//////
+//////            if card.center.x < 75 {
+//////                // Move off to the left side.
+//////                UIView.animate(withDuration: 0.3) {
+//////                    card.center = CGPoint(x: card.center.x - 200.0, y: card.center.y + 75)
+//////                    card.alpha = 0
+//////
+//////                }
+//////
+//////                return//So that the reset code does not run
+//////
+//////            }else if card.center.x > (view.frame.width - 75) {
+//////                //Move off to the right side.
+//////                UIView.animate(withDuration: 0.3) {
+//////                    card.center = CGPoint(x: card.center.x + 200.0, y: card.center.y + 75)
+//////                    card.alpha = 0
+//////                }
+//////
+//////                return//So that the reset code does not run
+//////
+//////                }
+//////            }
+//////           // resetCard()
+////
+//    }
+//
+//
+//
+//    func loadCardValues(pics: [String], names: [String]) {
+//
+//        print("allCardsArray is :: \(allCardsArray.count)")
+//        print("currentLoadedCardsArray is :: \(currentLoadedCardsArray.count)")
+//        print("profile Pic is ::;\(pics.count)")
+//        print("The Names array Count is ::\(names.count)")
+//        if pics.count > 0 {
+//
+//            let capCount = (pics.count > MAX_BUFFER_SIZE) ? MAX_BUFFER_SIZE : pics.count
+//
+//
+//
+//
+//            for (i,pic) in pics.enumerated() {
+//                //   for(i,name) in names.enumerated() {
+//
+////            for i in 1...pics.count && && i < names.count {
+//                let newCard = createTinderCard(at: i,pic: pic,name: names[i] )
+//
+//                //Checking value array.
+//               // print("The PIC IS ::  \(pic)")
+//                print("\(i): '\(pic)'")
+//
+//                allCardsArray.append(newCard)
+////                currentLoadedCardsArray.append(newCard)
+//
+////                Card.addSubview(allCardsArray[i])
+//
+//
+//                    if i < capCount {
+//                        currentLoadedCardsArray.append(newCard)
+//                        }
+//
+//                //}
+//            }
+//            print("profile Pic is ::;\(pics.count)")
+//            print("allCardsArray is :: \(allCardsArray.count)")
+//            print("currentLoadedCardsArray is :: \(currentLoadedCardsArray.count)")
+//
+//            for (i,_) in currentLoadedCardsArray.enumerated() {
+//                if i > 0 {
+//                    Card.insertSubview(currentLoadedCardsArray[i], belowSubview: currentLoadedCardsArray[i - 1])
+//                }else {
+//                    Card.addSubview(currentLoadedCardsArray[i])
+//                }
+//            }
+//            animateCardAfterSwiping()
+//            perform(#selector(loadInitialDummyAnimation), with: nil, afterDelay: 1.0)
+//        }
+//        print("THE PROFILE PIC ARRAY IS EMPTY!!!!!!!")
+//
+//    }
+//
+//    @objc  func loadInitialDummyAnimation() {
+//
+//        let dummyCard = currentLoadedCardsArray.first;
+////        let dummyCard = allCardsArray.first;
+//        dummyCard?.shakeAnimationCard()
+//        UIView.animate(withDuration: 1.0, delay: 2.0, options: .curveLinear, animations: {
+//            self.viewActions.alpha = 1.0
+//
+//        }, completion: nil)
+//        Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(self.animateEmojiView), userInfo: emojiView, repeats: true)
+//    }
+//
+//    func removeObjectAndAddNewValues() {
+//
+//        emojiView.rateValue =  2.5
+//        UIView.animate(withDuration: 0.5) {
+//            self.undoButton.alpha = 0
+//        }
+//        currentLoadedCardsArray.remove(at: 0)
+//        currentIndex = currentIndex + 1
+//        Timer.scheduledTimer(timeInterval: 1.01, target: self, selector: #selector(enableUndoButton), userInfo: currentIndex, repeats: false)
+//
+////        if (currentIndex + currentLoadedCardsArray.count) < allCardsArray.count {
+//
+//         if (currentIndex  + currentLoadedCardsArray.count) < allCardsArray.count {
+//
+//            print("currentLoadedCardsArray is :::\(currentLoadedCardsArray.count)")
+//
+//            let card = allCardsArray[currentIndex + currentLoadedCardsArray.count]
+//            var frame = card.frame
+//            frame.origin.y = CGFloat(MAX_BUFFER_SIZE * SEPERATOR_DISTANCE)
+//            card.frame = frame
+//            currentLoadedCardsArray.append(card)
+//            Card.insertSubview(allCardsArray[MAX_BUFFER_SIZE - 1], belowSubview: allCardsArray[MAX_BUFFER_SIZE - 2])
+//            print("allCardsArray is :::\(allCardsArray.count)")
+//
+//        }
+//
+//        print("The current Index is \(currentIndex)")
+//        animateCardAfterSwiping()
+//    }
+//
+//    func animateCardAfterSwiping() {
+//
+//        for (i,card) in allCardsArray.enumerated() {
+//            UIView.animate(withDuration: 0.5, animations: {
+//                if i == 0 {
+//                    card.isUserInteractionEnabled = true
+//                }
+//                var frame = card.frame
+//                frame.origin.y = CGFloat(i * SEPERATOR_DISTANCE)
+//                card.frame = frame
+//            })
+//        }
+//    }
+//
+//
+//
+//    func createTinderCard(at index: Int , pic :String, name: String) -> TinderCard {
+//        let card = TinderCard(frame: CGRect(x: 0, y: 0, width: Card.frame.size.width , height: Card.frame.size.height - 50) ,pic : pic, name: name)
+//        card.delegate = self as? TinderCardDelegate
+//        return card
+//    }
+//
+//
+////        func resetCard() {
+////
+////            UIView.animate(withDuration: 0.2) {
+////
+////                self.Card.center = self.view.center
+////              //  self.ThumbsImageView.alpha = 0
+////                self.Card.alpha = 1
+////                self.Card.transform = CGAffineTransform.identity//Restore original scale, rotation of the object.
+////                //self.PartnerImage.alpha = 1
+////
+////
+////
+////            }
+////        }
+//
+//    @IBAction func disLikeButtonAction(_ sender: Any) {
+//
+//        let card = currentLoadedCardsArray.first
+//        card?.leftClickAction()
+//
+//    }
+//
+//    @IBAction func LikeButtonAction(_ sender: Any) {
+//
+//        let card = currentLoadedCardsArray.first
+//        card?.rightClickAction()
+//        Handler.Instance.observeMessagesForMale(latitude: (userLocation?.latitude)!, longitude: (userLocation?.longitude)!)
+//    }
+//
+//    @IBAction func undoButtonAction(_ sender: Any) {
+//
+//        currentIndex =  currentIndex - 1
+//
+//        if currentLoadedCardsArray.count == MAX_BUFFER_SIZE {
+//            print("Current Loaded Cards Array \(currentLoadedCardsArray.count)")
+//            print("The array count of images from firebase is : \(self.profilePic.count)")
+//
+//            let lastCard = currentLoadedCardsArray.last
+//            lastCard?.rollBackCard()
+//            currentLoadedCardsArray.removeLast()
+//        }
+//        print("Current Index is :::\(currentIndex)")
+//        let undoCard = allCardsArray[currentIndex]
+//        undoCard.layer.removeAllAnimations()
+//        Card.addSubview(undoCard)
+//        undoCard.makeUndoAction()
+//        //resetCard()
+//        currentLoadedCardsArray.insert(undoCard, at: 0)
+//        animateCardAfterSwiping()
+//
+//        if currentIndex == 0 {
+//            UIView.animate(withDuration: 0.5) {
+//                self.undoButton.alpha = 0
+//            }
+//        }
+//
+////        currentIndex =  currentIndex - 1
+////
+////        if currentLoadedCardsArray.count > 0 {
+////            print("Current Loaded Cards Array \(currentLoadedCardsArray.count)")
+////            print("The array count of images from firebase is : \(self.profilePic.count)")
+////
+////            let lastCard = currentLoadedCardsArray.last
+////            lastCard?.rollBackCard()
+////            currentLoadedCardsArray.removeLast()
+////        }
+////        print("The Current Index is :::\(currentIndex)")
+////        let undoCard = currentLoadedCardsArray[currentIndex]
+////        undoCard.layer.removeAllAnimations()
+////        Card.addSubview(undoCard)
+////        undoCard.makeUndoAction()
+////        currentLoadedCardsArray.insert(undoCard, at: 0)
+////        animateCardAfterSwiping()
+////
+////        if currentIndex == 0 {
+////            UIView.animate(withDuration: 0.5) {
+////                self.undoButton.alpha = 0
+////            }
+////        }
+//    }
+//
+//    @objc func enableUndoButton(timer: Timer){
+//
+//        let cardIntex = timer.userInfo as! Int
+//        if (currentIndex == cardIntex) {
+//
+//            UIView.animate(withDuration: 0.5) {
+//                self.undoButton.alpha = 1.0
 //            }
 //        }
 //    }
- 
-//    func toggleShareButtons() {
-////        let alpha = CGFloat(ResetButton.alpha == 0 ? 1 : 0)
-////        ResetButton.alpha = alpha
-//        //Login.alpha = alpha
-
-//    }
-    
-    
-    @IBAction func ResetCard(_ sender: Any) {
-        resetCard()
-
-    }
-    
-    func resetCard() {
-
-        UIView.animate(withDuration: 0.2) {
-            
-            self.Card.center = self.view.center
-            self.ThumbsImageView.alpha = 0
-            self.Card.alpha = 1
-            self.Card.transform = CGAffineTransform.identity//Restore original scale, rotation of the object.
-            self.PartnerImage.alpha = 1
-            
-
-        }
-    }
-
-    func fetchUsersFromFirebase() {
-        
-        Firebase.Database.database().reference().child("users").observe(.childAdded, with: { (snapshot) in
-            
-            print("Users found : ")
-            print(snapshot)
-            
-       let snapshotValue = snapshot.value as! Dictionary<String,String>
- 
-            let pic = snapshotValue["Profile Pic "]
-            let users =  User()
-            self.profilePic.append(pic!)
-            users.profileImageURL = pic
-       
-            print("This is pic :::::: \(String(describing: pic?.description))")
-            print("This is the 1st image : \(String(describing: self.profilePic.first))")
-            
-//            let lowerBound = self.profilePic.index(self.profilePic.startIndex, offsetBy: 0)
-//            let upperBound = self.profilePic.index(self.profilePic.startIndex, offsetBy: self.profilePic.endIndex)
-           // let mySubstring = self.profilePic[lowerBound..<upperBound]
-
-          //  for indexOfProfilePic in 0..<self.profilePic.count {
-               
-//                let myString: String!
-//                myString = self.profilePic[indexOfProfilePic]
-//                print("The pic in the array we picked is : \(myString)")
-
-            
-            
-            if let actualPic = self.profilePic.first {
-              
-                guard let url = URL(string: actualPic) else {
-                    
-                    return
-                }
-                
-               // self.postImage(url: url)
-                
-                URLSession.shared.dataTask(with: url, completionHandler: { (data, response, error) in
-                    if error != nil {
-                        print("Failed while fetching images : \(error?.localizedDescription)")
-                        return
-                    } else {
-                        print("Successfully fetched images from database ")
-                        //Posting the downloaded image from firbase database onto the imageView.
-                        DispatchQueue.main.async {
-                            self.PartnerImage.layer.cornerRadius = 10
-                            self.PartnerImage.layer.masksToBounds = true
-                            self.PartnerImage.contentMode = .scaleAspectFill
-
-
-                            self.PartnerImage.image = UIImage(data: data!)
-
-
-
-                            //self.PartnerImage.image = UIImage(named: actualPic)
-
-                        }
-                    }
-
-                }).resume()
-                
-            }
-              
-            //}
-            
-        }, withCancel: nil)
-    
-
-    
-   }
-    
-//    func postImage(url : URL) {
-//        URLSession.shared.dataTask(with: url, completionHandler: { (data, response, error) in
-//            if error != nil {
-//                print("Failed while fetching images : \(error?.localizedDescription)")
-//                return
-//            } else {
-//                print("Successfully fetched images from database ")
-//                //Posting the downloaded image from firbase database onto the imageView.
-//                DispatchQueue.main.async {
-//                    self.PartnerImage.layer.cornerRadius = 10
-//                    self.PartnerImage.layer.masksToBounds = true
-//                    self.PartnerImage.contentMode = .scaleAspectFill
-//
-//
-//                    self.PartnerImage.image = UIImage(data: data!)
 //
 //
 //
-//                    //self.PartnerImage.image = UIImage(named: actualPic)
+////    func fetchImagesAndPostThem() {
+//////        var count = 0
+////        var ref = Firebase.Database.database().reference(fromURL: "https://hatedateapp-ea81a.firebaseio.com/").child("users").child("Female")
+////
+////        Firebase.Database.database().reference(fromURL: "https://hatedateapp-ea81a.firebaseio.com/").child("users").child("Female").observe(.childAdded, with: { (snapshot) in
+////
+//////
+////
+////            let snapshotValue = snapshot.value as! Dictionary<String, String>
+////            print("Users found : ")
+////  //          print("SNAPSHOT\(snapshot.childrenCount)")
+////
+////            print(snapshot)
+////            let pic = snapshotValue["Profile Pic "]
+////            let NAME = snapshotValue["Name "]
+////
+////            self.profilePic.append(pic!)
+////            self.names.append(NAME!)
+////
+////            print("The array of images from firebase is : \(self.profilePic)")
+////            print("The array of names from firebase is : \(self.names)")
+////            print("The array count of images from firebase is : \(self.profilePic.count)")
+////
+////
+////            print("This is the last pic of the array : \(pic)")
+////            print("This is the last name of the array : \(NAME)")
+////
+////
+////            ref.observeSingleEvent(of: .value) { (snap) in
+////                                print("SNAPSHOT\(snap.childrenCount)")
+////
+////                                var count = Int(snap.childrenCount)
+////                                let enumerator = snap.children
+////                                while let rest = enumerator.nextObject() as? [DataSnapshot] {
+////                                    print("REST IS \(rest.count)")
+////                                }
+////
+////                print("The Count of Images is \(count)")
+////                if self.profilePic.count == count {
+////
+////                print("The profile pic count is :::\(self.profilePic.count)")
+////
+////                self.loadCardValues(pics: self.profilePic)
+////
+////            }
+////        }
+//////            print("The profile pic count is :::\(self.profilePic.count)")
+////
+////        }, withCancel: nil)
+////
+////    }
+//
+//    func fetchImagesAndPostThem() {
+//                var ref = Firebase.Database.database().reference(fromURL: "https://hatedateapp-ea81a.firebaseio.com/").child("users").child("Female")
+//
+//                    ref.observeSingleEvent(of: .value) { (snap) in
+//                                        print("SNAP \(snap.childrenCount)")
+//
+//                        var count = Int(snap.childrenCount)
+//                        let enumerator = snap.children
+//                        while let rest = enumerator.nextObject() as? [DataSnapshot] {
+//                            print("REST IS \(rest.count)")
+//                        }
+////                        ref.observeSingleEvent(of: .childAdded) { (snapshot) in
+//                        //observeSingleEvent just runs through the child or profile pic of only the first user and not through all of them.
+//                        //Therefore we user observe which does the opposite.
+//                        ref.observe(.childAdded, with: { (snapshot) in
+//
+//
+//                            print("Users Found: \(snapshot)")
+//
+//                                        let snapshotValue = snapshot.value as! Dictionary<String, String>
+//                                        print("Users found : ")
+//                              //          print("SNAPSHOT\(snapshot.childrenCount)")
+//
+//                                        print(snapshot)
+//                                        let pic = snapshotValue["Profile Pic "]
+//                                        let NAME = snapshotValue["Name "]
+//
+//                                        self.profilePic.append(pic!)
+//                                        self.name.append(NAME!)
+//
+//                            print("The profile pic count is :::\(self.profilePic.count)")
+//                            print("The names array count is ::\(self.name.count)")
+//                            print("The Count of Images is \(count)")
+//
+//                            if self.profilePic.count == count {
+//
+//                                print("The profile pic count is :::\(self.profilePic.count)")
+//
+//                                self.loadCardValues(pics: self.profilePic, names: self.name)
+//
+//                            }
+//                        })
+//
+//
+//
+//
 //
 //                }
-//            }
+//        print("The profile pic count is :::\(self.profilePic.count)")
 //
-//        }).resume()
 //    }
-
-}
-//extension String {
-//    subscript (bounds: CountableClosedRange<Int>) -> String {
 //
-//        let start = index(startIndex, offsetBy: bounds.lowerBound)
-//        let end = index(startIndex, offsetBy: bounds.upperBound)
-//        return String(self[start...end])
+//}
+//
+//extension SearchPartnerViewController1 : TinderCardDelegate{
+//
+//    // action called when the card goes to the left.
+//    func cardGoesLeft(card: TinderCard) {
+//        removeObjectAndAddNewValues()
+//
+//    }
+//    // action called when the card goes to the right.
+//    func cardGoesRight(card: TinderCard) {
+//        removeObjectAndAddNewValues()
+//    }
+//    func currentCardStatus(card: TinderCard, distance: CGFloat) {
+//
+//        if distance == 0 {
+//            emojiView.rateValue =  2.5
+//        }else{
+//            let value = Float(min(fabs(distance/100), 1.0) * 5)
+//            let sorted = distance > 0  ? 2.5 + (value * 5) / 10  : 2.5 - (value * 5) / 10
+//            emojiView.rateValue =  sorted
+//        }
+//
 //
 //    }
 //}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//

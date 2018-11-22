@@ -15,7 +15,7 @@ class FemaleProfileViewController: UIViewController {
     
     var stringHolder: String = ""
     var femaleProfilePicImage : UIImage!
-    
+    var count : Int = 0
     override func viewDidLoad() {
         super.viewDidLoad()
          ForFemaleFirstNameTextLabel.text = stringHolder
@@ -25,6 +25,12 @@ class FemaleProfileViewController: UIViewController {
 
     }
 
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "goToSearchPartner"{
+            let destinationVC = segue.destination as! FemaleSearchPartnerViewController
+            destinationVC.firstNametextLable = stringHolder
+        }
+    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
