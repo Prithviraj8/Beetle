@@ -17,14 +17,16 @@ class User {
     var ref2 : DatabaseReference!
 
 
-    func getLoggedInUserName(firstNametextLable: String) -> String {
-        return firstNametextLable;
-    }
+//    func getLoggedInUserName(firstNametextLable: String) -> String {
+//        return firstNametextLable;
+//    }
     func save_Info_For_Male_User_who_Swipped_A_Female_User(name: String){
         let userID = Auth.auth().currentUser?.uid
         print("THE CURRENT USERS user ID is \(userID)")
 
         ref = Database.database().reference(fromURL: "https://hatedateapp-ea81a.firebaseio.com/").child("users").child("MSF").child(userID!)
+//        ref = Database.database().reference(fromURL: "https://hatedateapp-ea81a.firebaseio.com/").child("users").child("FSM").childByAutoId()
+
         ref.observeSingleEvent(of: .value, with: { (snapshot) in
             let snapshotValue = snapshot.value as? NSDictionary
             
@@ -34,7 +36,11 @@ class User {
             
             
             self.ref2 = Database.database().reference(fromURL: "https://hatedateapp-ea81a.firebaseio.com/").child("users").child("Male Swipped Female").child(userID!)
-            let usersChildRef = self.ref2.child(self.firstNametextLable)
+//            self.ref2 = Database.database().reference(fromURL: "https://hatedateapp-ea81a.firebaseio.com/").child("users").child("Male Swipped Female").childByAutoId()
+
+//            let usersChildRef = self.ref2.child(self.firstNametextLable).childByAutoId()
+
+            let usersChildRef = self.ref2.child(self.firstNametextLable).child(name).childByAutoId()
 //            usersChildRef.updateChildValues(["FNAME": name]) { (error, ref) in
 //                if error != nil {
 //                    print("ERROR WHILE SAVING information of user : \(error?.localizedDescription)")
@@ -63,6 +69,8 @@ class User {
         print("THE CURRENT USERS user ID is \(userID)")
         
         ref = Database.database().reference(fromURL: "https://hatedateapp-ea81a.firebaseio.com/").child("users").child("FSM").child(userID!)
+//        ref = Database.database().reference(fromURL: "https://hatedateapp-ea81a.firebaseio.com/").child("users").child("FSM").childByAutoId()
+
         ref.observeSingleEvent(of: .value, with: { (snapshot) in
             let snapshotValue = snapshot.value as? NSDictionary
             
@@ -71,10 +79,12 @@ class User {
             
             
             
-//            self.ref2 = Database.database().reference(fromURL: "https://hatedateapp-ea81a.firebaseio.com/").child("users").child("Female Swipped Mmale").child(userID!)
-            self.ref2 = Database.database().reference(fromURL: "https://hatedateapp-ea81a.firebaseio.com/").child("users").child("Female Swipped Mmale").child(userID!)
+            self.ref2 = Database.database().reference(fromURL: "https://hatedateapp-ea81a.firebaseio.com/").child("users").child("Female Swipped Male").child(userID!)
+//            self.ref2 = Database.database().reference(fromURL: "https://hatedateapp-ea81a.firebaseio.com/").child("users").child("Female Swipped Male").childByAutoId()
 
-            let usersChildRef = self.ref2.child(self.firstNametextLable).childByAutoId()
+//            let usersChildRef = self.ref2.child(self.firstNametextLable).childByAutoId()
+              let usersChildRef = self.ref2.child(self.firstNametextLable).child(name).childByAutoId()
+
 //            usersChildRef.updateChildValues(["FNAME": name]) { (error, ref) in
 //                if error != nil {
 //                    print("ERROR WHILE SAVING information of user : \(error?.localizedDescription)")

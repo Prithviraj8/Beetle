@@ -26,6 +26,7 @@ class SearchPartnerViewController: UIViewController {
     var currentIndex = 0
     var handler : Handler!
     var ref: DatabaseReference!
+    var ref2 : DatabaseReference!
     var tinderCard : TinderCard!
     var profilePic = [String]()
     var name = [String]()
@@ -43,6 +44,8 @@ class SearchPartnerViewController: UIViewController {
     var femaleName : String = ""
     var maleName : String = ""
     
+    var femaleNames = [String]()
+    var namesSwippedByFemales = [String]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -56,7 +59,8 @@ class SearchPartnerViewController: UIViewController {
         let userID = Auth.auth().currentUser?.uid
         print("THE CURRENT USERS user ID is \(userID)")
         user.firstNametextLable = firstNametextLable
-        user.getLoggedInUserName(firstNametextLable: firstNametextLable)
+//        user.getLoggedInUserName(firstNametextLable: firstNametextLable)
+        initiateChat()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -171,12 +175,7 @@ class SearchPartnerViewController: UIViewController {
         Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(self.animateEmojiView), userInfo: emojiView, repeats: true)
     }
     
-//    func createTinderCard(at index: Int , value :String) -> TinderCard {
-//
-//        let card = TinderCard(frame: CGRect(x: 0, y: 0, width: viewTinderBackGround.frame.size.width , height: viewTinderBackGround.frame.size.height - 50) ,value : value)
-//        card.delegate = self
-//        return card
-//    }
+
     func createTinderCard(at index: Int , pic :String, name: String) -> TinderCard {
         let card = TinderCard(frame: CGRect(x: 0, y: 0, width: viewTinderBackGround.frame.size.width , height: viewTinderBackGround.frame.size.height - 50) ,pic : pic, name: name)
         card.delegate = self
@@ -303,7 +302,6 @@ class SearchPartnerViewController: UIViewController {
                 print("Users found : ")
                 //          print("SNAPSHOT\(snapshot.childrenCount)")
                 
-                print(snapshot)
                 let pic = snapshotValue["Profile Pic "]
                 let NAME = snapshotValue["Name "]
 //                self.tinderCard.NAME = NAME!
@@ -317,9 +315,7 @@ class SearchPartnerViewController: UIViewController {
                 
                 if self.profilePic.count == count {
                     
-                    print("The profile pic count is :::\(self.profilePic.count)")
                     
-//                    self.tinderCard.NAME = self.name.first!
                     self.loadCardValues(pics: self.profilePic, names: self.name)
                     
                 }
@@ -354,22 +350,98 @@ class SearchPartnerViewController: UIViewController {
                 print("ERROR WHILE SAVING information of user : \(error?.localizedDescription)")
 
             } else {
-                print("The names of female users that the current logged in user swipped is being SAVED")
+                print("The names of female users that the current logged in user swipped are being SAVED")
              //   print("The female name swipped by the logged in user is \(self.femaleName)")
-
+                
             }
         }
+//        let usersChildRef2 = ref.child("users").child("Male Swipped Female").childByAutoId()
+//        usersChildRef2.updateChildValues(["First Name : ": firstNametextLable])
        // usersChildRef.updateChildValues(values)
     }
     
-//    func initiateChate() {
-//        ref = Database.database().reference(fromURL: "https://hatedateapp-ea81a.firebaseio.com/").child("Female Swipped Male")
-//        ref.observeSingleEvent(of: .childAdded) { (snapshot) in
-//            
-//        }
+    func initiateChat() {
+        ref = Database.database().reference(fromURL: "https://hatedateapp-ea81a.firebaseio.com/").child("users").child("Female Swipped Male")
+        print("INITIATE CHAT")
+        
+        ref.observe(.childAdded, with: { (snapshot) in
+            print("Users in Female swipped Male database are::\(snapshot) ")
+//            let snapshotValue = snapshot.value as? NSDictionary
+            
+            for name in snapshot.children {
+                self.femaleNames.append((name as AnyObject).key)
+                let childSnap = name as! DataSnapshot
+//                let finalChild = childSnap.childSnapshot(forPath: "Barbus")
+                for child in childSnap.children {
+                    let snap = child as! DataSnapshot
+                    let dict = snap.value as! [String: Any]
+                    print("The children of the female users are:  \(child)")
+                    self.namesSwippedByFemales.append((child as AnyObject).key)
+                    
+                }
+                    print("The names of the males that were swipped by the female are : \(self.namesSwippedByFemales)")
+                
+                for name in self.namesSwippedByFemales {
+                    if(self.firstNametextLable == name){
+                        print("YAYY THE HOT CHICK::\(name) LIKES YOU::\(self.firstNametextLable)")
+                    }else{
+                        print("Woopsie! The hot chick \(name) thinks you're ugly \(self.firstNametextLable)")
+                    }
+                    
+                    
+                    
+                }
+            }
+            print("The female names that swipped a male user are : \(self.femaleNames) ")
+            print(snapshot)
+            
+            
+
+        })
+    }
+
+    
+    //    func getNamesOfMaleSwippedByFemale(fname : String) {
+//        print("FNAME IS :: \(fname)")
+//        let usersChildRef = Database.database().reference(fromURL: "https://hatedateapp-ea81a.firebaseio.com/").child("users").child("Female Swipped Male").child(fname)
+//        usersChildRef.observe(.value, with: { (snapshot) in
+//            for names in snapshot.children {
+//                self.namesSwippedByFemales.append((names as AnyObject).key)
+//                print("The names are :::\(names)")
+//            }
+//            print("The names of the males that were swipped by the female are : \(self.namesSwippedByFemales)")
+//
+//        })
 //    }
-
-
+    
+//    func initiateChat() {
+//        ref = Database.database().reference(fromURL: "https://hatedateapp-ea81a.firebaseio.com/").child("users").child("Female Swipped Male")
+//        print("INITIATE CHAT")
+//        var femaleNames = [String]()
+//        var namesSwippedByFemales = [String]()
+//        ref.observe(.childAdded, with: { (snapshot) in
+//            print("Users in Female swipped Male database are::\(snapshot) ")
+//            let snapshotValue = snapshot.value as? NSDictionary
+//
+//            for name in snapshot.children {
+//                femaleNames.append((name as AnyObject).key)
+//            }
+//            print("The female names that swipped a male user are : \(femaleNames) ")
+//            for fname in femaleNames {
+//                print("FNAME is :\(fname)")
+//                //                var femaleUsersChildRef = Database.database().reference(fromURL: "https://hatedateapp-ea81a.firebaseio.com/").child("users").child("Female Swipped Male").child(fname)
+//                self.ref2 = Database.database().reference(fromURL: "https://hatedateapp-ea81a.firebaseio.com/").child("users").child("Female Swipped Male").child(fname)
+//                self.ref2.observe(.value, with: { (snap) in
+//                    for names in snap.children {
+//                        namesSwippedByFemales.append((names as AnyObject).key)
+//                        print("The names are :::\(names)")
+//                    }
+//                    print("The names of the males that were swipped by the female are : \(namesSwippedByFemales)")
+//
+//                })
+//            }
+//        })
+//    }
 }
 
 extension SearchPartnerViewController : TinderCardDelegate{
