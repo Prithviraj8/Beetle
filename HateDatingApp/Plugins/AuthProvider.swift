@@ -46,7 +46,7 @@ class AuthProvider {
         Auth.auth().createUser(withEmail: withEmail, password: password) { (user, error) in
             
             if error != nil {
-                self.handleErrors(err: error as! NSError, loginHandler: loginHandler)
+                self.handleErrors(err: error! as NSError, loginHandler: loginHandler)
             } else {
                 
                 if user?.additionalUserInfo != nil {

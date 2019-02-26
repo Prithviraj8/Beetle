@@ -13,8 +13,9 @@ import Firebase
 class MaleProfileViewController: UIViewController {
 
     @IBOutlet weak var ProfilePic: UIImageView!
-    
     @IBOutlet weak var firstNametextLable: UILabel!
+    
+    var userID = ""
     var stringHolder: String = ""
     var MaleProfilPicImage : UIImage!
     var count : Int = 0
@@ -34,6 +35,8 @@ class MaleProfileViewController: UIViewController {
             
             destinationVC.firstNametextLable = stringHolder
              destinationVC.count = count
+            //destinationVC.userID = userID
+
         }
     }
     

@@ -31,7 +31,7 @@ class profileSetUpViewController: UIViewController, UIImagePickerControllerDeleg
     var imagePicker: UIImagePickerController!
     var imageSelected = false
     var ref: DatabaseReference!
-    
+    let userID = Auth.auth().currentUser?.uid
 
     
     override func viewDidLoad() {
@@ -136,9 +136,8 @@ class profileSetUpViewController: UIViewController, UIImagePickerControllerDeleg
         storageRef = Storage.storage().reference(forURL: "gs://hatedateapp-ea81a.appspot.com").child("\(imageName).png")
 
         // let uploadData = StorageMetadata()
-
-        if let uploadData = UIImagePNGRepresentation((maleImageView?.image!)!) {
-
+        if let uploadData = UIImageJPEGRepresentation((maleImageView?.image!)!, 0.1) {
+            
             storageRef.putData(uploadData as Data, metadata: nil) { (metadata, error) in
                 if error != nil {
                     print("Error while uploading image : \(String(describing: error?.localizedDescription))")
@@ -156,8 +155,8 @@ class profileSetUpViewController: UIViewController, UIImagePickerControllerDeleg
                             return
                         }
                         let downloadURL = url?.absoluteString
-                        print("The URL of the image is :\(downloadURL)")
-                        let values = ["Name ": self.firstNameTextLabel, "Email " : self.emailTextFields, "Profile Pic " : downloadURL!, "Gender " : self.gender] as [String : AnyObject]
+                       // print("The URL of the image is :\(downloadURL)")
+                        let values = ["Name ": self.firstNameTextLabel, "Email " : self.emailTextFields, "Profile Pic " : downloadURL!, "Gender " : self.gender, "UserId " : self.userID] as [String : AnyObject]
                         self.saveMaleUserToFirebase(values: values)
                     })
 
@@ -173,11 +172,12 @@ class profileSetUpViewController: UIViewController, UIImagePickerControllerDeleg
         let imageName = NSUUID().uuidString
         var storageRef: StorageReference!
         // let data = NSData()
-        storageRef = Storage.storage().reference(forURL: "gs://hatedateapp-ea81a.appspot.com").child("\(imageName).png")
+        storageRef = Storage.storage().reference(forURL: "gs://hatedateapp-ea81a.appspot.com").child("\(imageName).jpg")
 
         // let uploadData = StorageMetadata()
 
-        if let uploadData = UIImagePNGRepresentation((femaleImageView?.image)!) {
+        if let uploadData = UIImageJPEGRepresentation((femaleImageView?.image)!, 0.1) {
+//        if let uploadData = UIImagePNGRepresentation((femaleImageView?.image)!) {
 
             storageRef.putData(uploadData as Data, metadata: nil) { (metadata, error) in
                 if error != nil {
@@ -186,7 +186,7 @@ class profileSetUpViewController: UIViewController, UIImagePickerControllerDeleg
                     print("Successfully saved images to database : \(String(describing: metadata))")
                     // let size = metadata?.size
                     //
-
+                
                     //Download URL of image
                     storageRef.downloadURL(completion: { (url, err) in
 
@@ -197,7 +197,7 @@ class profileSetUpViewController: UIViewController, UIImagePickerControllerDeleg
                         }
                         let downloadURL = url?.absoluteString
                         print("The URL of the image is :\(downloadURL)")
-                        let values = ["Name ": self.firstNameTextLabel, "Email " : self.emailTextFields, "Profile Pic " : downloadURL!, "Gender " : self.gender] as [String : AnyObject]
+                        let values = ["Name ": self.firstNameTextLabel, "Email " : self.emailTextFields, "Profile Pic " : downloadURL!, "Gender " : self.gender, "UserId " : self.userID] as [String : AnyObject]
                         self.saveFemaleUserToFirebase(values: values)
                     })
 
@@ -314,7 +314,7 @@ class profileSetUpViewController: UIViewController, UIImagePickerControllerDeleg
     
     func saveMaleUserToFirebase(values: [String: AnyObject]) {
         ref = Database.database().reference(fromURL: "https://hatedateapp-ea81a.firebaseio.com/")
-        let usersChildRef = ref.child("users").child("Male").childByAutoId()
+        let usersChildRef = ref.child("users").child("Male").child(userID!)
         
         
         usersChildRef.updateChildValues(values) { (error, ref) in
@@ -331,7 +331,7 @@ class profileSetUpViewController: UIViewController, UIImagePickerControllerDeleg
 
     func saveFemaleUserToFirebase(values: [String: AnyObject]) {
         ref = Database.database().reference(fromURL: "https://hatedateapp-ea81a.firebaseio.com/")
-        let usersChildRef = ref.child("users").child("Female").childByAutoId()
+        let usersChildRef = ref.child("users").child("Female").child(userID!)
      
 
         usersChildRef.updateChildValues(values) { (error, ref) in
@@ -358,6 +358,7 @@ class profileSetUpViewController: UIViewController, UIImagePickerControllerDeleg
                 destinationVC.count = count
                 destinationVC.stringHolder = firstNameTextLabel
                 destinationVC.MaleProfilPicImage = maleImageView?.image
+               // destinationVC.userID = userID!
               }
 
         }  else if segue.identifier == "goToFemaleProfileVC" {
@@ -365,9 +366,12 @@ class profileSetUpViewController: UIViewController, UIImagePickerControllerDeleg
             let destinationVC = segue.destination as! FemaleProfileViewController
 
             if firstNameTextLabel != nil {
+                
                 destinationVC.count = count
                 destinationVC.stringHolder = firstNameTextLabel
                 destinationVC.femaleProfilePicImage = femaleImageView?.image
+                //destinationVC.userID = userID!
+
  
             }
         }

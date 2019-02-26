@@ -9,29 +9,39 @@
 import UIKit
 import Firebase
 import FirebaseStorage
+import UserNotifications
 
 //import RealmSwift
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterDelegate {
 
     var window: UIWindow?
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-//        print(Realm.Configuration.defaultConfiguration.fileURL)
-//        do {
-//            let realm = try Realm()
-//        }catch{
-//            print("error initializing new Realm, \(error)")
-//        }
-
-        //TODO: Initialise and Configure your Firebase here:
 
         FirebaseApp.configure()
         /* We've commented the two lines below becasue they were just a testing message to see if the messages is saved in the firbase.But when we logout of the app and re run it the chat history is wiped from both the iphone and the firebase database.  */
         //        let myDatabase = Database.database().reference()
         //        myDatabase.setValue("We've got data")
+        func userNotification(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping(UNNotificationPresentationOptions) -> Void ){
+            completionHandler([.alert, .sound])
+            
+        }
+        
+        func userNotificationCenter(_center: UNUserNotificationCenter, didReceive responce: UNNotificationResponse, withCompletionHandler completionHandler: @escaping() -> Void ) {
+            if responce.notification.request.identifier == "testIdentifier" {
+                print("Handling notification with the identifier 'testIdentifier ' ")
+            }
+            completionHandler()
+        }
+        
+        UNUserNotificationCenter.current().delegate = self
+        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .badge, .sound]) { (granted, error) in
+            print("Granted \(granted)")
+        }
+        
         
         return true
     }

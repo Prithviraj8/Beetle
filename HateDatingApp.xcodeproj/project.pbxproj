@@ -25,6 +25,7 @@
 		792EC5CB213ED4F9003F592C /* Pods_HateDatingAppUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1CDABB83A909E43F109EB8DF /* Pods_HateDatingAppUITests.framework */; };
 		792EC5CC213ED4F9003F592C /* Pods_HateDatingAppUITests.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 1CDABB83A909E43F109EB8DF /* Pods_HateDatingAppUITests.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		792FEEA620E76AFA0057BD54 /* AuthProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 792FEEA520E76AFA0057BD54 /* AuthProvider.swift */; };
+		7939039721ECE84F00C5604A /* FemaleChatLogTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7939039621ECE84F00C5604A /* FemaleChatLogTableViewCell.swift */; };
 		7943099C20E4E64600FA38C3 /* MaleProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7943099A20E4E64600FA38C3 /* MaleProfileViewController.swift */; };
 		7943099D20E4E64600FA38C3 /* YourProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7943099B20E4E64600FA38C3 /* YourProfileViewController.xib */; };
 		797352A6210A04E500BB8C84 /* GenderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 797352A5210A04E500BB8C84 /* GenderViewController.swift */; };
@@ -33,6 +34,7 @@
 		797627712149A7AD004A94D8 /* CONSTANTS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 797627702149A7AD004A94D8 /* CONSTANTS.swift */; };
 		798ADDAC20E2CC8D00265A97 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 798ADDAB20E2CC8D00265A97 /* GoogleService-Info.plist */; };
 		798ADDAE20E2CE2000265A97 /* profileSetUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 798ADDAD20E2CE2000265A97 /* profileSetUpViewController.swift */; };
+		799BB23921C673DA00A921F6 /* UserCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 799BB23821C673DA00A921F6 /* UserCell.swift */; };
 		799C641220DBCCFB002D9B6E /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 799C641120DBCCFB002D9B6E /* LoginViewController.swift */; };
 		799C641420DBCD19002D9B6E /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 799C641320DBCD19002D9B6E /* SignUpViewController.swift */; };
 		799C641820DBD15A002D9B6E /* RoundButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 799C641720DBD15A002D9B6E /* RoundButton.swift */; };
@@ -75,7 +77,23 @@
 		79DF8CDD20D7FF5F009A40B0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 79DF8CDB20D7FF5F009A40B0 /* LaunchScreen.storyboard */; };
 		79DF8CE820D7FF5F009A40B0 /* HateDatingAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79DF8CE720D7FF5F009A40B0 /* HateDatingAppTests.swift */; };
 		79DF8CF320D7FF5F009A40B0 /* HateDatingAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79DF8CF220D7FF5F009A40B0 /* HateDatingAppUITests.swift */; };
+		79EC91AF21D0E63100076DFB /* UserTableFemaleTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79EC91AE21D0E63100076DFB /* UserTableFemaleTableViewController.swift */; };
+		79EC91B221D0EBFC00076DFB /* ChatViewFemaleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79EC91B021D0EBFC00076DFB /* ChatViewFemaleViewController.swift */; };
+		79EC91B321D0EBFC00076DFB /* ChatViewFemaleViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 79EC91B121D0EBFC00076DFB /* ChatViewFemaleViewController.xib */; };
+		79EFFAAD21DA07B80087674E /* ChatLogTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79EFFAAC21DA07B80087674E /* ChatLogTableViewCell.swift */; };
+		79EFFAD121DBD2750087674E /* ChatLogTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79EFFAD021DBD2740087674E /* ChatLogTableViewController.swift */; };
+		79F0785922181EFF00E8EAF0 /* names.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79F0785822181EFF00E8EAF0 /* names.swift */; };
+		79F0ECC221CA9E3D00D2808C /* ChatLogViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79F0ECC021CA9E3D00D2808C /* ChatLogViewController.swift */; };
+		79F0ECC321CA9E3D00D2808C /* ChatLogViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79F0ECC021CA9E3D00D2808C /* ChatLogViewController.swift */; };
+		79F0ECC421CA9E3D00D2808C /* ChatLogViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79F0ECC021CA9E3D00D2808C /* ChatLogViewController.swift */; };
+		79F0ECC521CA9E3D00D2808C /* ChatLogViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 79F0ECC121CA9E3D00D2808C /* ChatLogViewController.xib */; };
+		79F0ECC621CA9E3D00D2808C /* ChatLogViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 79F0ECC121CA9E3D00D2808C /* ChatLogViewController.xib */; };
+		79F0ECC721CA9E3D00D2808C /* ChatLogViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 79F0ECC121CA9E3D00D2808C /* ChatLogViewController.xib */; };
+		79F0ECD121CBD99500D2808C /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79F0ECD021CBD99500D2808C /* ChatViewController.swift */; };
+		79F0ECD321CE7BB800D2808C /* message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79F0ECD221CE7BB800D2808C /* message.swift */; };
 		79F3656D21A5B6670035132E /* TinderCardFemale.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79F3656C21A5B6670035132E /* TinderCardFemale.swift */; };
+		79F40EF821B7EA4D00F17EF2 /* UserTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79F40EF721B7EA4D00F17EF2 /* UserTableViewCell.swift */; };
+		79F40EFB21B8017D00F17EF2 /* UserTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79F40EFA21B8017D00F17EF2 /* UserTableViewController.swift */; };
 		79FD6998213C0BBA005E6DC2 /* Handler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79FD6997213C0BBA005E6DC2 /* Handler.swift */; };
 		D4991AC9BE07084010A1F828 /* Pods_HateDatingAppTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 47F49119123981CFAA45C7D4 /* Pods_HateDatingAppTests.framework */; };
 /* End PBXBuildFile section */
@@ -128,6 +146,7 @@
 		7912D6A020FCDAD900ABF4E3 /* FemaleProfileViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FemaleProfileViewController.xib; sourceTree = "<group>"; };
 		7927F4AF20F0CD1B00F35778 /* SearchPartnerViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchPartnerViewController.xib; sourceTree = "<group>"; };
 		792FEEA520E76AFA0057BD54 /* AuthProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthProvider.swift; sourceTree = "<group>"; };
+		7939039621ECE84F00C5604A /* FemaleChatLogTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FemaleChatLogTableViewCell.swift; sourceTree = "<group>"; };
 		7943099A20E4E64600FA38C3 /* MaleProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MaleProfileViewController.swift; sourceTree = "<group>"; };
 		7943099B20E4E64600FA38C3 /* YourProfileViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = YourProfileViewController.xib; sourceTree = "<group>"; };
 		797352A5210A04E500BB8C84 /* GenderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenderViewController.swift; sourceTree = "<group>"; };
@@ -136,6 +155,7 @@
 		797627702149A7AD004A94D8 /* CONSTANTS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CONSTANTS.swift; sourceTree = "<group>"; };
 		798ADDAB20E2CC8D00265A97 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		798ADDAD20E2CE2000265A97 /* profileSetUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = profileSetUpViewController.swift; sourceTree = "<group>"; };
+		799BB23821C673DA00A921F6 /* UserCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCell.swift; sourceTree = "<group>"; };
 		799C641120DBCCFB002D9B6E /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		799C641320DBCD19002D9B6E /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		799C641720DBD15A002D9B6E /* RoundButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundButton.swift; sourceTree = "<group>"; };
@@ -165,7 +185,19 @@
 		79DF8CEE20D7FF5F009A40B0 /* HateDatingAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HateDatingAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		79DF8CF220D7FF5F009A40B0 /* HateDatingAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HateDatingAppUITests.swift; sourceTree = "<group>"; };
 		79DF8CF420D7FF5F009A40B0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		79EC91AE21D0E63100076DFB /* UserTableFemaleTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserTableFemaleTableViewController.swift; sourceTree = "<group>"; };
+		79EC91B021D0EBFC00076DFB /* ChatViewFemaleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewFemaleViewController.swift; sourceTree = "<group>"; };
+		79EC91B121D0EBFC00076DFB /* ChatViewFemaleViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChatViewFemaleViewController.xib; sourceTree = "<group>"; };
+		79EFFAAC21DA07B80087674E /* ChatLogTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatLogTableViewCell.swift; sourceTree = "<group>"; };
+		79EFFAD021DBD2740087674E /* ChatLogTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatLogTableViewController.swift; sourceTree = "<group>"; };
+		79F0785822181EFF00E8EAF0 /* names.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = names.swift; sourceTree = "<group>"; };
+		79F0ECC021CA9E3D00D2808C /* ChatLogViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatLogViewController.swift; sourceTree = "<group>"; };
+		79F0ECC121CA9E3D00D2808C /* ChatLogViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChatLogViewController.xib; sourceTree = "<group>"; };
+		79F0ECD021CBD99500D2808C /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
+		79F0ECD221CE7BB800D2808C /* message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = message.swift; sourceTree = "<group>"; };
 		79F3656C21A5B6670035132E /* TinderCardFemale.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TinderCardFemale.swift; sourceTree = "<group>"; };
+		79F40EF721B7EA4D00F17EF2 /* UserTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserTableViewCell.swift; sourceTree = "<group>"; };
+		79F40EFA21B8017D00F17EF2 /* UserTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserTableViewController.swift; sourceTree = "<group>"; };
 		79FD6997213C0BBA005E6DC2 /* Handler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Handler.swift; sourceTree = "<group>"; };
 		84AFE670824B9B78D819ADF5 /* Pods_HateDatingApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HateDatingApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E009223C70EB748B5FA68CE2 /* Pods-HateDatingAppUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HateDatingAppUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-HateDatingAppUITests/Pods-HateDatingAppUITests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -233,6 +265,8 @@
 				7943099B20E4E64600FA38C3 /* YourProfileViewController.xib */,
 				7927F4AF20F0CD1B00F35778 /* SearchPartnerViewController.xib */,
 				7912D6A020FCDAD900ABF4E3 /* FemaleProfileViewController.xib */,
+				79F0ECC121CA9E3D00D2808C /* ChatLogViewController.xib */,
+				79EC91B121D0EBFC00076DFB /* ChatViewFemaleViewController.xib */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -252,6 +286,12 @@
 				797352A9210A05C000BB8C84 /* FirstNameViewController.swift */,
 				790E079B217F7E1C005E63DF /* SearchPartnerViewController1.swift */,
 				790E079D217F7E35005E63DF /* FemaleSearchPartnerViewController1.swift */,
+				79F40EFA21B8017D00F17EF2 /* UserTableViewController.swift */,
+				79EC91AE21D0E63100076DFB /* UserTableFemaleTableViewController.swift */,
+				79EFFAD021DBD2740087674E /* ChatLogTableViewController.swift */,
+				79EC91B021D0EBFC00076DFB /* ChatViewFemaleViewController.swift */,
+				79F0ECC021CA9E3D00D2808C /* ChatLogViewController.swift */,
+				79F0ECD021CBD99500D2808C /* ChatViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -306,6 +346,7 @@
 		79DF8CD120D7FF5D009A40B0 /* HateDatingApp */ = {
 			isa = PBXGroup;
 			children = (
+				79F40EF921B8015700F17EF2 /* Custom Cells */,
 				790F367521162B1B0008202E /* SwipeGesture */,
 				799E3F3A20F6927A00426ACA /* Models */,
 				792FEEA420E76AD00057BD54 /* Plugins */,
@@ -335,6 +376,19 @@
 				79DF8CF420D7FF5F009A40B0 /* Info.plist */,
 			);
 			path = HateDatingAppUITests;
+			sourceTree = "<group>";
+		};
+		79F40EF921B8015700F17EF2 /* Custom Cells */ = {
+			isa = PBXGroup;
+			children = (
+				79F40EF721B7EA4D00F17EF2 /* UserTableViewCell.swift */,
+				799BB23821C673DA00A921F6 /* UserCell.swift */,
+				79F0ECD221CE7BB800D2808C /* message.swift */,
+				79EFFAAC21DA07B80087674E /* ChatLogTableViewCell.swift */,
+				7939039621ECE84F00C5604A /* FemaleChatLogTableViewCell.swift */,
+				79F0785822181EFF00E8EAF0 /* names.swift */,
+			);
+			path = "Custom Cells";
 			sourceTree = "<group>";
 		};
 		8492A788EB12EE7D82490014 /* Pods */ = {
@@ -478,10 +532,12 @@
 				79DF8CDD20D7FF5F009A40B0 /* LaunchScreen.storyboard in Resources */,
 				7927F4B120F0CD1B00F35778 /* SearchPartnerViewController.xib in Resources */,
 				7943099D20E4E64600FA38C3 /* YourProfileViewController.xib in Resources */,
+				79F0ECC521CA9E3D00D2808C /* ChatLogViewController.xib in Resources */,
 				79DF8CDA20D7FF5F009A40B0 /* Assets.xcassets in Resources */,
 				798ADDAC20E2CC8D00265A97 /* GoogleService-Info.plist in Resources */,
 				79DF8CD820D7FF5D009A40B0 /* Main.storyboard in Resources */,
 				7912D6A220FCDAD900ABF4E3 /* FemaleProfileViewController.xib in Resources */,
+				79EC91B321D0EBFC00076DFB /* ChatViewFemaleViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -489,6 +545,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				79F0ECC621CA9E3D00D2808C /* ChatLogViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -496,6 +553,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				79F0ECC721CA9E3D00D2808C /* ChatLogViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -566,34 +624,42 @@
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/AlamofireImage/AlamofireImage.framework",
 				"${BUILT_PRODUCTS_DIR}/ChameleonFramework/ChameleonFramework.framework",
+				"${BUILT_PRODUCTS_DIR}/DACircularProgress/DACircularProgress.framework",
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
+				"${BUILT_PRODUCTS_DIR}/IDMPhotoBrowser/IDMPhotoBrowser.framework",
+				"${BUILT_PRODUCTS_DIR}/IQAudioRecorderController/IQAudioRecorderController.framework",
 				"${BUILT_PRODUCTS_DIR}/JSQMessagesViewController/JSQMessagesViewController.framework",
 				"${BUILT_PRODUCTS_DIR}/JSQSystemSoundPlayer/JSQSystemSoundPlayer.framework",
-				"${BUILT_PRODUCTS_DIR}/Realm/Realm.framework",
-				"${BUILT_PRODUCTS_DIR}/RealmSwift/RealmSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/MBProgressHUD/MBProgressHUD.framework",
+				"${BUILT_PRODUCTS_DIR}/SCSiriWaveformView/SCSiriWaveformView.framework",
 				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
 				"${BUILT_PRODUCTS_DIR}/SVProgressHUD/SVProgressHUD.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftKeychainWrapper/SwiftKeychainWrapper.framework",
 				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
+				"${BUILT_PRODUCTS_DIR}/pop/pop.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AlamofireImage.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ChameleonFramework.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DACircularProgress.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/IDMPhotoBrowser.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/IQAudioRecorderController.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/JSQMessagesViewController.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/JSQSystemSoundPlayer.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RealmSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MBProgressHUD.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SCSiriWaveformView.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SVProgressHUD.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftKeychainWrapper.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/pop.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -609,9 +675,13 @@
 			files = (
 				799C641820DBD15A002D9B6E /* RoundButton.swift in Sources */,
 				799C641220DBCCFB002D9B6E /* LoginViewController.swift in Sources */,
+				79EFFAAD21DA07B80087674E /* ChatLogTableViewCell.swift in Sources */,
 				79C72EBB20DE5B490037A9CD /* UIVisualEffectViewX.swift in Sources */,
 				79DA22A82116DC5D006E44E4 /* TinderCard.swift in Sources */,
+				799BB23921C673DA00A921F6 /* UserCell.swift in Sources */,
+				79F0ECC221CA9E3D00D2808C /* ChatLogViewController.swift in Sources */,
 				79C72EA920DE5B490037A9CD /* UIButtonX.swift in Sources */,
+				79EC91B221D0EBFC00076DFB /* ChatViewFemaleViewController.swift in Sources */,
 				797352A6210A04E500BB8C84 /* GenderViewController.swift in Sources */,
 				79C72EAF20DE5B490037A9CD /* UISliderX.swift in Sources */,
 				79C72EAC20DE5B490037A9CD /* UIViewXRadialGradient.swift in Sources */,
@@ -624,19 +694,27 @@
 				790E079E217F7E35005E63DF /* FemaleSearchPartnerViewController1.swift in Sources */,
 				79C72EB820DE5B490037A9CD /* UIViewControllerX.swift in Sources */,
 				7943099C20E4E64600FA38C3 /* MaleProfileViewController.swift in Sources */,
+				79EC91AF21D0E63100076DFB /* UserTableFemaleTableViewController.swift in Sources */,
+				7939039721ECE84F00C5604A /* FemaleChatLogTableViewCell.swift in Sources */,
 				798ADDAE20E2CE2000265A97 /* profileSetUpViewController.swift in Sources */,
 				79C72EC120DE5B490037A9CD /* UIViewAnchorPoint.swift in Sources */,
+				79F40EFB21B8017D00F17EF2 /* UserTableViewController.swift in Sources */,
+				79F0785922181EFF00E8EAF0 /* names.swift in Sources */,
 				79128DD9213AF442007806E2 /* EmojiRateView.swift in Sources */,
+				79F40EF821B7EA4D00F17EF2 /* UserTableViewCell.swift in Sources */,
 				79C72EB220DE5B490037A9CD /* UIImageViewX.swift in Sources */,
 				79F3656D21A5B6670035132E /* TinderCardFemale.swift in Sources */,
+				79F0ECD321CE7BB800D2808C /* message.swift in Sources */,
 				799C641420DBCD19002D9B6E /* SignUpViewController.swift in Sources */,
 				79C72EBE20DE5B490037A9CD /* UIViewX.swift in Sources */,
 				790A554920EA09BD00590C96 /* DateOfBirthViewController.swift in Sources */,
+				79EFFAD121DBD2750087674E /* ChatLogTableViewController.swift in Sources */,
 				79C72EC420DE5B490037A9CD /* UILabelX.swift in Sources */,
 				79C72EB520DE5B490037A9CD /* UITextFieldX.swift in Sources */,
 				79FD6998213C0BBA005E6DC2 /* Handler.swift in Sources */,
 				79DF8CD320D7FF5D009A40B0 /* AppDelegate.swift in Sources */,
 				799E3F3E20F692CE00426ACA /* User.swift in Sources */,
+				79F0ECD121CBD99500D2808C /* ChatViewController.swift in Sources */,
 				790E079C217F7E1C005E63DF /* SearchPartnerViewController1.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -650,6 +728,7 @@
 				79C72EC220DE5B490037A9CD /* UIViewAnchorPoint.swift in Sources */,
 				79C72EB620DE5B490037A9CD /* UITextFieldX.swift in Sources */,
 				79C72EAA20DE5B490037A9CD /* UIButtonX.swift in Sources */,
+				79F0ECC321CA9E3D00D2808C /* ChatLogViewController.swift in Sources */,
 				79C72EB920DE5B490037A9CD /* UIViewControllerX.swift in Sources */,
 				79C72EB320DE5B490037A9CD /* UIImageViewX.swift in Sources */,
 				79DF8CE820D7FF5F009A40B0 /* HateDatingAppTests.swift in Sources */,
@@ -669,6 +748,7 @@
 				79C72EC320DE5B490037A9CD /* UIViewAnchorPoint.swift in Sources */,
 				79C72EB720DE5B490037A9CD /* UITextFieldX.swift in Sources */,
 				79C72EAB20DE5B490037A9CD /* UIButtonX.swift in Sources */,
+				79F0ECC421CA9E3D00D2808C /* ChatLogViewController.swift in Sources */,
 				79C72EBA20DE5B490037A9CD /* UIViewControllerX.swift in Sources */,
 				79C72EB420DE5B490037A9CD /* UIImageViewX.swift in Sources */,
 				79DF8CF320D7FF5F009A40B0 /* HateDatingAppUITests.swift in Sources */,

@@ -29,4 +29,12 @@ target 'HateDatingApp' do
    pod 'SwiftKeychainWrapper'
    pod 'Alamofire'
    pod 'AlamofireImage'
+   pod 'MBProgressHUD'
+   pod 'IQAudioRecorderController'
+   #pod 'JSQMessagesViewController', '7.3.3'
+   pod 'IDMPhotoBrowser'
+
+
+
+
 end

@@ -37,10 +37,11 @@ class TinderCard: UIView{
     var ref2 : DatabaseReference!
     var user = User()
     weak var delegate: TinderCardDelegate?
+    var receiverId : String = ""
     
-    public init(frame: CGRect, pic: String, name: String) {
+    public init(frame: CGRect, pic: String, name: String,Id: String) {
         super.init(frame: frame)
-        setupView(pic: pic, name: name)
+        setupView(pic: pic, name: name,Id: Id)
         
     }
     
@@ -49,7 +50,7 @@ class TinderCard: UIView{
     }
     
     
-    func setupView(pic: String, name: String) {
+    func setupView(pic: String, name: String,Id: String) {
 
        // print("The NAME OF THE pic being viewed: \(name)")
         layer.cornerRadius = 20
@@ -60,8 +61,10 @@ class TinderCard: UIView{
         clipsToBounds = true
         isUserInteractionEnabled = false
         NAME = name
+        receiverId = Id
         originalPoint = center
-        
+        print("RECEIVER ID IS : \(receiverId)")
+
         let panGestureRecognizer = UIPanGestureRecognizer(target: self, action: #selector(self.beingDragged))
         addGestureRecognizer(panGestureRecognizer)
         
@@ -228,7 +231,7 @@ class TinderCard: UIView{
        
         print("The NAME OF THE pic being viewed: \(self.NAME)")
         
-        user.save_Info_For_Male_User_who_Swipped_A_Female_User(name: NAME)
+        user.save_Info_For_Male_User_who_Swipped_A_Female_User(name: NAME,Id : receiverId)
         
         
 //        
@@ -279,7 +282,7 @@ class TinderCard: UIView{
         print("The NAME OF THE pic being viewed: \(self.NAME)")
         
 
-        user.save_Info_For_Male_User_who_Swipped_A_Female_User(name: NAME)
+        user.save_Info_For_Male_User_who_Swipped_A_Female_User(name: NAME,Id: receiverId)
         //Saving the name of the female who was swipped by the logged in male user.
 //        ref = Database.database().reference(fromURL: "https://hatedateapp-ea81a.firebaseio.com/").child("users").child("Male Swipped Female")
 //        //let usersChildRef = ref.value(forKey: NAME)

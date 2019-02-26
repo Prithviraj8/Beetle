@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "1000"
+   LastUpgradeVersion = "0930"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "F0403B5E35B6F84FE86B2E3F8601736C"
+               BlueprintIdentifier = "B0E8BB420879A7EF113FA62D798D5B09"
                BuildableName = "Pods_HateDatingApp.framework"
                BlueprintName = "Pods-HateDatingApp"
                ReferencedContainer = "container:Pods.xcodeproj">
@@ -45,7 +45,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "F0403B5E35B6F84FE86B2E3F8601736C"
+            BlueprintIdentifier = "B0E8BB420879A7EF113FA62D798D5B09"
             BuildableName = "Pods_HateDatingApp.framework"
             BlueprintName = "Pods-HateDatingApp"
             ReferencedContainer = "container:Pods.xcodeproj">

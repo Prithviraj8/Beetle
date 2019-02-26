@@ -16,6 +16,7 @@ class FemaleProfileViewController: UIViewController {
     var stringHolder: String = ""
     var femaleProfilePicImage : UIImage!
     var count : Int = 0
+    var userID = ""
     override func viewDidLoad() {
         super.viewDidLoad()
          ForFemaleFirstNameTextLabel.text = stringHolder
@@ -29,6 +30,8 @@ class FemaleProfileViewController: UIViewController {
         if segue.identifier == "goToSearchPartner"{
             let destinationVC = segue.destination as! FemaleSearchPartnerViewController
             destinationVC.firstNametextLable = stringHolder
+//            destinationVC.userID = userID
+
         }
     }
     override func didReceiveMemoryWarning() {

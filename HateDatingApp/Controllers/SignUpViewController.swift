@@ -12,82 +12,133 @@ import Firebase
 import SVProgressHUD
 import ChameleonFramework
 
-class SignUpViewController: UIViewController {
+class SignUpViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
-    var user: [User] = [User]()
+    @IBOutlet weak var SignInPressed: UIButtonX!
+//    var user: [User] = [User]()
+    var messages = message()
    // var userUid: String! = NSUUID
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//        var ref : DatabaseReference!
-//        ref = Database.database().reference(fromURL: "https://hatedateapp-ea81a.firebaseio.com/")
-//        ref.updateChildValues(["SomeValue" : 123123])
 
         // Do any additional setup after loading the view.
+        self.emailTextField.delegate = self
+        self.passwordTextField.delegate = self
+        SignInPressed.backgroundColor = .gray
+        SignInPressed.isEnabled = false
+       setupKeyBoardObservers()
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    func setupKeyBoardObservers(){
+        
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(handleKeyboardWillChange(notification:)), name: Notification.Name.UIKeyboardWillShow, object: nil)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(handleKeyboardWillChange(notification:)), name: Notification.Name.UIKeyboardWillHide, object: nil)
+        
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(handleKeyboardWillChange(notification:)), name: Notification.Name.UIKeyboardWillChangeFrame, object: nil)
+        
     }
     
-
+    
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self, name: Notification.Name.UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.removeObserver(self, name: Notification.Name.UIKeyboardWillHide, object: nil)
+        NotificationCenter.default.removeObserver(self, name: Notification.Name.UIKeyboardWillChangeFrame, object: nil)
+        
+        
+    }
+    
+    @objc func handleKeyboardWillChange(notification: Notification) {
+        
+        guard let keyboardRect = (notification.userInfo?[UIKeyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue else{
+            return
+        }
+        
+        
+        if notification.name == Notification.Name.UIKeyboardWillShow || notification.name == Notification.Name.UIKeyboardWillChangeFrame {
+            view.frame.origin.y = -keyboardRect.height + (keyboardRect.height/2)
+            UIView.animate(withDuration: 0.5, delay: 0, options: UIViewAnimationOptions.curveEaseOut, animations: {
+                self.view.layoutIfNeeded()
+            }) { (completed) in
+                
+            }
+        }else{
+            view.frame.origin.y = 0
+            UIView.animate(withDuration: 0.5, delay: 0, options: UIViewAnimationOptions.curveEaseIn, animations: {
+                self.view.layoutIfNeeded()
+            }) { (completed) in
+                
+            }
+        }
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+            emailTextField.resignFirstResponder()
+            passwordTextField.resignFirstResponder()
+            return true
+    }
+    
+    @IBAction func passwordTextField(_ sender: Any) {
+        if (passwordTextField.text?.count)! >= 6 {
+            SignInPressed.backgroundColor = .red
+            SignInPressed.isEnabled = true
+        }
+        
+    }
+    
     @IBAction func SignInPressed(_ sender: UIButton) {
         
-//
-//        //TODO: Set up a new user on our Firbase database
-//
-//        Auth.auth().createUser(withEmail: emailTextField.text!, password: passwordTextField.text!) { (user, error) in
-//
-//            /*   This is a closure. A closure is a function with no name. Therefore when performing a Segue in a closure always remember to add a
-//             self.  before performSegue method as done below.  */
-//
-//            if (error != nil) {
-//                print(error)
-//                self.alertTheUser(title: " ", message: "Please enter email and password")
-//
-//            } else {
-//                //Success
-//                print("Registration Successful")
-//                SVProgressHUD.dismiss()
-//
-//            }
-//        }
-//
-             //  SVProgressHUD.show()
+        SVProgressHUD.show()
 
+        //TODO: Set up a new user on our Firbase database
         if emailTextField.text != "" && passwordTextField.text != "" {
-            
-            AuthProvider.Instance.signUp(withEmail: emailTextField.text!, password: passwordTextField.text!) { (message) in
+            Auth.auth().createUser(withEmail: emailTextField.text!, password: passwordTextField.text!) { (user, error) in
+
                 
-                if message != nil {
-                    self.alertTheUser(title: "Problem with creating a new user", message: message!)
-                 //   self.navigationController?.popViewController(animated: true)
+            /*   This is a closure. A closure is a function with no name. Therefore when performing a Segue in a closure always remember to add a
+             self.  before performSegue method as done below.  */
 
-                } else {
-                    print("User successfully created")
-                }
+            if (user != nil) {
+                //Success
                 
-
-            }
-            
-        } else {
-            alertTheUser(title: "Email and Password required", message: "Please Provide an email id and a password")
-           // SVProgressHUD.dismiss()
-
-        }
+                print("Registration Successful")
+              self.performSegue(withIdentifier: "segueToFirstName", sender: self)
+                SVProgressHUD.dismiss()
 
         
+            } else {
+                print("ERROR WHILE SIGNING UP IS :: \(error?.localizedDescription)")
+                if(error != nil){
+                    self.alertTheUser(title: (error?.localizedDescription)!, message: "Email eg: test@mail.com ")
+                    SVProgressHUD.dismiss()
+
+                }
+
+            }
+        }
+
+        } else{
+            self.alertTheUser(title: " Email and Password required ", message: "Please enter email and password")
+        }
         
     }
   
-    
-     func alertTheUser(title: String, message: String){
-        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        let OK = UIAlertAction(title: "OK", style: .default, handler: nil)
-        alert.addAction(OK)
-        present(alert, animated: true, completion: nil)
+    func alertTheUser(title: String, message: String){
+        let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.alert)
+        //        let OK = UIAlertAction(title: "OK", style: .default, handler: nil)
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { (action) in
+            alert.dismiss(animated: true, completion: nil)
+        }))
+        self.present(alert, animated: true, completion: nil)
         
     }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -101,6 +152,4 @@ class SignUpViewController: UIViewController {
 
         }
     }
-    
-
 }
