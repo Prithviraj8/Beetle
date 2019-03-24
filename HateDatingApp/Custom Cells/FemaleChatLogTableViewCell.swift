@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SVProgressHUD
 
 class FemaleChatLogTableViewCell: UITableViewCell {
 
@@ -14,17 +15,57 @@ class FemaleChatLogTableViewCell: UITableViewCell {
     var trailingConstraint : NSLayoutConstraint!
     var bubbleleadingConstraint : NSLayoutConstraint!
     var bubbletrailingConstraint : NSLayoutConstraint!
+    var width_Anchor: NSLayoutConstraint!
+    var height_Anchor : NSLayoutConstraint!
     
     let messageLabel = UILabel()
     let bubbleView = UIView()
     
-
     
-    var FemaleChatMessage : FemaleChatMessage! {
+    let messageImageView : UIImageView = {
+        let imageView = UIImageView()
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        imageView.layer.cornerRadius = 12
+        imageView.layer.masksToBounds = true
+        imageView.contentMode = .scaleAspectFill
+        
+        return imageView
+    }()
+    let imageURL = "https:"
+    var messages = message()
+    
+var FemaleChatMessage : FemaleChatMessage! {
         didSet {
-            bubbleView.backgroundColor = FemaleChatMessage.isIncoming ? .white : .darkGray
+            bubbleView.backgroundColor = FemaleChatMessage.isIncoming ? .white : UIColor(red: 0, green: 0.5765, blue: 0.0863, alpha: 1.0)
             messageLabel.textColor = FemaleChatMessage.isIncoming ? .black : .white
-            messageLabel.text = FemaleChatMessage.text
+            if FemaleChatMessage.text.contains(imageURL){
+                self.width_Anchor.isActive = true
+                self.height_Anchor.isActive = true
+                guard let url = URL(string: FemaleChatMessage.text) else {
+                    return
+                }
+                
+                URLSession.shared.dataTask(with: url, completionHandler: { (data, response, error) in
+                    SVProgressHUD.show()
+                    if error != nil {
+                        //                        print("Failed while fetching images : \(error?.localizedDescription)")
+                        return
+                    } else {
+                        //Posting the downloaded image from firbase database onto the imageView.
+                        DispatchQueue.main.async {
+                            SVProgressHUD.dismiss()
+                            
+                            self.messageImageView.image = UIImage(data: data!)
+                            
+                        }
+                    }
+                    
+                }).resume()
+                
+            }else{
+                messageLabel.text = FemaleChatMessage.text
+
+            }
             
             if FemaleChatMessage.isIncoming == true {
                 leadingConstraint.isActive = true
@@ -36,6 +77,8 @@ class FemaleChatLogTableViewCell: UITableViewCell {
             
         }
     }
+    
+    
     
     //    var isIncoming : Bool! {
     //        didSet {
@@ -55,42 +98,38 @@ class FemaleChatLogTableViewCell: UITableViewCell {
         bubbleView.backgroundColor = .yellow
         bubbleView.translatesAutoresizingMaskIntoConstraints = false
         bubbleView.layer.cornerRadius = 12
+       
         addSubview(bubbleView)
-        
         addSubview(messageLabel)
-        //        messageLabel.backgroundColor = .green
-        //        messageLabel.text = "MESSAGES hey how are you im okay can u kill me now hey there what hc doing??? avenger"
+        addSubview(messageImageView)
+        
         messageLabel.translatesAutoresizingMaskIntoConstraints = false
         messageLabel.numberOfLines = 0
         
         
         messageLabel.topAnchor.constraint(equalTo: topAnchor, constant : 32).isActive = true
-        //        if isIncoming == true {
-        //            messageLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 32).isActive = true
-        //            messageLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant : -32).isActive = false
-        //
-        //        }else {
-        //            messageLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant : -32).isActive = true
-        //            messageLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 32).isActive = false
-        //
-        //        }
         messageLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -32).isActive = true
         messageLabel.widthAnchor.constraint(equalToConstant: 250).isActive = true
         
         
         bubbleView.topAnchor.constraint(equalTo: messageLabel.topAnchor, constant: -16).isActive = true
-        //        bubbleleadingConstraint =  bubbleView.leadingAnchor.constraint(equalTo: messageLabel.leadingAnchor, constant: -16)
         bubbleView.leadingAnchor.constraint(equalTo: messageLabel.leadingAnchor, constant: -16).isActive = true
         bubbleView.bottomAnchor.constraint(equalTo: messageLabel.bottomAnchor, constant: 16).isActive = true
-        //        bubbletrailingConstraint = bubbleView.trailingAnchor.constraint(equalTo: messageLabel.trailingAnchor, constant: 16)
         bubbleView.trailingAnchor.constraint(equalTo: messageLabel.trailingAnchor, constant: 16).isActive = true
         //        print("IS INCOMING \(isIncoming)")
         
+        
+        width_Anchor =  bubbleView.widthAnchor.constraint(equalToConstant: 250)
+        height_Anchor = bubbleView.heightAnchor.constraint(equalToConstant: 300)
+        
+        messageImageView.topAnchor.constraint(equalTo: bubbleView.topAnchor).isActive = true
+        messageImageView.leftAnchor.constraint(equalTo: bubbleView.leftAnchor).isActive = true
+        messageImageView.widthAnchor.constraint(equalTo: bubbleView.widthAnchor).isActive = true
+        messageImageView.heightAnchor.constraint(equalTo: bubbleView.heightAnchor).isActive = true
+        
         leadingConstraint = messageLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 32)
-        //                leadingConstraint.isActive = false
         trailingConstraint = messageLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant : -32)
         
-        //        trailingConstraint.isActive = true
     }
     
     

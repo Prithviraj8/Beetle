@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "B0E8BB420879A7EF113FA62D798D5B09"
+               BlueprintIdentifier = "C9580483DB68E7597617C2B014699FA2"
                BuildableName = "Pods_HateDatingApp.framework"
                BlueprintName = "Pods-HateDatingApp"
                ReferencedContainer = "container:Pods.xcodeproj">
@@ -45,7 +45,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "B0E8BB420879A7EF113FA62D798D5B09"
+            BlueprintIdentifier = "C9580483DB68E7597617C2B014699FA2"
             BuildableName = "Pods_HateDatingApp.framework"
             BlueprintName = "Pods-HateDatingApp"
             ReferencedContainer = "container:Pods.xcodeproj">

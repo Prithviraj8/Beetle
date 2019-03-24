@@ -35,7 +35,7 @@ class MaleProfileViewController: UIViewController {
             
             destinationVC.firstNametextLable = stringHolder
              destinationVC.count = count
-            //destinationVC.userID = userID
+            destinationVC.userID = userID
 
         }
     }

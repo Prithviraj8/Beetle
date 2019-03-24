@@ -16,13 +16,13 @@ class User {
     var ref : DatabaseReference!
     var ref2 : DatabaseReference!
     var recevierID = message()
-    
+    var id : String = ""
 
     func save_Info_For_Male_User_who_Swipped_A_Female_User(name: String,Id: String){
         let userID = Auth.auth().currentUser?.uid
         print("THE CURRENT USERS user ID is \(userID)")
 
-        ref = Database.database().reference(fromURL: "https://hatedateapp-ea81a.firebaseio.com/").child("users").child("MSF").child(userID!)
+        ref = Database.database().reference(fromURL: "https://beetle-5b79a.firebaseio.com/").child("users").child("MSF").child(userID!)
 //        ref = Database.database().reference(fromURL: "https://hatedateapp-ea81a.firebaseio.com/").child("users").child("FSM").childByAutoId()
 
         ref.observeSingleEvent(of: .value, with: { (snapshot) in
@@ -33,7 +33,7 @@ class User {
             
             
             
-            self.ref2 = Database.database().reference(fromURL: "https://hatedateapp-ea81a.firebaseio.com/").child("users").child("Male Swipped Female").child(userID!)
+            self.ref2 = Database.database().reference(fromURL: "https://beetle-5b79a.firebaseio.com/").child("users").child("Male Swipped Female").child(userID!)
 //            self.ref2 = Database.database().reference(fromURL: "https://hatedateapp-ea81a.firebaseio.com/").child("users").child("Male Swipped Female").childByAutoId()
 
             let usersChildRef = self.ref2.child(self.firstNametextLable).child(Id).child(name).childByAutoId()
@@ -59,7 +59,7 @@ class User {
         let messages = message()
         print("THE CURRENT USERS user ID is \(userID)")
         messages.sender = userID!
-        ref = Database.database().reference(fromURL: "https://hatedateapp-ea81a.firebaseio.com/").child("users").child("FSM").child(userID!)
+        ref = Database.database().reference(fromURL: "https://beetle-5b79a.firebaseio.com/").child("users").child("FSM").child(userID!)
 //        ref = Database.database().reference(fromURL: "https://hatedateapp-ea81a.firebaseio.com/").child("users").child("FSM").childByAutoId()
 
         ref.observeSingleEvent(of: .value, with: { (snapshot) in
@@ -70,7 +70,7 @@ class User {
             
             
             
-            self.ref2 = Database.database().reference(fromURL: "https://hatedateapp-ea81a.firebaseio.com/").child("users").child("Female Swipped Male").child(userID!)
+            self.ref2 = Database.database().reference(fromURL: "https://beetle-5b79a.firebaseio.com/").child("users").child("Female Swipped Male").child(userID!)
 //            self.ref2 = Database.database().reference(fromURL: "https://hatedateapp-ea81a.firebaseio.com/").child("users").child("Female Swipped Male").childByAutoId()
 
 //            let usersChildRef = self.ref2.child(self.firstNametextLable).childByAutoId()

@@ -10,15 +10,25 @@ import Foundation
 
 class message {
 //    let userID = Auth.auth().currentUser?.uid
-    var femaleIds = [String]()
-    var maleIDs = [String]()
+//    var femaleIds = [String]()
+    var IDS = [String]()
     var messageBody = ""
     var sender :String = ""
     var receiverID : String!
     var timeStamp : Double = 0.0
     var sentMessage = ""
     var finalMatch =  [String]()
-
+    var imageURL : String!
     var count : Int!
-
+    var imageHeight : NSNumber!
+    var imageWidth : NSNumber!
+    var backButtonPressed : Int!
+    var currentUserName: String!
+    var femaleName : String!
+    var femaleId : String!
+    var userID : String!
+    var profilePicURL = [String]()
+    var gender : String!
+    var age : Int!
+    var badgeCount : Int = 0
 }

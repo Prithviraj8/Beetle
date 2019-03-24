@@ -30,7 +30,7 @@ class FemaleProfileViewController: UIViewController {
         if segue.identifier == "goToSearchPartner"{
             let destinationVC = segue.destination as! FemaleSearchPartnerViewController
             destinationVC.firstNametextLable = stringHolder
-//            destinationVC.userID = userID
+            destinationVC.userID = userID
 
         }
     }

@@ -33,7 +33,10 @@ target 'HateDatingApp' do
    pod 'IQAudioRecorderController'
    #pod 'JSQMessagesViewController', '7.3.3'
    pod 'IDMPhotoBrowser'
-
+#pod 'gooey-cell', '~> 1.0'
+  pod 'CBStoreHouseRefreshControl'
+#pod 'PullToMakeSoup', '~> 2.0'
+ pod 'GoogleSignIn'
 
 
 

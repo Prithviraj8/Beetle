@@ -15,13 +15,11 @@ import Firebase
 class UserTableViewController: UIViewController, UITextFieldDelegate, UITableViewDelegate, UITableViewDataSource {
     
     
-    
-    @IBOutlet weak var headerView: UIView!
-    @IBOutlet weak var profilePic: UIImageView!
-    @IBOutlet weak var segmentedControl: UISegmentedControl!
-    @IBOutlet weak var fullName: UILabel!
+ 
     @IBOutlet weak var matchesTableView: UITableView!
     
+    
+    var profilePicURL = [String]()
     var IDs = [String]()
     let searchController = UISearchController(searchResultsController: nil)
     var firstNametextLable : String = ""
@@ -44,7 +42,8 @@ class UserTableViewController: UIViewController, UITextFieldDelegate, UITableVie
         searchController.dimsBackgroundDuringPresentation = false
         definesPresentationContext = true
         matchesTableView.register(UserCell.self, forCellReuseIdentifier: "Cell")
-//        getNames()
+    
+        
     }
 
      func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -60,8 +59,82 @@ class UserTableViewController: UIViewController, UITextFieldDelegate, UITableVie
     
         
         let name = femaleNames[indexPath.row]
-        cell.textLabel?.text = name
+        let profilePic = profilePicURL[indexPath.row]
+        let id = IDs[indexPath.row]
+
+        let badgeCountRef = Database.database().reference(fromURL: "https://beetle-5b79a.firebaseio.com/").child("users").child("Match").child("Male").child(userID!).child(firstNametextLable).child(id)
+        badgeCountRef.observe(.value) { (snap) in
+            if let snapshotValue = snap.value as? NSDictionary{
+                if let badge = snapshotValue["Badge added "] as? String {
+                    print("CELL ALREADY GLOWN")
+            }else{
+                    if name == cell.textLabel?.text {
+                        
+                        UIView.animate(withDuration: 2, animations: {
+                            badgeCountRef.updateChildValues(["Badge added ": "True"])
+                    
+                            cell.backgroundColor = .gray
+                            }) { (true) in
+                                    UIView.animate(withDuration: 1, animations: {
+                                        cell.backgroundColor = .white
+                                    })
+                        }
+                    }
+                }
+            }
+        }
         
+        
+        
+        
+        if let url = URL(string: profilePic){
+        
+        URLSession.shared.dataTask(with: url, completionHandler: { (data, response, error) in
+            if error != nil {
+                print("Failed while fetching images : \(error?.localizedDescription)")
+                return
+            }else {
+                DispatchQueue.main.async {
+                    cell.profileImageView.contentMode = .scaleAspectFill
+                    cell.profileImageView.image = UIImage(data: data!)
+                }
+            }
+
+        }).resume()
+            
+            
+            var ReceivedMessageTime = [Date]()
+            var SentMessageTime = [Date]()
+
+            let ref = Database.database().reference(fromURL: "https://beetle-5b79a.firebaseio.com/").child("users").child("Match").child("Male").child((Auth.auth().currentUser?.uid)!).child(firstNametextLable).child(id).child(name).child("Messages")
+                ref.observe(.childAdded) { (snapshot) in
+                    
+                    let snapshotValue = snapshot.value as! NSDictionary
+                    
+                    if let ReceivedTimeStamp = snapshotValue["Time Stamp Received "] as? Double {
+
+                            let ReceivedTimeStampDate = Date(timeIntervalSince1970: ReceivedTimeStamp )
+                            ReceivedMessageTime.append(ReceivedTimeStampDate)
+        
+                            let dateFormatter = DateFormatter()
+                            dateFormatter.dateFormat = "hh:mm:ss a"
+                            
+                            cell.timeLabel.text = dateFormatter.string(from: ReceivedMessageTime.last!)
+                        
+                    
+                    }else if let SentTimeStamp = snapshotValue["Time Stamp "] as? Double {
+                            let dateFormatter = DateFormatter()
+                            dateFormatter.dateFormat = "hh:mm:ss a"
+                            let sentTimeStampDate = Date(timeIntervalSince1970: SentTimeStamp)
+                            SentMessageTime.append(sentTimeStampDate)
+                            cell.timeLabel.text = dateFormatter.string(from: SentMessageTime.last!)
+
+                        }
+                }
+            
+            
+        cell.textLabel?.text = name
+    }
        
         return cell
     }
@@ -88,8 +161,18 @@ class UserTableViewController: UIViewController, UITextFieldDelegate, UITableVie
                 VC.firstNametextLable = firstNametextLable
                 VC.femaleName = femaleName
                 VC.femaleId = Id
+                VC.femaleNames = femaleNames
+                VC.IDs = IDs
+                VC.profilePicURL = profilePicURL
             }
         }
+        
+        if segue.identifier == "goBackToMaleSearch" {
+            let VC = segue.destination as! SearchPartnerViewController
+            VC.firstNametextLable = firstNametextLable
+            VC.IDs = IDs
+        }
+        
     }
     /*
      Override to support conditional editing of the table view.

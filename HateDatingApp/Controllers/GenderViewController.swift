@@ -14,6 +14,9 @@ class GenderViewController: UIViewController {
     var emailTextField : String = ""
     var firstNameLabelText : String = ""
     var gender : String = ""
+    var passwordTextField : String = ""
+    var age : Int!
+    var userID : String = ""
     
     @IBOutlet weak var womanButton: UIButtonX!
     @IBOutlet weak var manButton: UIButtonX!
@@ -22,6 +25,7 @@ class GenderViewController: UIViewController {
         super.viewDidLoad()
 
         addGenderToDatabase()
+        print("GOID \(userID)")
         // Do any additional setup after loading the view.
     }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -31,6 +35,7 @@ class GenderViewController: UIViewController {
             destinationVC.firstNameTextLabel = firstNameLabelText
             destinationVC.emailTextFields = emailTextField
             destinationVC.gender = "Male"
+            destinationVC.age = age
             
         } else if segue.identifier == "goToFemaleProfileVC" {
             let destinationVC = segue.destination as! profileSetUpViewController
@@ -38,6 +43,10 @@ class GenderViewController: UIViewController {
             destinationVC.firstNameTextLabel = firstNameLabelText
             destinationVC.emailTextFields = emailTextField
             destinationVC.gender = "Female"
+            destinationVC.passwordTextField = passwordTextField
+            destinationVC.age = age
+            destinationVC.userID = userID
+        
         }
     }
 

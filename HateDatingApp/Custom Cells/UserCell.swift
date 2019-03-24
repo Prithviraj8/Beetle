@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import Firebase
+
 class UserCell: UITableViewCell {
     
     var messages : message!
@@ -16,20 +18,22 @@ class UserCell: UITableViewCell {
         textLabel?.frame = CGRect(x: 64, y: (textLabel?.frame.origin.y)! - 2, width: (textLabel?.frame.width)!, height: (textLabel?.frame.height)!)
         
         detailTextLabel?.frame = CGRect(x: 64, y: (detailTextLabel?.frame.origin.y)! + 2, width: (detailTextLabel?.frame.width)!, height: (detailTextLabel?.frame.height)!)
-       
         
-        let timeStamp = Date().timeIntervalSince1970
-//        let timeStamp = messages.timeStamp
-        let timeStampDate = Date(timeIntervalSince1970: timeStamp)
-//        let timeStampDate = Date(timeIntervalSinceNow: timeStamp)
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "hh:mm:ss a"
-        timeLabel.text = dateFormatter.string(from: timeStampDate)
+                let timeStamp = Date().timeIntervalSince1970
+        //        let timeStamp = messages.timeStamp
+                let timeStampDate = Date(timeIntervalSince1970: timeStamp)
+        //        let timeStampDate = Date(timeIntervalSinceNow: timeStamp)
+                let dateFormatter = DateFormatter()
+//                dateFormatter.dateFormat = "hh:mm:ss a"
+ 
+        
+
+//        timeLabel.text = dateFormatter.string(from: timeStampDate)
+        
     }
     
     let timeLabel : UILabel = {
         let label = UILabel()
-        label.text = "HH:MM:SS"
         label.font = UIFont.systemFont(ofSize: 12)
         label.textColor = UIColor.darkGray
         label.translatesAutoresizingMaskIntoConstraints = false

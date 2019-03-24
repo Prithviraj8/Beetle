@@ -23,9 +23,12 @@ class FemaleSearchPartnerViewController: UIViewController {
     @IBOutlet weak var viewActions: UIView!
     @IBOutlet weak var dropMenuView: UIView!
     @IBOutlet weak var trailingConstraint: NSLayoutConstraint!
+    @IBOutlet weak var dropMenuButton: BadgeButton!
     
+    
+    var IDs = [String]()
     var profilePicOfLoggedInUser : String = ""
-    var ID : String = ""
+//    var ID : String = ""
 //    var userid : String!
     var userID = Auth.auth().currentUser?.uid
     var maleNamesMatched = [String]()
@@ -48,8 +51,7 @@ class FemaleSearchPartnerViewController: UIViewController {
     var currentLoadedCardsArray = [TinderCardFemale]()
     var allCardsArray = [TinderCardFemale]()
     var cardArray = [UIView]()
-    var valueArray = ["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24","25","26","27","28","29","30","31","32","33","34","35","36"]
-    
+    var notification = NotificationPublisher()
     var count : Int = 0
     var maleNames = [String]()
     var user = User()
@@ -59,22 +61,37 @@ class FemaleSearchPartnerViewController: UIViewController {
         viewActions.alpha = 0
         buttonUndo.alpha = 0
         fetchImagesAndPostThem()
-        if UUID(uuidString: ID) != nil {
-            print("USER ID is valid \(ID) ")
-        }else{
-            print("NOT VALID ")
-        }
         femaleSwippedMale(values: ["Name ": firstNametextLable as AnyObject])
-//        user.firstNametextLable = firstNametextLable
-        print("FIRST NAME is\(firstNametextLable) & USER ID IS \(ID)")
+        print("FIRST NAME is\(firstNametextLable) & USER ID IS \(userID)")
         initiateChat()
-        
+       
+        messages.userID = userID
+        messages.currentUserName = firstNametextLable
+        messages.gender = "Female"
+        dropMenuButton.setImage(UIImage(named: "menu")?.withRenderingMode(.alwaysTemplate), for: .normal)
+        dropMenuButton.badgeEdgeInsets = UIEdgeInsets(top: 20, left: 0, bottom: 0, right: 15)
+
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         view.layoutIfNeeded()
         //loadCardValues()
+    }
+    
+    @IBAction func logoutPressed(_ sender: Any) {
+        
+        let firebaseAuth = Auth.auth()
+        do {
+            try firebaseAuth.signOut()
+        } catch let signOutError as NSError {
+            print ("Error signing out: %@", signOutError)
+        }
+        
+        let storyBoard = UIStoryboard(name: "Main", bundle: nil )
+        let initialVC = storyBoard.instantiateViewController(withIdentifier: "ViewController")
+        self.present(initialVC, animated: true, completion: nil)
+        
     }
     
     @objc func animateEmojiView(timer : Timer){
@@ -265,7 +282,7 @@ class FemaleSearchPartnerViewController: UIViewController {
     
 //Fetching images and other info from firebase Database
     func fetchImagesAndPostThem() {
-        var ref = Firebase.Database.database().reference(fromURL: "https://hatedateapp-ea81a.firebaseio.com/").child("users").child("Male")
+        var ref = Firebase.Database.database().reference(fromURL: "https://beetle-5b79a.firebaseio.com/").child("users").child("Male")
         
         ref.observeSingleEvent(of: .value) { (snap) in
             print("SNAP \(snap.childrenCount)")
@@ -273,26 +290,21 @@ class FemaleSearchPartnerViewController: UIViewController {
             var count = Int(snap.childrenCount)
             let enumerator = snap.children
             while let rest = enumerator.nextObject() as? [DataSnapshot] {
-                print("REST IS \(rest.count)")
             }
             //   ref.observeSingleEvent(of: .childAdded) { (snapshot) in
             //observeSingleEvent just runs through the child or profile pic of only the first user and not through all of them.
             //Therefore we user observe which does the opposite.
             ref.observe(.childAdded, with: { (snapshot) in
                 
-                print("RECEIVER ID IS : \(snapshot.key)")
-                print("Users Found: \(snapshot)")
                 
-                let snapshotValue = snapshot.value as! Dictionary<String, String>
-                print("Users found : ")
+                let snapshotValue = snapshot.value as! NSDictionary
                 
-                let pic = snapshotValue["Profile Pic "]
-                let NAME = snapshotValue["Name "]
-                let receiverId = snapshotValue["UserId "]
+                let pic = snapshotValue["Profile Pic "] as? String
+                let NAME = snapshotValue["Name "] as? String
+                let receiverId = snapshotValue["UserId "] as? String
                 self.receiverIds.append(receiverId!)
                 self.messages.receiverID = receiverId
                 
-                print("The NAME is :\(NAME)")
                 self.profilePic.append(pic!)
                 self.name.append(NAME!)
                 
@@ -311,23 +323,16 @@ class FemaleSearchPartnerViewController: UIViewController {
         
     }
     func femaleSwippedMale(values: [String: AnyObject]) {
-        ref = Database.database().reference(fromURL: "https://hatedateapp-ea81a.firebaseio.com/")
+        ref = Database.database().reference(fromURL: "https://beetle-5b79a.firebaseio.com/")
         let usersChildRef = ref.child("users").child("FSM").child(userID!)
       
         print("The user ID is : \(String(describing: userID))")
-        usersChildRef.updateChildValues(values) { (error, ref) in
-            if error != nil {
-                print("ERROR WHILE SAVING information of user : \(error?.localizedDescription)")
-                
-            } else {
-                print("The names of female users that the current logged in user swipped is being SAVED")
-                
-            }
-        }
+        usersChildRef.updateChildValues(values)
+
     }
     
     func initiateChat() {
-        ref = Database.database().reference(fromURL: "https://hatedateapp-ea81a.firebaseio.com/").child("users").child("Male Swipped Female")
+        ref = Database.database().reference(fromURL: "https://beetle-5b79a.firebaseio.com/").child("users").child("Male Swipped Female")
         print("INITIATE CHAT")
         
         ref.observe(.childAdded, with: { (snapshot) in
@@ -336,8 +341,8 @@ class FemaleSearchPartnerViewController: UIViewController {
             for name in snapshot.children {
                 self.maleNames.append((name as AnyObject).key)
                 let childSnap = name as! DataSnapshot
-                print("The male names are \(self.maleNames)")
-                print("KEYY IS : \(childSnap.key)")
+//                print("The male names are \(self.maleNames)")
+//                print("KEYY IS : \(childSnap.key)")
                 for females in childSnap.children {
                     let snap = females as! DataSnapshot
 //                    print("The names of the females that this male-- \(name)  has liked are \(females)")
@@ -351,7 +356,6 @@ class FemaleSearchPartnerViewController: UIViewController {
 //                        print("YAYY THE HOT GUY::\(name) LIKES YOU::\(self.firstNametextLable)")
 
                         self.checkMatch(MaleId: snapshot.key, MaleName: childSnap.key)
-                        print("THE MALE ID is \(snapshot.key)")
                         break;
                         
                     }
@@ -361,49 +365,59 @@ class FemaleSearchPartnerViewController: UIViewController {
                 }
                 
             }
-            print("The names of the males that were swipped by the female are : \(self.namesSwippedByMales)")
         })
     }
 
     func checkMatch(MaleId: String,MaleName : String) {
-        ref2 = Database.database().reference(fromURL: "https://hatedateapp-ea81a.firebaseio.com/").child("users").child("Female Swipped Male").child(userID!)
+        ref2 = Database.database().reference(fromURL: "https://beetle-5b79a.firebaseio.com/").child("users").child("Female Swipped Male").child(userID!)
         var femaleNames = [String]()
         
 
         ref2.observe(.childAdded) { (snapshot) in
             for maleId in snapshot.children {
-                print("Female Name IN MSF \(snapshot.key)")
 //                if snapshot.key == self.firstNametextLable {
                     let childSnap = maleId as! DataSnapshot
-                    print("THE MID is \(childSnap.key)")
-                
                 if (maleId as AnyObject).key == MaleId {
-
-                        self.matchFound(MaleId: MaleId, MaleName: MaleName)
-                        print("The male Id matched is \(MaleId)")
+                    
+                    let ref = Database.database().reference(fromURL: "https://beetle-5b79a.firebaseio.com/").child("users").child("Male").child(MaleId)
+                    ref.observeSingleEvent(of: .value) { (snap) in
+                        let snapshotValue = snap.value as! NSDictionary
+                        let profilePicURl = snapshotValue["Profile Pic "]
+                        
+                        self.matchFound(MaleId: MaleId, MaleName: MaleName, pic: profilePicURl as! String)
+                        
+                    }
                     }
 //                }
             }
         }
     }
 
-    func matchFound(MaleId: String,MaleName : String) {
-        
-        ref2 = Database.database().reference(fromURL: "https://hatedateapp-ea81a.firebaseio.com/").child("users")
-        //Checking if a match is already found
-        let updateChildRef2 = ref2.child("Match").child("Female").child(firstNametextLable)
-        let updateChildRef3 = self.ref2.child("Match").child("Female").child(userID!).child(self.firstNametextLable).child(MaleId).child(MaleName)
-        updateChildRef3.updateChildValues(["MESSAGES " : "Messages","Name ": MaleName])
-        print("MNAME IS \(MaleName)")
-//
-//        messages.femaleIds.append(FemaleId)
-//        self.femaleIdsMatched.append(FemaleId)
-//        self.femaleNamesMatched.append(FemaleName)
-//        self.messages.finalMatch.append(FemaleName)
-        messages.maleIDs.append(MaleId)
+    func matchFound(MaleId: String,MaleName : String,pic: String) {
+
+        messages.profilePicURL.append(pic)
+        messages.IDS.append(MaleId)
         self.maleNamesMatched.append(MaleId)
         self.maleNamesMatched.append(MaleName)
         self.messages.finalMatch.append(MaleName)
+        
+        
+        let badgeCountRef = Database.database().reference(fromURL: "https://beetle-5b79a.firebaseio.com/").child("users").child("Match").child("Female").child(userID!).child(firstNametextLable).child(MaleId)
+        badgeCountRef.updateChildValues(["Badge ": 1])
+        badgeCountRef.observe(.value) { (snapshot) in
+            let snapshotValue = snapshot.value as? NSDictionary
+            if  let badgeAdded = snapshotValue!["Badge added "] as? String {
+                print("BADGE WAS ADDED PREVIOUSLY")
+            }else{
+                self.messages.badgeCount = self.messages.badgeCount + 1
+                self.dropMenuButton.badge = self.messages.badgeCount
+                print("BADGE COUNT IS \(self.messages.badgeCount)")
+                self.notification.sendNotification(title: "Match found", subtitle: "You have a new match", body: "You have been matched with \(MaleName)", badge: 1, delayInterval: 1)
+
+            }
+            
+            
+        }
         
     }
 
@@ -413,9 +427,17 @@ class FemaleSearchPartnerViewController: UIViewController {
         if segue.identifier == "goToChats" {
             let destinationVC = segue.destination as! UserTableFemaleTableViewController
             destinationVC.firstNametextLable = self.firstNametextLable
-            destinationVC.Ids = messages.maleIDs
+            destinationVC.Ids = messages.IDS
             destinationVC.maleNames = messages.finalMatch
+            destinationVC.profilePicURL = messages.profilePicURL
         }
+        
+        if segue.identifier == "goToSettings" {
+            let destinationVC = segue.destination as! SettingsViewController
+            destinationVC.firstNametextLable = firstNametextLable
+            destinationVC.gender = "Female"
+        }
+        
     }
 
     func alertTheUser(title: String, message: String){

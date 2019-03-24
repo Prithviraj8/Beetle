@@ -63,7 +63,6 @@ class TinderCard: UIView{
         NAME = name
         receiverId = Id
         originalPoint = center
-        print("RECEIVER ID IS : \(receiverId)")
 
         let panGestureRecognizer = UIPanGestureRecognizer(target: self, action: #selector(self.beingDragged))
         addGestureRecognizer(panGestureRecognizer)
@@ -233,15 +232,7 @@ class TinderCard: UIView{
         
         user.save_Info_For_Male_User_who_Swipped_A_Female_User(name: NAME,Id : receiverId)
         
-        
-//        
-//        ref = Database.database().reference(fromURL: "https://hatedateapp-ea81a.firebaseio.com/").child("Female Swipped Male")
-//        ref.observeSingleEvent(of: .value) { (snapshot) in
-//            //        let snapshotValue = snapshot.value as! Dictionary<String, String>
-//            print("The female users that were LIKED by the \(snapshot)")
-//            
-//        }
-//    
+
         
     }
     

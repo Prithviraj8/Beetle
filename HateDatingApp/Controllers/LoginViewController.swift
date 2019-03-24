@@ -10,18 +10,44 @@ import UIKit
 //import RealmSwift
 import Firebase
 import SVProgressHUD
+import AuthenticationServices
+import GoogleSignIn
 
-
-class LoginViewController: UIViewController {
+class LoginViewController: UIViewController, UITextFieldDelegate, GIDSignInDelegate, GIDSignInUIDelegate {
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
-    
+    @IBOutlet weak var image: UIImageView!
+    @IBOutlet weak var login: UIButtonX!
+    @IBOutlet weak var GoogleSignInButton: GIDSignInButton!
+    var SignInInfo = SingInInfo()
     let user = User()
     override func viewDidLoad() {
         super.viewDidLoad()
         
         // Do any additional setup after loading the view.
         setupKeyBoardObservers()
+        self.emailTextField.delegate = self
+        self.passwordTextField.delegate = self
+        login.isEnabled = false
+        emailTextField.attributedPlaceholder = NSAttributedString(string: "Email",
+                                                                  attributes: [NSAttributedString.Key.foregroundColor: UIColor.white])
+
+        passwordTextField.attributedPlaceholder = NSAttributedString(string: "Password",
+                                                                     attributes: [NSAttributedString.Key.foregroundColor: UIColor.white])
+//        image.translatesAutoresizingMaskIntoConstraints = false
+//        image.topAnchor.constraint(equalTo: self.view.topAnchor).isActive = true
+//        image.bottomAnchor.constraint(equalTo: self.view.bottomAnchor).isActive = true
+//        image.leftAnchor.constraint(equalTo: self.view.leftAnchor).isActive = true
+//        image.rightAnchor.constraint(equalTo: self.view.rightAnchor).isActive = true
+//
+        
+        GIDSignIn.sharedInstance()?.uiDelegate = self
+        GIDSignIn.sharedInstance()?.delegate = self
+        GIDSignIn.sharedInstance().clientID = "620661805649-jthc2n6je1rid5f85g17iko2cq58in1s.apps.googleusercontent.com"
+        GoogleSignInButton.layer.cornerRadius = 15
+        GoogleSignInButton.layer.shadowOpacity = 1
+        GoogleSignInButton.layer.shadowRadius = 6
+        
     }
 
     
@@ -71,6 +97,88 @@ class LoginViewController: UIViewController {
         }
     }
     
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        emailTextField.resignFirstResponder()
+        passwordTextField.resignFirstResponder()
+        return true
+    }
+    
+    @IBAction func passwordTextField(_ sender: Any) {
+        if (passwordTextField.text?.count)! >= 6 {
+            login.isEnabled = true
+        }
+    }
+    
+    func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
+        if error != nil {
+            print("ERROR WHILE GOOGLE SIGNING IN IS \(error.localizedDescription)")
+        }else{
+            print("SUCCESSFULLY LOGGED IN GOOGLE USER \(user)")
+            let credentials = GoogleAuthProvider.credential(withIDToken: user.authentication.idToken, accessToken: user.authentication.accessToken)
+            
+            Auth.auth().signInAndRetrieveData(with: credentials) { (result, err) in
+                if err != nil {
+                    print("ERROR \(String(describing: err))")
+                }else{
+                    self.SignInInfo.email = (result?.user.email)!
+                    self.SignInInfo.name = (result?.user.displayName)!
+                    self.SignInInfo.userID = (result?.user.uid)!
+                    print("Google users uid is \(result!.user.uid))")
+                    self.handleLogin()
+                    
+                }
+            }
+        }
+    }
+    
+    func handleLogin(){
+        print("Login Completed")
+        SVProgressHUD.show()
+        let maleRef = Database.database().reference(fromURL: "https://beetle-5b79a.firebaseio.com/").child("users").child("Male")
+        let femaleRef = Database.database().reference(fromURL: "https://beetle-5b79a.firebaseio.com/").child("users").child("Female")
+        
+        
+        
+        maleRef.observe(.childAdded, with: { (snapshot) in
+            let snapshotValue = snapshot.value as! NSDictionary
+            let name = snapshotValue["Name "] as! String
+            let userID = snapshotValue["UserId "] as! String
+            let email = snapshotValue["Email "] as! String
+            
+            if self.emailTextField.text == email {
+                print("THE NAME PASSED IS \(name)")
+                self.user.name = name
+                self.user.id = userID
+                
+                self.performSegue(withIdentifier: "goToMaleSelectPartner", sender: self)
+                SVProgressHUD.dismiss()
+            }
+            
+        })
+        
+        
+        femaleRef.observe(.childAdded, with: { (snapshot) in
+            let snapshotValue = snapshot.value as! NSDictionary
+            let name = snapshotValue["Name "] as! String
+            let userID = snapshotValue["UserId "] as! String
+            
+            let email = snapshotValue["Email "] as! String
+            if self.emailTextField.text == email {
+                self.user.name = name
+                self.user.id = userID
+                
+                self.performSegue(withIdentifier: "goToFemaleSelectPartner", sender: self)
+                SVProgressHUD.dismiss()
+                
+            }
+        })
+        
+        
+    }
     
     @IBAction func LogInButtonPress(_ sender: UIButton) {
         
@@ -85,43 +193,8 @@ class LoginViewController: UIViewController {
                     return
                 } else {
                     
-                    self.dismiss(animated: true, completion: nil)
-                    print("Login Completed")
-                    Handler.Instance.female = self.emailTextField.text!
-                    SVProgressHUD.dismiss()
-                    
-                    let maleRef = Database.database().reference(fromURL: "https://hatedateapp-ea81a.firebaseio.com/").child("users").child("Male")
-                    let femaleRef = Database.database().reference(fromURL: "https://hatedateapp-ea81a.firebaseio.com/").child("users").child("Female")
-
-                    let maleVC = SearchPartnerViewController()
-                    let femaleVC = FemaleSearchPartnerViewController()
-                    
-                    maleRef.observe(.childAdded, with: { (snapshot) in
-                        let snapshotValue = snapshot.value as! NSDictionary
-                        let name = snapshotValue["Name "] as! String
-
-                        let email = snapshotValue["Email "] as! String
-                        if self.emailTextField.text == email {
-                            print("THE NAME PASSED IS \(name)")
-                            self.user.name = name
-                            maleVC.firstNametextLable = name
-                            self.performSegue(withIdentifier: "goToMaleSelectPartner", sender: self)
-                        }
-                       
-                    })
-
-                    femaleRef.observe(.childAdded, with: { (snapshot) in
-                        let snapshotValue = snapshot.value as! NSDictionary
-                        let name = snapshotValue["Name "] as! String
-
-                        let email = snapshotValue["Email "] as! String
-                        if self.emailTextField.text == email {
-                            femaleVC.firstNametextLable = name
-                            self.user.name = name
-
-                            self.performSegue(withIdentifier: "goToFemaleSelectPartner", sender: self)
-                        }
-                    })
+                    self.handleLogin()
+                   
                 }
             }
         } else {
@@ -145,16 +218,19 @@ class LoginViewController: UIViewController {
 
             let destinationVC = segue.destination as! SearchPartnerViewController
             destinationVC.firstNametextLable = user.name
+            destinationVC.userID = user.id
             
         }else if segue.identifier == "goToFemaleSelectPartner" {
-            let ref = Database.database().reference(fromURL: "https://hatedateapp-ea81a.firebaseio.com/").child("users").child("Female")
             let destinationVC = segue.destination as! FemaleSearchPartnerViewController
             destinationVC.firstNametextLable = user.name
+            destinationVC.userID = user.id
 
         }
     }
     
 }
+
+
 
 
 

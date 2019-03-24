@@ -13,13 +13,16 @@ class DateOfBirthViewController: UIViewController {
 
     var emailTextField : String = ""
     var firstNameLabelText : String = ""
+    var passwordTextField : String = ""
+    var messages = message()
+    var userID : String = ""
     @IBOutlet weak var DatePickerField: UITextFieldX!
+    
     private var DatePicker : UIDatePicker?
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        
         DatePicker = UIDatePicker()
         DatePicker?.datePickerMode = .date
         DatePickerField.inputView = DatePicker
@@ -27,6 +30,10 @@ class DateOfBirthViewController: UIViewController {
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(DateOfBirthViewController.viewTapped(gestureRecoginizer:)))
         
         view.addGestureRecognizer(tapGesture)
+        DatePickerField.attributedPlaceholder = NSAttributedString(string: "Pick your birthdate",
+                                                                      attributes: [NSAttributedString.Key.foregroundColor: UIColor.white])
+        
+        
         setupKeyBoardObservers()
     }
 
@@ -34,12 +41,32 @@ class DateOfBirthViewController: UIViewController {
         view.endEditing(true)
 
     }
+    
     @objc func dateChanged(datePicker: UIDatePicker){
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "MM/dd/yyyy"
         DatePickerField.text = dateFormatter.string(from: datePicker.date)
-        view.endEditing(true)
-   
+
+        let DOB = calculateAge(datePicker: DatePickerField.text!)
+        print("AGE IS \(DOB)")
+        messages.age = DOB 
+    }
+    
+    
+    
+    func calculateAge(datePicker: String) -> Int {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "MM/dd/yyyy"
+        print("DATE IS \(DatePickerField.text!)")
+        let birthdayDate = dateFormatter.date(from: datePicker)
+        let calendar: NSCalendar! = NSCalendar(calendarIdentifier: .gregorian)
+        let now = Date()
+        print("Current date IS \(now)")
+        print("BDAY is \(birthdayDate)")
+        let calcAge = calendar.components(.year, from: birthdayDate!, to: now, options: [])
+        let age = calcAge.year
+        return age!
+        
     }
     
     func setupKeyBoardObservers(){
@@ -60,8 +87,6 @@ class DateOfBirthViewController: UIViewController {
         NotificationCenter.default.removeObserver(self, name: Notification.Name.UIKeyboardWillShow, object: nil)
         NotificationCenter.default.removeObserver(self, name: Notification.Name.UIKeyboardWillHide, object: nil)
         NotificationCenter.default.removeObserver(self, name: Notification.Name.UIKeyboardWillChangeFrame, object: nil)
-        
-        
     }
     
     @objc func handleKeyboardWillChange(notification: Notification) {
@@ -79,15 +104,20 @@ class DateOfBirthViewController: UIViewController {
         
         
     }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
+    }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "goToGenderChange" {
             let destinationVC = segue.destination as! GenderViewController
          
             destinationVC.firstNameLabelText = firstNameLabelText
             destinationVC.emailTextField = emailTextField
-
+            destinationVC.passwordTextField = passwordTextField
+            destinationVC.age = messages.age
+            destinationVC.userID = userID
+            print("AGE PASSED IS \(messages.age)")
+        }
     }
-}
-    
-
 }

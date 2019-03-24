@@ -9,7 +9,8 @@
 import UIKit
 import MapKit
 import SwiftKeychainWrapper
-
+import Firebase
+import SVProgressHUD
 
 class ViewController: UIViewController {
 
@@ -19,9 +20,9 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var SignUp: UIButton!
     @IBOutlet weak var Login: UIButton!
-    
+    var user = User()
     var locationManager = CLLocationManager()
-    
+    var notification = NotificationPublisher()
     override func viewDidLoad() {
         super.viewDidLoad()
 //        locationManager.delegate = self
@@ -30,24 +31,64 @@ class ViewController: UIViewController {
 //        locationManager.requestLocation()
         SignUp.alpha = 0
         Login.alpha = 0
-        // Do any additional setup after loading the view, typically from a nib.
-    }
-    override func viewDidAppear(_ animated: Bool) {
-        if let _ = KeychainWrapper.standard.string(forKey: "uid"){
-            goToVC()
+        if Auth.auth().currentUser != nil{
+            SVProgressHUD.show()
+
+            print("CURRENT USER INFO IS \(Auth.auth().currentUser?.uid)")
+//            Timer.scheduledTimer(withTimeInterval: 0, repeats: false) { (Timer) in
+            
+                let maleRef = Database.database().reference(fromURL: "https://beetle-5b79a.firebaseio.com/").child("users").child("Male")
+                let femaleRef = Database.database().reference(fromURL: "https://beetle-5b79a.firebaseio.com/").child("users").child("Female")
+            
+            
+            
+                maleRef.observe(.childAdded, with: { (snapshot) in
+                    let snapshotValue = snapshot.value as! NSDictionary
+                    let name = snapshotValue["Name "] as! String
+                    let userID = snapshotValue["UserId "] as! String
+                    let email = snapshotValue["Email "] as! String
+                    
+                    if Auth.auth().currentUser?.email == email {
+                        print("THE NAME PASSED IS \(name)")
+                        self.user.name = name
+                        self.user.id = userID
+                        SVProgressHUD.dismiss()
+                        self.performSegue(withIdentifier: "Male", sender: self)
+                    }else{
+                        
+                        femaleRef.observe(.childAdded, with: { (snapshot) in
+                            let snapshotValue = snapshot.value as! NSDictionary
+                            let name = snapshotValue["Name "] as! String
+                            let userID = snapshotValue["UserId "] as! String
+                            
+                            let email = snapshotValue["Email "] as! String
+                            if Auth.auth().currentUser?.email == email {
+                                self.user.name = name
+                                self.user.id = userID
+                                SVProgressHUD.dismiss()
+                                self.performSegue(withIdentifier: "Female", sender: self)
+                            }else{
+                                SVProgressHUD.dismiss()
+                                print("ERROR WHILE LOGGING IN \(Auth.auth().currentUser?.email)")
+                            }
+                        })
+
+                        
+                 
+                    }
+                    
+                })
+                
+//            }
         }
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
+   
 
     
     @IBAction func getStartedPressed(_ sender: UIButton) {
         
         if self.clearFillView.transform == .identity {
-            UIView.animate(withDuration: 1, animations: {
+            UIView.animate(withDuration: 0.5, animations: {
                 self.clearFillView.transform = CGAffineTransform(scaleX: 10, y: 10)
                 self.toggleMenuView.transform = CGAffineTransform(translationX: 0, y: -78)
                 //self.getStarted.transform = CGAffineTransform(rotationAngle: 3.14)
@@ -74,9 +115,22 @@ class ViewController: UIViewController {
         Login.alpha = alpha
         }
     
-    func goToVC() {
-        performSegue(withIdentifier: "goToProfile", sender: self)
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "Male" {
+            
+            let destinationVC = segue.destination as! SearchPartnerViewController
+            destinationVC.firstNametextLable = user.name
+            destinationVC.userID = user.id
+            
+        }else if segue.identifier == "Female" {
+            
+            let destinationVC = segue.destination as! FemaleSearchPartnerViewController
+            destinationVC.firstNametextLable = user.name
+            destinationVC.userID = user.id
+            
+        }
     }
+    
 }
 
 //extension ViewController : CLLocationManagerDelegate {

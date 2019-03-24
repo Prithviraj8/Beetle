@@ -13,16 +13,16 @@ struct FemaleChatMessage {
     let text : String
     let isIncoming : Bool
 }
-class ChatViewFemaleViewController: UIViewController, UITextFieldDelegate, UITableViewDelegate, UITableViewDataSource  {
+class ChatViewFemaleViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UIImagePickerControllerDelegate, UINavigationControllerDelegate  {
     var messageArray : [message] = [message]()
     var chatMessages = [FemaleChatMessage]()
     
     var sentMessages = [String]()
     
-    
-    
-    
-    
+    var notificationPublisher = NotificationPublisher()
+    var profilePicURL = [String]()
+    var maleNames = [String]()
+    var Ids = [String]()
     var firstNametextLable : String = ""
     var maleName : String = ""
     let userID = Auth.auth().currentUser?.uid
@@ -31,35 +31,73 @@ class ChatViewFemaleViewController: UIViewController, UITextFieldDelegate, UITab
 
     @IBOutlet weak var sendButton: UIButtonX!
     @IBOutlet weak var messageTableView: UITableView!
-    @IBOutlet weak var inputTextField: UITextFieldX!
     
+    @IBOutlet weak var navigationBar: UINavigationBar!
+    @IBOutlet weak var inputTextField: UITextView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.title = maleName
-        //navigationItem.title = maleName
-        //    collectionView?.backgroundView = UIColor.init()
-        //setupInputComments()
+        navigationBar.topItem?.title = maleName
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector (tableViewTapped))
         messageTableView.addGestureRecognizer(tapGesture)
         messageTableView.register(FemaleChatLogTableViewCell.self, forCellReuseIdentifier: cellId)
 
-//        print("The name of the logged in female is \(firstNametextLable) & the male she is matched with is \(maleName)")
         messageTableView.separatorStyle = .none
         messageTableView.backgroundColor = UIColor(white: 0.95, alpha: 1)
-
         messageTableView.delegate = self
         messageTableView.dataSource = self
+        inputTextField.delegate = self
+
         configureTableView()
-//        retreiveMessages()
-//        retrieveSentMessages()
+
         setupKeyBoardObservers()
         retreiveMessage()
-//        sentMessage()
+        inputTextField.keyboardAppearance = .light
+        inputTextField.text = "Placeholder"
+        inputTextField.textColor = UIColor.lightGray
+        inputTextField.layer.cornerRadius = 10
+        inputTextField.layer.borderColor = UIColor.gray.cgColor
+        inputTextField.layer.borderWidth = 1
 
-        
+        textViewDidChange(inputTextField)
     }
+    
+    
+//    override func viewDidDisappear(_ animated: Bool) {
+//        var ReceivedMessageTime = [Double]()
+//        
+//        let messageDB = Database.database().reference(fromURL: "https://beetle-5b79a.firebaseio.com").child("users").child("Match").child("Female").child(userID!).child(firstNametextLable).child(maleId).child(maleName).child("Messages")
+//        
+//        messageDB.observeSingleEvent(of: .value) { (snap) in
+//            
+//            
+//            messageDB.observe(.childAdded) { (snapshot) in
+//                
+//                let snapshotValue = snapshot.value as! NSDictionary
+//                
+//                if let ReceivedMessage = snapshotValue["ReceivedMessage "] {
+//                    
+//                    print("WERRRRRRRR")
+//                    
+//                    let messageTimeStamp = snapshotValue["Time Stamp Received "] as! Double
+//                    ReceivedMessageTime.append(messageTimeStamp)
+//                    let currentTimeStamp = NSDate().timeIntervalSince1970
+//                    let myTimeInterval = TimeInterval(currentTimeStamp)
+//                    //                        let time = NSDate(timeIntervalSince1970: TimeInterval(myTimeInterval))
+//                    
+//                    if ReceivedMessageTime.last! == currentTimeStamp {
+//                        self.notificationPublisher.sendNotification(title: self.maleName, subtitle: "YOU HAVE A NEW MESSAGE", body: ReceivedMessage as! String, badge: 1, delayInterval: 1)
+//                        self.notificationPublisher.name = self.maleName
+//                    }
+//                }
+//                
+//                
+//            }
+//            
+//        }
+//    }
+    
     
     func setupKeyBoardObservers(){
         
@@ -83,63 +121,39 @@ class ChatViewFemaleViewController: UIViewController, UITextFieldDelegate, UITab
         
     }
     
+    
     @objc func handleKeyboardWillChange(notification: Notification) {
         
         guard let keyboardRect = (notification.userInfo?[UIKeyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue else{
             return
         }
         
+        let keyboardShowing = notification.name == NSNotification.Name.UIKeyboardWillShow
         
         if notification.name == Notification.Name.UIKeyboardWillShow || notification.name == Notification.Name.UIKeyboardWillChangeFrame {
             view.frame.origin.y = -keyboardRect.height
-        }else{
-            view.frame.origin.y = 0
-        }
-        
-        
-    }
-    
-    
-    
-    func retrieveSentMessages() {
-        
-//        let sentMessageDB = Database.database().reference(fromURL: "https://hatedateapp-ea81a.firebaseio.com/").child("users").child("Match").child("Female").child(userID!).child(firstNametextLable).child(maleId).child(maleName).child("Messages")
-                print("MUSER ID IS \(maleId)")
-
-        let sentMessageDB = Database.database().reference(fromURL: "https://hatedateapp-ea81a.firebaseio.com/").child("users").child("Match").child("Male").child(maleId).child(maleName).child(userID!).child(firstNametextLable).child("Messages")
-        
-        sentMessageDB.observeSingleEvent(of: .value) { (snap) in
-            
-            
-            sentMessageDB.observe(.childAdded) { (snapshot) in
-                
-                let snapshotValue = snapshot.value as? NSDictionary
-                let text = snapshotValue!["Message "]!
-//                let sender = snapshotValue!["Sender "]!
-                
-                let chatMessage = FemaleChatMessage(text: text as! String, isIncoming: false)
-                self.chatMessages.append(chatMessage)
-                print("SENT MESSAGES ARE \(text)")
-                
-                let messages = message()
-                messages.messageBody = text as! String
-//                messages.sender = sender as! String
-                
-                self.messageArray.append(messages)
-                
-                
-                self.configureTableView()
-                self.messageTableView.reloadData()
+//            view.frame.origin.y = -(keyboardRect.height)/2
+            UIView.animate(withDuration: 0, delay: 0, options: UIViewAnimationOptions.curveEaseOut, animations: {
+                self.view.layoutIfNeeded()
+            }) { (completed) in
                 
             }
-            
+        }else{
+            view.frame.origin.y = 0
+            UIView.animate(withDuration: 0, delay: 0, options: UIViewAnimationOptions.curveEaseIn, animations: {
+                self.view.layoutIfNeeded()
+            }) { (completed) in
+                if keyboardShowing {
+                    
+                }
+            }
         }
     }
     
     
     func retreiveMessage() {
         
-        let messageDB = Database.database().reference(fromURL: "https://hatedateapp-ea81a.firebaseio.com/").child("users").child("Match").child("Female").child(userID!).child(firstNametextLable).child(maleId).child(maleName).child("Messages")
+        let messageDB = Database.database().reference(fromURL: "https://beetle-5b79a.firebaseio.com/").child("users").child("Match").child("Female").child(userID!).child(firstNametextLable).child(maleId).child(maleName).child("Messages")
         
         messageDB.observeSingleEvent(of: .value) { (snap) in
             
@@ -148,31 +162,43 @@ class ChatViewFemaleViewController: UIViewController, UITextFieldDelegate, UITab
                 
                 let snapshotValue = snapshot.value as! NSDictionary
 
-                let timeStamp = snapshotValue["Time Stamp "]!
                 
                 if let ReceivedMessage = snapshotValue["ReceivedMessage "] {
+                 
                     let message2 = FemaleChatMessage(text: ReceivedMessage as! String, isIncoming: true)
                     self.chatMessages.append(message2)
-                    print("Received MESSAGES ARE \(ReceivedMessage)")
                     let messages = message()
                     messages.messageBody = ReceivedMessage as! String
                     self.messageArray.append(messages)
+                    messageDB.child(snapshot.key).updateChildValues(["Message Read ": "True"])
+                    messageDB.child(snapshot.key).updateChildValues(["Message Notified ": "True"])
+
                 }
+//                if let ReceivedMessage = snapshotValue["ReceivedImage "] {
+//                    let message2 = FemaleChatMessage(text: ReceivedMessage as! String, isIncoming: true)
+//                    self.chatMessages.append(message2)
+//                    let messages = message()
+//                    messages.messageBody = ReceivedMessage as! String
+//                    self.messageArray.append(messages)
+//                }
+
                 if let SentMessage = snapshotValue["SentMessage "] {
                     
                     let message1 = FemaleChatMessage(text: SentMessage as! String, isIncoming: false)
                     self.chatMessages.append(message1)
-//                    print("Sent MESSAGES ARE \(SentMessage)")
                     let messages = message()
                     messages.messageBody = SentMessage as! String
                     self.messageArray.append(messages)
                     
                 }
-           
+//                if let SentMessage = snapshotValue["SentImage "] {
+//                    let message1 = FemaleChatMessage(text: SentMessage as! String, isIncoming: false)
+//                    self.chatMessages.append(message1)
+//                    let messages = message()
+//                    messages.messageBody = SentMessage as! String
+//                    self.messageArray.append(messages)
+//                }
 
-                
-           
-                
                 self.configureTableView()
                 self.messageTableView.reloadData()
                 
@@ -181,84 +207,7 @@ class ChatViewFemaleViewController: UIViewController, UITextFieldDelegate, UITab
         }
     }
     
-    func sentMessage() {
-        
-        let messageDB = Database.database().reference(fromURL: "https://hatedateapp-ea81a.firebaseio.com/").child("users").child("Match").child("Female").child(userID!).child(firstNametextLable).child(maleId).child(maleName).child("Messages")
-        
-        messageDB.observeSingleEvent(of: .value) { (snap) in
-            
-            
-            messageDB.observe(.childAdded) { (snapshot) in
-                
-                let snapshotValue = snapshot.value as? NSDictionary
-//                let ReceivedMessage = snapshotValue["ReceivedMessage "]
-                let timeStamp = snapshotValue!["Time Stamp "]
-                
-                
-      
-                
-                if let SentMessage = snapshotValue!["SentMessage "] {
-                    
-                    let message1 = FemaleChatMessage(text: SentMessage as! String, isIncoming: false)
-                    self.chatMessages.append(message1)
-                    print("Received MESSAGES ARE \(message1)")
-                    let messages = message()
-                    messages.messageBody = SentMessage as! String
-                    self.messageArray.append(messages)
-                    
-                }else{
-                    
-                }
-
-                
-              
-                
-                self.configureTableView()
-                self.messageTableView.reloadData()
-                
-            }
-            
-        }
-    }
-    
-    func retreiveMessages() {
-        
-        let MessageDB = Database.database().reference(fromURL: "https://hatedateapp-ea81a.firebaseio.com/").child("users").child("Match").child("Female").child(userID!).child(firstNametextLable).child(maleId).child(maleName).child("Messages")
-//        print("MALE NAME IS\(maleName)")
-        MessageDB.observeSingleEvent(of: .value) { (snap) in
-            
-            
-            MessageDB.observe(.childAdded) { (snapshot) in
-                
-                
-                let snapshotValue = snapshot.value as? NSDictionary
-                let text = snapshotValue!["MessageBody "]!
-                let timeStamp = snapshotValue!["Time Stamp "]!
-                
-                
-                print("RECEIVED MESSAGES ARE \(text)")
-                let sentMessage = FemaleChatMessage(text: text as! String, isIncoming: true)
-                self.chatMessages.append(sentMessage)
-           
-                
-                let messages = message()
-                messages.sentMessage = text as! String
-                //  messages.sender = sender
-                
-                self.messageArray.append(messages)
-                
-                
-                self.configureTableView()
-                self.messageTableView.reloadData()
-                
-            }
-            
-        }
-        
-    }
-    
-    
-    
+  
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return messageArray.count
@@ -269,6 +218,8 @@ class ChatViewFemaleViewController: UIViewController, UITextFieldDelegate, UITab
         let Message  = chatMessages[indexPath.row]
 
         cell.FemaleChatMessage = Message
+        cell.selectionStyle = UITableViewCellSelectionStyle.none
+
         return cell
     
     }
@@ -286,19 +237,128 @@ class ChatViewFemaleViewController: UIViewController, UITextFieldDelegate, UITab
     }
     
     @IBAction func sendButton(_ sender: Any) {
-        if inputTextField.text == ""{
-            sendButton.isEnabled = false
-            sendButton.backgroundColor = .gray
+        if (inputTextField.text?.count)! > 0{
+            handleSend()
+        }else{
+            
         }
-        handleSend()
-        inputTextField.endEditing(true)
-        sendButton.isEnabled = false
+        inputTextField.text = ""
+//        inputTextField.endEditing(true)
     }
+    
+    
+    
+    @IBAction func sendImage(_ sender: Any) {
+        let imagePickerController = UIImagePickerController()
+        imagePickerController.delegate = self
+        imagePickerController.allowsEditing = true
+        present(imagePickerController, animated: true, completion: nil)
+        imagePickerController.sourceType = UIImagePickerControllerSourceType.photoLibrary
+        
+    }
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+        
+        var selectedImageFromPicker = UIImage()
+        if let editedImage = info["UIImagePickerControllerEditedImage"] as? UIImage {
+            selectedImageFromPicker = editedImage
+        }else if let originalImage = info["UIImagePickerControllerOriginalImage"] as? UIImage {
+            selectedImageFromPicker = originalImage
+        }
+        
+        if let selectedImage = selectedImageFromPicker as? UIImage {
+            uploadImageToFirebase(image: selectedImage)
+        }
+        print("WE SELECTED AN IMAGE")
+        dismiss(animated: true, completion: nil)
+    }
+    
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        dismiss(animated: true, completion: nil)
+    }
+    
+    func uploadImageToFirebase(image: UIImage){
+        let imageName = NSUUID().uuidString
+        var storageRef: StorageReference!
+        // let data = NSData()
+        storageRef = Storage.storage().reference(forURL: "gs://hatedateapp-ea81a.appspot.com").child("images_sent").child("\(imageName).jpg")
+        if let uploadData = UIImageJPEGRepresentation(image, 0.1) {
+            //        if let uploadData = UIImagePNGRepresentation((femaleImageView?.image)!) {
+            
+            storageRef.putData(uploadData as Data, metadata: nil) { (metadata, error) in
+                if error != nil {
+                    print("Error while uploading image : \(String(describing: error?.localizedDescription))")
+                } else {
+                    print("Successfully saved images to database : \(String(describing: metadata))")
+                    
+                    storageRef.downloadURL(completion: { (url, err) in
+                        
+                        if err != nil {
+                            
+                            return
+                        }
+                        let downloadURL = url?.absoluteString
+                        //                        let values = ["IMAGE SENT " : downloadURL!] as [String : AnyObject]
+                        
+                        var messages = message()
+                        
+                        let ref = Database.database().reference(fromURL: "https://beetle-5b79a.firebaseio.com/").child("users").child("Match").child("Male").child(self.maleId).child(self.maleName).child(self.userID!).child(self.firstNametextLable).child("Messages")
+                        let timeStamp = NSDate().timeIntervalSince1970
+                        let myTimeInterval = TimeInterval(timeStamp)
+                        let time = NSDate(timeIntervalSince1970: TimeInterval(myTimeInterval))
+                        
+                        print("TIME IS \(time)")
+                        messages.timeStamp = timeStamp
+                        let toId = messages.receiverID
+                        let messageDictionary = ["ReceivedImage " : downloadURL!,"Image Width ": image.size.width, "Image Height ": image.size.height] as [String : AnyObject]
+                        
+                        messages.imageHeight = image.size.height as? NSNumber
+                        messages.imageWidth = image.size.width as? NSNumber
+                        
+                        ref.childByAutoId().setValue(messageDictionary) { (error, ref) in
+                            if error != nil {
+//                                print("Error while saving the message sent")
+                            }else{
+//                                print("Message sent successfully")
+                            }
+                            self.inputTextField.isSelectable = true
+                            self.sendButton.isEnabled = true
+                            self.inputTextField.text = ""
+                            
+                        }
+                        
+                        
+                        let ref2 = Database.database().reference(fromURL: "https://beetle-5b79a.firebaseio.com/").child("users").child("Match").child("Female").child(self.userID!).child(self.firstNametextLable).child(self.maleId).child(self.maleName).child("Messages")
+                        
+                        let messageDictionary2 = ["SentImage " : downloadURL!,"Image Width ": image.size.width, "Image Height ": image.size.height] as [String : AnyObject]
+                        
+                        ref2.childByAutoId().setValue(messageDictionary2) { (error, ref) in
+                            if error != nil {
+//                                print("Error while saving the message sent")
+                            }else{
+                                print("IMAGE Message sent successfully")
+                            }
+                            self.inputTextField.isSelectable = true
+                            self.sendButton.isEnabled = true
+                            self.inputTextField.text = ""
+                            
+                        }
+                    })
+                    
+                }
+            }
+            //return
+        }
+    }
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
+    }
+
     
     func handleSend(){
         var messages = message()
 
-        let ref = Database.database().reference(fromURL: "https://hatedateapp-ea81a.firebaseio.com/").child("users").child("Match").child("Male").child(maleId).child(maleName).child(userID!).child(firstNametextLable).child("Messages")
+        let ref = Database.database().reference(fromURL: "https://beetle-5b79a.firebaseio.com/").child("users").child("Match").child("Male").child(maleId).child(maleName).child(userID!).child(firstNametextLable).child("Messages")
 
         let timeStamp = NSDate().timeIntervalSince1970
         let myTimeInterval = TimeInterval(timeStamp)
@@ -307,21 +367,21 @@ class ChatViewFemaleViewController: UIViewController, UITextFieldDelegate, UITab
 
         messages.timeStamp = timeStamp
         let toId = messages.receiverID
-        let messageDictionary = ["Sender ID ": userID,"Receiver ID ": toId,"Time Stamp Received ": timeStamp,"ReceivedMessage ": inputTextField.text!] as [String : Any]
+        let messageDictionary = ["Sender ID ": userID,"Receiver ID ": toId,"Time Stamp Received ": timeStamp,"ReceivedMessage ": inputTextField.text!,"Message Read ": "False","Message Notified ": "False"] as [String : Any]
         
         ref.childByAutoId().setValue(messageDictionary) { (error, ref) in
             if error != nil {
-                print("Error while saving the message sent")
+//                print("Error while saving the message sent")
             }else{
-                print("Message sent successfully")
+                print("TEXT Message sent successfully")
             }
-            self.inputTextField.isEnabled = true
+            self.inputTextField.isSelectable = true
             self.sendButton.isEnabled = true
             self.inputTextField.text = ""
             
         }
         
-        let ref2 = Database.database().reference(fromURL: "https://hatedateapp-ea81a.firebaseio.com/").child("users").child("Match").child("Female").child(userID!).child(firstNametextLable).child(maleId).child(maleName).child("Messages")
+        let ref2 = Database.database().reference(fromURL: "https://beetle-5b79a.firebaseio.com/").child("users").child("Match").child("Female").child(userID!).child(firstNametextLable).child(maleId).child(maleName).child("Messages")
         
         let messageDictionary2 = ["Sender ID ": userID,"Receiver ID ": toId,"Time Stamp ": timeStamp,
                                   "SentMessage ": inputTextField.text!] as [String : Any]
@@ -329,29 +389,59 @@ class ChatViewFemaleViewController: UIViewController, UITextFieldDelegate, UITab
         
         ref2.childByAutoId().setValue(messageDictionary2) { (error, ref) in
             if error != nil {
-                print("Error while saving the message sent")
+//                print("Error while saving the message sent")
             }else{
-                print("Message sent successfully")
+//                print("Message sent successfully")
             }
-            self.inputTextField.isEnabled = true
+            self.inputTextField.isSelectable = true
             self.sendButton.isEnabled = true
             self.inputTextField.text = ""
             
         }
     }
     
+
     
     
-    func textFieldDidBeginEditing(_ textField: UITextField) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "backToMatches"{
+            let VC = segue.destination as! UserTableFemaleTableViewController
+            VC.maleNames = maleNames
+            VC.firstNametextLable = firstNametextLable
+            VC.Ids = Ids
+            VC.profilePicURL = profilePicURL
+        }
+    }
+
+}
+
+extension ChatViewFemaleViewController : UITextViewDelegate {
+
+
+    func textViewDidBeginEditing(_ textView: UITextView) {
         UIView.animate(withDuration: 0.5) {
             // self.heightConstraint.constant = 308
             self.view.layoutIfNeeded()
+            self.inputTextField.text = ""
+            self.inputTextField.textColor = UIColor.lightGray
+            self.inputTextField.layer.cornerRadius = 10
+            self.inputTextField.layer.borderWidth = 1
+            self.inputTextField.layer.borderColor = UIColor.gray.cgColor
         }
-    }
-    
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        handleSend()
-        return true
+
     }
 
+    func textViewDidChange(_ textView: UITextView) {
+        if inputTextField.text.count > 0 {
+            sendButton.isEnabled = true
+        }
+
+        let size = CGSize(width: view.frame.width, height: .infinity)
+        let estimatedSize = inputTextField.sizeThatFits(size)
+        inputTextField.constraints.forEach { (constraint) in
+            if constraint.firstAttribute == .height {
+                constraint.constant = estimatedSize.height
+            }
+        }
+    }
 }

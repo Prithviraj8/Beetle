@@ -11,24 +11,46 @@ import UIKit
 import Firebase
 import SVProgressHUD
 import ChameleonFramework
+import GoogleSignIn
 
-class SignUpViewController: UIViewController, UITextFieldDelegate {
-    @IBOutlet weak var emailTextField: UITextField!
-    @IBOutlet weak var passwordTextField: UITextField!
-    @IBOutlet weak var SignInPressed: UIButtonX!
-//    var user: [User] = [User]()
-    var messages = message()
-   // var userUid: String! = NSUUID
+class SignUpViewController: UIViewController, UITextFieldDelegate, GIDSignInUIDelegate, GIDSignInDelegate {
+  
     
+    @IBOutlet weak var emailTextField: UITextFieldX!
+    @IBOutlet weak var passwordTextField: UITextFieldX!
+    @IBOutlet weak var SignInPressed: UIButtonX!
+    @IBOutlet weak var GoogleSignInButton: GIDSignInButton!
+    @IBOutlet weak var image: UIImageView!
+    //    var user: [User] = [User]()
+    var messages = message()
+    var SignInInfo = SingInInfo()
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
         self.emailTextField.delegate = self
         self.passwordTextField.delegate = self
-        SignInPressed.backgroundColor = .gray
         SignInPressed.isEnabled = false
-       setupKeyBoardObservers()
+        setupKeyBoardObservers()
+        
+        emailTextField.attributedPlaceholder = NSAttributedString(string: "Email",
+                                                               attributes: [NSAttributedString.Key.foregroundColor: UIColor.white])
+        
+        passwordTextField.attributedPlaceholder = NSAttributedString(string: "Password",
+                                                                  attributes: [NSAttributedString.Key.foregroundColor: UIColor.white])
+//        image.translatesAutoresizingMaskIntoConstraints = false
+//        image.topAnchor.constraint(equalTo: self.view.topAnchor).isActive = true
+//         (equalTo: self.view.bottomAnchor).isActive = true
+//        image.leftAnchor.constraint(equalTo: self.view.leftAnchor).isActive = true
+//        image.rightAnchor.constraint(equalTo: self.view.rightAnchor).isActive = true
+        
+        GIDSignIn.sharedInstance()?.uiDelegate = self
+        GIDSignIn.sharedInstance()?.delegate = self
+        GIDSignIn.sharedInstance().clientID = "620661805649-jthc2n6je1rid5f85g17iko2cq58in1s.apps.googleusercontent.com"
+        GoogleSignInButton.layer.cornerRadius = 15
+        GoogleSignInButton.layer.shadowOpacity = 1
+        GoogleSignInButton.layer.shadowRadius = 6
+
     }
 
     func setupKeyBoardObservers(){
@@ -81,7 +103,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
         self.view.endEditing(true)
     }
     
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+    func textFieldShouldReturn(_ textField: UITextFieldX) -> Bool {
             emailTextField.resignFirstResponder()
             passwordTextField.resignFirstResponder()
             return true
@@ -89,10 +111,33 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
     
     @IBAction func passwordTextField(_ sender: Any) {
         if (passwordTextField.text?.count)! >= 6 {
-            SignInPressed.backgroundColor = .red
             SignInPressed.isEnabled = true
         }
         
+    }
+
+    
+    
+    func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
+        if error != nil {
+            print("ERROR WHILE GOOGLE SIGNING IN IS \(error.localizedDescription)")
+        }else{
+            print("SUCCESSFULLY LOGGED IN GOOGLE USER \(user)")
+            let credentials = GoogleAuthProvider.credential(withIDToken: user.authentication.idToken, accessToken: user.authentication.accessToken)
+            
+            Auth.auth().signInAndRetrieveData(with: credentials) { (result, err) in
+                if err != nil {
+                    print("ERROR \(String(describing: err))")
+                }else{
+                    self.SignInInfo.email = (result?.user.email)!
+                    self.SignInInfo.name = (result?.user.displayName)!
+                    self.SignInInfo.userID = (result?.user.uid)!
+                    print("Google users uid is \(result!.user.uid))")
+                    self.performSegue(withIdentifier: "segueToFirstName", sender: self)
+                    
+                }
+            }
+        }
     }
     
     @IBAction func SignInPressed(_ sender: UIButton) {
@@ -145,11 +190,45 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
 
         if segue.identifier == "segueToFirstName" {
             let destinationVC = segue.destination as! FirstNameViewController
-            
-            destinationVC.emailTextField = emailTextField.text!
-        }else{
-               print("View controller not found")
+            if emailTextField.text != "" {
+                destinationVC.emailTextField = emailTextField.text!
+                destinationVC.passwordTextField = passwordTextField.text!
+                print("TEXTS ARE \(emailTextField.text)")
 
+            }else{
+                print("PASSING GOOGLE USERS INFO ")
+                destinationVC.emailTextField = SignInInfo.email
+                destinationVC.userID = SignInInfo.userID
+            }
+       
+        }
+    }
+    
+    
+    enum LINE_POSITION {
+        case LINE_POSITION_TOP
+        case LINE_POSITION_BOTTOM
+    }
+    
+    func addLineToView(view : UIView, position : LINE_POSITION, color: UIColor, width: Double) {
+        let lineView = UIView()
+        lineView.backgroundColor = color
+        lineView.translatesAutoresizingMaskIntoConstraints = false // This is important!
+        view.addSubview(lineView)
+        
+        let metrics = ["width" : NSNumber(value: width)]
+        let views = ["lineView" : lineView]
+        view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|[lineView]|", options:NSLayoutFormatOptions(rawValue: 0), metrics:metrics, views:views))
+        
+        switch position {
+        case .LINE_POSITION_TOP:
+            view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|[lineView(width)]", options:NSLayoutFormatOptions(rawValue: 0), metrics:metrics, views:views))
+            break
+        case .LINE_POSITION_BOTTOM:
+            view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:[lineView(width)]|", options:NSLayoutFormatOptions(rawValue: 0), metrics:metrics, views:views))
+            break
+        default:
+            break
         }
     }
 }
