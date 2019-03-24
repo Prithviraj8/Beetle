@@ -22,6 +22,8 @@ class UserTableFemaleTableViewController: UIViewController, UITextFieldDelegate,
     var maleNames = [String]()
     var Ids = [String]()
     var profilePicURL = [String]()
+    var gender : String = ""
+    var age : Int!
     
     @IBOutlet weak var matchesTableView: UITableView!
     
@@ -150,13 +152,16 @@ class UserTableFemaleTableViewController: UIViewController, UITextFieldDelegate,
                 let VC = segue.destination as! ChatViewFemaleViewController
                 let male = maleNames[indexPath.row]
                 let id = Ids[indexPath.row]
+                let profilePic = profilePicURL[indexPath.row]
                 VC.firstNametextLable = firstNametextLable
                 VC.maleName = male
                 VC.maleId = id
                 VC.maleNames = maleNames
                 VC.Ids = Ids
                 VC.profilePicURL = profilePicURL
-
+                VC.profilePic = profilePic
+                VC.gender = "Female"
+                VC.age = age
             }
         }
         

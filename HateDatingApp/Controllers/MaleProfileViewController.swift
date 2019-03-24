@@ -19,6 +19,7 @@ class MaleProfileViewController: UIViewController {
     var stringHolder: String = ""
     var MaleProfilPicImage : UIImage!
     var count : Int = 0
+    var age : Int!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,9 +35,8 @@ class MaleProfileViewController: UIViewController {
             let destinationVC = segue.destination as! SearchPartnerViewController
             
             destinationVC.firstNametextLable = stringHolder
-             destinationVC.count = count
             destinationVC.userID = userID
-
+            destinationVC.age = age
         }
     }
     

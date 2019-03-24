@@ -17,7 +17,7 @@ class User {
     var ref2 : DatabaseReference!
     var recevierID = message()
     var id : String = ""
-
+    var age : Int!
     func save_Info_For_Male_User_who_Swipped_A_Female_User(name: String,Id: String){
         let userID = Auth.auth().currentUser?.uid
         print("THE CURRENT USERS user ID is \(userID)")

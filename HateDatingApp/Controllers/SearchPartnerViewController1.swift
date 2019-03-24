@@ -28,7 +28,7 @@ class SearchPartnerViewController: UIViewController {
     @IBOutlet weak var topView: UIView!
     
     var user = User()
-    
+    var age : Int!
     
     var IDs = [String]()
     var userID = Auth.auth().currentUser?.uid
@@ -46,7 +46,7 @@ class SearchPartnerViewController: UIViewController {
     var cardArray = [UIView]()
 
     
-    var count : Int = 0
+//    var count : Int = 0
     var femaleIdsMatched = [String]()
     var receiverIds = [String]()
     var femaleNames = [String]()
@@ -445,6 +445,8 @@ class SearchPartnerViewController: UIViewController {
             destinationVC.femaleNames = messages.finalMatch
             destinationVC.IDs = messages.IDS
             destinationVC.profilePicURL = messages.profilePicURL
+            destinationVC.age = age
+            destinationVC.gender = "Male"
         }
         
         if segue.identifier == "goToSettings" {

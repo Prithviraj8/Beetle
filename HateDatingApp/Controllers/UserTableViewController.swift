@@ -30,7 +30,10 @@ class UserTableViewController: UIViewController, UITextFieldDelegate, UITableVie
     var ref : DatabaseReference!
     var NAMES : [names] = [names]()
     var femaleNames = [String]()
-
+    var age : Int!
+    var gender : String = ""
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -59,7 +62,11 @@ class UserTableViewController: UIViewController, UITextFieldDelegate, UITableVie
     
         
         let name = femaleNames[indexPath.row]
+        print("PRO IS \(profilePicURL)")
+
         let profilePic = profilePicURL[indexPath.row]
+        print("PRO IS \(profilePic)")
+
         let id = IDs[indexPath.row]
 
         let badgeCountRef = Database.database().reference(fromURL: "https://beetle-5b79a.firebaseio.com/").child("users").child("Match").child("Male").child(userID!).child(firstNametextLable).child(id)
@@ -156,14 +163,17 @@ class UserTableViewController: UIViewController, UITextFieldDelegate, UITableVie
                 let VC = segue.destination as! ChatLogTableViewController
                 let femaleName = femaleNames[indexPath.row]
                 let Id = IDs[indexPath.row]
+                let profilePic = profilePicURL[indexPath.row]
                 print("THE FEMALE NAME SELECTED IS \(femaleName)")
-//                let femaleId = userID[indexPath.row]
                 VC.firstNametextLable = firstNametextLable
                 VC.femaleName = femaleName
                 VC.femaleId = Id
                 VC.femaleNames = femaleNames
                 VC.IDs = IDs
                 VC.profilePicURL = profilePicURL
+                VC.profilePic = profilePic
+                VC.age = age
+                VC.gender = "Male"
             }
         }
         

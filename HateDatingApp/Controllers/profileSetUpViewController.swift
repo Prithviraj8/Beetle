@@ -22,6 +22,7 @@ class profileSetUpViewController: UIViewController, UIImagePickerControllerDeleg
     @IBOutlet weak var femaleImageView: UIImageViewX?
 
     var passwordTextField : String = ""
+    
     var firstNameTextLabel : String = ""
     var emailTextFields : String!
     var gender : String = ""
@@ -250,6 +251,7 @@ class profileSetUpViewController: UIViewController, UIImagePickerControllerDeleg
                 destinationVC.stringHolder = firstNameTextLabel
                 destinationVC.MaleProfilPicImage = maleImageView?.image
                 destinationVC.userID = userID!
+                destinationVC.age = age
               }
 
         }  else if segue.identifier == "goToFemaleProfileVC" {

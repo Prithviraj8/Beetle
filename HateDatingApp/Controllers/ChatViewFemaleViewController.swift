@@ -16,9 +16,10 @@ struct FemaleChatMessage {
 class ChatViewFemaleViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UIImagePickerControllerDelegate, UINavigationControllerDelegate  {
     var messageArray : [message] = [message]()
     var chatMessages = [FemaleChatMessage]()
-    
     var sentMessages = [String]()
     
+    var gender : String = ""
+    var profilePic : String = ""
     var notificationPublisher = NotificationPublisher()
     var profilePicURL = [String]()
     var maleNames = [String]()
@@ -27,13 +28,18 @@ class ChatViewFemaleViewController: UIViewController, UITableViewDelegate, UITab
     var maleName : String = ""
     let userID = Auth.auth().currentUser?.uid
     var maleId : String = ""
+    var age : Int!
+    
     private var cellId = "customMessageCell"
 
     @IBOutlet weak var sendButton: UIButtonX!
     @IBOutlet weak var messageTableView: UITableView!
-    
     @IBOutlet weak var navigationBar: UINavigationBar!
     @IBOutlet weak var inputTextField: UITextView!
+    @IBOutlet weak var profilePicImage: UIImageViewX!
+    @IBOutlet weak var BlockedMessage: UILabel!
+    @IBOutlet weak var bottomView: UIView!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -59,10 +65,33 @@ class ChatViewFemaleViewController: UIViewController, UITableViewDelegate, UITab
         inputTextField.layer.cornerRadius = 10
         inputTextField.layer.borderColor = UIColor.gray.cgColor
         inputTextField.layer.borderWidth = 1
-
         textViewDidChange(inputTextField)
+
+        profilePicImage.translatesAutoresizingMaskIntoConstraints = false
+        profilePicImage.layer.masksToBounds = true
+        profilePicImage.layer.cornerRadius = 22
+        
+        setupProfilePic()
+        showKeyboard()
     }
     
+    func setupProfilePic(){
+        //Setting up Profie pic image.
+        if let url = URL(string: profilePic){
+            
+            URLSession.shared.dataTask(with: url, completionHandler: { (data, response, error) in
+                if error != nil {
+                    print("Failed while fetching images : \(error?.localizedDescription)")
+                    return
+                }else {
+                    DispatchQueue.main.async {
+                        self.profilePicImage?.image = UIImage(data: data!)
+                    }
+                }
+                
+            }).resume()
+        }
+    }
     
 //    override func viewDidDisappear(_ animated: Bool) {
 //        var ReceivedMessageTime = [Double]()
@@ -150,6 +179,26 @@ class ChatViewFemaleViewController: UIViewController, UITableViewDelegate, UITab
         }
     }
     
+    func showKeyboard(){
+        let isblockedRef = Database.database().reference(fromURL: "https://beetle-5b79a.firebaseio.com/").child("users").child("Match").child("Female").child(self.userID!).child(self.firstNametextLable).child(self.maleId)
+        
+        isblockedRef.observe(.value, with: { (snap1) in
+            let snapValue = snap1.value as! NSDictionary
+            if let blocked = snapValue["Blocked "] as? String {
+                if blocked == "True"{
+                    self.sendButton.isEnabled = false
+                    self.sendButton.isHidden = true
+                    self.inputTextField.isHidden = true
+                    self.bottomView.isHidden = true
+                }else{
+                    self.BlockedMessage.isHidden = true
+                }
+            }else{
+                self.BlockedMessage.isHidden = true
+                
+            }
+        })
+    }
     
     func retreiveMessage() {
         
@@ -405,11 +454,27 @@ class ChatViewFemaleViewController: UIViewController, UITableViewDelegate, UITab
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "backToMatches"{
+            
             let VC = segue.destination as! UserTableFemaleTableViewController
             VC.maleNames = maleNames
             VC.firstNametextLable = firstNametextLable
             VC.Ids = Ids
             VC.profilePicURL = profilePicURL
+            
+        }
+        
+        if segue.identifier == "goToChatSettings" {
+            
+            let VC = segue.destination as! ChatSettingViewController
+            VC.profilePic = profilePic
+            VC.firstNameTextLabel = firstNametextLable
+            VC.name = maleName
+            VC.IDs = Ids
+            VC.id = maleId
+            VC.names = maleNames
+            VC.profilePicURL = profilePicURL
+            VC.gender = "Female"
+            VC.age = age
         }
     }
 

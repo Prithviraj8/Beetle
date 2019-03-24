@@ -26,27 +26,33 @@ class ChatLogTableViewController: UIViewController, UITableViewDelegate, UITable
     var sentMessages = [String]()
     
     
-    var profilePicURL = [String]()
     private var cellId = "customMessageCell"
+
+    var profilePicURL = [String]()
     var firstNametextLable : String = ""
     var femaleId : String = ""
     var IDs = [String]()
-
     let userID = Auth.auth().currentUser?.uid
     var femaleName : String = ""
     var femaleNames = [String]()
+    var profilePic : String = ""
+    var age : Int!
+    var gender : String = ""
 
     private let notificationPublisher = NotificationPublisher()
     
+    @IBOutlet weak var BlockedMessage: UILabel!
     @IBOutlet weak var navigationBar: UINavigationBar!
     @IBOutlet weak var messageTableView: UITableView!
     @IBOutlet weak var sendButton: UIButton!
     @IBOutlet weak var inputTextField: UITextView!
     @IBOutlet weak var backButton: UIBarButtonItem!
+    @IBOutlet weak var profilePicImage: UIImageViewX!
+    @IBOutlet weak var bottomView: UIView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         navigationBar.topItem?.title = femaleName
         navigationController?.navigationBar.prefersLargeTitles = true
         sendButton.isEnabled = false
@@ -74,11 +80,33 @@ class ChatLogTableViewController: UIViewController, UITableViewDelegate, UITable
         inputTextField.layer.cornerRadius = 10
         inputTextField.layer.borderColor = UIColor.darkGray.cgColor
         inputTextField.layer.borderWidth = 1
-        
 
+        profilePicImage.translatesAutoresizingMaskIntoConstraints = false
+        profilePicImage.layer.masksToBounds = true
+        profilePicImage.layer.cornerRadius = 22
 
+        //Setting up Profie pic image.
+        setupProfilePic()
+        showKeyBoard()
 }
  
+    func setupProfilePic(){
+        //Setting up Profie pic image.
+        if let url = URL(string: profilePic){
+            
+            URLSession.shared.dataTask(with: url, completionHandler: { (data, response, error) in
+                if error != nil {
+                    print("Failed while fetching images : \(error?.localizedDescription)")
+                    return
+                }else {
+                    DispatchQueue.main.async {
+                        self.profilePicImage?.image = UIImage(data: data!)
+                    }
+                }
+                
+            }).resume()
+        }
+    }
     
 //    override func viewDidDisappear(_ animated: Bool) {
 //        var ReceivedMessageTime = [Double]()
@@ -171,7 +199,26 @@ class ChatLogTableViewController: UIViewController, UITableViewDelegate, UITable
     }
     
     
-    
+    func showKeyBoard(){
+        let isblockedRef = Database.database().reference(fromURL: "https://beetle-5b79a.firebaseio.com/").child("users").child("Match").child("Male").child(self.userID!).child(self.firstNametextLable).child(self.femaleId)
+        
+        isblockedRef.observe(.value, with: { (snap1) in
+            let snapValue = snap1.value as! NSDictionary
+            if let blocked = snapValue["Blocked "] as? String {
+                if blocked == "True"{
+                    self.sendButton.isEnabled = false
+                    self.sendButton.isHidden = true
+                    self.inputTextField.isHidden = true
+                    self.bottomView.isHidden = true
+                }else{
+                    self.BlockedMessage.isHidden = true
+                }
+            }else{
+                self.BlockedMessage.isHidden = true
+
+            }
+        })
+    }
 
     @IBAction func sendImage(_ sender: Any) {
         let imagePickerController = UIImagePickerController()
@@ -286,52 +333,62 @@ class ChatLogTableViewController: UIViewController, UITableViewDelegate, UITable
             messageDB.observe(.childAdded) { (snapshot) in
                 
                 let snapshotValue = snapshot.value as! NSDictionary
-        
-                if let ReceivedMessage = snapshotValue["ReceivedMessage "] {
-              
                 
-                    let message2 = ChatMessage(text: ReceivedMessage as! String, isIncoming: true)
-                    self.chatMessages.append(message2)
-                    let messages = message()
-                    messages.messageBody = ReceivedMessage as! String
-                    self.messageArray.append(messages)
-                    print("RE MESS ID \(snapshot.key)")
-                    messageDB.child(snapshot.key).updateChildValues(["Message Read ": "True"])
-                    messageDB.child(snapshot.key).updateChildValues(["Message Notified ": "True"])
-
-                }
-//                if let ReceivedMessage = snapshotValue["ReceivedImage "] {
-//
-//                    let message2 = ChatMessage(text: ReceivedMessage as! String, isIncoming: true)
-//                    self.chatMessages.append(message2)
-//                    let messages = message()
-//                    messages.messageBody = ReceivedMessage as! String
-//                    self.messageArray.append(messages)
-//
-//                }
-                if let SentMessage = snapshotValue["SentMessage "] {
-                    
-                    let message1 = ChatMessage(text: SentMessage as! String, isIncoming: false)
-                    self.chatMessages.append(message1)
-                    let messages = message()
-                    messages.messageBody = SentMessage as! String
-                    self.messageArray.append(messages)
-                    print("RE MESS ID \(snapshot.key)")
-
-                }
+                let isblockedRef = Database.database().reference(fromURL: "https://beetle-5b79a.firebaseio.com/").child("users").child("Match").child("Male").child(self.userID!).child(self.firstNametextLable).child(self.femaleId)
                 
-//                if let SentMessage = snapshotValue["SentImage "] {
-//
-//
-//                    let message1 = ChatMessage(text: SentMessage as! String, isIncoming: false)
-//                    self.chatMessages.append(message1)
-//                    let messages = message()
-//                    messages.messageBody = SentMessage as! String
-//                    self.messageArray.append(messages)
-//                }
-        
-                self.configureTableView()
-                self.messageTableView.reloadData()
+                isblockedRef.observe(.value, with: { (snap1) in
+                    let snapValue = snap1.value as! NSDictionary
+                    if let blocked = snapValue["Blocked "] as? String {
+                        if blocked != "True"{
+                            if let ReceivedMessage = snapshotValue["ReceivedMessage "] {
+                                
+                                let message2 = ChatMessage(text: ReceivedMessage as! String, isIncoming: true)
+                                self.chatMessages.append(message2)
+                                let messages = message()
+                                messages.messageBody = ReceivedMessage as! String
+                                self.messageArray.append(messages)
+                                print("RE MESS ID \(snapshot.key)")
+                                messageDB.child(snapshot.key).updateChildValues(["Message Read ": "True"])
+                                messageDB.child(snapshot.key).updateChildValues(["Message Notified ": "True"])
+                                
+                            }
+                            //                if let ReceivedMessage = snapshotValue["ReceivedImage "] {
+                            //
+                            //                    let message2 = ChatMessage(text: ReceivedMessage as! String, isIncoming: true)
+                            //                    self.chatMessages.append(message2)
+                            //                    let messages = message()
+                            //                    messages.messageBody = ReceivedMessage as! String
+                            //                    self.messageArray.append(messages)
+                            //
+                            //                }
+                            if let SentMessage = snapshotValue["SentMessage "] {
+                                
+                                let message1 = ChatMessage(text: SentMessage as! String, isIncoming: false)
+                                self.chatMessages.append(message1)
+                                let messages = message()
+                                messages.messageBody = SentMessage as! String
+                                self.messageArray.append(messages)
+                                print("RE MESS ID \(snapshot.key)")
+                                
+                            }
+                            
+                            //                if let SentMessage = snapshotValue["SentImage "] {
+                            //
+                            //
+                            //                    let message1 = ChatMessage(text: SentMessage as! String, isIncoming: false)
+                            //                    self.chatMessages.append(message1)
+                            //                    let messages = message()
+                            //                    messages.messageBody = SentMessage as! String
+                            //                    self.messageArray.append(messages)
+                            //                }
+                            self.configureTableView()
+                            self.messageTableView.reloadData()
+                        }
+                        
+                    }
+                })
+         
+         
                 
             }
             
@@ -355,12 +412,18 @@ class ChatLogTableViewController: UIViewController, UITableViewDelegate, UITable
         
         messages.backButtonPressed = 1
     }
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath) as! ChatLogTableViewCell
+        
         let Message  = chatMessages[indexPath.row]
         cell.chatMessage = Message
         cell.selectionStyle = UITableViewCellSelectionStyle.none
+        
+       
+        
+        
         return cell
     }
     
@@ -454,6 +517,18 @@ class ChatLogTableViewController: UIViewController, UITableViewDelegate, UITable
             VC.firstNametextLable = firstNametextLable
             VC.IDs = IDs
             VC.profilePicURL = profilePicURL
+        }else if segue.identifier == "chatSettings" {
+
+            let VC = segue.destination as! ChatSettingViewController
+            VC.profilePic = profilePic
+            VC.firstNameTextLabel = firstNametextLable
+            VC.name = femaleName
+            VC.IDs = IDs
+            VC.id = femaleId
+            VC.names = femaleNames
+            VC.profilePicURL = profilePicURL
+            VC.gender = "Male"
+            VC.age = age
         }
     }
    

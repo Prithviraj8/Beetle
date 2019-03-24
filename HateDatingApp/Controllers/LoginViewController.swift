@@ -148,12 +148,12 @@ class LoginViewController: UIViewController, UITextFieldDelegate, GIDSignInDeleg
             let name = snapshotValue["Name "] as! String
             let userID = snapshotValue["UserId "] as! String
             let email = snapshotValue["Email "] as! String
-            
+            let age = snapshotValue["Age "] as! Int
             if self.emailTextField.text == email {
                 print("THE NAME PASSED IS \(name)")
                 self.user.name = name
                 self.user.id = userID
-                
+                self.user.age = age
                 self.performSegue(withIdentifier: "goToMaleSelectPartner", sender: self)
                 SVProgressHUD.dismiss()
             }
@@ -165,12 +165,14 @@ class LoginViewController: UIViewController, UITextFieldDelegate, GIDSignInDeleg
             let snapshotValue = snapshot.value as! NSDictionary
             let name = snapshotValue["Name "] as! String
             let userID = snapshotValue["UserId "] as! String
-            
+            let age = snapshotValue["Age "] as! Int
+
             let email = snapshotValue["Email "] as! String
             if self.emailTextField.text == email {
                 self.user.name = name
                 self.user.id = userID
-                
+                self.user.age = age
+
                 self.performSegue(withIdentifier: "goToFemaleSelectPartner", sender: self)
                 SVProgressHUD.dismiss()
                 
@@ -219,11 +221,12 @@ class LoginViewController: UIViewController, UITextFieldDelegate, GIDSignInDeleg
             let destinationVC = segue.destination as! SearchPartnerViewController
             destinationVC.firstNametextLable = user.name
             destinationVC.userID = user.id
-            
+            destinationVC.age = user.age
         }else if segue.identifier == "goToFemaleSelectPartner" {
             let destinationVC = segue.destination as! FemaleSearchPartnerViewController
             destinationVC.firstNametextLable = user.name
             destinationVC.userID = user.id
+//            destinationVC.age = user.age
 
         }
     }

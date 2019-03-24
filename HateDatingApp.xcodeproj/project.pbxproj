@@ -43,6 +43,7 @@
 		799E3F3E20F692CE00426ACA /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 799E3F3D20F692CE00426ACA /* User.swift */; };
 		79BBC6352236EE9B006EF791 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 79BBC6342236EE9B006EF791 /* GoogleService-Info.plist */; };
 		79BBC6362236EE9B006EF791 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 79BBC6342236EE9B006EF791 /* GoogleService-Info.plist */; };
+		79BC41E22247B4BD0080B6AA /* ChatSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79BC41E12247B4BD0080B6AA /* ChatSettingViewController.swift */; };
 		79C72EA920DE5B490037A9CD /* UIButtonX.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79C72E9F20DE5B480037A9CD /* UIButtonX.swift */; };
 		79C72EAA20DE5B490037A9CD /* UIButtonX.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79C72E9F20DE5B480037A9CD /* UIButtonX.swift */; };
 		79C72EAB20DE5B490037A9CD /* UIButtonX.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79C72E9F20DE5B480037A9CD /* UIButtonX.swift */; };
@@ -153,6 +154,7 @@
 		799E3F3820F51BD200426ACA /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		799E3F3D20F692CE00426ACA /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		79BBC6342236EE9B006EF791 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		79BC41E12247B4BD0080B6AA /* ChatSettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatSettingViewController.swift; sourceTree = "<group>"; };
 		79C72E9F20DE5B480037A9CD /* UIButtonX.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UIButtonX.swift; path = ../../../ChainAnimations/ChainAnimations/Designs/UIButtonX.swift; sourceTree = "<group>"; };
 		79C72EA020DE5B480037A9CD /* UIViewXRadialGradient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UIViewXRadialGradient.swift; path = ../../../ChainAnimations/ChainAnimations/Designs/UIViewXRadialGradient.swift; sourceTree = "<group>"; };
 		79C72EA120DE5B480037A9CD /* UISliderX.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UISliderX.swift; path = ../../../ChainAnimations/ChainAnimations/Designs/UISliderX.swift; sourceTree = "<group>"; };
@@ -302,6 +304,7 @@
 				79EFF8212226E07500B7AFB9 /* SettingsViewController.swift */,
 				79EFF8232226F8A600B7AFB9 /* ChangeInfoViewController.swift */,
 				79148A2B22354AB6002CFA6B /* PasswordChangeViewController.swift */,
+				79BC41E12247B4BD0080B6AA /* ChatSettingViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -766,6 +769,7 @@
 				790D800C2242D7BD00F89955 /* SignInInfo.swift in Sources */,
 				79EFF8222226E07500B7AFB9 /* SettingsViewController.swift in Sources */,
 				79EFFAD121DBD2750087674E /* ChatLogTableViewController.swift in Sources */,
+				79BC41E22247B4BD0080B6AA /* ChatSettingViewController.swift in Sources */,
 				79C72EC420DE5B490037A9CD /* UILabelX.swift in Sources */,
 				79C72EB520DE5B490037A9CD /* UITextFieldX.swift in Sources */,
 				79FD6998213C0BBA005E6DC2 /* Handler.swift in Sources */,

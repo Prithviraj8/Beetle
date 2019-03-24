@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
-    <device id="retina6_5" orientation="portrait">
+    <device id="retina5_9" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
@@ -15,15 +15,15 @@
             <objects>
                 <viewController storyboardIdentifier="ViewController" id="BYZ-38-t0r" customClass="ViewController" customModule="HateDatingApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="prithvi-b-logo-dark-blue-color" translatesAutoresizingMaskIntoConstraints="NO" id="rpH-qC-x2F">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </imageView>
                             <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EQc-Kz-qzM">
-                                <rect key="frame" x="0.0" y="821" width="414" height="153"/>
+                                <rect key="frame" x="0.0" y="737" width="375" height="153"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" misplaced="YES" preservesSuperviewLayoutMargins="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9yk-Tb-7Xt" customClass="UIViewX" customModule="HateDatingApp" customModuleProvider="target">
                                         <rect key="frame" x="134.60574546679436" y="8" width="104.00000000000009" height="53.999999999999886"/>
@@ -36,7 +36,7 @@
                                         </userDefinedRuntimeAttributes>
                                     </view>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YHO-GG-WIf">
-                                        <rect key="frame" x="149" y="20" width="119" height="30"/>
+                                        <rect key="frame" x="149" y="20" width="80" height="30"/>
                                         <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="15"/>
                                         <color key="tintColor" red="0.089283056560000004" green="0.53060019020000004" blue="0.705593884" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <state key="normal" title="Get Started">
@@ -127,14 +127,14 @@
             <objects>
                 <viewController id="CBI-S1-OHW" customClass="SignUpViewController" customModule="HateDatingApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" id="Lab-Qc-amI">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vpR-sw-hoT">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                                 <subviews>
                                     <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XcY-mr-aaV">
-                                        <rect key="frame" x="0.0" y="41" width="414" height="44"/>
+                                        <rect key="frame" x="0.0" y="41" width="375" height="44"/>
                                         <color key="barTintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <textAttributes key="titleTextAttributes">
                                             <color key="textColor" red="0.02120563202" green="0.52908736469999995" blue="0.99848276380000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -151,13 +151,13 @@
                                         </items>
                                     </navigationBar>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wGj-XX-lus">
-                                        <rect key="frame" x="0.0" y="405" width="414" height="87"/>
+                                        <rect key="frame" x="0.0" y="321" width="375" height="87"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="password" translatesAutoresizingMaskIntoConstraints="NO" id="dZf-f7-PVE">
                                                 <rect key="frame" x="8" y="23" width="35" height="35"/>
                                             </imageView>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter Password" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="zW8-KZ-oWA" customClass="UITextFieldX" customModule="HateDatingApp" customModuleProvider="target">
-                                                <rect key="frame" x="57" y="26" width="300" height="30"/>
+                                                <rect key="frame" x="57" y="26" width="261" height="30"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="30" id="9Qg-cA-Chd"/>
@@ -175,7 +175,7 @@
                                                 </connections>
                                             </textField>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cy0-2Q-KXQ">
-                                                <rect key="frame" x="12" y="65" width="345" height="2"/>
+                                                <rect key="frame" x="12" y="65" width="306" height="2"/>
                                                 <color key="backgroundColor" white="0.66666666666666663" alpha="0.60477311643835618" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             </view>
                                         </subviews>
@@ -196,10 +196,10 @@
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="J8N-53-dfm">
-                                        <rect key="frame" x="0.0" y="247" width="414" height="87"/>
+                                        <rect key="frame" x="0.0" y="163" width="375" height="87"/>
                                         <subviews>
                                             <textField opaque="NO" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" adjustsFontForContentSizeCategory="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ShI-Yh-1FG" customClass="UITextFieldX" customModule="HateDatingApp" customModuleProvider="target">
-                                                <rect key="frame" x="57" y="33" width="300" height="30"/>
+                                                <rect key="frame" x="57" y="33" width="261" height="30"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="30" id="Ga7-4G-WDs"/>
@@ -217,7 +217,7 @@
                                                 <rect key="frame" x="7" y="27" width="35" height="35"/>
                                             </imageView>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OfA-nv-SEP">
-                                                <rect key="frame" x="8" y="71" width="346" height="2"/>
+                                                <rect key="frame" x="8" y="71" width="307" height="2"/>
                                                 <color key="backgroundColor" white="0.66666666666666663" alpha="0.63160851883561642" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             </view>
                                         </subviews>
@@ -238,14 +238,14 @@
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="db9-EU-Sfy" customClass="GIDSignInButton">
-                                        <rect key="frame" x="56.333333333333343" y="701" width="300" height="56"/>
+                                        <rect key="frame" x="56.333333333333343" y="617" width="261" height="56"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="56" id="d2m-kQ-rgh"/>
                                         </constraints>
                                     </view>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7Ma-4j-InJ" customClass="UIButtonX" customModule="HateDatingApp" customModuleProvider="target">
-                                        <rect key="frame" x="56" y="545" width="300" height="56"/>
+                                        <rect key="frame" x="56" y="461" width="261" height="56"/>
                                         <color key="backgroundColor" red="0.02120563202" green="0.52908736469999995" blue="0.99848276380000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="56" id="evr-a8-mY7"/>
@@ -319,11 +319,11 @@
             <objects>
                 <viewController id="F3m-8I-NBH" customClass="FirstNameViewController" customModule="HateDatingApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="oT0-hD-HuF">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="This is how it will appear in app." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8tl-f6-htY">
-                                <rect key="frame" x="81" y="459" width="260" height="31"/>
+                                <rect key="frame" x="81.333333333333314" y="375" width="260" height="31"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="31" id="UHc-Gb-T4O"/>
                                     <constraint firstAttribute="width" constant="260" id="sjX-Ao-b2l"/>
@@ -333,7 +333,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="First name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="rkU-wb-CEY" customClass="UITextFieldX" customModule="HateDatingApp" customModuleProvider="target">
-                                <rect key="frame" x="76.666666666666686" y="363" width="260" height="50"/>
+                                <rect key="frame" x="76.666666666666686" y="279" width="260" height="50"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="260" id="Kub-2w-szU"/>
@@ -352,7 +352,7 @@
                                 </connections>
                             </textField>
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RiX-p3-CFB">
-                                <rect key="frame" x="0.0" y="48" width="414" height="44"/>
+                                <rect key="frame" x="0.0" y="48" width="414.33333333333331" height="44"/>
                                 <color key="barTintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <textAttributes key="titleTextAttributes">
                                     <color key="textColor" red="0.072694503859999995" green="0.71854401030000004" blue="0.80926842340000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -369,14 +369,14 @@
                                 </items>
                             </navigationBar>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="prithvi-b-logo-dark-blue-color" translatesAutoresizingMaskIntoConstraints="NO" id="Gqq-Yf-mcp">
-                                <rect key="frame" x="349" y="50" width="40" height="40"/>
+                                <rect key="frame" x="349.33333333333337" y="50" width="40" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="40" id="dUA-Aa-zeE"/>
                                     <constraint firstAttribute="height" constant="40" id="kTV-zB-eAc"/>
                                 </constraints>
                             </imageView>
                             <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QCH-Xv-3Ah" customClass="UIButtonX" customModule="HateDatingApp" customModuleProvider="target">
-                                <rect key="frame" x="81" y="559" width="260" height="55"/>
+                                <rect key="frame" x="81.333333333333314" y="475" width="260" height="55"/>
                                 <color key="backgroundColor" red="0.02120563202" green="0.52908736469999995" blue="0.99848276380000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="260" id="QJP-Uw-IMP"/>
@@ -398,7 +398,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="My first name is" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P6s-uP-ndi">
-                                <rect key="frame" x="0.0" y="98" width="414" height="45.666666666666657"/>
+                                <rect key="frame" x="0.0" y="98" width="414.33333333333331" height="45.666666666666657"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="45.666666666666657" id="0N6-Ld-Fsk"/>
                                 </constraints>
@@ -447,11 +447,11 @@
             <objects>
                 <viewController id="pvX-fF-VlJ" customClass="DateOfBirthViewController" customModule="HateDatingApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Duv-Pi-dq5">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xzU-uS-Ddi" customClass="UIButtonX" customModule="HateDatingApp" customModuleProvider="target">
-                                <rect key="frame" x="76" y="507" width="260" height="56"/>
+                                <rect key="frame" x="76" y="423" width="221" height="56"/>
                                 <color key="backgroundColor" red="0.021205632016062737" green="0.5290873646736145" blue="0.99848276376724243" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="56" id="gHw-wZ-JE6"/>
@@ -473,7 +473,7 @@
                                 </connections>
                             </button>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ajP-ph-cL1" customClass="UITextFieldX" customModule="HateDatingApp" customModuleProvider="target">
-                                <rect key="frame" x="76" y="343" width="260" height="30"/>
+                                <rect key="frame" x="76" y="259" width="221" height="30"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="2SK-wk-lzj"/>
@@ -488,7 +488,7 @@
                                 </userDefinedRuntimeAttributes>
                             </textField>
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ymb-wR-1bd">
-                                <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                                <rect key="frame" x="0.0" y="44" width="375" height="44"/>
                                 <color key="barTintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <items>
                                     <navigationItem id="XPA-bf-IKj">
@@ -502,14 +502,14 @@
                                 </items>
                             </navigationBar>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="prithvi-b-logo-dark-blue-color" translatesAutoresizingMaskIntoConstraints="NO" id="Pqa-xk-35l">
-                                <rect key="frame" x="349" y="50" width="40" height="40"/>
+                                <rect key="frame" x="310" y="50" width="40" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="8SS-k5-cG2"/>
                                     <constraint firstAttribute="width" constant="40" id="UgS-r3-4Yz"/>
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your age will be public." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tko-BC-t7d">
-                                <rect key="frame" x="76" y="412" width="260" height="38"/>
+                                <rect key="frame" x="76" y="328" width="221" height="38"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="38" id="10g-oF-YEY"/>
                                 </constraints>
@@ -518,7 +518,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Enter date of birth" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cEF-LB-wSG">
-                                <rect key="frame" x="-1" y="88" width="414" height="50.333333333333343"/>
+                                <rect key="frame" x="-1" y="88" width="375" height="50.333333333333343"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50.333333333333343" id="0ff-0N-mB5"/>
                                 </constraints>
@@ -565,11 +565,11 @@
             <objects>
                 <viewController id="F4T-jA-5FJ" customClass="GenderViewController" customModule="HateDatingApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Myl-CR-Fmd">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KYd-zb-MRr" customClass="UIButtonX" customModule="HateDatingApp" customModuleProvider="target">
-                                <rect key="frame" x="77" y="602.33333333333337" width="260" height="56"/>
+                                <rect key="frame" x="77" y="518.33333333333337" width="221" height="56"/>
                                 <color key="backgroundColor" red="0.021205632016062737" green="0.5290873646736145" blue="0.99848276376724243" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="56" id="E0n-d2-j2i"/>
@@ -595,7 +595,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iWM-wF-HTE" customClass="UIButtonX" customModule="HateDatingApp" customModuleProvider="target">
-                                <rect key="frame" x="77" y="478" width="260" height="56"/>
+                                <rect key="frame" x="77" y="394" width="221" height="56"/>
                                 <color key="backgroundColor" red="0.02120563202" green="0.52908736469999995" blue="0.99848276380000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="56" id="zDn-pN-pvM"/>
@@ -621,7 +621,7 @@
                                 </connections>
                             </button>
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="t2s-p1-O2T">
-                                <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                                <rect key="frame" x="0.0" y="44" width="375" height="44"/>
                                 <color key="barTintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <items>
                                     <navigationItem id="5fV-Ga-DPX">
@@ -635,14 +635,14 @@
                                 </items>
                             </navigationBar>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="prithvi-b-logo-dark-blue-color" translatesAutoresizingMaskIntoConstraints="NO" id="U6S-Ep-MoX">
-                                <rect key="frame" x="349" y="50" width="40" height="40"/>
+                                <rect key="frame" x="310" y="50" width="40" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="4UQ-fo-W73"/>
                                     <constraint firstAttribute="width" constant="40" id="ESW-Q6-uPJ"/>
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="   I am a " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cl7-vo-5mE">
-                                <rect key="frame" x="103" y="196" width="208" height="45.666666666666657"/>
+                                <rect key="frame" x="103" y="196" width="169" height="45.666666666666657"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="45.666666666666657" id="UcM-en-mh3"/>
                                 </constraints>
@@ -688,17 +688,17 @@
             <objects>
                 <viewController id="UTB-gW-rEb" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="UUq-Bn-0hn">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RD6-5d-K2l">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hzF-j3-S05">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background1" translatesAutoresizingMaskIntoConstraints="NO" id="jTa-ZG-Gqd">
-                                                <rect key="frame" x="0.0" y="0.0" width="414" height="1011"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="375" height="927"/>
                                             </imageView>
                                             <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="s5s-QQ-RYf">
                                                 <rect key="frame" x="62" y="244" width="290" height="30"/>
@@ -776,12 +776,15 @@
             <objects>
                 <viewController id="iPn-tw-F5a" customClass="profileSetUpViewController" customModule="HateDatingApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="25p-8T-lf3">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Icon" translatesAutoresizingMaskIntoConstraints="NO" id="s23-dW-ZvW" customClass="UIImageViewX" customModule="HateDatingApp" customModuleProvider="target">
-                                <rect key="frame" x="80" y="310" width="260" height="305"/>
+                                <rect key="frame" x="54" y="310" width="266" height="305"/>
                                 <color key="backgroundColor" red="0.4756349325" green="0.47564673419999998" blue="0.47564041610000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="304.99999999999977" id="mef-8a-OOd"/>
+                                </constraints>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
                                         <color key="value" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -792,7 +795,10 @@
                                 </userDefinedRuntimeAttributes>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gtE-Ca-5lH" customClass="UIButtonX" customModule="HateDatingApp" customModuleProvider="target">
-                                <rect key="frame" x="60" y="310" width="305" height="305"/>
+                                <rect key="frame" x="55" y="310" width="266" height="305"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="305" id="tGs-qX-hLR"/>
+                                </constraints>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
                                         <color key="value" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -805,8 +811,36 @@
                                     <action selector="maleAttachmentPressed:" destination="iPn-tw-F5a" eventType="touchUpInside" id="KgI-Xq-St0"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="My best pic is" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TxV-Ey-7Hd">
+                                <rect key="frame" x="0.0" y="147.33333333333331" width="375" height="45.666666666666657"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="45.666666666666657" id="BPp-NF-Ote"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="38"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XG5-wR-Nbe">
+                                <rect key="frame" x="2" y="44" width="375" height="44"/>
+                                <items>
+                                    <navigationItem id="fFs-xJ-4oo">
+                                        <barButtonItem key="leftBarButtonItem" image="BACK1" id="QOM-Gm-2vE">
+                                            <connections>
+                                                <segue destination="F4T-jA-5FJ" kind="presentation" modalTransitionStyle="flipHorizontal" id="KDy-py-A5f"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="prithvi-b-logo-dark-blue-color" translatesAutoresizingMaskIntoConstraints="NO" id="Ej8-5r-0u0">
+                                <rect key="frame" x="310" y="50" width="40" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="40" id="A5Y-gL-p8B"/>
+                                    <constraint firstAttribute="height" constant="40" id="IfG-9a-GfV"/>
+                                </constraints>
+                            </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="r1Q-O4-NpG" customClass="UIButtonX" customModule="HateDatingApp" customModuleProvider="target">
-                                <rect key="frame" x="60" y="683" width="305" height="54"/>
+                                <rect key="frame" x="54" y="688" width="266" height="54"/>
                                 <color key="backgroundColor" red="0.02120563202" green="0.52908736469999995" blue="0.99848276380000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="54" id="X6l-aN-as6"/>
@@ -824,62 +858,29 @@
                                     <segue destination="Qur-bO-haA" kind="presentation" identifier="goToMaleProfileVC" modalTransitionStyle="flipHorizontal" id="7Eb-eQ-NN0"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="My best pic is" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TxV-Ey-7Hd">
-                                <rect key="frame" x="0.0" y="147.33333333333334" width="414" height="45.666666666666657"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="45.666666666666657" id="BPp-NF-Ote"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="38"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XG5-wR-Nbe">
-                                <rect key="frame" x="2" y="44" width="414" height="44"/>
-                                <items>
-                                    <navigationItem id="fFs-xJ-4oo">
-                                        <barButtonItem key="leftBarButtonItem" image="BACK1" id="QOM-Gm-2vE">
-                                            <connections>
-                                                <segue destination="F4T-jA-5FJ" kind="presentation" modalTransitionStyle="flipHorizontal" id="Mqc-t9-hSp"/>
-                                            </connections>
-                                        </barButtonItem>
-                                    </navigationItem>
-                                </items>
-                            </navigationBar>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="prithvi-b-logo-dark-blue-color" translatesAutoresizingMaskIntoConstraints="NO" id="Ej8-5r-0u0">
-                                <rect key="frame" x="349" y="50" width="40" height="40"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="40" id="A5Y-gL-p8B"/>
-                                    <constraint firstAttribute="height" constant="40" id="IfG-9a-GfV"/>
-                                </constraints>
-                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="s23-dW-ZvW" firstAttribute="leading" secondItem="waX-MP-ICP" secondAttribute="leading" constant="80" id="1UZ-mS-TJ8"/>
-                            <constraint firstItem="waX-MP-ICP" firstAttribute="trailing" secondItem="r1Q-O4-NpG" secondAttribute="trailing" constant="49" id="2Ha-pG-41p"/>
+                            <constraint firstItem="waX-MP-ICP" firstAttribute="trailing" secondItem="r1Q-O4-NpG" secondAttribute="trailing" constant="55" id="2Ha-pG-41p"/>
                             <constraint firstItem="waX-MP-ICP" firstAttribute="trailing" secondItem="Ej8-5r-0u0" secondAttribute="trailing" constant="25" id="4Qj-Ee-NOZ"/>
-                            <constraint firstItem="r1Q-O4-NpG" firstAttribute="width" secondItem="gtE-Ca-5lH" secondAttribute="width" id="8Em-Ue-Saf"/>
+                            <constraint firstItem="gtE-Ca-5lH" firstAttribute="leading" secondItem="waX-MP-ICP" secondAttribute="leading" constant="55" id="5Kh-jv-Sv8"/>
+                            <constraint firstItem="waX-MP-ICP" firstAttribute="trailing" secondItem="s23-dW-ZvW" secondAttribute="trailing" constant="55.085714285715312" id="5X5-HW-uRm"/>
+                            <constraint firstItem="gtE-Ca-5lH" firstAttribute="width" secondItem="s23-dW-ZvW" secondAttribute="width" id="69G-7w-xOo"/>
                             <constraint firstItem="TxV-Ey-7Hd" firstAttribute="leading" secondItem="waX-MP-ICP" secondAttribute="leading" id="AD5-wu-3Tk"/>
-                            <constraint firstItem="gtE-Ca-5lH" firstAttribute="centerX" secondItem="TxV-Ey-7Hd" secondAttribute="centerX" constant="5.5" id="Ecw-q2-0VK"/>
-                            <constraint firstItem="r1Q-O4-NpG" firstAttribute="leading" secondItem="waX-MP-ICP" secondAttribute="leading" constant="60" id="EgM-6t-scq"/>
+                            <constraint firstItem="r1Q-O4-NpG" firstAttribute="leading" secondItem="waX-MP-ICP" secondAttribute="leading" constant="54" id="EgM-6t-scq"/>
                             <constraint firstItem="XG5-wR-Nbe" firstAttribute="leading" secondItem="waX-MP-ICP" secondAttribute="leading" constant="2" id="EnB-sA-by9"/>
                             <constraint firstItem="XG5-wR-Nbe" firstAttribute="trailing" secondItem="waX-MP-ICP" secondAttribute="trailing" constant="2" id="FJW-EA-QNj"/>
-                            <constraint firstItem="gtE-Ca-5lH" firstAttribute="top" secondItem="s23-dW-ZvW" secondAttribute="top" id="Gch-ub-v1R"/>
+                            <constraint firstItem="r1Q-O4-NpG" firstAttribute="top" secondItem="gtE-Ca-5lH" secondAttribute="bottom" constant="73" id="GdL-vG-jWR"/>
                             <constraint firstItem="Ej8-5r-0u0" firstAttribute="top" secondItem="waX-MP-ICP" secondAttribute="top" constant="6" id="Iaj-fO-WHA"/>
                             <constraint firstItem="waX-MP-ICP" firstAttribute="trailing" secondItem="TxV-Ey-7Hd" secondAttribute="trailing" id="JaP-QW-tFa"/>
                             <constraint firstItem="TxV-Ey-7Hd" firstAttribute="top" secondItem="XG5-wR-Nbe" secondAttribute="bottom" constant="59.333333333333343" id="NAo-rL-LsK"/>
                             <constraint firstItem="XG5-wR-Nbe" firstAttribute="top" secondItem="waX-MP-ICP" secondAttribute="top" id="OWy-Zc-Bck"/>
-                            <constraint firstItem="gtE-Ca-5lH" firstAttribute="leading" secondItem="waX-MP-ICP" secondAttribute="leading" constant="60" id="Pi4-Zf-aOd"/>
-                            <constraint firstItem="gtE-Ca-5lH" firstAttribute="leading" secondItem="s23-dW-ZvW" secondAttribute="leading" constant="-20" id="TQD-gs-D43"/>
-                            <constraint firstItem="gtE-Ca-5lH" firstAttribute="height" secondItem="s23-dW-ZvW" secondAttribute="height" id="Txq-Gk-7Md"/>
-                            <constraint firstItem="waX-MP-ICP" firstAttribute="bottom" secondItem="s23-dW-ZvW" secondAttribute="bottom" constant="247" id="VKR-hN-Qym"/>
-                            <constraint firstItem="waX-MP-ICP" firstAttribute="trailing" secondItem="s23-dW-ZvW" secondAttribute="trailing" constant="74" id="Wfv-4a-KWO"/>
-                            <constraint firstItem="gtE-Ca-5lH" firstAttribute="centerY" secondItem="25p-8T-lf3" secondAttribute="centerY" constant="14.5" id="c7A-cQ-Yd5"/>
-                            <constraint firstItem="waX-MP-ICP" firstAttribute="bottom" secondItem="gtE-Ca-5lH" secondAttribute="bottom" constant="247" id="eys-gm-B8T"/>
-                            <constraint firstItem="gtE-Ca-5lH" firstAttribute="top" secondItem="TxV-Ey-7Hd" secondAttribute="bottom" constant="117" id="hjq-QW-RwT"/>
-                            <constraint firstItem="gtE-Ca-5lH" firstAttribute="width" secondItem="s23-dW-ZvW" secondAttribute="width" constant="45" id="hrS-yz-4aq"/>
-                            <constraint firstItem="waX-MP-ICP" firstAttribute="trailing" secondItem="gtE-Ca-5lH" secondAttribute="trailing" constant="49" id="nMo-B2-RBI"/>
-                            <constraint firstItem="waX-MP-ICP" firstAttribute="bottom" secondItem="r1Q-O4-NpG" secondAttribute="bottom" constant="125" id="tcT-Zb-JQt"/>
+                            <constraint firstItem="gtE-Ca-5lH" firstAttribute="height" secondItem="s23-dW-ZvW" secondAttribute="height" id="Z0L-HD-Pfd"/>
+                            <constraint firstItem="s23-dW-ZvW" firstAttribute="leading" secondItem="waX-MP-ICP" secondAttribute="leading" constant="53.914285714285143" id="ZWI-Qs-f4b"/>
+                            <constraint firstItem="waX-MP-ICP" firstAttribute="trailing" secondItem="gtE-Ca-5lH" secondAttribute="trailing" constant="54" id="boR-PV-LTQ"/>
+                            <constraint firstItem="gtE-Ca-5lH" firstAttribute="top" secondItem="TxV-Ey-7Hd" secondAttribute="bottom" constant="117" id="kpI-o4-nwu"/>
+                            <constraint firstItem="s23-dW-ZvW" firstAttribute="top" secondItem="TxV-Ey-7Hd" secondAttribute="bottom" constant="117" id="nbR-V6-OQZ"/>
+                            <constraint firstItem="waX-MP-ICP" firstAttribute="bottom" secondItem="r1Q-O4-NpG" secondAttribute="bottom" constant="120" id="tcT-Zb-JQt"/>
                             <constraint firstItem="Ej8-5r-0u0" firstAttribute="leading" secondItem="XG5-wR-Nbe" secondAttribute="trailing" constant="-67" id="zv6-Ve-rTc"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="waX-MP-ICP"/>
@@ -897,11 +898,11 @@
             <objects>
                 <viewController id="Qur-bO-haA" customClass="MaleProfileViewController" customModule="HateDatingApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="cSK-nu-U4o">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="98A-nY-ReZ" customClass="UIImageViewX" customModule="HateDatingApp" customModuleProvider="target">
-                                <rect key="frame" x="39" y="111" width="336" height="357"/>
+                                <rect key="frame" x="39" y="111" width="297" height="357"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="357" id="4wp-Ey-4Ao"/>
                                 </constraints>
@@ -915,7 +916,7 @@
                                 </userDefinedRuntimeAttributes>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5vD-09-mzQ">
-                                <rect key="frame" x="144.33333333333337" y="509" width="253.66666666666663" height="33"/>
+                                <rect key="frame" x="144.33333333333337" y="509" width="214.66666666666663" height="33"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="33" id="HO8-ac-KjK"/>
                                 </constraints>
@@ -924,7 +925,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome to Beetle a dating app." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aWi-Dq-NCF">
-                                <rect key="frame" x="76.666666666666657" y="550" width="312.33333333333337" height="31"/>
+                                <rect key="frame" x="76.666666666666657" y="550" width="273.33333333333337" height="31"/>
                                 <constraints>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="273" id="hGy-h4-VP9"/>
                                     <constraint firstAttribute="height" constant="31" id="lbx-GW-liK"/>
@@ -934,7 +935,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="thw-b5-Ven">
-                                <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                                <rect key="frame" x="0.0" y="44" width="375" height="44"/>
                                 <items>
                                     <navigationItem id="I0T-Ho-LbI">
                                         <barButtonItem key="leftBarButtonItem" image="BACK1" id="aNV-fh-0vT">
@@ -947,7 +948,7 @@
                                 </items>
                             </navigationBar>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="prithvi-b-logo-dark-blue-color" translatesAutoresizingMaskIntoConstraints="NO" id="dGk-fr-Dqy">
-                                <rect key="frame" x="349" y="50" width="40" height="40"/>
+                                <rect key="frame" x="310" y="50" width="40" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="40" id="CiD-LA-eIS"/>
                                     <constraint firstAttribute="height" constant="40" id="phd-kB-mdC"/>
@@ -963,7 +964,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="A2e-Kx-2F9" customClass="UIButtonX" customModule="HateDatingApp" customModuleProvider="target">
-                                <rect key="frame" x="39" y="771" width="350" height="50"/>
+                                <rect key="frame" x="39" y="687" width="311" height="50"/>
                                 <color key="backgroundColor" red="0.02120563202" green="0.52908736469999995" blue="0.99848276380000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="j7L-ex-ESR"/>
@@ -1031,11 +1032,11 @@
             <objects>
                 <viewController id="gvL-sh-gM4" customClass="profileSetUpViewController" customModule="HateDatingApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="osz-Hs-4MB">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Femal Profile Pic" translatesAutoresizingMaskIntoConstraints="NO" id="vBV-si-hsb" customClass="UIImageViewX" customModule="HateDatingApp" customModuleProvider="target">
-                                <rect key="frame" x="78.333333333333314" y="279" width="260" height="349"/>
+                                <rect key="frame" x="53" y="279" width="266" height="221"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
                                         <real key="value" value="10"/>
@@ -1049,22 +1050,13 @@
                                 </userDefinedRuntimeAttributes>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5jU-MU-Dlw">
-                                <rect key="frame" x="78" y="280.66666666666669" width="260" height="349.00000000000006"/>
+                                <rect key="frame" x="53" y="280.66666666666669" width="266" height="221"/>
                                 <connections>
                                     <action selector="femaleAttachmentPressed:" destination="gvL-sh-gM4" eventType="touchUpInside" id="9I3-CE-10e"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="My best pic is" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4s3-ie-OM2">
-                                <rect key="frame" x="0.0" y="174" width="414" height="84"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="84" id="QFx-sw-yLY"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="38"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="t6f-mS-txA">
-                                <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                                <rect key="frame" x="0.0" y="44" width="375" height="44"/>
                                 <items>
                                     <navigationItem id="xbg-bj-gu2">
                                         <barButtonItem key="leftBarButtonItem" image="BACK1" id="3co-R8-MbB">
@@ -1077,7 +1069,7 @@
                                 </items>
                             </navigationBar>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2pN-Nf-s9K" customClass="UIButtonX" customModule="HateDatingApp" customModuleProvider="target">
-                                <rect key="frame" x="54" y="699" width="305" height="54"/>
+                                <rect key="frame" x="54" y="615" width="266" height="54"/>
                                 <color key="backgroundColor" red="0.99861520530000003" green="0.29565572740000001" blue="0.42170840500000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="54" id="PLe-K2-YvV"/>
@@ -1097,32 +1089,41 @@
                                 </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="prithvi-b-logo-dark-blue-color" translatesAutoresizingMaskIntoConstraints="NO" id="oQF-GH-rGc">
-                                <rect key="frame" x="349" y="50" width="40" height="40"/>
+                                <rect key="frame" x="310" y="50" width="40" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="iR6-Za-b3v"/>
                                     <constraint firstAttribute="width" constant="40" id="rwA-Qv-UHs"/>
                                 </constraints>
                             </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="My best pic is" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4s3-ie-OM2">
+                                <rect key="frame" x="0.0" y="119" width="375" height="84"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="84" id="QFx-sw-yLY"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="38"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="t6f-mS-txA" firstAttribute="top" secondItem="Ij9-yf-VMy" secondAttribute="top" id="2Vw-6D-Rhi"/>
-                            <constraint firstItem="Ij9-yf-VMy" firstAttribute="bottom" secondItem="5jU-MU-Dlw" secondAttribute="bottom" constant="232.33333333333337" id="3Xy-8A-nfw"/>
-                            <constraint firstItem="vBV-si-hsb" firstAttribute="leading" secondItem="Ij9-yf-VMy" secondAttribute="leading" constant="78.287096774192833" id="9J8-JX-GWz"/>
+                            <constraint firstItem="Ij9-yf-VMy" firstAttribute="bottom" secondItem="5jU-MU-Dlw" secondAttribute="bottom" constant="276.33333333333303" id="3Xy-8A-nfw"/>
+                            <constraint firstItem="vBV-si-hsb" firstAttribute="leading" secondItem="Ij9-yf-VMy" secondAttribute="leading" constant="52.914285714575271" id="9J8-JX-GWz"/>
                             <constraint firstItem="4s3-ie-OM2" firstAttribute="leading" secondItem="Ij9-yf-VMy" secondAttribute="leading" id="BMx-No-e32"/>
                             <constraint firstItem="t6f-mS-txA" firstAttribute="leading" secondItem="Ij9-yf-VMy" secondAttribute="leading" id="EuA-PL-w24"/>
                             <constraint firstItem="vBV-si-hsb" firstAttribute="top" secondItem="Ij9-yf-VMy" secondAttribute="top" constant="235.10322580627144" id="Lbw-4T-VT9"/>
-                            <constraint firstItem="Ij9-yf-VMy" firstAttribute="trailing" secondItem="5jU-MU-Dlw" secondAttribute="trailing" constant="76" id="QtR-dl-z00"/>
-                            <constraint firstItem="Ij9-yf-VMy" firstAttribute="bottom" secondItem="vBV-si-hsb" secondAttribute="bottom" constant="234" id="S8e-77-RMi"/>
+                            <constraint firstItem="Ij9-yf-VMy" firstAttribute="trailing" secondItem="5jU-MU-Dlw" secondAttribute="trailing" constant="56.085714285424729" id="QtR-dl-z00"/>
+                            <constraint firstItem="Ij9-yf-VMy" firstAttribute="bottom" secondItem="vBV-si-hsb" secondAttribute="bottom" constant="278" id="S8e-77-RMi"/>
                             <constraint firstItem="2pN-Nf-s9K" firstAttribute="leading" secondItem="Ij9-yf-VMy" secondAttribute="leading" constant="53.850768381968919" id="Wwv-TE-Wej"/>
                             <constraint firstItem="oQF-GH-rGc" firstAttribute="leading" secondItem="t6f-mS-txA" secondAttribute="trailing" constant="-65" id="Xqh-9J-CN7"/>
                             <constraint firstItem="Ij9-yf-VMy" firstAttribute="trailing" secondItem="t6f-mS-txA" secondAttribute="trailing" id="Ymq-7r-fsW"/>
-                            <constraint firstItem="5jU-MU-Dlw" firstAttribute="top" secondItem="4s3-ie-OM2" secondAttribute="bottom" constant="22.666666666666686" id="a4n-iP-tsg"/>
+                            <constraint firstItem="5jU-MU-Dlw" firstAttribute="top" secondItem="4s3-ie-OM2" secondAttribute="bottom" constant="77.666666666666686" id="a4n-iP-tsg"/>
                             <constraint firstItem="Ij9-yf-VMy" firstAttribute="trailing" secondItem="4s3-ie-OM2" secondAttribute="trailing" id="dZJ-7A-cdf"/>
-                            <constraint firstItem="5jU-MU-Dlw" firstAttribute="leading" secondItem="Ij9-yf-VMy" secondAttribute="leading" constant="78" id="dp2-96-4z8"/>
+                            <constraint firstItem="5jU-MU-Dlw" firstAttribute="leading" secondItem="Ij9-yf-VMy" secondAttribute="leading" constant="52.914285714575271" id="dp2-96-4z8"/>
                             <constraint firstItem="Ij9-yf-VMy" firstAttribute="bottom" secondItem="2pN-Nf-s9K" secondAttribute="bottom" constant="109" id="dv5-HK-1bU"/>
                             <constraint firstItem="Ij9-yf-VMy" firstAttribute="trailing" secondItem="2pN-Nf-s9K" secondAttribute="trailing" constant="55.149231618031536" id="l8f-oF-qsI"/>
-                            <constraint firstItem="Ij9-yf-VMy" firstAttribute="trailing" secondItem="vBV-si-hsb" secondAttribute="trailing" constant="75.666666666666686" id="r8r-sU-ydu"/>
+                            <constraint firstItem="Ij9-yf-VMy" firstAttribute="trailing" secondItem="vBV-si-hsb" secondAttribute="trailing" constant="56.085714285424729" id="r8r-sU-ydu"/>
                             <constraint firstItem="5jU-MU-Dlw" firstAttribute="top" secondItem="Ij9-yf-VMy" secondAttribute="top" constant="236.5" id="uUB-Fa-TEP"/>
                             <constraint firstItem="oQF-GH-rGc" firstAttribute="top" secondItem="Ij9-yf-VMy" secondAttribute="top" constant="6" id="x40-Nk-1Sg"/>
                         </constraints>
@@ -1141,11 +1142,11 @@
             <objects>
                 <viewController id="9Jb-t7-4WI" customClass="SearchPartnerViewController" customModule="HateDatingApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="9hy-bg-Iu4">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleAspectFill" translatesAutoresizingMaskIntoConstraints="NO" id="Sf8-ih-hKu" customClass="UIViewX" customModule="HateDatingApp" customModuleProvider="target">
-                                <rect key="frame" x="15" y="224" width="384" height="518"/>
+                                <rect key="frame" x="15" y="224" width="345" height="434"/>
                                 <gestureRecognizers/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
@@ -1154,10 +1155,10 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vLt-HS-yti">
-                                <rect key="frame" x="0.0" y="762" width="414" height="100"/>
+                                <rect key="frame" x="0.0" y="678" width="375" height="100"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="doC-RQ-za6">
-                                        <rect key="frame" x="20" y="13" width="75" height="74"/>
+                                        <rect key="frame" x="0.6666666666666643" y="13" width="75" height="74"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="75" id="SDp-OZ-vI3"/>
                                             <constraint firstAttribute="height" constant="74" id="yas-25-xbJ"/>
@@ -1169,7 +1170,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hyv-p9-6CM">
-                                        <rect key="frame" x="169.66666666666666" y="13" width="75" height="74"/>
+                                        <rect key="frame" x="150" y="13" width="75" height="74"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="74" id="B6f-DN-nrP"/>
                                             <constraint firstAttribute="width" constant="75" id="uKn-sT-yYt"/>
@@ -1181,7 +1182,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RlR-R5-pbQ" userLabel="Like Button">
-                                        <rect key="frame" x="313.33333333333331" y="13" width="75" height="74"/>
+                                        <rect key="frame" x="293.66666666666669" y="13" width="75" height="74"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="75" id="WAj-sS-BW6"/>
                                             <constraint firstAttribute="height" constant="74" id="tXk-9N-1A7"/>
@@ -1208,7 +1209,7 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ycP-rU-6Vz" customClass="UIViewX" customModule="HateDatingApp" customModuleProvider="target">
-                                <rect key="frame" x="425" y="224" width="218" height="530"/>
+                                <rect key="frame" x="386" y="224" width="218" height="446"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nZo-t0-vLG" userLabel="Matches">
                                         <rect key="frame" x="17" y="50" width="79" height="79"/>
@@ -1254,10 +1255,10 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="V2x-9K-KW8" userLabel="TopView">
-                                <rect key="frame" x="0.0" y="44" width="414" height="160"/>
+                                <rect key="frame" x="0.0" y="44" width="375" height="160"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6cY-hq-2JR" customClass="BadgeButton" customModule="HateDatingApp" customModuleProvider="target">
-                                        <rect key="frame" x="340" y="15" width="54" height="54"/>
+                                        <rect key="frame" x="320.66666666666669" y="15" width="34.333333333333314" height="54"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="54" id="ndK-py-JeV"/>
@@ -1270,7 +1271,7 @@
                                         </connections>
                                     </button>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9UB-r7-xAu" customClass="EmojiRateView" customModule="HateDatingApp" customModuleProvider="target">
-                                        <rect key="frame" x="147" y="20" width="120" height="120"/>
+                                        <rect key="frame" x="127.66666666666669" y="20" width="120" height="120"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="120" id="Ht5-Dx-vyj"/>
@@ -1363,28 +1364,38 @@
             <objects>
                 <viewController storyboardIdentifier="MaleChatVC" id="zb6-6b-wnU" customClass="ChatLogTableViewController" customModule="HateDatingApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="feU-2v-ZTU">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="V5g-P8-qNk">
-                                <rect key="frame" x="0.0" y="88" width="414" height="684"/>
+                                <rect key="frame" x="0.0" y="88" width="375" height="605"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="customMessageCell" id="c1e-dD-bYd" customClass="ChatLogTableViewCell" customModule="HateDatingApp" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="414" height="44"/>
+                                        <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="c1e-dD-bYd" id="qZI-Sq-0A2">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.666666666666664"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.666666666666664"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You've blocked this user. Unblock her to send message." lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iC9-KH-rAg">
+                                <rect key="frame" x="0.0" y="690" width="375" height="122"/>
+                                <color key="backgroundColor" red="1" green="0.85566986243183174" blue="0.0" alpha="0.48747859589041098" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="122" id="GiL-PC-HA5"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Doo-Uz-Wpn">
-                                <rect key="frame" x="0.0" y="780" width="414" height="82"/>
+                                <rect key="frame" x="0.0" y="690" width="375" height="90"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xp0-pB-We1" customClass="UIButtonX" customModule="HateDatingApp" customModuleProvider="target">
-                                        <rect key="frame" x="323" y="23" width="76" height="37"/>
+                                        <rect key="frame" x="323" y="23" width="37" height="37"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                         <state key="normal" image="SendMessage"/>
                                         <userDefinedRuntimeAttributes>
@@ -1409,23 +1420,23 @@
                                             <constraint firstAttribute="width" constant="289" id="17p-H8-MzJ"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences" keyboardAppearance="alert"/>
                                     </textView>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstItem="Xp0-pB-We1" firstAttribute="top" secondItem="Doo-Uz-Wpn" secondAttribute="top" constant="23" id="55r-7w-YZ2"/>
                                     <constraint firstItem="d9N-4p-7dm" firstAttribute="top" secondItem="Doo-Uz-Wpn" secondAttribute="top" constant="21" id="Kxl-y7-4Wg"/>
-                                    <constraint firstAttribute="height" constant="82" id="LvU-F6-CLw"/>
+                                    <constraint firstAttribute="height" constant="90" id="LvU-F6-CLw"/>
                                     <constraint firstItem="d9N-4p-7dm" firstAttribute="leading" secondItem="Doo-Uz-Wpn" secondAttribute="leading" constant="8" id="Owh-2P-7Nu"/>
-                                    <constraint firstAttribute="bottom" secondItem="Xp0-pB-We1" secondAttribute="bottom" constant="22" id="RAU-Ic-knK"/>
+                                    <constraint firstAttribute="bottom" secondItem="Xp0-pB-We1" secondAttribute="bottom" constant="30" id="RAU-Ic-knK"/>
                                     <constraint firstAttribute="trailing" secondItem="Xp0-pB-We1" secondAttribute="trailing" constant="15" id="ake-rB-wHL"/>
-                                    <constraint firstAttribute="bottom" secondItem="d9N-4p-7dm" secondAttribute="bottom" constant="21" id="oTW-C0-EBv"/>
+                                    <constraint firstAttribute="bottom" secondItem="d9N-4p-7dm" secondAttribute="bottom" constant="29" id="oTW-C0-EBv"/>
                                     <constraint firstItem="Xp0-pB-We1" firstAttribute="leading" secondItem="d9N-4p-7dm" secondAttribute="trailing" constant="26" id="oe6-1x-r4n"/>
                                 </constraints>
                             </view>
-                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Udq-6u-9f3">
-                                <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                            <navigationBar clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Udq-6u-9f3">
+                                <rect key="frame" x="0.0" y="44" width="375" height="44"/>
                                 <items>
                                     <navigationItem id="4G5-uE-Mt5">
                                         <barButtonItem key="leftBarButtonItem" image="BACK1" id="hoH-rF-ATw">
@@ -1436,59 +1447,223 @@
                                     </navigationItem>
                                 </items>
                             </navigationBar>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="o33-uS-BxD" customClass="UIImageViewX" customModule="HateDatingApp" customModuleProvider="target">
+                                <rect key="frame" x="308" y="46" width="44" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="1F3-as-B2j"/>
+                                    <constraint firstAttribute="width" constant="44" id="G8s-Ly-AeG"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                        <color key="value" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AVm-0L-yHo" customClass="UIButtonX" customModule="HateDatingApp" customModuleProvider="target">
+                                <rect key="frame" x="308" y="46" width="44" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="44" id="b4D-qn-XH2"/>
+                                    <constraint firstAttribute="height" constant="44" id="t0s-1T-46s"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="22"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <segue destination="N1c-5B-MA5" kind="presentation" identifier="chatSettings" modalTransitionStyle="flipHorizontal" id="dsA-Vt-Vld"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="F8g-3h-zcQ" firstAttribute="trailing" secondItem="Udq-6u-9f3" secondAttribute="trailing" id="0vD-QX-JXv"/>
                             <constraint firstItem="V5g-P8-qNk" firstAttribute="top" secondItem="Udq-6u-9f3" secondAttribute="bottom" id="17V-6f-1yH"/>
+                            <constraint firstItem="F8g-3h-zcQ" firstAttribute="top" secondItem="AVm-0L-yHo" secondAttribute="top" constant="-2" id="4wI-we-vqL"/>
+                            <constraint firstItem="F8g-3h-zcQ" firstAttribute="top" secondItem="o33-uS-BxD" secondAttribute="top" constant="-2" id="52y-Aa-e2b"/>
                             <constraint firstItem="V5g-P8-qNk" firstAttribute="top" secondItem="F8g-3h-zcQ" secondAttribute="top" constant="44" id="6CP-BB-Mjp"/>
-                            <constraint firstItem="Doo-Uz-Wpn" firstAttribute="top" secondItem="V5g-P8-qNk" secondAttribute="bottom" constant="8" id="AiD-SA-U54"/>
+                            <constraint firstItem="F8g-3h-zcQ" firstAttribute="trailing" secondItem="iC9-KH-rAg" secondAttribute="trailing" id="6nt-gw-xgu"/>
+                            <constraint firstItem="Doo-Uz-Wpn" firstAttribute="top" secondItem="V5g-P8-qNk" secondAttribute="bottom" constant="-3" id="AiD-SA-U54"/>
                             <constraint firstItem="F8g-3h-zcQ" firstAttribute="trailing" secondItem="Doo-Uz-Wpn" secondAttribute="trailing" id="Cu6-7n-VCf"/>
+                            <constraint firstItem="AVm-0L-yHo" firstAttribute="leading" secondItem="Udq-6u-9f3" secondAttribute="trailing" constant="-67" id="ENp-o1-jNn"/>
+                            <constraint firstItem="iC9-KH-rAg" firstAttribute="leading" secondItem="F8g-3h-zcQ" secondAttribute="leading" id="O0o-Px-gFk"/>
                             <constraint firstItem="Udq-6u-9f3" firstAttribute="top" secondItem="F8g-3h-zcQ" secondAttribute="top" id="PrF-fT-9sE"/>
+                            <constraint firstItem="F8g-3h-zcQ" firstAttribute="bottom" secondItem="iC9-KH-rAg" secondAttribute="bottom" constant="-34" id="Sjo-fA-a6j"/>
                             <constraint firstItem="V5g-P8-qNk" firstAttribute="trailing" secondItem="F8g-3h-zcQ" secondAttribute="trailing" id="V0X-xK-HQ2"/>
+                            <constraint firstItem="F8g-3h-zcQ" firstAttribute="trailing" secondItem="o33-uS-BxD" secondAttribute="trailing" constant="23" id="X77-Pu-Jcf"/>
                             <constraint firstItem="Udq-6u-9f3" firstAttribute="leading" secondItem="F8g-3h-zcQ" secondAttribute="leading" id="a33-GH-acq"/>
+                            <constraint firstItem="F8g-3h-zcQ" firstAttribute="trailing" secondItem="AVm-0L-yHo" secondAttribute="trailing" constant="23" id="gih-gk-adI"/>
                             <constraint firstItem="V5g-P8-qNk" firstAttribute="leading" secondItem="F8g-3h-zcQ" secondAttribute="leading" id="iuu-LT-lc9"/>
                             <constraint firstItem="Doo-Uz-Wpn" firstAttribute="leading" secondItem="F8g-3h-zcQ" secondAttribute="leading" id="vs4-zk-XD2"/>
-                            <constraint firstItem="Doo-Uz-Wpn" firstAttribute="bottom" secondItem="F8g-3h-zcQ" secondAttribute="bottom" id="z5f-cA-KYg"/>
+                            <constraint firstItem="Doo-Uz-Wpn" firstAttribute="bottom" secondItem="F8g-3h-zcQ" secondAttribute="bottom" constant="2" id="z5f-cA-KYg"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="F8g-3h-zcQ"/>
                     </view>
                     <connections>
+                        <outlet property="BlockedMessage" destination="iC9-KH-rAg" id="fEn-MQ-gK7"/>
                         <outlet property="backButton" destination="hoH-rF-ATw" id="0r0-iP-918"/>
+                        <outlet property="bottomView" destination="Doo-Uz-Wpn" id="2q9-9h-Aa0"/>
                         <outlet property="inputTextField" destination="d9N-4p-7dm" id="qqU-9P-ODb"/>
                         <outlet property="messageTableView" destination="V5g-P8-qNk" id="c7A-7s-S9B"/>
                         <outlet property="navigationBar" destination="Udq-6u-9f3" id="Kxa-bT-yNv"/>
+                        <outlet property="profilePicImage" destination="o33-uS-BxD" id="zzi-uj-ByN"/>
                         <outlet property="sendButton" destination="Xp0-pB-We1" id="9as-0m-yoz"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XKy-dr-d6f" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="8922.3999999999996" y="-1364.039408866995"/>
+            <point key="canvasLocation" x="8920.7999999999993" y="-1364.7783251231529"/>
+        </scene>
+        <!--Chat Setting View Controller-->
+        <scene sceneID="Dkg-UH-Vi6">
+            <objects>
+                <viewController id="N1c-5B-MA5" customClass="ChatSettingViewController" customModule="HateDatingApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="3Iy-VB-NWL">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name :" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9s3-t5-3rs">
+                                <rect key="frame" x="17.000000000000004" y="455" width="54.333333333333343" height="42"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="42" id="x5I-d6-IH2"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jjf-dz-GfP">
+                                <rect key="frame" x="79" y="455" width="278" height="42"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="42" id="ccg-G4-oOl"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Age:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NQw-Fn-30a">
+                                <rect key="frame" x="17" y="505" width="55" height="42"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="42" id="2E0-bo-ci5"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OfR-M6-qd2">
+                                <rect key="frame" x="79" y="505" width="278" height="42"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="42" id="S94-zg-vjG"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ena-tR-Cqa">
+                                <rect key="frame" x="96" y="591" width="51" height="31"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="31" id="UnD-37-4pH"/>
+                                </constraints>
+                                <connections>
+                                    <action selector="blockToggle:" destination="N1c-5B-MA5" eventType="valueChanged" id="8y1-MD-5sa"/>
+                                </connections>
+                            </switch>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Block " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z7g-8B-eMc">
+                                <rect key="frame" x="16" y="585" width="55" height="42"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="42" id="9Bl-yX-g1j"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tcj-fJ-QhA">
+                                <rect key="frame" x="0.0" y="44" width="375" height="44"/>
+                                <items>
+                                    <navigationItem title="Title" id="gOh-9O-20K">
+                                        <barButtonItem key="leftBarButtonItem" image="BACK1" id="kHV-LY-zyV">
+                                            <connections>
+                                                <action selector="backButton:" destination="N1c-5B-MA5" id="PY0-47-0DX"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="IGF-E5-0ie" customClass="UIImageViewX" customModule="HateDatingApp" customModuleProvider="target">
+                                <rect key="frame" x="22" y="98" width="330" height="330"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="330" id="5y5-Jm-qQC"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="IGF-E5-0ie" firstAttribute="top" secondItem="VWf-6Q-iXR" secondAttribute="top" constant="54" id="0cY-1w-aat"/>
+                            <constraint firstItem="VWf-6Q-iXR" firstAttribute="bottom" secondItem="ena-tR-Cqa" secondAttribute="bottom" constant="156" id="1rX-hI-Usk"/>
+                            <constraint firstItem="IGF-E5-0ie" firstAttribute="leading" secondItem="VWf-6Q-iXR" secondAttribute="leading" constant="22" id="4LA-r9-4i6"/>
+                            <constraint firstItem="z7g-8B-eMc" firstAttribute="top" secondItem="NQw-Fn-30a" secondAttribute="bottom" constant="38" id="5bp-eZ-iJm"/>
+                            <constraint firstItem="OfR-M6-qd2" firstAttribute="leading" secondItem="NQw-Fn-30a" secondAttribute="trailing" constant="7" id="6Nr-Rg-HgE"/>
+                            <constraint firstItem="z7g-8B-eMc" firstAttribute="leading" secondItem="VWf-6Q-iXR" secondAttribute="leading" constant="16" id="6Y5-WP-vOB"/>
+                            <constraint firstItem="tcj-fJ-QhA" firstAttribute="top" secondItem="VWf-6Q-iXR" secondAttribute="top" id="Ccm-A6-I3o"/>
+                            <constraint firstItem="9s3-t5-3rs" firstAttribute="leading" secondItem="VWf-6Q-iXR" secondAttribute="leading" constant="17" id="D2C-PK-qOp"/>
+                            <constraint firstItem="jjf-dz-GfP" firstAttribute="top" secondItem="IGF-E5-0ie" secondAttribute="bottom" constant="27" id="G85-f2-utT"/>
+                            <constraint firstItem="VWf-6Q-iXR" firstAttribute="trailing" secondItem="NQw-Fn-30a" secondAttribute="trailing" constant="303" id="GSr-y7-gqf"/>
+                            <constraint firstItem="ena-tR-Cqa" firstAttribute="top" secondItem="OfR-M6-qd2" secondAttribute="bottom" constant="44" id="JkO-bE-dYT"/>
+                            <constraint firstItem="9s3-t5-3rs" firstAttribute="top" secondItem="IGF-E5-0ie" secondAttribute="bottom" constant="27" id="KSd-59-Cbz"/>
+                            <constraint firstItem="tcj-fJ-QhA" firstAttribute="leading" secondItem="VWf-6Q-iXR" secondAttribute="leading" id="KWe-F6-xdI"/>
+                            <constraint firstItem="VWf-6Q-iXR" firstAttribute="bottom" secondItem="z7g-8B-eMc" secondAttribute="bottom" constant="151" id="My9-dh-HEI"/>
+                            <constraint firstItem="VWf-6Q-iXR" firstAttribute="trailing" secondItem="OfR-M6-qd2" secondAttribute="trailing" constant="18" id="Ogv-ci-MZR"/>
+                            <constraint firstItem="IGF-E5-0ie" firstAttribute="top" secondItem="tcj-fJ-QhA" secondAttribute="bottom" constant="10" id="OsV-zj-h89"/>
+                            <constraint firstItem="VWf-6Q-iXR" firstAttribute="trailing" secondItem="jjf-dz-GfP" secondAttribute="trailing" constant="18" id="PGQ-Zz-Qeu"/>
+                            <constraint firstItem="jjf-dz-GfP" firstAttribute="leading" secondItem="9s3-t5-3rs" secondAttribute="trailing" constant="7.6666666666666572" id="WNf-3e-Kc3"/>
+                            <constraint firstItem="NQw-Fn-30a" firstAttribute="top" secondItem="9s3-t5-3rs" secondAttribute="bottom" constant="8" id="XKl-OQ-hOJ"/>
+                            <constraint firstItem="NQw-Fn-30a" firstAttribute="leading" secondItem="VWf-6Q-iXR" secondAttribute="leading" constant="17" id="bwH-rc-a6h"/>
+                            <constraint firstItem="VWf-6Q-iXR" firstAttribute="bottom" secondItem="jjf-dz-GfP" secondAttribute="bottom" constant="281" id="f3n-OG-x1Z"/>
+                            <constraint firstItem="VWf-6Q-iXR" firstAttribute="trailing" secondItem="ena-tR-Cqa" secondAttribute="trailing" constant="230" id="fKf-EY-FNf"/>
+                            <constraint firstItem="ena-tR-Cqa" firstAttribute="leading" secondItem="z7g-8B-eMc" secondAttribute="trailing" constant="25" id="l6p-vS-wz4"/>
+                            <constraint firstItem="OfR-M6-qd2" firstAttribute="top" secondItem="jjf-dz-GfP" secondAttribute="bottom" constant="8" id="lyU-Of-c8P"/>
+                            <constraint firstItem="VWf-6Q-iXR" firstAttribute="trailing" secondItem="9s3-t5-3rs" secondAttribute="trailing" constant="303.66666666666663" id="pqF-10-5KF"/>
+                            <constraint firstItem="VWf-6Q-iXR" firstAttribute="trailing" secondItem="tcj-fJ-QhA" secondAttribute="trailing" id="so8-H3-so0"/>
+                            <constraint firstItem="VWf-6Q-iXR" firstAttribute="trailing" secondItem="IGF-E5-0ie" secondAttribute="trailing" constant="23" id="xns-IQ-hQh"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="VWf-6Q-iXR"/>
+                    </view>
+                    <connections>
+                        <outlet property="ageLabel" destination="OfR-M6-qd2" id="plx-81-3TP"/>
+                        <outlet property="blockToggleButton" destination="ena-tR-Cqa" id="yum-CB-SXg"/>
+                        <outlet property="nameLabel" destination="jjf-dz-GfP" id="vuf-BG-wyW"/>
+                        <outlet property="profilePicImageView" destination="IGF-E5-0ie" id="rD1-RZ-HuK"/>
+                        <segue destination="zb6-6b-wnU" kind="presentation" identifier="backToMaleChatting" modalTransitionStyle="partialCurl" id="EqT-iC-WlR"/>
+                        <segue destination="ewc-c5-Hjp" kind="presentation" identifier="backToFemaleChatting" modalTransitionStyle="partialCurl" id="1y3-aC-PJL"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="jzF-aV-cPg" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="11042" y="-413"/>
         </scene>
         <!--MATCHES-->
         <scene sceneID="RsQ-K8-wWK">
             <objects>
                 <viewController title="MATCHES" id="Yll-yT-8oR" customClass="UserTableViewController" customModule="HateDatingApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="GvX-D6-mVY">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="mNo-gZ-8wD">
-                                <rect key="frame" x="0.0" y="88" width="414" height="774"/>
+                                <rect key="frame" x="0.0" y="88" width="375" height="690"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" id="Mie-3S-dYw">
-                                        <rect key="frame" x="0.0" y="28" width="414" height="44"/>
+                                        <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Mie-3S-dYw" id="tVl-YZ-N5p">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.666666666666664"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.666666666666664"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
                             <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="QEs-Tr-JVA">
-                                <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                                <rect key="frame" x="0.0" y="44" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 <items>
                                     <navigationItem title="MATCHES" id="lIN-aH-Icv">
@@ -1525,15 +1700,15 @@
             <objects>
                 <tableViewController id="wd6-SF-gep" customClass="Settt" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="EOi-pn-3WH">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="inZ-Ff-FJy">
-                                <rect key="frame" x="0.0" y="28" width="414" height="44"/>
+                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="inZ-Ff-FJy" id="gtz-GB-vVh">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.666666666666664"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.666666666666664"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                             </tableViewCell>
@@ -1553,25 +1728,25 @@
             <objects>
                 <viewController id="bQl-f5-5z6" customClass="SettingsViewController" customModule="HateDatingApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Fky-bh-f7W">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="b3c-or-TPB">
-                                <rect key="frame" x="0.0" y="88" width="414" height="808"/>
+                                <rect key="frame" x="0.0" y="88" width="375" height="724"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="Change" rowHeight="86" id="Qzm-km-PLW" customClass="Change">
-                                        <rect key="frame" x="0.0" y="28" width="414" height="86"/>
+                                        <rect key="frame" x="0.0" y="28" width="375" height="86"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Qzm-km-PLW" id="l9p-XD-euM">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="85.666666666666671"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="85.666666666666671"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rl4-dV-LZc">
-                                <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                                <rect key="frame" x="0.0" y="44" width="375" height="44"/>
                                 <items>
                                     <navigationItem title="Settings" id="kN2-1x-Bpy">
                                         <barButtonItem key="leftBarButtonItem" image="BACK1" id="Cfo-vn-bf5">
@@ -1615,11 +1790,11 @@
             <objects>
                 <viewController id="ixP-hw-WAh" customClass="FemaleSearchPartnerViewController" customModule="HateDatingApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="YQB-3S-z4E">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleAspectFill" translatesAutoresizingMaskIntoConstraints="NO" id="fql-d4-VYy">
-                                <rect key="frame" x="15" y="224" width="384" height="518"/>
+                                <rect key="frame" x="15" y="224" width="345" height="434"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <gestureRecognizers/>
                                 <connections>
@@ -1627,7 +1802,7 @@
                                 </connections>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zi9-nO-0JA" userLabel="Drop Menu View" customClass="UIViewX" customModule="HateDatingApp" customModuleProvider="target">
-                                <rect key="frame" x="425" y="224" width="218" height="530"/>
+                                <rect key="frame" x="386" y="224" width="218" height="446"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nO1-38-Mlj" userLabel="Matches">
                                         <rect key="frame" x="47" y="43" width="100" height="100"/>
@@ -1641,7 +1816,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="t0r-3M-1Kw" userLabel="Logout">
-                                        <rect key="frame" x="67" y="259" width="60" height="60"/>
+                                        <rect key="frame" x="67" y="175" width="60" height="60"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="60" id="sc5-XN-gAC"/>
                                         </constraints>
@@ -1653,7 +1828,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VcL-KA-nJb" userLabel="Setting">
-                                        <rect key="frame" x="59" y="383" width="100" height="100"/>
+                                        <rect key="frame" x="59" y="299" width="100" height="100"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="100" id="W4S-nN-CGq"/>
                                         </constraints>
@@ -1692,10 +1867,10 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="i9L-Xa-ssI">
-                                <rect key="frame" x="0.0" y="44" width="414" height="160"/>
+                                <rect key="frame" x="0.0" y="44" width="375" height="160"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3ET-Ih-X8N" customClass="BadgeButton" customModule="HateDatingApp" customModuleProvider="target">
-                                        <rect key="frame" x="328.33333333333331" y="20" width="56.666666666666686" height="37"/>
+                                        <rect key="frame" x="309" y="20" width="37" height="37"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="37" id="S9P-wm-Hfb"/>
                                         </constraints>
@@ -1704,7 +1879,7 @@
                                         </connections>
                                     </button>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="C9F-Jr-DcO" customClass="EmojiRateView" customModule="HateDatingApp" customModuleProvider="target">
-                                        <rect key="frame" x="147" y="20" width="120" height="120"/>
+                                        <rect key="frame" x="127.66666666666669" y="20" width="120" height="120"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="120" id="i4n-0l-WGj"/>
@@ -1748,24 +1923,24 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Bkd-fO-SeU">
-                                <rect key="frame" x="0.0" y="762" width="414" height="100"/>
+                                <rect key="frame" x="0.0" y="678" width="375" height="100"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gQE-Wa-Wx9" userLabel="Undo Button">
-                                        <rect key="frame" x="163" y="12" width="88" height="75"/>
+                                        <rect key="frame" x="150" y="12" width="75" height="75"/>
                                         <state key="normal" image="buttonUndo"/>
                                         <connections>
                                             <action selector="undoButtonAction:" destination="ixP-hw-WAh" eventType="touchUpInside" id="AJG-wW-o58"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="obK-gz-7Rb">
-                                        <rect key="frame" x="317" y="12" width="75" height="75"/>
+                                        <rect key="frame" x="291" y="12" width="62" height="75"/>
                                         <state key="normal" image="heart-1"/>
                                         <connections>
                                             <action selector="LikeButtonAction:" destination="ixP-hw-WAh" eventType="touchUpInside" id="1sf-yK-Utc"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2X5-jK-1a1">
-                                        <rect key="frame" x="8" y="12" width="88" height="75"/>
+                                        <rect key="frame" x="8" y="12" width="75" height="75"/>
                                         <state key="normal" image="noButton"/>
                                         <connections>
                                             <action selector="disLikeButtonAction:" destination="ixP-hw-WAh" eventType="touchUpInside" id="cpk-v8-EBt"/>
@@ -1835,15 +2010,15 @@
             <objects>
                 <tableViewController id="ihJ-E2-fPm" customClass="UserTableFemaleTableViewController" customModule="HateDatingApp" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="DSt-CK-BbT">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" id="Uhn-qz-Pzl">
-                                <rect key="frame" x="0.0" y="28" width="414" height="44"/>
+                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Uhn-qz-Pzl" id="r7j-qn-kEm">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.666666666666664"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.666666666666664"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                             </tableViewCell>
@@ -1863,15 +2038,15 @@
             <objects>
                 <tableViewController id="p0a-Pb-Fsg" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="tt9-RV-BWw">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="gwt-zr-Hue">
-                                <rect key="frame" x="0.0" y="28" width="414" height="44"/>
+                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="gwt-zr-Hue" id="aqv-hG-VUc">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.666666666666664"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.666666666666664"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                             </tableViewCell>
@@ -1891,25 +2066,35 @@
             <objects>
                 <viewController storyboardIdentifier="FemaleChatVC" id="ewc-c5-Hjp" customClass="ChatViewFemaleViewController" customModule="HateDatingApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="aIV-CQ-M9R">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="M1X-cS-nmO">
-                                <rect key="frame" x="0.0" y="88" width="414" height="682"/>
+                                <rect key="frame" x="0.0" y="88" width="375" height="598"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="customMessageCell" id="CNK-VJ-aKT" customClass="ChatLogTableViewCell" customModule="HateDatingApp" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="414" height="44"/>
+                                        <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="CNK-VJ-aKT" id="6xg-h0-8i8">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.666666666666664"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.666666666666664"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You've blocked this user. Unblock her to send message." lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MK0-RE-L9k" userLabel="BlockedMessage">
+                                <rect key="frame" x="0.0" y="686" width="375" height="126"/>
+                                <color key="backgroundColor" red="1" green="0.85566986239999998" blue="0.0" alpha="0.48747859589999998" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="126" id="hoJ-UI-5b9"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lLM-If-pUF">
-                                <rect key="frame" x="0.0" y="781" width="414" height="81"/>
+                                <rect key="frame" x="0.0" y="697" width="375" height="81"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yxA-mE-8Gm" customClass="UIButtonX" customModule="HateDatingApp" customModuleProvider="target">
                                         <rect key="frame" x="323" y="23" width="37" height="37"/>
@@ -1945,7 +2130,7 @@
                                 </constraints>
                             </view>
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FFQ-fY-xGi">
-                                <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                                <rect key="frame" x="0.0" y="44" width="375" height="44"/>
                                 <items>
                                     <navigationItem id="Phs-6s-KhO">
                                         <barButtonItem key="leftBarButtonItem" image="BACK1" id="srT-T4-lvc">
@@ -1956,11 +2141,31 @@
                                     </navigationItem>
                                 </items>
                             </navigationBar>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="rJh-Q1-8Jz" customClass="UIImageViewX" customModule="HateDatingApp" customModuleProvider="target">
+                                <rect key="frame" x="308" y="46" width="44" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="ZOh-oV-hMZ"/>
+                                    <constraint firstAttribute="width" constant="44" id="pTn-Ba-BEm"/>
+                                </constraints>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xya-3w-JDF">
+                                <rect key="frame" x="308" y="46" width="44" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="Dx3-wl-dfZ"/>
+                                    <constraint firstAttribute="width" constant="44" id="oXN-Da-nDd"/>
+                                </constraints>
+                                <connections>
+                                    <segue destination="N1c-5B-MA5" kind="presentation" identifier="goToChatSettings" modalTransitionStyle="flipHorizontal" id="kS9-Lb-U2o"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="qWh-mh-xKR" firstAttribute="trailing" secondItem="Xya-3w-JDF" secondAttribute="trailing" constant="23" id="0G6-qZ-rXq"/>
+                            <constraint firstItem="rJh-Q1-8Jz" firstAttribute="top" secondItem="qWh-mh-xKR" secondAttribute="top" constant="2" id="1sw-vm-rW8"/>
                             <constraint firstItem="M1X-cS-nmO" firstAttribute="leading" secondItem="qWh-mh-xKR" secondAttribute="leading" id="3nm-RP-cXW"/>
                             <constraint firstItem="M1X-cS-nmO" firstAttribute="top" secondItem="FFQ-fY-xGi" secondAttribute="bottom" id="I13-f1-zEi"/>
+                            <constraint firstItem="Xya-3w-JDF" firstAttribute="top" secondItem="qWh-mh-xKR" secondAttribute="top" constant="2" id="IpN-25-5Ow"/>
                             <constraint firstItem="lLM-If-pUF" firstAttribute="leading" secondItem="qWh-mh-xKR" secondAttribute="leading" id="Lce-wL-p3i"/>
                             <constraint firstItem="FFQ-fY-xGi" firstAttribute="top" secondItem="qWh-mh-xKR" secondAttribute="top" id="Raa-YH-q45"/>
                             <constraint firstItem="M1X-cS-nmO" firstAttribute="leading" secondItem="lLM-If-pUF" secondAttribute="leading" id="Viv-qp-BwX"/>
@@ -1969,17 +2174,24 @@
                             <constraint firstItem="qWh-mh-xKR" firstAttribute="trailing" secondItem="FFQ-fY-xGi" secondAttribute="trailing" id="dM4-o4-S5Z"/>
                             <constraint firstItem="qWh-mh-xKR" firstAttribute="bottom" secondItem="lLM-If-pUF" secondAttribute="bottom" id="dbL-9z-if3"/>
                             <constraint firstItem="M1X-cS-nmO" firstAttribute="trailing" secondItem="FFQ-fY-xGi" secondAttribute="trailing" id="gS6-gk-E4a"/>
+                            <constraint firstItem="MK0-RE-L9k" firstAttribute="bottom" secondItem="qWh-mh-xKR" secondAttribute="bottom" constant="34" id="gSg-25-zr4"/>
                             <constraint firstItem="FFQ-fY-xGi" firstAttribute="leading" secondItem="qWh-mh-xKR" secondAttribute="leading" id="iTT-Lu-JH4"/>
+                            <constraint firstItem="qWh-mh-xKR" firstAttribute="trailing" secondItem="MK0-RE-L9k" secondAttribute="trailing" id="lwL-cc-DkO"/>
                             <constraint firstItem="M1X-cS-nmO" firstAttribute="leading" secondItem="FFQ-fY-xGi" secondAttribute="leading" id="n7j-s5-vPF"/>
                             <constraint firstItem="qWh-mh-xKR" firstAttribute="trailing" secondItem="M1X-cS-nmO" secondAttribute="trailing" id="qYE-Lx-jmj"/>
                             <constraint firstItem="qWh-mh-xKR" firstAttribute="trailing" secondItem="lLM-If-pUF" secondAttribute="trailing" id="wzZ-R1-Wi0"/>
+                            <constraint firstItem="MK0-RE-L9k" firstAttribute="leading" secondItem="qWh-mh-xKR" secondAttribute="leading" id="xMS-8N-DeZ"/>
+                            <constraint firstItem="qWh-mh-xKR" firstAttribute="trailing" secondItem="rJh-Q1-8Jz" secondAttribute="trailing" constant="23" id="yAU-Tg-tRU"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="qWh-mh-xKR"/>
                     </view>
                     <connections>
+                        <outlet property="BlockedMessage" destination="MK0-RE-L9k" id="wdS-qH-zZO"/>
+                        <outlet property="bottomView" destination="lLM-If-pUF" id="1r6-Iw-2g8"/>
                         <outlet property="inputTextField" destination="5Gl-Ko-GY7" id="vE5-wW-TvO"/>
                         <outlet property="messageTableView" destination="M1X-cS-nmO" id="Bh7-ZW-fgO"/>
                         <outlet property="navigationBar" destination="FFQ-fY-xGi" id="phx-p5-Z6M"/>
+                        <outlet property="profilePicImage" destination="rJh-Q1-8Jz" id="kWi-Z8-nZm"/>
                         <outlet property="sendButton" destination="yxA-mE-8Gm" id="6Ys-qH-p4X"/>
                     </connections>
                 </viewController>
@@ -1992,25 +2204,25 @@
             <objects>
                 <viewController id="1AL-21-IDm" customClass="UserTableFemaleTableViewController" customModule="HateDatingApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ZPA-Vo-X4g">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="bbp-ed-aqw">
-                                <rect key="frame" x="0.0" y="82" width="414" height="780"/>
+                                <rect key="frame" x="0.0" y="82" width="375" height="696"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" id="hDi-cB-Y83">
-                                        <rect key="frame" x="0.0" y="28" width="414" height="44"/>
+                                        <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="hDi-cB-Y83" id="SVJ-Jr-qol">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.666666666666664"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.666666666666664"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wLE-ey-Aud">
-                                <rect key="frame" x="0.0" y="38" width="414" height="44"/>
+                                <rect key="frame" x="0.0" y="38" width="375" height="44"/>
                                 <items>
                                     <navigationItem title="MATCHES" id="wOf-IG-3yy">
                                         <barButtonItem key="leftBarButtonItem" image="BACK1" id="rTl-k9-SSy">
@@ -2047,14 +2259,14 @@
         <scene sceneID="PhL-LD-nhW">
             <objects>
                 <viewController id="JQ5-oS-OyP" customClass="FemaleProfileViewController" customModule="HateDatingApp" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" ambiguous="YES" id="88U-Qe-ij1">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                    <view key="view" contentMode="scaleToFill" id="88U-Qe-ij1">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6j7-bR-zwl" customClass="UIImageViewX" customModule="HateDatingApp" customModuleProvider="target">
-                                <rect key="frame" x="41.666666666666657" y="115" width="329" height="374"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="6j7-bR-zwl" customClass="UIImageViewX" customModule="HateDatingApp" customModuleProvider="target">
+                                <rect key="frame" x="41.666666666666657" y="115" width="290" height="374"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="290" id="s9Q-sY-sZB"/>
+                                    <constraint firstAttribute="height" constant="374" id="PYv-Fj-Ef8"/>
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
@@ -2062,17 +2274,8 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Hi there," textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9ep-aX-CmX">
-                                <rect key="frame" x="30" y="534.66666666666663" width="116" height="20"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="20" id="m0D-hp-N97"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Welcome to Beetle a dating app." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2CT-tr-Uiu">
-                                <rect key="frame" x="76.333333333333343" y="567" width="312.66666666666663" height="38"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome to Beetle a dating app." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2CT-tr-Uiu">
+                                <rect key="frame" x="76.333333333333343" y="567" width="273.66666666666663" height="38"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="38" id="z70-uq-5VK"/>
                                 </constraints>
@@ -2080,17 +2283,17 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NzW-RU-nKm" customClass="UILabelX" customModule="HateDatingApp" customModuleProvider="target">
-                                <rect key="frame" x="110" y="529" width="279" height="30"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NzW-RU-nKm" customClass="UILabelX" customModule="HateDatingApp" customModuleProvider="target">
+                                <rect key="frame" x="71" y="529" width="279" height="30"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="ZMp-LE-zs2"/>
+                                    <constraint firstAttribute="height" constant="30" id="ZMt-RD-CCs"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1bF-Pk-DBm">
-                                <rect key="frame" x="1" y="44" width="414" height="44"/>
+                                <rect key="frame" x="1" y="44" width="375" height="44"/>
                                 <items>
                                     <navigationItem id="Oav-Vo-hmy">
                                         <barButtonItem key="leftBarButtonItem" image="BACK1" id="qsW-1z-NaE">
@@ -2103,14 +2306,14 @@
                                 </items>
                             </navigationBar>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="prithvi-b-logo-dark-blue-color" translatesAutoresizingMaskIntoConstraints="NO" id="Shz-yG-UMh">
-                                <rect key="frame" x="349" y="50" width="40" height="40"/>
+                                <rect key="frame" x="310" y="50" width="40" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="Ayg-vi-hes"/>
                                     <constraint firstAttribute="width" constant="40" id="pZg-4i-dHw"/>
                                 </constraints>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Kvk-t9-6qQ" customClass="UIButtonX" customModule="HateDatingApp" customModuleProvider="target">
-                                <rect key="frame" x="28" y="754" width="359" height="55"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Kvk-t9-6qQ" customClass="UIButtonX" customModule="HateDatingApp" customModuleProvider="target">
+                                <rect key="frame" x="28" y="670" width="320" height="55"/>
                                 <color key="backgroundColor" red="0.99861520530000003" green="0.29565572740000001" blue="0.42170840500000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="55" id="tWH-KW-Q3v"/>
@@ -2133,32 +2336,39 @@
                                     <segue destination="ixP-hw-WAh" kind="presentation" identifier="goToSearchPartner" modalTransitionStyle="flipHorizontal" id="ebH-QO-0WY"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hi there," textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9ep-aX-CmX">
+                                <rect key="frame" x="13" y="450" width="33" height="25"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="25" id="m0D-hp-N97"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="NzW-RU-nKm" firstAttribute="top" secondItem="6j7-bR-zwl" secondAttribute="bottom" constant="40" id="5WH-hj-CQd"/>
+                            <constraint firstItem="6j7-bR-zwl" firstAttribute="leading" secondItem="KTK-O5-yfg" secondAttribute="leading" constant="41.666666666666657" id="6f3-C7-HhT"/>
                             <constraint firstItem="Shz-yG-UMh" firstAttribute="leading" secondItem="1bF-Pk-DBm" secondAttribute="trailing" constant="-66" id="6kr-LK-Vfx"/>
-                            <constraint firstItem="6j7-bR-zwl" firstAttribute="top" secondItem="1bF-Pk-DBm" secondAttribute="bottom" constant="27" id="9so-px-fSH"/>
+                            <constraint firstItem="6j7-bR-zwl" firstAttribute="top" secondItem="1bF-Pk-DBm" secondAttribute="bottom" constant="27" id="9VE-Vb-fDu"/>
                             <constraint firstItem="1bF-Pk-DBm" firstAttribute="trailing" secondItem="KTK-O5-yfg" secondAttribute="trailing" constant="1" id="Bx2-nc-wDI"/>
+                            <constraint firstItem="KTK-O5-yfg" firstAttribute="trailing" secondItem="NzW-RU-nKm" secondAttribute="trailing" constant="25" id="CUI-UO-mND"/>
                             <constraint firstItem="1bF-Pk-DBm" firstAttribute="leading" secondItem="KTK-O5-yfg" secondAttribute="leading" constant="1" id="DCc-ic-s62"/>
-                            <constraint firstItem="KTK-O5-yfg" firstAttribute="trailing" secondItem="9ep-aX-CmX" secondAttribute="trailing" constant="268" id="Edq-9T-ipv"/>
-                            <constraint firstItem="9ep-aX-CmX" firstAttribute="leading" secondItem="KTK-O5-yfg" secondAttribute="leading" constant="30" id="EwQ-Bz-Dq6"/>
+                            <constraint firstItem="KTK-O5-yfg" firstAttribute="trailing" secondItem="9ep-aX-CmX" secondAttribute="trailing" constant="329" id="Edq-9T-ipv"/>
+                            <constraint firstItem="9ep-aX-CmX" firstAttribute="leading" secondItem="KTK-O5-yfg" secondAttribute="leading" constant="13" id="EwQ-Bz-Dq6"/>
                             <constraint firstItem="Kvk-t9-6qQ" firstAttribute="leading" secondItem="KTK-O5-yfg" secondAttribute="leading" constant="28" id="Jeh-bd-Beu"/>
-                            <constraint firstItem="KTK-O5-yfg" firstAttribute="bottom" secondItem="6j7-bR-zwl" secondAttribute="bottom" constant="373.00000000000006" id="Jpd-38-MmK"/>
-                            <constraint firstItem="KTK-O5-yfg" firstAttribute="bottom" secondItem="9ep-aX-CmX" secondAttribute="bottom" constant="307.33333333333331" id="RgQ-Ey-lph"/>
+                            <constraint firstItem="KTK-O5-yfg" firstAttribute="bottom" secondItem="9ep-aX-CmX" secondAttribute="bottom" constant="303" id="RgQ-Ey-lph"/>
                             <constraint firstItem="KTK-O5-yfg" firstAttribute="trailing" secondItem="Kvk-t9-6qQ" secondAttribute="trailing" constant="27" id="TTb-od-s9F"/>
-                            <constraint firstItem="6j7-bR-zwl" firstAttribute="leading" secondItem="KTK-O5-yfg" secondAttribute="leading" constant="41.775668876754935" id="UOs-Cu-Gol"/>
-                            <constraint firstItem="6j7-bR-zwl" firstAttribute="top" secondItem="KTK-O5-yfg" secondAttribute="top" constant="71" id="V68-fZ-8u6"/>
-                            <constraint firstItem="2CT-tr-Uiu" firstAttribute="top" secondItem="NzW-RU-nKm" secondAttribute="bottom" constant="8" id="VLR-ee-9lG"/>
-                            <constraint firstItem="NzW-RU-nKm" firstAttribute="top" secondItem="6j7-bR-zwl" secondAttribute="bottom" constant="40" id="Vrn-Va-4Id"/>
+                            <constraint firstItem="NzW-RU-nKm" firstAttribute="leading" secondItem="9ep-aX-CmX" secondAttribute="trailing" constant="25" id="Wqc-z7-7UL"/>
                             <constraint firstItem="2CT-tr-Uiu" firstAttribute="leading" secondItem="KTK-O5-yfg" secondAttribute="leading" constant="76.375537757762686" id="Xbw-gY-nOg"/>
                             <constraint firstItem="KTK-O5-yfg" firstAttribute="bottom" secondItem="Kvk-t9-6qQ" secondAttribute="bottom" constant="53" id="cPa-64-4hp"/>
-                            <constraint firstItem="NzW-RU-nKm" firstAttribute="leading" secondItem="KTK-O5-yfg" secondAttribute="leading" constant="110" id="cpa-25-AaO"/>
                             <constraint firstItem="KTK-O5-yfg" firstAttribute="trailing" secondItem="Shz-yG-UMh" secondAttribute="trailing" constant="25" id="eFO-TM-OvC"/>
+                            <constraint firstItem="2CT-tr-Uiu" firstAttribute="top" secondItem="NzW-RU-nKm" secondAttribute="bottom" constant="8" id="eOm-gJ-OWV"/>
                             <constraint firstItem="1bF-Pk-DBm" firstAttribute="top" secondItem="KTK-O5-yfg" secondAttribute="top" id="fag-nl-jgM"/>
+                            <constraint firstItem="KTK-O5-yfg" firstAttribute="trailing" secondItem="6j7-bR-zwl" secondAttribute="trailing" constant="43.333333333333371" id="nhe-cP-Gzd"/>
                             <constraint firstItem="Shz-yG-UMh" firstAttribute="top" secondItem="KTK-O5-yfg" secondAttribute="top" constant="6" id="sGi-yc-Tcm"/>
                             <constraint firstItem="KTK-O5-yfg" firstAttribute="trailing" secondItem="2CT-tr-Uiu" secondAttribute="trailing" constant="25" id="td2-O7-TKx"/>
-                            <constraint firstItem="KTK-O5-yfg" firstAttribute="trailing" secondItem="NzW-RU-nKm" secondAttribute="trailing" constant="25" id="v4i-6U-OMr"/>
-                            <constraint firstItem="KTK-O5-yfg" firstAttribute="trailing" secondItem="6j7-bR-zwl" secondAttribute="trailing" constant="43.22433112324552" id="zw1-mr-3ay"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="KTK-O5-yfg"/>
                     </view>
@@ -2169,22 +2379,22 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dwF-4n-ZcE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5180" y="130.04926108374386"/>
+            <point key="canvasLocation" x="5179.7101449275369" y="129.91071428571428"/>
         </scene>
         <!--Chat Log Table View Controller-->
         <scene sceneID="Hbm-hB-j43">
             <objects>
                 <tableViewController id="3nq-em-X84" customClass="ChatLogTableViewController" customModule="HateDatingApp" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="jxP-Y2-tSe">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="customMessageCell" id="tcD-VI-0BN" customClass="ChatLogTableViewCell" customModule="HateDatingApp" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="28" width="414" height="44"/>
+                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="tcD-VI-0BN" id="Eed-PR-QkT">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.666666666666664"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.666666666666664"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                             </tableViewCell>
@@ -2207,20 +2417,20 @@
             <objects>
                 <tableViewController id="sEG-n2-adD" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="DIr-4J-noh" customClass="UI">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <view key="tableHeaderView" contentMode="scaleToFill" id="Y5S-xq-ePJ">
-                            <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </view>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="Ldg-9K-j3x">
-                                <rect key="frame" x="0.0" y="72" width="414" height="44"/>
+                                <rect key="frame" x="0.0" y="72" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Ldg-9K-j3x" id="QrJ-sf-9L9">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.666666666666664"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.666666666666664"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                             </tableViewCell>
@@ -2240,15 +2450,15 @@
             <objects>
                 <tableViewController id="670-al-FdT" customClass="UserTableViewController" customModule="HateDatingApp" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="vlg-Mw-gKK">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" id="xvZ-GM-nHT" customClass="Change">
-                                <rect key="frame" x="0.0" y="28" width="414" height="44"/>
+                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="xvZ-GM-nHT" id="hvW-rX-212">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.666666666666664"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.666666666666664"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                             </tableViewCell>
@@ -2268,15 +2478,15 @@
             <objects>
                 <viewController id="z38-dX-ocO" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="KRv-l5-YjJ">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="Change" id="70f-AN-Pwv">
-                                <rect key="frame" x="0.0" y="28" width="414" height="44"/>
+                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="70f-AN-Pwv" id="xDq-gM-cry">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.666666666666664"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.666666666666664"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                             </tableViewCell>
@@ -2292,11 +2502,11 @@
             <objects>
                 <viewController id="5ld-cc-tbL" customClass="ChangeInfoViewController" customModule="HateDatingApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ISA-QH-eUg">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your email address" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mco-xb-chG">
-                                <rect key="frame" x="1" y="88" width="414" height="55"/>
+                                <rect key="frame" x="1" y="88" width="375" height="55"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="55" id="3Kv-LL-cGo"/>
                                 </constraints>
@@ -2305,7 +2515,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="249" verticalCompressionResistancePriority="752" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vud-ls-qsC" customClass="UIButtonX" customModule="HateDatingApp" customModuleProvider="target">
-                                <rect key="frame" x="69" y="388" width="276" height="52"/>
+                                <rect key="frame" x="69" y="388" width="237" height="52"/>
                                 <color key="backgroundColor" red="0.070467402142869284" green="1" blue="0.6567812158464007" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="52" id="UQK-Cr-fvu"/>
@@ -2325,7 +2535,7 @@
                                 </connections>
                             </button>
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0N6-fS-XTe">
-                                <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                                <rect key="frame" x="0.0" y="44" width="375" height="44"/>
                                 <items>
                                     <navigationItem title="Change Email" id="gsU-TI-mym">
                                         <barButtonItem key="leftBarButtonItem" image="BACK1" id="om9-UX-cda">
@@ -2338,7 +2548,7 @@
                                 </items>
                             </navigationBar>
                             <textField opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="751" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Your new email" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ln4-Pr-fY1">
-                                <rect key="frame" x="69" y="259" width="276" height="30"/>
+                                <rect key="frame" x="69" y="259" width="237" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="Pcy-1p-Haa"/>
                                 </constraints>
@@ -2347,7 +2557,7 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="itb-JI-h3S">
-                                <rect key="frame" x="0.0" y="151" width="414" height="38"/>
+                                <rect key="frame" x="0.0" y="151" width="375" height="38"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="38" id="p3E-mI-bMC"/>
                                 </constraints>
@@ -2387,18 +2597,18 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UHI-Ea-uSI" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="9677.6000000000004" y="-945.07389162561583"/>
+            <point key="canvasLocation" x="9697" y="-688"/>
         </scene>
         <!--Password Change View Controller-->
         <scene sceneID="I0F-s0-9OM">
             <objects>
                 <viewController id="Bsn-1s-9gq" customClass="PasswordChangeViewController" customModule="HateDatingApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="SpK-zs-Hwz">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter New Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="7HS-4X-3iZ" customClass="UITextFieldX" customModule="HateDatingApp" customModuleProvider="target">
-                                <rect key="frame" x="103" y="198" width="209" height="30"/>
+                                <rect key="frame" x="103" y="198" width="170" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="YOe-Yw-0hC"/>
                                 </constraints>
@@ -2407,7 +2617,7 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gQg-XE-1Vv">
-                                <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                                <rect key="frame" x="0.0" y="44" width="375" height="44"/>
                                 <items>
                                     <navigationItem title="Change Password" id="l4F-hR-pQ7">
                                         <leftBarButtonItems>
@@ -2423,7 +2633,7 @@
                                 </items>
                             </navigationBar>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eIl-da-FEg" customClass="UIButtonX" customModule="HateDatingApp" customModuleProvider="target">
-                                <rect key="frame" x="103" y="334" width="209" height="55"/>
+                                <rect key="frame" x="103" y="334" width="170" height="55"/>
                                 <color key="backgroundColor" red="0.070467402139999996" green="1" blue="0.65678121580000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="55" id="eyf-Ib-o0b"/>
@@ -2441,7 +2651,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Incorrect Password" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p3O-Jm-RFj">
-                                <rect key="frame" x="103" y="145" width="209" height="21"/>
+                                <rect key="frame" x="103" y="145" width="170" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="riy-cw-FhI"/>
                                 </constraints>
@@ -2450,7 +2660,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter Current Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gAJ-aO-RQW" customClass="UITextFieldX" customModule="HateDatingApp" customModuleProvider="target">
-                                <rect key="frame" x="103" y="107" width="209" height="30"/>
+                                <rect key="frame" x="103" y="107" width="170" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="joM-59-pAu"/>
                                 </constraints>
@@ -2497,7 +2707,7 @@
             <objects>
                 <collectionViewController id="9cP-DG-Plh" customClass="ChatLogViewController" customModule="HateDatingApp" customModuleProvider="target" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="uPb-eH-B56">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="6iV-df-Fvv">
@@ -2531,20 +2741,20 @@
             <objects>
                 <tableViewController id="qXb-CU-JmX" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="kzz-6t-KKp">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <searchBar key="tableHeaderView" contentMode="redraw" id="GON-MB-bzk">
-                            <rect key="frame" x="0.0" y="0.0" width="453" height="44"/>
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                             <textInputTraits key="textInputTraits"/>
                         </searchBar>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="dhR-Le-Kra">
-                                <rect key="frame" x="0.0" y="72" width="414" height="44"/>
+                                <rect key="frame" x="0.0" y="72" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="dhR-Le-Kra" id="nsm-7x-dmB">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.666666666666664"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.666666666666664"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="Avb-Ft-aGV">
@@ -2574,7 +2784,7 @@
             <objects>
                 <viewController id="02G-aI-dns" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="eNQ-b7-K0I">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="What is your age ?" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="qX6-TU-Qdu">
@@ -2627,27 +2837,27 @@
             <objects>
                 <viewController storyboardIdentifier="LoginViewController" id="pOQ-VO-OBs" customClass="LoginViewController" customModule="HateDatingApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="aoR-dg-AvJ">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OjK-32-4jB">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414.33333333333331" height="812"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Pzu-Hd-Z5u">
-                                        <rect key="frame" x="0.0" y="418" width="417" height="100"/>
+                                        <rect key="frame" x="0.0" y="334" width="417.33333333333331" height="100"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xaU-Ra-mPV">
-                                                <rect key="frame" x="9" y="75" width="388" height="2"/>
+                                                <rect key="frame" x="9" y="75" width="388.33333333333331" height="2"/>
                                                 <color key="backgroundColor" white="0.66666666666666663" alpha="0.69683754280821919" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             </view>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="password" translatesAutoresizingMaskIntoConstraints="NO" id="IOK-IQ-5z0">
-                                                <rect key="frame" x="9.3333333333333321" y="27" width="34.666666666666671" height="35"/>
+                                                <rect key="frame" x="9.3333333333333357" y="27" width="35" height="35"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="35" id="SlV-NY-e5C"/>
                                                 </constraints>
                                             </imageView>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="KB8-i0-E6s">
-                                                <rect key="frame" x="58" y="37" width="339" height="30"/>
+                                                <rect key="frame" x="58.333333333333314" y="37" width="339" height="30"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="19"/>
@@ -2693,20 +2903,20 @@
                                         </items>
                                     </navigationBar>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TuF-69-GHr">
-                                        <rect key="frame" x="-2" y="281" width="418" height="100"/>
+                                        <rect key="frame" x="-2" y="197" width="418.33333333333331" height="100"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="y6I-kb-W5z">
-                                                <rect key="frame" x="9" y="75" width="389.33333333333331" height="2"/>
+                                                <rect key="frame" x="9" y="75" width="389.66666666666669" height="2"/>
                                                 <color key="backgroundColor" white="0.66666666666666663" alpha="0.48135166952054792" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             </view>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Username" translatesAutoresizingMaskIntoConstraints="NO" id="JC3-Qz-Q6T">
-                                                <rect key="frame" x="9" y="29" width="35" height="35"/>
+                                                <rect key="frame" x="9.0000000000000036" y="29" width="35.333333333333343" height="35"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="35" id="wez-Rq-9g6"/>
                                                 </constraints>
                                             </imageView>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Your Email" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="A3z-1V-kFB">
-                                                <rect key="frame" x="58.333333333333343" y="33" width="339" height="30"/>
+                                                <rect key="frame" x="58.666666666666686" y="33" width="339" height="30"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="19"/>
@@ -2731,7 +2941,7 @@
                                         </constraints>
                                     </view>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Bcl-mu-Sow" customClass="UIButtonX" customModule="HateDatingApp" customModuleProvider="target">
-                                        <rect key="frame" x="39" y="589" width="339" height="56"/>
+                                        <rect key="frame" x="39.333333333333343" y="505" width="339" height="56"/>
                                         <color key="backgroundColor" red="0.021205632016062737" green="0.5290873646736145" blue="0.99848276376724243" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="56" id="pWK-Ww-hwB"/>
@@ -2754,7 +2964,7 @@
                                         </connections>
                                     </button>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GZW-zY-dFp" customClass="GIDSignInButton">
-                                        <rect key="frame" x="39" y="718" width="339" height="57"/>
+                                        <rect key="frame" x="39.333333333333343" y="634" width="339" height="57"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="57" id="82r-g5-9zN"/>
@@ -2811,7 +3021,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="h2u-AX-alb" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="lAK-JB-gBS">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <rect key="frame" x="0.0" y="44" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -2838,14 +3048,17 @@
         <image name="settings-1" width="153.19148254394531" height="153.19148254394531"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="2hx-be-X5W"/>
-        <segue reference="ZSw-sA-L8u"/>
-        <segue reference="8IT-eg-pjw"/>
+        <segue reference="skW-X6-ccg"/>
+        <segue reference="1y3-aC-PJL"/>
+        <segue reference="97I-Kd-of3"/>
+        <segue reference="EAV-Az-U9v"/>
         <segue reference="f5x-np-a14"/>
-        <segue reference="F4t-1e-l1q"/>
+        <segue reference="dsA-Vt-Vld"/>
+        <segue reference="EqT-iC-WlR"/>
+        <segue reference="hhC-mK-J61"/>
         <segue reference="p8u-4z-Qcp"/>
         <segue reference="bgv-LG-L4o"/>
-        <segue reference="FDH-E5-Jeg"/>
+        <segue reference="KDy-py-A5f"/>
         <segue reference="u37-ja-6FN"/>
         <segue reference="sau-S1-dG4"/>
         <segue reference="4ie-gm-uMp"/>

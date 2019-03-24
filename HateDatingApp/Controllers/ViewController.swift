@@ -47,11 +47,13 @@ class ViewController: UIViewController {
                     let name = snapshotValue["Name "] as! String
                     let userID = snapshotValue["UserId "] as! String
                     let email = snapshotValue["Email "] as! String
-                    
+                    let age = snapshotValue["Age "] as! Int
+                if Auth.auth().currentUser?.email != nil {
                     if Auth.auth().currentUser?.email == email {
                         print("THE NAME PASSED IS \(name)")
                         self.user.name = name
                         self.user.id = userID
+                        self.user.age = age
                         SVProgressHUD.dismiss()
                         self.performSegue(withIdentifier: "Male", sender: self)
                     }else{
@@ -65,6 +67,8 @@ class ViewController: UIViewController {
                             if Auth.auth().currentUser?.email == email {
                                 self.user.name = name
                                 self.user.id = userID
+                                self.user.age = age
+
                                 SVProgressHUD.dismiss()
                                 self.performSegue(withIdentifier: "Female", sender: self)
                             }else{
@@ -76,7 +80,7 @@ class ViewController: UIViewController {
                         
                  
                     }
-                    
+                    }
                 })
                 
 //            }
@@ -121,13 +125,14 @@ class ViewController: UIViewController {
             let destinationVC = segue.destination as! SearchPartnerViewController
             destinationVC.firstNametextLable = user.name
             destinationVC.userID = user.id
-            
+            destinationVC.age = user.age
         }else if segue.identifier == "Female" {
             
             let destinationVC = segue.destination as! FemaleSearchPartnerViewController
             destinationVC.firstNametextLable = user.name
             destinationVC.userID = user.id
-            
+            destinationVC.age = user.age
+
         }
     }
     

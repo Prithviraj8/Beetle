@@ -29,7 +29,7 @@ class FemaleSearchPartnerViewController: UIViewController {
     var IDs = [String]()
     var profilePicOfLoggedInUser : String = ""
 //    var ID : String = ""
-//    var userid : String!
+    var age : Int!
     var userID = Auth.auth().currentUser?.uid
     var maleNamesMatched = [String]()
     var femaleNames = [String]()
@@ -430,6 +430,8 @@ class FemaleSearchPartnerViewController: UIViewController {
             destinationVC.Ids = messages.IDS
             destinationVC.maleNames = messages.finalMatch
             destinationVC.profilePicURL = messages.profilePicURL
+            destinationVC.gender = "Female"
+            destinationVC.age = age
         }
         
         if segue.identifier == "goToSettings" {
