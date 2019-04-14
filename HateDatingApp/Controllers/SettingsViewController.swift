@@ -91,7 +91,7 @@ class SettingsViewController: UIViewController, UITextFieldDelegate, UITableView
             let destinationVC = segue.destination as! ChangeInfoViewController
             destinationVC.firstNametextLable = firstNametextLable
 
-            destinationVC.email.text = Auth.auth().currentUser?.email
+//            destinationVC.email.text = Auth.auth().currentUser?.email
             destinationVC.userID = userID!
 
         }else if segue.identifier == "goToChangePassword" {

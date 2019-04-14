@@ -18,6 +18,10 @@ class User {
     var recevierID = message()
     var id : String = ""
     var age : Int!
+    var COUNT : Int!
+    var imageTapped: String!
+    var gender : String!
+    
     func save_Info_For_Male_User_who_Swipped_A_Female_User(name: String,Id: String){
         let userID = Auth.auth().currentUser?.uid
         print("THE CURRENT USERS user ID is \(userID)")
@@ -36,19 +40,19 @@ class User {
             self.ref2 = Database.database().reference(fromURL: "https://beetle-5b79a.firebaseio.com/").child("users").child("Male Swipped Female").child(userID!)
 //            self.ref2 = Database.database().reference(fromURL: "https://hatedateapp-ea81a.firebaseio.com/").child("users").child("Male Swipped Female").childByAutoId()
 
-            let usersChildRef = self.ref2.child(self.firstNametextLable).child(Id).child(name).childByAutoId()
-
+            let usersChildRef = self.ref2.child(self.firstNametextLable).child(Id).child(name)
+            usersChildRef.updateChildValues(["Added ": "True"])
 //            let usersChildRef = self.ref2.child(self.firstNametextLable).child(name).childByAutoId()
-
-            usersChildRef.setValue(name, withCompletionBlock: { (error, ref) in
-                if error != nil {
-                    print("ERROR WHILE SAVING information of user : \(error?.localizedDescription)")
-                    
-                } else {
-                    print("The names of female users that the current logged in user swipped is SAVED")
-                    
-                }
-            })
+            
+//            usersChildRef.setValue(name, withCompletionBlock: { (error, ref) in
+//                if error != nil {
+//                    print("ERROR WHILE SAVING information of user : \(error?.localizedDescription)")
+//
+//                } else {
+//                    print("The names of female users that the current logged in user swipped is SAVED")
+//
+//                }
+//            })
             //self.names.append(self.firstNametextLable)
         })
 
@@ -71,20 +75,19 @@ class User {
             
             
             self.ref2 = Database.database().reference(fromURL: "https://beetle-5b79a.firebaseio.com/").child("users").child("Female Swipped Male").child(userID!)
-//            self.ref2 = Database.database().reference(fromURL: "https://hatedateapp-ea81a.firebaseio.com/").child("users").child("Female Swipped Male").childByAutoId()
 
-//            let usersChildRef = self.ref2.child(self.firstNametextLable).childByAutoId()
-            let usersChildRef = self.ref2.child(self.firstNametextLable).child(Id).child(name).childByAutoId()
+            let usersChildRef = self.ref2.child(self.firstNametextLable).child(Id).child(name)
+            usersChildRef.updateChildValues(["Added ": "True"])
 
-            usersChildRef.setValue(name, withCompletionBlock: { (error, ref) in
-                if error != nil {
-                    print("ERROR WHILE SAVING information of user : \(error?.localizedDescription)")
-                    
-                } else {
-                    print("The names of male users that the current logged in user swipped is SAVED")
-                    
-                }
-            })
+//            usersChildRef.setValue(name, withCompletionBlock: { (error, ref) in
+//                if error != nil {
+//                    print("ERROR WHILE SAVING information of user : \(error?.localizedDescription)")
+//
+//                } else {
+//                    print("The names of male users that the current logged in user swipped is SAVED")
+//
+//                }
+//            })
         })
         
     }

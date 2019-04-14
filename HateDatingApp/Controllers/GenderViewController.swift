@@ -48,6 +48,9 @@ class GenderViewController: UIViewController {
             destinationVC.userID = userID
         
         }
+        
+        womanButton.setGradientBackground(colorOne: Colors.darkBlue, colorTwo: Colors.lightBlue)
+        manButton.setGradientBackground(colorOne: Colors.darkBlue, colorTwo: Colors.lightBlue)
     }
 
     

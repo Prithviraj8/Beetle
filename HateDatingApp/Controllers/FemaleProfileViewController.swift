@@ -20,7 +20,8 @@ class FemaleProfileViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
          ForFemaleFirstNameTextLabel.text = stringHolder
-        ForFemaleProfilePic.layer.cornerRadius = 75
+        ForFemaleProfilePic.translatesAutoresizingMaskIntoConstraints = false
+        ForFemaleProfilePic.layer.cornerRadius = 10
         ForFemaleProfilePic.layer.masksToBounds = true
         ForFemaleProfilePic.image = femaleProfilePicImage
 

@@ -8,7 +8,6 @@
 
 import UIKit
 import MapKit
-import SwiftKeychainWrapper
 import Firebase
 import SVProgressHUD
 
@@ -34,56 +33,62 @@ class ViewController: UIViewController {
         if Auth.auth().currentUser != nil{
             SVProgressHUD.show()
 
-            print("CURRENT USER INFO IS \(Auth.auth().currentUser?.uid)")
+            print("CURRENT USER INFO IS \(String(describing: Auth.auth().currentUser?.uid))")
 //            Timer.scheduledTimer(withTimeInterval: 0, repeats: false) { (Timer) in
             
-                let maleRef = Database.database().reference(fromURL: "https://beetle-5b79a.firebaseio.com/").child("users").child("Male")
-                let femaleRef = Database.database().reference(fromURL: "https://beetle-5b79a.firebaseio.com/").child("users").child("Female")
+//            let maleRef = Database.database().reference(fromURL: "https://beetle-5b79a.firebaseio.com/").child("users").child("Male").child((Auth.auth().currentUser?.uid)!)
+//            let femaleRef = Database.database().reference(fromURL: "https://beetle-5b79a.firebaseio.com/").child("users").child("Female").child((Auth.auth().currentUser?.uid)!)
+//            
             
-            
-            
-                maleRef.observe(.childAdded, with: { (snapshot) in
-                    let snapshotValue = snapshot.value as! NSDictionary
-                    let name = snapshotValue["Name "] as! String
-                    let userID = snapshotValue["UserId "] as! String
-                    let email = snapshotValue["Email "] as! String
-                    let age = snapshotValue["Age "] as! Int
-                if Auth.auth().currentUser?.email != nil {
-                    if Auth.auth().currentUser?.email == email {
-                        print("THE NAME PASSED IS \(name)")
-                        self.user.name = name
-                        self.user.id = userID
-                        self.user.age = age
-                        SVProgressHUD.dismiss()
-                        self.performSegue(withIdentifier: "Male", sender: self)
-                    }else{
-                        
-                        femaleRef.observe(.childAdded, with: { (snapshot) in
-                            let snapshotValue = snapshot.value as! NSDictionary
-                            let name = snapshotValue["Name "] as! String
-                            let userID = snapshotValue["UserId "] as! String
-                            
-                            let email = snapshotValue["Email "] as! String
-                            if Auth.auth().currentUser?.email == email {
-                                self.user.name = name
-                                self.user.id = userID
-                                self.user.age = age
+     if Auth.auth().currentUser?.email != nil {
 
-                                SVProgressHUD.dismiss()
-                                self.performSegue(withIdentifier: "Female", sender: self)
-                            }else{
-                                SVProgressHUD.dismiss()
-                                print("ERROR WHILE LOGGING IN \(Auth.auth().currentUser?.email)")
-                            }
-                        })
+        let maleRef = Database.database().reference(fromURL: "https://beetle-5b79a.firebaseio.com/").child("users").child("Male")
+        let femaleRef = Database.database().reference(fromURL: "https://beetle-5b79a.firebaseio.com/").child("users").child("Female")
+        
+        
+        
+        maleRef.observe(.childAdded, with: { (snapshot) in
+            let snapshotValue = snapshot.value as! NSDictionary
+            let name = snapshotValue["Name "] as! String
+            let userID = snapshotValue["UserId "] as! String
+            let email = snapshotValue["Email "] as! String
+            let age = snapshotValue["Age "] as! Int
+            if Auth.auth().currentUser?.email == email {
+                print("THE NAME PASSED IS \(name)")
+                self.user.name = name
+                self.user.id = userID
+                self.user.age = age
+                self.performSegue(withIdentifier: "Male", sender: self)
+                SVProgressHUD.dismiss()
+            }
+            SVProgressHUD.dismiss()
 
-                        
-                 
-                    }
-                    }
-                })
+        })
+        
+        
+        femaleRef.observe(.childAdded, with: { (snapshot) in
+            let snapshotValue = snapshot.value as! NSDictionary
+            let name = snapshotValue["Name "] as! String
+            let userID = snapshotValue["UserId "] as! String
+            let age = snapshotValue["Age "] as! Int
+            
+            let email = snapshotValue["Email "] as! String
+            if Auth.auth().currentUser?.email == email {
+                self.user.name = name
+                self.user.id = userID
+                self.user.age = age
                 
-//            }
+                self.performSegue(withIdentifier: "Female", sender: self)
+                SVProgressHUD.dismiss()
+                
+            }
+            SVProgressHUD.dismiss()
+
+        })
+     }else{
+            SVProgressHUD.dismiss()
+            print("ERROR WHILE LOGGING IN \(String(describing: Auth.auth().currentUser?.email))")
+            }
         }
     }
    

@@ -32,6 +32,7 @@ class ChatViewFemaleViewController: UIViewController, UITableViewDelegate, UITab
     
     private var cellId = "customMessageCell"
 
+    @IBOutlet weak var messageTVHeight: NSLayoutConstraint!
     @IBOutlet weak var sendButton: UIButtonX!
     @IBOutlet weak var messageTableView: UITableView!
     @IBOutlet weak var navigationBar: UINavigationBar!
@@ -39,8 +40,15 @@ class ChatViewFemaleViewController: UIViewController, UITableViewDelegate, UITab
     @IBOutlet weak var profilePicImage: UIImageViewX!
     @IBOutlet weak var BlockedMessage: UILabel!
     @IBOutlet weak var bottomView: UIView!
+    @IBOutlet weak var gotBlockedMessage: UILabel!
     
+    var bottomViewOriginalPos : CGFloat! = nil
+    var messageTableViewOriginalPos : CGFloat! = nil
+    var originalMessageTVHeight : CGFloat! = nil
     
+    var bottomViewBottomAnchor : NSLayoutConstraint?
+    var inputViewBottomAnchor : NSLayoutConstraint?
+    var messageTVBottomAnchor : NSLayoutConstraint?
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -59,20 +67,48 @@ class ChatViewFemaleViewController: UIViewController, UITableViewDelegate, UITab
 
         setupKeyBoardObservers()
         retreiveMessage()
+        
         inputTextField.keyboardAppearance = .light
-        inputTextField.text = "Placeholder"
-        inputTextField.textColor = UIColor.lightGray
+        inputTextField.text = "Enter Message"
+//        sendButton.isEnabled = false
+//        inputTextField.textColor = UIColor.lightGray
         inputTextField.layer.cornerRadius = 10
-        inputTextField.layer.borderColor = UIColor.gray.cgColor
+        inputTextField.layer.borderColor = UIColor.flatYellowColorDark().cgColor
         inputTextField.layer.borderWidth = 1
         textViewDidChange(inputTextField)
-
+        textViewDidBeginEditing(inputTextField)
+        
         profilePicImage.translatesAutoresizingMaskIntoConstraints = false
         profilePicImage.layer.masksToBounds = true
-        profilePicImage.layer.cornerRadius = 22
+        profilePicImage.layer.cornerRadius = 20
+        profilePicImage.contentMode = .scaleAspectFill
         
         setupProfilePic()
         showKeyboard()
+        BlockedMessage.isHidden = true
+        
+        let messageDB = Database.database().reference(fromURL: "https://beetle-5b79a.firebaseio.com/").child("users").child("Match").child("Female").child(userID!)
+        let value = ["First Name ": firstNametextLable, "Male name ": maleName, "Male Id ": maleId]
+        messageDB.updateChildValues(value)
+        let inMessageVC = messageDB.child(firstNametextLable).child(maleId).child(maleName)
+        inMessageVC.updateChildValues(["In Message VC ": "True "])
+        
+        Timer.scheduledTimer(withTimeInterval: 0.5, repeats: true, block: { (timer) in
+            if self.messageArray.count > 0{
+                let indexPath = NSIndexPath(item: self.messageArray.count - 1, section: 0)
+                self.messageTableView.scrollToRow(at: indexPath as IndexPath, at: .bottom, animated: true)
+            }
+            
+        })
+        messageTableView.keyboardDismissMode = .interactive
+//        originalMessageTVHeight = messageTVHeight.constant
+        bottomViewBottomAnchor = bottomView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+        messageTVBottomAnchor = messageTableView.bottomAnchor.constraint(equalTo: bottomView.topAnchor)
+        bottomViewBottomAnchor?.isActive = true
+        messageTVBottomAnchor?.isActive = true
+        
+        bottomView.setGradientBackground(colorOne: Colors.blue, colorTwo: Colors.skyBlue)
+
     }
     
     func setupProfilePic(){
@@ -93,39 +129,12 @@ class ChatViewFemaleViewController: UIViewController, UITableViewDelegate, UITab
         }
     }
     
-//    override func viewDidDisappear(_ animated: Bool) {
-//        var ReceivedMessageTime = [Double]()
-//        
-//        let messageDB = Database.database().reference(fromURL: "https://beetle-5b79a.firebaseio.com").child("users").child("Match").child("Female").child(userID!).child(firstNametextLable).child(maleId).child(maleName).child("Messages")
-//        
-//        messageDB.observeSingleEvent(of: .value) { (snap) in
-//            
-//            
-//            messageDB.observe(.childAdded) { (snapshot) in
-//                
-//                let snapshotValue = snapshot.value as! NSDictionary
-//                
-//                if let ReceivedMessage = snapshotValue["ReceivedMessage "] {
-//                    
-//                    print("WERRRRRRRR")
-//                    
-//                    let messageTimeStamp = snapshotValue["Time Stamp Received "] as! Double
-//                    ReceivedMessageTime.append(messageTimeStamp)
-//                    let currentTimeStamp = NSDate().timeIntervalSince1970
-//                    let myTimeInterval = TimeInterval(currentTimeStamp)
-//                    //                        let time = NSDate(timeIntervalSince1970: TimeInterval(myTimeInterval))
-//                    
-//                    if ReceivedMessageTime.last! == currentTimeStamp {
-//                        self.notificationPublisher.sendNotification(title: self.maleName, subtitle: "YOU HAVE A NEW MESSAGE", body: ReceivedMessage as! String, badge: 1, delayInterval: 1)
-//                        self.notificationPublisher.name = self.maleName
-//                    }
-//                }
-//                
-//                
-//            }
-//            
-//        }
-//    }
+    override func viewDidDisappear(_ animated: Bool) {
+        let inMessageVC = Database.database().reference(fromURL: "https://beetle-5b79a.firebaseio.com/").child("users").child("Match").child("Female").child(firstNametextLable).child(maleId).child(maleName)
+        
+        inMessageVC.updateChildValues(["In Message VC ": "False "])
+
+    }
     
     
     func setupKeyBoardObservers(){
@@ -156,56 +165,96 @@ class ChatViewFemaleViewController: UIViewController, UITableViewDelegate, UITab
         guard let keyboardRect = (notification.userInfo?[UIKeyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue else{
             return
         }
+        //        guard let keyboardDuration = ((notification.userInfo?[UIKeyboardAnimationDurationUserInfoKey]) as AnyObject).double else{
+        //            return
+        //        }
         
         let keyboardShowing = notification.name == NSNotification.Name.UIKeyboardWillShow
-        
         if notification.name == Notification.Name.UIKeyboardWillShow || notification.name == Notification.Name.UIKeyboardWillChangeFrame {
-            view.frame.origin.y = -keyboardRect.height
-//            view.frame.origin.y = -(keyboardRect.height)/2
+            
+            bottomViewBottomAnchor?.constant = -keyboardRect.height
             UIView.animate(withDuration: 0, delay: 0, options: UIViewAnimationOptions.curveEaseOut, animations: {
                 self.view.layoutIfNeeded()
             }) { (completed) in
+                if self.messageArray.count > 0{
+                    let indexPath = NSIndexPath(item: self.messageArray.count - 1, section: 0)
+                    self.messageTableView.scrollToRow(at: indexPath as IndexPath, at: .bottom, animated: true)
+                }
                 
             }
-        }else{
-            view.frame.origin.y = 0
+        }else if notification.name == Notification.Name.UIKeyboardWillHide {
+            
+//            messageTVHeight.constant = originalMessageTVHeight
+            bottomViewBottomAnchor?.constant = 0
+            messageTVBottomAnchor?.constant = 0
+            
             UIView.animate(withDuration: 0, delay: 0, options: UIViewAnimationOptions.curveEaseIn, animations: {
                 self.view.layoutIfNeeded()
             }) { (completed) in
                 if keyboardShowing {
+                    if self.messageArray.count > 0{
+                        let indexPath = NSIndexPath(item: self.messageArray.count - 1, section: 0)
+                        self.messageTableView.scrollToRow(at: indexPath as IndexPath, at: .bottom, animated: true)
+                    }
                     
                 }
             }
         }
     }
     
+    
     func showKeyboard(){
-        let isblockedRef = Database.database().reference(fromURL: "https://beetle-5b79a.firebaseio.com/").child("users").child("Match").child("Female").child(self.userID!).child(self.firstNametextLable).child(self.maleId)
+        let isblockedRef = Database.database().reference(fromURL: "https://beetle-5b79a.firebaseio.com/").child("users").child("Match").child("Female").child(userID!).child(firstNametextLable).child(maleId)
         
-        isblockedRef.observe(.value, with: { (snap1) in
+        isblockedRef.observeSingleEvent(of: .value, with: { (snap1) in
             let snapValue = snap1.value as! NSDictionary
             if let blocked = snapValue["Blocked "] as? String {
-                if blocked == "True"{
+                if blocked == "True" {
+                    print("BLOCKED IS \(blocked)")
                     self.sendButton.isEnabled = false
                     self.sendButton.isHidden = true
                     self.inputTextField.isHidden = true
                     self.bottomView.isHidden = true
+                    self.BlockedMessage.isHidden = false
+                    self.BlockedMessage.text = "You've blocked this user. Unblock him to send message."
                 }else{
                     self.BlockedMessage.isHidden = true
                 }
             }else{
                 self.BlockedMessage.isHidden = true
-                
             }
         })
+        
+        let blockedRef = Database.database().reference(fromURL: "https://beetle-5b79a.firebaseio.com/").child("users").child("Match").child("Male").child(self.maleId).child(self.maleName).child(self.userID!)
+        print("HEEEEE")
+        blockedRef.observe(.value) { (snapshot) in
+            if let snapshotValue = snapshot.value as? NSDictionary {
+            if let blocked = snapshotValue["Blocked "] as? String {
+                if blocked == "True"{
+                    self.sendButton.isEnabled = false
+                    self.sendButton.isHidden = true
+                    self.inputTextField.isHidden = true
+                    self.bottomView.isHidden = true
+                    self.gotBlockedMessage.isHidden = false
+                    self.gotBlockedMessage.text = "This user has blocked you so you cannot send him any messages."
+                    
+                }else{
+                    self.gotBlockedMessage.isHidden = true
+                }
+            }
+            else{
+                self.gotBlockedMessage.isHidden = true
+
+            }
+            }
+            
+        }
     }
     
     func retreiveMessage() {
         
         let messageDB = Database.database().reference(fromURL: "https://beetle-5b79a.firebaseio.com/").child("users").child("Match").child("Female").child(userID!).child(firstNametextLable).child(maleId).child(maleName).child("Messages")
-        
-        messageDB.observeSingleEvent(of: .value) { (snap) in
-            
+        let DB = Database.database().reference(fromURL: "https://beetle-5b79a.firebaseio.com/").child("users").child("Match").child("Male").child(maleName).child(maleId).child(firstNametextLable).child(userID!).child("Messages")            
             
             messageDB.observe(.childAdded) { (snapshot) in
                 
@@ -221,7 +270,17 @@ class ChatViewFemaleViewController: UIViewController, UITableViewDelegate, UITab
                     self.messageArray.append(messages)
                     messageDB.child(snapshot.key).updateChildValues(["Message Read ": "True"])
                     messageDB.child(snapshot.key).updateChildValues(["Message Notified ": "True"])
-
+                    messageDB.child(snapshot.key).updateChildValues(["Text Widht ": (ReceivedMessage as! String).count])
+                  
+                    Timer.scheduledTimer(withTimeInterval: 0.5, repeats: true, block: { (timer) in
+                        if self.messageArray.count > 0{
+                            let indexPath = NSIndexPath(item: self.messageArray.count - 1, section: 0)
+                            self.messageTableView.scrollToRow(at: indexPath as IndexPath, at: .bottom, animated: true)
+                        }
+                        
+                    })
+                    
+                    
                 }
 //                if let ReceivedMessage = snapshotValue["ReceivedImage "] {
 //                    let message2 = FemaleChatMessage(text: ReceivedMessage as! String, isIncoming: true)
@@ -238,7 +297,18 @@ class ChatViewFemaleViewController: UIViewController, UITableViewDelegate, UITab
                     let messages = message()
                     messages.messageBody = SentMessage as! String
                     self.messageArray.append(messages)
+                    messageDB.child(snapshot.key).updateChildValues(["Text Widht ": (SentMessage as! String).count])
                     
+                    Timer.scheduledTimer(withTimeInterval: 0.5, repeats: true, block: { (timer) in
+                        if self.messageArray.count > 0{
+                            let indexPath = NSIndexPath(item: self.messageArray.count - 1, section: 0)
+                            self.messageTableView.scrollToRow(at: indexPath as IndexPath, at: .bottom, animated: true)
+                        }
+                        
+                    })
+                    
+                    
+                   
                 }
 //                if let SentMessage = snapshotValue["SentImage "] {
 //                    let message1 = FemaleChatMessage(text: SentMessage as! String, isIncoming: false)
@@ -253,7 +323,6 @@ class ChatViewFemaleViewController: UIViewController, UITableViewDelegate, UITab
                 
             }
             
-        }
     }
     
   
@@ -268,7 +337,46 @@ class ChatViewFemaleViewController: UIViewController, UITableViewDelegate, UITab
 
         cell.FemaleChatMessage = Message
         cell.selectionStyle = UITableViewCellSelectionStyle.none
+        let size = estimateFrameForText(text: Message.text)
+        
+        if size.width >= 150 {
+            cell.messageLabel.widthAnchor.constraint(equalToConstant: 250).isActive = true
+        }
 
+        
+        let messageDB = Database.database().reference(fromURL: "https://beetle-5b79a.firebaseio.com/").child("users").child("Match").child("Male").child(maleId).child(maleName).child(userID!).child(firstNametextLable).child("Messages")
+        messageDB.observe(.childAdded, with: { (snap1) in
+            
+            if let snapshotValue = snap1.value as? NSDictionary {
+                if let ReceivedMessage = snapshotValue["ReceivedMessage "] {
+                    let messageRead = snapshotValue["Message Read "] as! String
+                    
+                    if messageRead == "True"{
+                        print("MESSAGE on cell IS \(cell.messageLabel.text)")
+                        if cell.messageLabel.text == ReceivedMessage as? String{
+                            UIView.animate(withDuration: 0.5, animations: {
+                                cell.bubbleView.backgroundColor = UIColor(red: 0, green: 0.7412, blue: 0.9686, alpha: 1.0)
+                            })
+                        }
+                        
+                    }else{
+                        if cell.messageLabel.text == ReceivedMessage as? String{
+                            
+                            UIView.animate(withDuration: 0.5, animations: {
+                                cell.bubbleView.backgroundColor = UIColor.gray
+                            })
+                            
+                        }
+                    }
+                    
+                    
+                }
+                
+            }
+            
+        })
+
+        
         return cell
     
     }
@@ -286,13 +394,13 @@ class ChatViewFemaleViewController: UIViewController, UITableViewDelegate, UITab
     }
     
     @IBAction func sendButton(_ sender: Any) {
-        if (inputTextField.text?.count)! > 0{
-            handleSend()
-        }else{
-            
-        }
-        inputTextField.text = ""
+
+        handleSend()
 //        inputTextField.endEditing(true)
+        if messageArray.count > 0{
+            let indexPath = NSIndexPath(item: self.messageArray.count - 1, section: 0)
+            self.messageTableView.scrollToRow(at: indexPath as IndexPath, at: .bottom, animated: true)
+        }
     }
     
     
@@ -376,7 +484,7 @@ class ChatViewFemaleViewController: UIViewController, UITableViewDelegate, UITab
                             
                         }
                         
-                        
+                    
                         let ref2 = Database.database().reference(fromURL: "https://beetle-5b79a.firebaseio.com/").child("users").child("Match").child("Female").child(self.userID!).child(self.firstNametextLable).child(self.maleId).child(self.maleName).child("Messages")
                         
                         let messageDictionary2 = ["SentImage " : downloadURL!,"Image Width ": image.size.width, "Image Height ": image.size.height] as [String : AnyObject]
@@ -388,7 +496,7 @@ class ChatViewFemaleViewController: UIViewController, UITableViewDelegate, UITab
                                 print("IMAGE Message sent successfully")
                             }
                             self.inputTextField.isSelectable = true
-                            self.sendButton.isEnabled = true
+                            self.sendButton.isEnabled = false
                             self.inputTextField.text = ""
                             
                         }
@@ -425,7 +533,7 @@ class ChatViewFemaleViewController: UIViewController, UITableViewDelegate, UITab
                 print("TEXT Message sent successfully")
             }
             self.inputTextField.isSelectable = true
-            self.sendButton.isEnabled = true
+            self.sendButton.isEnabled = false
             self.inputTextField.text = ""
             
         }
@@ -443,14 +551,18 @@ class ChatViewFemaleViewController: UIViewController, UITableViewDelegate, UITab
 //                print("Message sent successfully")
             }
             self.inputTextField.isSelectable = true
-            self.sendButton.isEnabled = true
+            self.sendButton.isEnabled = false
             self.inputTextField.text = ""
             
         }
     }
     
 
-    
+    private func estimateFrameForText(text: String) -> CGRect {
+        let size = CGSize(width: 200, height: 1000)
+        let options = NSStringDrawingOptions.usesFontLeading.union(.usesLineFragmentOrigin)
+        return NSString(string: text).boundingRect(with: size, options: options, attributes: [kCTFontAttributeName as NSAttributedString.Key: UIFont.systemFont(ofSize: 16)], context: nil )
+    }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "backToMatches"{
@@ -488,17 +600,20 @@ extension ChatViewFemaleViewController : UITextViewDelegate {
             // self.heightConstraint.constant = 308
             self.view.layoutIfNeeded()
             self.inputTextField.text = ""
-            self.inputTextField.textColor = UIColor.lightGray
+            self.inputTextField.textColor = UIColor.black
             self.inputTextField.layer.cornerRadius = 10
             self.inputTextField.layer.borderWidth = 1
-            self.inputTextField.layer.borderColor = UIColor.gray.cgColor
+            self.inputTextField.layer.borderColor = UIColor.flatYellowColorDark().cgColor
         }
 
     }
 
     func textViewDidChange(_ textView: UITextView) {
-        if inputTextField.text.count > 0 {
+        if textView.text.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
+            sendButton.isEnabled = false
+        }else{
             sendButton.isEnabled = true
+
         }
 
         let size = CGSize(width: view.frame.width, height: .infinity)

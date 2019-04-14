@@ -9,16 +9,21 @@
 import UIKit
 import SVProgressHUD
 import Foundation
+import Firebase
 
 class ChatLogTableViewCell: UITableViewCell {
 
 
     var leadingConstraint : NSLayoutConstraint!
     var trailingConstraint : NSLayoutConstraint!
-    var bubbleleadingConstraint : NSLayoutConstraint!
-    var bubbletrailingConstraint : NSLayoutConstraint!
+    var imageleadingConstraint : NSLayoutConstraint!
+    var ImagetrailingConstraint : NSLayoutConstraint!
     var width_Anchor: NSLayoutConstraint!
     var height_Anchor : NSLayoutConstraint!
+    var imageConstraints = [NSLayoutConstraint]()
+    var messageConstraints = [NSLayoutConstraint]()
+    var bubbleViewWidhtAnchor : NSLayoutConstraint!
+    
     
     let messageLabel = UILabel()
     let bubbleView = UIView()
@@ -35,13 +40,18 @@ class ChatLogTableViewCell: UITableViewCell {
    
     var chatMessage : ChatMessage! {
         didSet {
-            bubbleView.backgroundColor = chatMessage.isIncoming ? .white : UIColor(red: 0, green: 0.5765, blue: 0.0863, alpha: 1.0)
+//            bubbleView.backgroundColor = chatMessage.isIncoming ? .white : .gray
             messageLabel.textColor = chatMessage.isIncoming ? .black : .white
-            
-            if chatMessage.text.localizedStandardContains("https:"){
+//            messageLabel.text = chatMessage.text
+
+            if chatMessage.text.localizedStandardContains(imageURL) == true{
                 print("chatMessage doest contain \(chatMessage.text.localizedStandardContains(imageURL))")
-                self.width_Anchor.isActive = true
-                self.height_Anchor.isActive = true
+
+                bubbleView.backgroundColor = UIColor.clear
+                imageConstraints.forEach({ (constraint) in
+                    constraint.isActive = true
+                })
+                
                 guard let url = URL(string: chatMessage.text) else {
                     return
                 }
@@ -64,15 +74,24 @@ class ChatLogTableViewCell: UITableViewCell {
                 }).resume()
                 
             }else{
+
                 messageLabel.text = chatMessage.text
-                    width_Anchor.isActive = false
-                    height_Anchor.isActive = false
+//                bubbleViewWidhtAnchor.isActive = true
+             
             }
 
             if chatMessage.isIncoming == true {
+                bubbleView.backgroundColor = .white
+
+//                imageleadingConstraint.isActive = true
+//                ImagetrailingConstraint.isActive = false
+                
                 leadingConstraint.isActive = true
                 trailingConstraint.isActive = false
             }else{
+//                imageleadingConstraint.isActive = false
+//                ImagetrailingConstraint.isActive = true
+                
                 leadingConstraint.isActive = false
                 trailingConstraint.isActive = true
             }
@@ -81,51 +100,64 @@ class ChatLogTableViewCell: UITableViewCell {
     }
     
 
-    //    var isIncoming : Bool! {
-    //        didSet {
-    //            bubbleView.backgroundColor = isIncoming ? .white : .darkGray
-    //            messageLabel.textColor = isIncoming ? .black : .white
-    //        }
-    //    }
-//    var isIncoming : Bool!
-//    var outGoing : Bool!
-
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: .subtitle, reuseIdentifier: reuseIdentifier)
         
         backgroundColor = .clear
 
-        bubbleView.backgroundColor = .yellow
         bubbleView.translatesAutoresizingMaskIntoConstraints = false
         bubbleView.layer.cornerRadius = 12
         addSubview(bubbleView)
         addSubview(messageLabel)
-        addSubview(messageImageView)
+//        bubbleView.addSubview(messageImageView)
         
 
-  
-
-        //        messageLabel.backgroundColor = .green
-        //        messageLabel.text = "MESSAGES hey how are you im okay can u kill me now hey there what hc doing??? avenger"
         messageLabel.translatesAutoresizingMaskIntoConstraints = false
         messageLabel.numberOfLines = 0
         messageLabel.topAnchor.constraint(equalTo: topAnchor, constant : 32).isActive = true
         messageLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -32).isActive = true
-        messageLabel.widthAnchor.constraint(equalToConstant: 250).isActive = true
+        messageLabel.widthAnchor.constraint(equalToConstant: 200).isActive = true
 
-        
+
         bubbleView.topAnchor.constraint(equalTo: messageLabel.topAnchor, constant: -16).isActive = true
         bubbleView.leadingAnchor.constraint(equalTo: messageLabel.leadingAnchor, constant: -16).isActive = true
         bubbleView.bottomAnchor.constraint(equalTo: messageLabel.bottomAnchor, constant: 16).isActive = true
         bubbleView.trailingAnchor.constraint(equalTo: messageLabel.trailingAnchor, constant: 16).isActive = true
         
-        width_Anchor =  bubbleView.widthAnchor.constraint(equalToConstant: 250)
-        height_Anchor = bubbleView.heightAnchor.constraint(equalToConstant: 300)
+        bubbleViewWidhtAnchor = bubbleView.widthAnchor.constraint(equalTo: messageLabel.widthAnchor ,constant: 8)
+//        bubbleView.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -8).isActive = true
         
-        messageImageView.topAnchor.constraint(equalTo: bubbleView.topAnchor).isActive = true
-        messageImageView.leftAnchor.constraint(equalTo: bubbleView.leftAnchor).isActive = true
-        messageImageView.widthAnchor.constraint(equalTo: bubbleView.widthAnchor).isActive = true
-        messageImageView.heightAnchor.constraint(equalTo: bubbleView.heightAnchor).isActive = true
+//      messageConstraints = [
+//        messageLabel.topAnchor.constraint(equalTo: topAnchor, constant : 32),
+//        messageLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -32),
+//        messageLabel.widthAnchor.constraint(equalToConstant: 200),
+//
+//        bubbleView.topAnchor.constraint(equalTo: messageLabel.topAnchor, constant: -16),
+//        bubbleView.leadingAnchor.constraint(equalTo: messageLabel.leadingAnchor, constant: -16),
+//        bubbleView.bottomAnchor.constraint(equalTo: messageLabel.bottomAnchor, constant: 16),
+//        bubbleView.trailingAnchor.constraint(equalTo: messageLabel.trailingAnchor, constant: 16)
+//        ]
+        
+        //Setting up Image View
+
+        width_Anchor =  bubbleView.widthAnchor.constraint(equalToConstant: 250)
+        height_Anchor = bubbleView.heightAnchor.constraint(equalToConstant: 250)
+      
+     imageConstraints = [
+        messageImageView.topAnchor.constraint(equalTo: topAnchor),
+        messageImageView.bottomAnchor.constraint(equalTo: bottomAnchor),
+        messageImageView.widthAnchor.constraint(equalTo: bubbleView.widthAnchor),
+        messageImageView.heightAnchor.constraint(equalTo: bubbleView.heightAnchor),
+        
+//        bubbleView.topAnchor.constraint(equalTo: messageImageView.topAnchor, constant: -16),
+//        bubbleView.leadingAnchor.constraint(equalTo: messageImageView.leadingAnchor, constant: -16),
+//        bubbleView.bottomAnchor.constraint(equalTo: messageImageView.bottomAnchor, constant: 16),
+//        bubbleView.trailingAnchor.constraint(equalTo: messageImageView.trailingAnchor, constant: 16)
+        
+        ]
+        
+        imageleadingConstraint = messageImageView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 32)
+        ImagetrailingConstraint = messageImageView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -32)
         
         leadingConstraint = messageLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 32)
 //                leadingConstraint.isActive = false

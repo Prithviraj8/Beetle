@@ -231,51 +231,7 @@ class TinderCardFemale: UIView{
         print("The NAME OF THE pic being viewed: \(self.NAME)")
         
         user.save_Info_For_Female_User_who_Swipped_A_Male_User(name: NAME, Id: receiverId)
-        //        let userID = Auth.auth().currentUser?.uid
-        //      //Saving the name of the female who was swipped by the logged in male user.
-        ////        ref = Database.database().reference(fromURL: "https://hatedateapp-ea81a.firebaseio.com/").child("users").child("Male Swipped Female")
-        ////        ref = Database.database().reference(fromURL: "https://hatedateapp-ea81a.firebaseio.com/").child("users").child("Male Swipped Female").child(userID!)
-        //        ref = Database.database().reference(fromURL: "https://hatedateapp-ea81a.firebaseio.com/").child("users").child("Male Swipped Female").child(loggedInUserName)
-        //        print("THE USERID is : \(String(describing: userID))")
-        //
-        //        ref.observe(.childAdded) { (snapshot) in
-        ////            let snapshotValue = snapshot.value as? [String : AnyObject] ?? [:]
-        //            let snapshotValue = snapshot.value as! Dictionary<String, String>
-        ////            let snapshotValue = snapshot.value as? NSDictionary
-        //
-        //            print("The name of the logged in user is : \(snapshot)")
-        //            print("THE USERID is : \(String(describing: userID))")
-        //
-        //        //    let firstNametextLable = snapshotValue["Name"]
-        //         //   print("The firstNametextLable is \(String(describing: firstNametextLable))")
-        //
-        //        }
-        //
-        //        self.ref2 = Database.database().reference(fromURL: "https://hatedateapp-ea81a.firebaseio.com/").child("users").child("Male Swipped Female").child(userID!).child(loggedInUserName)
-        //        self.ref2.updateChildValues(["FNAME ": self.NAME], withCompletionBlock: { (error, ref) in
-        //            if error != nil {
-        //                print("Error")
-        //            }else{
-        //                print("The name of the female swipped by the current logged in user is saved to the database. ")
-        //                print("The NAME OF THE pic being viewed: \(self.NAME)")
-        //
-        //
-        //            }
-        //        })
-        //        user.updateChildRef(name: NAME)
         
-        //let usersChildRef = ref.value(forKey: NAME)
-        //        ref = Database.database().reference(withPath: "Male Swipped Female").child(firstNametextLable)
-        //        ref.setValue(NAME) { (error, ref) in
-        //            if error != nil {
-        //                print("Error")
-        //            }else{
-        //                print("The name of the female swipped by the current logged in user is saved to the database. ")
-        //                print("The NAME OF THE pic being viewed: \(self.NAME)")
-        //
-        //
-        //            }
-        //        }
         
     }
     
@@ -317,40 +273,6 @@ class TinderCardFemale: UIView{
         
         
         user.save_Info_For_Female_User_who_Swipped_A_Male_User(name: NAME, Id: receiverId)
-        //Saving the name of the female who was swipped by the logged in male user.
-        //        ref = Database.database().reference(fromURL: "https://hatedateapp-ea81a.firebaseio.com/").child("users").child("Male Swipped Female")
-        //        //let usersChildRef = ref.value(forKey: NAME)
-        //        ref.setValue(NAME) { (error, ref) in
-        //            if error != nil {
-        //                print("Error")
-        //            }else{
-        //                print("The name of the female swipped by the current logged in user is saved to the database. ")
-        //                print("The NAME OF THE pic being viewed: \(self.NAME)")
-        //
-        //
-        //            }
-        //        }
-        //        ref = Database.database().reference(fromURL: "https://hatedateapp-ea81a.firebaseio.com/").child("users").child("Male Swipped Female")
-        //        ref = Database.database().reference(fromURL: "https://hatedateapp-ea81a.firebaseio.com/").child("users")
-        //
-        //        ref.observe(.childAdded) { (snapshot) in
-        //            let snapshotValue = snapshot.value as! Dictionary<String, String>
-        //            let firstNametextLable = snapshotValue["Male Swipped Female"]
-        //
-        //        }
-        //        let ref2 : DatabaseReference!
-        //        //let usersChildRef = ref.value(forKey: NAME)
-        //        ref2 = Database.database().reference(withPath: "Male Swipped Female").child(firstNametextLable).childByAutoId()
-        //        ref2.setValue(NAME) { (error, ref) in
-        //            if error != nil {
-        //                print("Error")
-        //            }else{
-        //                print("The name of the female swipped by the current logged in user is saved to the database. ")
-        //                print("The NAME OF THE pic being viewed: \(self.NAME)")
-        //
-        //
-        //            }
-        //        }
         
     }
     // left click action

@@ -14,6 +14,7 @@ class MaleProfileViewController: UIViewController {
 
     @IBOutlet weak var ProfilePic: UIImageView!
     @IBOutlet weak var firstNametextLable: UILabel!
+    @IBOutlet weak var begin: UIButtonX!
     
     var userID = ""
     var stringHolder: String = ""
@@ -25,9 +26,12 @@ class MaleProfileViewController: UIViewController {
         super.viewDidLoad()
 
         firstNametextLable.text = stringHolder
-        ProfilePic.layer.cornerRadius = 75
+        ProfilePic.translatesAutoresizingMaskIntoConstraints = false
+        ProfilePic.layer.cornerRadius = 10
         ProfilePic.layer.masksToBounds = true
         ProfilePic.image = MaleProfilPicImage
+        begin.setGradientBackground(colorOne: Colors.brightOrange, colorTwo: Colors.orange)
+    
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

@@ -50,7 +50,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate, GIDSignInUIDe
         GoogleSignInButton.layer.cornerRadius = 15
         GoogleSignInButton.layer.shadowOpacity = 1
         GoogleSignInButton.layer.shadowRadius = 6
-
+        SignInPressed.setGradientBackground(colorOne: Colors.darkBlue, colorTwo: Colors.lightBlue)
     }
 
     func setupKeyBoardObservers(){
@@ -83,7 +83,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate, GIDSignInUIDe
         
         
         if notification.name == Notification.Name.UIKeyboardWillShow || notification.name == Notification.Name.UIKeyboardWillChangeFrame {
-            view.frame.origin.y = -keyboardRect.height + (keyboardRect.height/2)
+//            view.frame.origin.y = -keyboardRect.height + (keyboardRect.height/2)
             UIView.animate(withDuration: 0.5, delay: 0, options: UIViewAnimationOptions.curveEaseOut, animations: {
                 self.view.layoutIfNeeded()
             }) { (completed) in
@@ -148,7 +148,8 @@ class SignUpViewController: UIViewController, UITextFieldDelegate, GIDSignInUIDe
         if emailTextField.text != "" && passwordTextField.text != "" {
             Auth.auth().createUser(withEmail: emailTextField.text!, password: passwordTextField.text!) { (user, error) in
 
-                
+                print("IS EMAIL VALIDATED \(self.validateEmail(enteredEmail: self.emailTextField.text!))")
+
             /*   This is a closure. A closure is a function with no name. Therefore when performing a Segue in a closure always remember to add a
              self.  before performSegue method as done below.  */
 
@@ -156,13 +157,17 @@ class SignUpViewController: UIViewController, UITextFieldDelegate, GIDSignInUIDe
                 //Success
                 
                 print("Registration Successful")
+                
+              
               self.performSegue(withIdentifier: "segueToFirstName", sender: self)
                 SVProgressHUD.dismiss()
 
         
             } else {
                 print("ERROR WHILE SIGNING UP IS :: \(error?.localizedDescription)")
+                
                 if(error != nil){
+                    
                     self.alertTheUser(title: (error?.localizedDescription)!, message: "Email eg: test@mail.com ")
                     SVProgressHUD.dismiss()
 
@@ -176,7 +181,19 @@ class SignUpViewController: UIViewController, UITextFieldDelegate, GIDSignInUIDe
         }
         
     }
+    
+    
+    func validateEmail(enteredEmail:String) -> Bool {
+        
+        let emailFormat = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
+        let emailPredicate = NSPredicate(format:"SELF MATCHES %@", emailFormat)
+        return emailPredicate.evaluate(with: enteredEmail)
+        
+    }
+    
   
+    
+    
     func alertTheUser(title: String, message: String){
         let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.alert)
         //        let OK = UIAlertAction(title: "OK", style: .default, handler: nil)
@@ -194,7 +211,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate, GIDSignInUIDe
                 destinationVC.emailTextField = emailTextField.text!
                 destinationVC.passwordTextField = passwordTextField.text!
                 print("TEXTS ARE \(emailTextField.text)")
-
+                destinationVC.userID = Auth.auth().currentUser!.uid
             }else{
                 print("PASSING GOOGLE USERS INFO ")
                 destinationVC.emailTextField = SignInInfo.email

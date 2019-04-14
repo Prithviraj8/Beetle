@@ -26,6 +26,7 @@ class ChatSettingViewController: UIViewController {
     var userID = Auth.auth().currentUser?.uid
     var name = ""
     var age : Int!
+ 
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -40,6 +41,9 @@ class ChatSettingViewController: UIViewController {
                 }else{
                     self.blockToggleButton.isOn = false
                 }
+            }else{
+                self.blockToggleButton.isOn = false
+
             }
         }
         print("AGE IS \(age)")
@@ -92,6 +96,10 @@ class ChatSettingViewController: UIViewController {
         }
     }
     
+    @IBAction func reportAbusePressed(_ sender: Any) {
+        performSegue(withIdentifier: "ReportAbuse", sender: self)
+        
+    }
     
     @IBAction func blockToggle(_ sender: UISwitch) {
         
@@ -127,7 +135,21 @@ class ChatSettingViewController: UIViewController {
             VC.maleId = id
             VC.profilePicURL = profilePicURL
             VC.age = age
+        }else if segue.identifier == "ReportAbuse"{
+            let VC = segue.destination as! ReportAbuseViewController
+            VC.names = names
+            VC.IDs = IDs
+            VC.name = name
+            VC.firstNameTextLabel = firstNameTextLabel
+            VC.profilePic = profilePic
+            VC.id = id
+            VC.profilePicURL = profilePicURL
+            VC.age = age
+            VC.gender = gender
         }
+        
+        
+        
     }
     
     

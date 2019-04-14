@@ -116,7 +116,7 @@ class UserTableViewController: UIViewController, UITextFieldDelegate, UITableVie
             let ref = Database.database().reference(fromURL: "https://beetle-5b79a.firebaseio.com/").child("users").child("Match").child("Male").child((Auth.auth().currentUser?.uid)!).child(firstNametextLable).child(id).child(name).child("Messages")
                 ref.observe(.childAdded) { (snapshot) in
                     
-                    let snapshotValue = snapshot.value as! NSDictionary
+                    if  let snapshotValue = snapshot.value as? NSDictionary {
                     
                     if let ReceivedTimeStamp = snapshotValue["Time Stamp Received "] as? Double {
 
@@ -136,8 +136,10 @@ class UserTableViewController: UIViewController, UITextFieldDelegate, UITableVie
                             SentMessageTime.append(sentTimeStampDate)
                             cell.timeLabel.text = dateFormatter.string(from: SentMessageTime.last!)
 
-                        }
-                }
+                    }
+                    
+            }
+        }
             
             
         cell.textLabel?.text = name
@@ -164,7 +166,7 @@ class UserTableViewController: UIViewController, UITextFieldDelegate, UITableVie
                 let femaleName = femaleNames[indexPath.row]
                 let Id = IDs[indexPath.row]
                 let profilePic = profilePicURL[indexPath.row]
-                print("THE FEMALE NAME SELECTED IS \(femaleName)")
+                print("THE MALE NAME PASSED IS \(firstNametextLable)")
                 VC.firstNametextLable = firstNametextLable
                 VC.femaleName = femaleName
                 VC.femaleId = Id

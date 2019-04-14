@@ -24,11 +24,14 @@ class ChangeInfoViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        
+        email.text = Auth.auth().currentUser?.email
         
     }
  
-  
+    @IBAction func backButton(_ sender: Any) {
+        dismiss(animated: true, completion: nil)
+    }
+    
     
     @IBAction func changeButtonPressed(_ sender: Any) {
 //        SVProgressHUD.show()

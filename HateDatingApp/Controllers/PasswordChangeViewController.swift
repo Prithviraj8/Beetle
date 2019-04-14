@@ -26,7 +26,11 @@ class PasswordChangeViewController: UIViewController,UITextFieldDelegate {
         incorrectPasswordMSG.isHidden = true
         print("EM IS \(Auth.auth().currentUser?.email)")
     }
-
+    @IBAction func backButton(_ sender: Any) {
+        dismiss(animated: true, completion: nil)
+        
+    }
+    
     @IBAction func currentPasswordField(_ sender: Any) {
 
         let user = Auth.auth().currentUser

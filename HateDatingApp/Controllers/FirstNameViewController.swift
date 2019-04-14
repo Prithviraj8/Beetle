@@ -25,6 +25,7 @@ class FirstNameViewController: UIViewController {
         setupKeyBoardObservers()
         continuePressed.isEnabled = false
         print("GOO ID and email is \(emailTextField)& \(userID)")
+        continuePressed.setGradientBackground(colorOne: Colors.darkBlue, colorTwo: Colors.lightBlue)
     }
 
     func setupKeyBoardObservers(){
@@ -59,7 +60,7 @@ class FirstNameViewController: UIViewController {
         
         
         if notification.name == Notification.Name.UIKeyboardWillShow || notification.name == Notification.Name.UIKeyboardWillChangeFrame {
-            view.frame.origin.y = -keyboardRect.height + (keyboardRect.height/2)
+//            view.frame.origin.y = -keyboardRect.height + (keyboardRect.height/2)
         }else{
             view.frame.origin.y = 0
         }

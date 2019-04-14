@@ -8,6 +8,7 @@
 
 import UIKit
 import SVProgressHUD
+import Firebase
 
 class FemaleChatLogTableViewCell: UITableViewCell {
 
@@ -36,8 +37,16 @@ class FemaleChatLogTableViewCell: UITableViewCell {
     
 var FemaleChatMessage : FemaleChatMessage! {
         didSet {
-            bubbleView.backgroundColor = FemaleChatMessage.isIncoming ? .white : UIColor(red: 0, green: 0.5765, blue: 0.0863, alpha: 1.0)
+            
+            if FemaleChatMessage.isIncoming {
+                bubbleView.backgroundColor = .white
+
+            }
+//            bubbleView.backgroundColor = FemaleChatMessage.isIncoming ? .white : UIColor(red: 0, green: 0.5765, blue: 0.0863, alpha: 1.0)
             messageLabel.textColor = FemaleChatMessage.isIncoming ? .black : .white
+            
+            
+            
             if FemaleChatMessage.text.contains(imageURL){
                 self.width_Anchor.isActive = true
                 self.height_Anchor.isActive = true
@@ -95,21 +104,53 @@ var FemaleChatMessage : FemaleChatMessage! {
         //        print("ISINCOMING IS \(isIncoming)")
         backgroundColor = .clear
         
-        bubbleView.backgroundColor = .yellow
+//        bubbleView.backgroundColor = .yellow
         bubbleView.translatesAutoresizingMaskIntoConstraints = false
         bubbleView.layer.cornerRadius = 12
        
         addSubview(bubbleView)
         addSubview(messageLabel)
-        addSubview(messageImageView)
+//        addSubview(messageImageView)
         
         messageLabel.translatesAutoresizingMaskIntoConstraints = false
         messageLabel.numberOfLines = 0
-        
-        
         messageLabel.topAnchor.constraint(equalTo: topAnchor, constant : 32).isActive = true
         messageLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -32).isActive = true
-        messageLabel.widthAnchor.constraint(equalToConstant: 250).isActive = true
+        messageLabel.widthAnchor.constraint(equalToConstant: 200).isActive = true
+        
+        let DB = Database.database().reference(fromURL: "https://beetle-5b79a.firebaseio.com/").child("users").child("Match").child("Female").child(Auth.auth().currentUser!.uid)
+        DB.observe(.value) { (snap) in
+            if let snapValue = snap.value as? NSDictionary{
+                let firstName = snapValue["First Name "] as! String
+                let maleName = snapValue["Male name "] as! String
+                let maleId = snapValue["Male Id "] as! String
+                
+                let messageDB = Database.database().reference(fromURL: "https://beetle-5b79a.firebaseio.com/").child("users").child("Match").child("Male").child(Auth.auth().currentUser!.uid).child(firstName).child(maleId).child(maleName).child("Messages")
+                messageDB.observeSingleEvent(of: .childAdded, with: { (snapshot) in
+                    
+                    let snapshotValue = snapshot.value as! NSDictionary
+                    if let ReceivedMessage = snapshotValue["ReceivedMessage "] {
+
+                        let width = snapshotValue["Text Widht "] as! CGFloat
+                        if width < 60 {
+                            
+                            self.messageLabel.widthAnchor.constraint(equalToConstant: (width) + 20).isActive = true
+                            print("WIDTH IS \(width)")
+                            
+                        }else{
+                            self.messageLabel.widthAnchor.constraint(equalToConstant: 250).isActive = true
+                            
+                        }
+                        
+                    }
+                    
+                })
+                
+            }
+            
+        }
+
+        
         
         
         bubbleView.topAnchor.constraint(equalTo: messageLabel.topAnchor, constant: -16).isActive = true
@@ -122,10 +163,10 @@ var FemaleChatMessage : FemaleChatMessage! {
         width_Anchor =  bubbleView.widthAnchor.constraint(equalToConstant: 250)
         height_Anchor = bubbleView.heightAnchor.constraint(equalToConstant: 300)
         
-        messageImageView.topAnchor.constraint(equalTo: bubbleView.topAnchor).isActive = true
-        messageImageView.leftAnchor.constraint(equalTo: bubbleView.leftAnchor).isActive = true
-        messageImageView.widthAnchor.constraint(equalTo: bubbleView.widthAnchor).isActive = true
-        messageImageView.heightAnchor.constraint(equalTo: bubbleView.heightAnchor).isActive = true
+//        messageImageView.topAnchor.constraint(equalTo: bubbleView.topAnchor).isActive = true
+//        messageImageView.leftAnchor.constraint(equalTo: bubbleView.leftAnchor).isActive = true
+//        messageImageView.widthAnchor.constraint(equalTo: bubbleView.widthAnchor).isActive = true
+//        messageImageView.heightAnchor.constraint(equalTo: bubbleView.heightAnchor).isActive = true
         
         leadingConstraint = messageLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 32)
         trailingConstraint = messageLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant : -32)

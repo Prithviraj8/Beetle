@@ -18,9 +18,12 @@ import FirebaseStorage
 
 class profileSetUpViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
-    @IBOutlet weak var maleImageView: UIImageViewX?
-    @IBOutlet weak var femaleImageView: UIImageViewX?
-
+    @IBOutlet weak var maleImageView: UIImageView!
+    @IBOutlet weak var femaleImageView: UIImageView!
+    @IBOutlet weak var maleImageButton: UIButton!
+    @IBOutlet weak var femaleImageButton: UIButton!
+    @IBOutlet weak var nextMale: UIButtonX!
+    
     var passwordTextField : String = ""
     
     var firstNameTextLabel : String = ""
@@ -40,10 +43,23 @@ class profileSetUpViewController: UIViewController, UIImagePickerControllerDeleg
     override func viewDidLoad() {
         super.viewDidLoad()
  
-        
+        nextMale?.setGradientBackground(colorOne: Colors.brightOrange, colorTwo: Colors.orange)
         imagePicker = UIImagePickerController()
         imagePicker.delegate = self
         imagePicker.allowsEditing = true
+        
+        maleImageView?.translatesAutoresizingMaskIntoConstraints = false
+        maleImageView?.layer.cornerRadius = 10
+        femaleImageView?.translatesAutoresizingMaskIntoConstraints = false
+        femaleImageButton?.translatesAutoresizingMaskIntoConstraints = false
+        maleImageButton?.translatesAutoresizingMaskIntoConstraints = false
+        maleImageButton?.layer.masksToBounds = true
+        femaleImageButton?.layer.masksToBounds = true
+        maleImageView?.layer.masksToBounds = true
+        femaleImageView?.layer.masksToBounds = true
+        femaleImageView?.layer.cornerRadius = 10
+        maleImageButton?.layer.cornerRadius = 10
+        femaleImageButton?.layer.cornerRadius = 10
         //uploadImg()
         // Do any additional setup after loading the view.
     }

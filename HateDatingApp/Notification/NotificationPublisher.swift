@@ -16,6 +16,9 @@ class NotificationPublisher: NSObject {
     var notifyCount : Int!
     var messages = message()
     var name : String = ""
+    var id : String = ""
+    var firstNametextLable : String = ""
+    
     func sendNotification(
         title: String,
         subtitle : String,
@@ -81,10 +84,16 @@ extension NotificationPublisher : UNUserNotificationCenterDelegate {
                 completionHandler()
         case UNNotificationDefaultActionIdentifier:
             print("USER OPENED THE NOTIFCATION FROM THE APP")
-            window?.rootViewController = ChatLogTableViewController() 
             notifyCount = 1
             completionHandler()
+            print("FIRST IS \(Auth.auth().currentUser?.uid) & id is \(id)")
+            if id != ""{
+            let notificationPressedMale = Database.database().reference(fromURL: "https://beetle-5b79a.firebaseio.com/").child("users").child("Match").child("Male").child(Auth.auth().currentUser!.uid).child(firstNametextLable).child(id)
+            notificationPressedMale.updateChildValues(["Pressed ": "True"])
             
+            let notificationPressedFemale = Database.database().reference(fromURL: "https://beetle-5b79a.firebaseio.com/").child("users").child("Match").child("Female").child(Auth.auth().currentUser!.uid).child(firstNametextLable).child(id)
+            notificationPressedFemale.updateChildValues(["Pressed ": "True"])
+            }
             
         default:
             print("THE DEFAULT CASE WAS CALLED ")

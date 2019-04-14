@@ -7,3 +7,14 @@
 //
 
 import Foundation
+import Firebase
+
+class potentialMatchedUsers {
+    var name :String!
+    var id : String!
+    var profilePicURL : String!
+    var pics = [String]()
+    var names = [String]()
+    var ids = [String]()
+    var count = 0
+}

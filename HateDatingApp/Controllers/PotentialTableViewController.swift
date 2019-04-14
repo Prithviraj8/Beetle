@@ -7,84 +7,111 @@
 //
 
 import UIKit
+import Firebase
 
-class PotentialTableViewController: UITableViewController {
+struct Matches {
+    var name : String!
+    var profilePic : String!
+}
+
+class PotentialTableViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UIImagePickerControllerDelegate, UINavigationControllerDelegate  {
+    @IBOutlet weak var PotentialMatchesTV: UITableView!
+    
+    var matches = [Matches]()
+    var matchedUsers : [potentialMatchedUsers] = [potentialMatchedUsers]()
+    var users = potentialMatchedUsers()
+    var gender : String!
+    var firstNametextLable : String!
+    var currentUserGender : String!
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        PotentialMatchesTV.separatorStyle = .none
+        PotentialMatchesTV.backgroundColor = .white
+        PotentialMatchesTV.delegate = self
+        PotentialMatchesTV.register(PotentialMatchesTableViewCell.self, forCellReuseIdentifier: "Match")
+        PotentialMatchesTV.delegate = self
+        PotentialMatchesTV.dataSource = self
+        PotentialMatchesTV.clipsToBounds = true
+        configureTableView()
+        getPotentialUsers()
+        print("ROW COUNT IS \(matchedUsers.count)")
+        
+        if matches.count > 0{
+            let indexPath = NSIndexPath(item: matches.count - 1, section: 0)
+            self.PotentialMatchesTV.scrollToRow(at: indexPath as IndexPath, at: .bottom, animated: true)
+        }
 
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
+    func configureTableView() {
+        PotentialMatchesTV.rowHeight = UITableViewAutomaticDimension
+        PotentialMatchesTV.estimatedRowHeight = 120.0
+    }
+    
+    func getPotentialUsers() {
+        let currentRef = Database.database().reference().child("users").child(currentUserGender).child(Auth.auth().currentUser!.uid)
+        
+        
+        let ref = Database.database().reference().child("users").child(gender)
+        ref.observe(.childAdded) { (snapshot) in
+                let ref2 = ref.child(snapshot.key)
 
+            ref2.observe(.value, with: { (snap) in
+                let snapValue = snap.value as! NSDictionary
+//                print("Potential Matched users are \(snapshot)")
+
+                
+                if let description = snapValue["Description  "] as? String{
+                    let name = snapValue["Name "] as? String
+                    let id = snapValue["UserId "] as? String
+                    let profilePicURL = snapValue["Profile Pic "] as? String
+                    self.users.name = name!
+                    self.users.id = id!
+                    self.users.profilePicURL = profilePicURL!
+                    self.matchedUsers.append(self.users)
+                    print("Potential Matched users are \(self.matchedUsers.count)")
+                    let match = Matches(name: name, profilePic: profilePicURL)
+                    self.matches.append(match)
+                    print("MATCHES C IS \(self.matches.count)")
+                }
+                self.configureTableView()
+                self.PotentialMatchesTV.reloadData()
+            })
+//            self.configureTableView()
+            self.PotentialMatchesTV.reloadData()
+            
+        }
+    }
+    
     // MARK: - Table view data source
+//
+//    override func numberOfSections(in tableView: UITableView) -> Int {
+//        // #warning Incomplete implementation, return the number of sections
+//        return 0
+//    }
 
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 0
-    }
-
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 0
+
+        return matches.count
+        
     }
 
-    /*
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
+    
+     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Match", for: indexPath) as! PotentialMatchesTableViewCell
 
-        // Configure the cell...
+//         Configure the cell...
 
+        let match = matches[indexPath.row]
+        cell.match = match
+        cell.selectionStyle = UITableViewCellSelectionStyle.none
+        cell.backgroundColor = UIColor.clear
         return cell
     }
-    */
-
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
+ 
+    @IBAction func backButton(_ sender: Any) {
+        dismiss(animated: true, completion: nil)
     }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+    
 }

@@ -55,6 +55,7 @@ class UserCell: UITableViewCell {
         
         addSubview(profileImageView)
         addSubview(timeLabel)
+        
         profileImageView.leftAnchor.constraint(lessThanOrEqualTo: self.leftAnchor, constant: 8).isActive = true
         profileImageView.centerYAnchor.constraint(lessThanOrEqualTo: self.centerYAnchor).isActive = true
         profileImageView.widthAnchor.constraint(equalToConstant: 48).isActive = true

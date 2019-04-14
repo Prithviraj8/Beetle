@@ -17,6 +17,7 @@ class DateOfBirthViewController: UIViewController {
     var messages = message()
     var userID : String = ""
     @IBOutlet weak var DatePickerField: UITextFieldX!
+    @IBOutlet weak var continuePressed: UIButtonX!
     
     private var DatePicker : UIDatePicker?
     override func viewDidLoad() {
@@ -35,6 +36,8 @@ class DateOfBirthViewController: UIViewController {
         
         
         setupKeyBoardObservers()
+        
+        continuePressed.setGradientBackground(colorOne: Colors.darkBlue, colorTwo: Colors.lightBlue)
     }
 
     @objc func viewTapped(gestureRecoginizer: UITapGestureRecognizer) {
@@ -97,7 +100,7 @@ class DateOfBirthViewController: UIViewController {
         
         
         if notification.name == Notification.Name.UIKeyboardWillShow || notification.name == Notification.Name.UIKeyboardWillChangeFrame {
-            view.frame.origin.y = -keyboardRect.height
+//            view.frame.origin.y = -keyboardRect.height
         }else{
             view.frame.origin.y = 0
         }
@@ -108,10 +111,28 @@ class DateOfBirthViewController: UIViewController {
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.view.endEditing(true)
     }
+    
+    func alertTheUser(title: String, message: String){
+        let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.alert)
+        //        let OK = UIAlertAction(title: "OK", style: .default, handler: nil)
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { (action) in
+            alert.dismiss(animated: true, completion: nil)
+        }))
+        self.present(alert, animated: true, completion: nil)
+        
+    }
+    @IBAction func continuePressed(_ sender: Any) {
+        if messages.age == nil {
+            alertTheUser(title: "Your age is required to create a profile.", message: "Please enter your age")
+        }else{
+            performSegue(withIdentifier: "goToGenderChange", sender: self)
+        }
+    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "goToGenderChange" {
             let destinationVC = segue.destination as! GenderViewController
-         
+           
             destinationVC.firstNameLabelText = firstNameLabelText
             destinationVC.emailTextField = emailTextField
             destinationVC.passwordTextField = passwordTextField

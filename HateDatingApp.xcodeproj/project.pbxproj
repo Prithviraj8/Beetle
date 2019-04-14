@@ -74,6 +74,9 @@
 		79C72EC420DE5B490037A9CD /* UILabelX.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79C72EA820DE5B490037A9CD /* UILabelX.swift */; };
 		79C72EC520DE5B490037A9CD /* UILabelX.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79C72EA820DE5B490037A9CD /* UILabelX.swift */; };
 		79C72EC620DE5B490037A9CD /* UILabelX.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79C72EA820DE5B490037A9CD /* UILabelX.swift */; };
+		79D29724225A10E800522404 /* PopNewMatchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79D29723225A10E800522404 /* PopNewMatchViewController.swift */; };
+		79D5D34522566F6C0095B07A /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79D5D34422566F6C0095B07A /* Constants.swift */; };
+		79D5D34722566FAA0095B07A /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79D5D34622566FAA0095B07A /* UIView+Extension.swift */; };
 		79DA22A82116DC5D006E44E4 /* TinderCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79DA22A72116DC5D006E44E4 /* TinderCard.swift */; };
 		79DF8CD320D7FF5D009A40B0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79DF8CD220D7FF5D009A40B0 /* AppDelegate.swift */; };
 		79DF8CD520D7FF5D009A40B0 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79DF8CD420D7FF5D009A40B0 /* ViewController.swift */; };
@@ -89,11 +92,18 @@
 		79EFF8242226F8A600B7AFB9 /* ChangeInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79EFF8232226F8A600B7AFB9 /* ChangeInfoViewController.swift */; };
 		79EFFAAD21DA07B80087674E /* ChatLogTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79EFFAAC21DA07B80087674E /* ChatLogTableViewCell.swift */; };
 		79EFFAD121DBD2750087674E /* ChatLogTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79EFFAD021DBD2740087674E /* ChatLogTableViewController.swift */; };
+		79F0015B225B72290023893E /* ReportAbuseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79F0015A225B72290023893E /* ReportAbuseViewController.swift */; };
+		79F0250B2261B7B000B46CB8 /* PotentialMatchedUsers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79F0250A2261B7B000B46CB8 /* PotentialMatchedUsers.swift */; };
+		79F0250D22627F2600B46CB8 /* PotentialMatchVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79F0250C22627F2600B46CB8 /* PotentialMatchVC.swift */; };
+		79F06ADA2260A28700AC15A6 /* UserDescriptionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79F06AD92260A28700AC15A6 /* UserDescriptionVC.swift */; };
+		79F06ADE22611E6400AC15A6 /* PotentialMatchesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79F06ADD22611E6400AC15A6 /* PotentialMatchesTableViewCell.swift */; };
+		79F06AE02261352600AC15A6 /* PotentialTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79F06ADF2261352600AC15A6 /* PotentialTableViewController.swift */; };
 		79F0785922181EFF00E8EAF0 /* names.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79F0785822181EFF00E8EAF0 /* names.swift */; };
 		79F0ECC521CA9E3D00D2808C /* ChatLogViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 79F0ECC121CA9E3D00D2808C /* ChatLogViewController.xib */; };
 		79F0ECC621CA9E3D00D2808C /* ChatLogViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 79F0ECC121CA9E3D00D2808C /* ChatLogViewController.xib */; };
 		79F0ECC721CA9E3D00D2808C /* ChatLogViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 79F0ECC121CA9E3D00D2808C /* ChatLogViewController.xib */; };
 		79F0ECD321CE7BB800D2808C /* message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79F0ECD221CE7BB800D2808C /* message.swift */; };
+		79F26573225E463F002D30C8 /* ProfileUpdateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79F26572225E463F002D30C8 /* ProfileUpdateViewController.swift */; };
 		79F3656D21A5B6670035132E /* TinderCardFemale.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79F3656C21A5B6670035132E /* TinderCardFemale.swift */; };
 		79F40EFB21B8017D00F17EF2 /* UserTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79F40EFA21B8017D00F17EF2 /* UserTableViewController.swift */; };
 		79FD6998213C0BBA005E6DC2 /* Handler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79FD6997213C0BBA005E6DC2 /* Handler.swift */; };
@@ -165,6 +175,9 @@
 		79C72EA620DE5B490037A9CD /* UIViewX.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UIViewX.swift; path = ../../../ChainAnimations/ChainAnimations/Designs/UIViewX.swift; sourceTree = "<group>"; };
 		79C72EA720DE5B490037A9CD /* UIViewAnchorPoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UIViewAnchorPoint.swift; path = ../../../ChainAnimations/ChainAnimations/Designs/UIViewAnchorPoint.swift; sourceTree = "<group>"; };
 		79C72EA820DE5B490037A9CD /* UILabelX.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UILabelX.swift; path = ../../../ChainAnimations/ChainAnimations/Designs/UILabelX.swift; sourceTree = "<group>"; };
+		79D29723225A10E800522404 /* PopNewMatchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopNewMatchViewController.swift; sourceTree = "<group>"; };
+		79D5D34422566F6C0095B07A /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		79D5D34622566FAA0095B07A /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
 		79DA22A72116DC5D006E44E4 /* TinderCard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TinderCard.swift; sourceTree = "<group>"; };
 		79DF8CCF20D7FF5D009A40B0 /* HateDatingApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HateDatingApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		79DF8CD220D7FF5D009A40B0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -186,9 +199,16 @@
 		79EFF8232226F8A600B7AFB9 /* ChangeInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeInfoViewController.swift; sourceTree = "<group>"; };
 		79EFFAAC21DA07B80087674E /* ChatLogTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatLogTableViewCell.swift; sourceTree = "<group>"; };
 		79EFFAD021DBD2740087674E /* ChatLogTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatLogTableViewController.swift; sourceTree = "<group>"; };
+		79F0015A225B72290023893E /* ReportAbuseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportAbuseViewController.swift; sourceTree = "<group>"; };
+		79F0250A2261B7B000B46CB8 /* PotentialMatchedUsers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PotentialMatchedUsers.swift; sourceTree = "<group>"; };
+		79F0250C22627F2600B46CB8 /* PotentialMatchVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PotentialMatchVC.swift; sourceTree = "<group>"; };
+		79F06AD92260A28700AC15A6 /* UserDescriptionVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDescriptionVC.swift; sourceTree = "<group>"; };
+		79F06ADD22611E6400AC15A6 /* PotentialMatchesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PotentialMatchesTableViewCell.swift; sourceTree = "<group>"; };
+		79F06ADF2261352600AC15A6 /* PotentialTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PotentialTableViewController.swift; sourceTree = "<group>"; };
 		79F0785822181EFF00E8EAF0 /* names.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = names.swift; sourceTree = "<group>"; };
 		79F0ECC121CA9E3D00D2808C /* ChatLogViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChatLogViewController.xib; sourceTree = "<group>"; };
 		79F0ECD221CE7BB800D2808C /* message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = message.swift; sourceTree = "<group>"; };
+		79F26572225E463F002D30C8 /* ProfileUpdateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileUpdateViewController.swift; sourceTree = "<group>"; };
 		79F3656C21A5B6670035132E /* TinderCardFemale.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TinderCardFemale.swift; sourceTree = "<group>"; };
 		79F40EFA21B8017D00F17EF2 /* UserTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserTableViewController.swift; sourceTree = "<group>"; };
 		79FD6997213C0BBA005E6DC2 /* Handler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Handler.swift; sourceTree = "<group>"; };
@@ -297,6 +317,7 @@
 				7912D69F20FCDAD900ABF4E3 /* FemaleProfileViewController.swift */,
 				790E079B217F7E1C005E63DF /* SearchPartnerViewController1.swift */,
 				790E079D217F7E35005E63DF /* FemaleSearchPartnerViewController1.swift */,
+				79D29723225A10E800522404 /* PopNewMatchViewController.swift */,
 				79F40EFA21B8017D00F17EF2 /* UserTableViewController.swift */,
 				79EC91AE21D0E63100076DFB /* UserTableFemaleTableViewController.swift */,
 				79EFFAD021DBD2740087674E /* ChatLogTableViewController.swift */,
@@ -305,6 +326,11 @@
 				79EFF8232226F8A600B7AFB9 /* ChangeInfoViewController.swift */,
 				79148A2B22354AB6002CFA6B /* PasswordChangeViewController.swift */,
 				79BC41E12247B4BD0080B6AA /* ChatSettingViewController.swift */,
+				79F0015A225B72290023893E /* ReportAbuseViewController.swift */,
+				79F26572225E463F002D30C8 /* ProfileUpdateViewController.swift */,
+				79F06AD92260A28700AC15A6 /* UserDescriptionVC.swift */,
+				79F06ADF2261352600AC15A6 /* PotentialTableViewController.swift */,
+				79F0250C22627F2600B46CB8 /* PotentialMatchVC.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -334,6 +360,15 @@
 			path = Designs;
 			sourceTree = "<group>";
 		};
+		79D5D34322566F540095B07A /* Gradient Colors */ = {
+			isa = PBXGroup;
+			children = (
+				79D5D34422566F6C0095B07A /* Constants.swift */,
+				79D5D34622566FAA0095B07A /* UIView+Extension.swift */,
+			);
+			path = "Gradient Colors";
+			sourceTree = "<group>";
+		};
 		79DF8CC620D7FF5D009A40B0 = {
 			isa = PBXGroup;
 			children = (
@@ -359,6 +394,7 @@
 		79DF8CD120D7FF5D009A40B0 /* HateDatingApp */ = {
 			isa = PBXGroup;
 			children = (
+				79D5D34322566F540095B07A /* Gradient Colors */,
 				793A43DD223EA00500A68D59 /* Auto Fill Credential */,
 				7913F3FF223D2BBA002CA93D /* HateDatingApp.entitlements */,
 				7975DA90222EC3060021FC60 /* Notification */,
@@ -403,6 +439,8 @@
 				7939039621ECE84F00C5604A /* FemaleChatLogTableViewCell.swift */,
 				79F0785822181EFF00E8EAF0 /* names.swift */,
 				790D800B2242D7BD00F89955 /* SignInInfo.swift */,
+				79F06ADD22611E6400AC15A6 /* PotentialMatchesTableViewCell.swift */,
+				79F0250A2261B7B000B46CB8 /* PotentialMatchedUsers.swift */,
 			);
 			path = "Custom Cells";
 			sourceTree = "<group>";
@@ -739,11 +777,15 @@
 				79C72EA920DE5B490037A9CD /* UIButtonX.swift in Sources */,
 				79EC91B221D0EBFC00076DFB /* ChatViewFemaleViewController.swift in Sources */,
 				797352A6210A04E500BB8C84 /* GenderViewController.swift in Sources */,
+				79F0015B225B72290023893E /* ReportAbuseViewController.swift in Sources */,
 				79C72EAF20DE5B490037A9CD /* UISliderX.swift in Sources */,
 				793A43DF223EA01E00A68D59 /* AutoFillCredential.swift in Sources */,
+				79F06AE02261352600AC15A6 /* PotentialTableViewController.swift in Sources */,
 				79C72EAC20DE5B490037A9CD /* UIViewXRadialGradient.swift in Sources */,
 				7976276F2149A70B004A94D8 /* DBReference.swift in Sources */,
 				797352AA210A05C000BB8C84 /* FirstNameViewController.swift in Sources */,
+				79F0250D22627F2600B46CB8 /* PotentialMatchVC.swift in Sources */,
+				79D29724225A10E800522404 /* PopNewMatchViewController.swift in Sources */,
 				7912D6A120FCDAD900ABF4E3 /* FemaleProfileViewController.swift in Sources */,
 				792FEEA620E76AFA0057BD54 /* AuthProvider.swift in Sources */,
 				797627712149A7AD004A94D8 /* CONSTANTS.swift in Sources */,
@@ -764,19 +806,25 @@
 				79F3656D21A5B6670035132E /* TinderCardFemale.swift in Sources */,
 				79F0ECD321CE7BB800D2808C /* message.swift in Sources */,
 				799C641420DBCD19002D9B6E /* SignUpViewController.swift in Sources */,
+				79F06ADA2260A28700AC15A6 /* UserDescriptionVC.swift in Sources */,
 				79C72EBE20DE5B490037A9CD /* UIViewX.swift in Sources */,
 				790A554920EA09BD00590C96 /* DateOfBirthViewController.swift in Sources */,
 				790D800C2242D7BD00F89955 /* SignInInfo.swift in Sources */,
 				79EFF8222226E07500B7AFB9 /* SettingsViewController.swift in Sources */,
+				79F0250B2261B7B000B46CB8 /* PotentialMatchedUsers.swift in Sources */,
 				79EFFAD121DBD2750087674E /* ChatLogTableViewController.swift in Sources */,
 				79BC41E22247B4BD0080B6AA /* ChatSettingViewController.swift in Sources */,
 				79C72EC420DE5B490037A9CD /* UILabelX.swift in Sources */,
 				79C72EB520DE5B490037A9CD /* UITextFieldX.swift in Sources */,
 				79FD6998213C0BBA005E6DC2 /* Handler.swift in Sources */,
 				7975DA92222EC3220021FC60 /* NotificationPublisher.swift in Sources */,
+				79F26573225E463F002D30C8 /* ProfileUpdateViewController.swift in Sources */,
 				79DF8CD320D7FF5D009A40B0 /* AppDelegate.swift in Sources */,
 				79148A2C22354AB6002CFA6B /* PasswordChangeViewController.swift in Sources */,
+				79D5D34522566F6C0095B07A /* Constants.swift in Sources */,
 				799E3F3E20F692CE00426ACA /* User.swift in Sources */,
+				79D5D34722566FAA0095B07A /* UIView+Extension.swift in Sources */,
+				79F06ADE22611E6400AC15A6 /* PotentialMatchesTableViewCell.swift in Sources */,
 				790E079C217F7E1C005E63DF /* SearchPartnerViewController1.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -985,7 +1033,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.prithviraj8.Beetle;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -1006,7 +1054,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.prithviraj8.Beetle;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

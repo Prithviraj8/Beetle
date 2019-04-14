@@ -16,9 +16,11 @@ import GoogleSignIn
 class LoginViewController: UIViewController, UITextFieldDelegate, GIDSignInDelegate, GIDSignInUIDelegate {
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
-    @IBOutlet weak var image: UIImageView!
     @IBOutlet weak var login: UIButtonX!
     @IBOutlet weak var GoogleSignInButton: GIDSignInButton!
+    @IBOutlet weak var ForgotPassword: UIButtonX!
+    
+
     var SignInInfo = SingInInfo()
     let user = User()
     override func viewDidLoad() {
@@ -44,10 +46,9 @@ class LoginViewController: UIViewController, UITextFieldDelegate, GIDSignInDeleg
         GIDSignIn.sharedInstance()?.uiDelegate = self
         GIDSignIn.sharedInstance()?.delegate = self
         GIDSignIn.sharedInstance().clientID = "620661805649-jthc2n6je1rid5f85g17iko2cq58in1s.apps.googleusercontent.com"
-        GoogleSignInButton.layer.cornerRadius = 15
-        GoogleSignInButton.layer.shadowOpacity = 1
-        GoogleSignInButton.layer.shadowRadius = 6
-        
+//        GoogleSignInButton.translatesAutoresizingMaskIntoConstraints = false
+//        GoogleSignInButton.layer.masksToBounds = true
+//        GoogleSignInButton.layer.cornerRadius = 14
     }
 
     
@@ -81,7 +82,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate, GIDSignInDeleg
         
         
         if notification.name == Notification.Name.UIKeyboardWillShow || notification.name == Notification.Name.UIKeyboardWillChangeFrame {
-            view.frame.origin.y = -keyboardRect.height + (1.5*keyboardRect.height/2)
+//            view.frame.origin.y = -keyboardRect.height + (1.5*keyboardRect.height/2)
             UIView.animate(withDuration: 0, delay: 0, options: UIViewAnimationOptions.curveEaseOut, animations: {
                 self.view.layoutIfNeeded()
             }) { (completed) in
@@ -128,16 +129,66 @@ class LoginViewController: UIViewController, UITextFieldDelegate, GIDSignInDeleg
                     self.SignInInfo.name = (result?.user.displayName)!
                     self.SignInInfo.userID = (result?.user.uid)!
                     print("Google users uid is \(result!.user.uid))")
-                    self.handleLogin()
+                    self.handleGoogleSignIn()
                     
                 }
             }
         }
     }
+
+    func handleGoogleSignIn() {
+        SVProgressHUD.show()
+        
+        
+        let maleRef = Database.database().reference(fromURL: "https://beetle-5b79a.firebaseio.com/").child("users").child("Male")
+        let femaleRef = Database.database().reference(fromURL: "https://beetle-5b79a.firebaseio.com/").child("users").child("Female")
+        
+        
+        
+        maleRef.observe(.childAdded, with: { (snapshot) in
+            let snapshotValue = snapshot.value as! NSDictionary
+            let name = snapshotValue["Name "] as! String
+            let userID = snapshotValue["UserId "] as! String
+            let email = snapshotValue["Email "] as! String
+            let age = snapshotValue["Age "] as! Int
+            if self.SignInInfo.userID == userID {
+                print("THE NAME PASSED IS \(name)")
+                self.user.name = name
+                self.user.id = userID
+                self.user.age = age
+                print("Login Completed")
+                
+                self.performSegue(withIdentifier: "goToMaleSelectPartner", sender: self)
+                SVProgressHUD.dismiss()
+            }
+            
+        })
+        
+        
+        femaleRef.observe(.childAdded, with: { (snapshot) in
+            let snapshotValue = snapshot.value as! NSDictionary
+            let name = snapshotValue["Name "] as! String
+            let userID = snapshotValue["UserId "] as! String
+            let age = snapshotValue["Age "] as! Int
+            
+            let email = snapshotValue["Email "] as! String
+            if self.SignInInfo.email == email {
+                self.user.name = name
+                self.user.id = userID
+                self.user.age = age
+                print("Login Completed")
+                
+                self.performSegue(withIdentifier: "goToFemaleSelectPartner", sender: self)
+                SVProgressHUD.dismiss()
+                
+            }
+        })
+    }
     
     func handleLogin(){
-        print("Login Completed")
         SVProgressHUD.show()
+
+        
         let maleRef = Database.database().reference(fromURL: "https://beetle-5b79a.firebaseio.com/").child("users").child("Male")
         let femaleRef = Database.database().reference(fromURL: "https://beetle-5b79a.firebaseio.com/").child("users").child("Female")
         
@@ -154,6 +205,8 @@ class LoginViewController: UIViewController, UITextFieldDelegate, GIDSignInDeleg
                 self.user.name = name
                 self.user.id = userID
                 self.user.age = age
+                print("Login Completed")
+
                 self.performSegue(withIdentifier: "goToMaleSelectPartner", sender: self)
                 SVProgressHUD.dismiss()
             }
@@ -172,6 +225,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate, GIDSignInDeleg
                 self.user.name = name
                 self.user.id = userID
                 self.user.age = age
+                print("Login Completed")
 
                 self.performSegue(withIdentifier: "goToFemaleSelectPartner", sender: self)
                 SVProgressHUD.dismiss()
@@ -206,7 +260,20 @@ class LoginViewController: UIViewController, UITextFieldDelegate, GIDSignInDeleg
         
     }
     
-     func alertTheUser(title: String, message: String){
+    @IBAction func ForgotPassword(_ sender: Any) {
+        if emailTextField.text!.isEmpty {
+            alertTheUser(title: "Please enter your email", message: "")
+        }
+        let user = Auth.auth()
+        user.sendPasswordReset(withEmail: emailTextField.text!) { (error) in
+            if error != nil {
+                print("Error while resetting password \(error?.localizedDescription)")
+                self.alertTheUser(title: "No user detected with the email", message: "Provide an existing email please.")
+            }
+        }
+        
+    }
+    func alertTheUser(title: String, message: String){
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
                 let OK = UIAlertAction(title: "OK", style: .default, handler: nil)
                 alert.addAction(OK)
@@ -226,7 +293,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate, GIDSignInDeleg
             let destinationVC = segue.destination as! FemaleSearchPartnerViewController
             destinationVC.firstNametextLable = user.name
             destinationVC.userID = user.id
-//            destinationVC.age = user.age
+            destinationVC.age = user.age
 
         }
     }

@@ -13,4 +13,5 @@ class SingInInfo {
     var name : String = ""
     var givenName : String = ""
     var userID : String = ""
+    var age : Int!
 }

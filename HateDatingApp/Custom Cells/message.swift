@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 class message {
 //    let userID = Auth.auth().currentUser?.uid
@@ -26,9 +27,17 @@ class message {
     var currentUserName: String!
     var femaleName : String!
     var femaleId : String!
+    var maleId : String!
+    var maleName: String!
     var userID : String!
     var profilePicURL = [String]()
     var gender : String!
     var age : Int!
     var badgeCount : Int = 0
+    var chatMessageLength : Int = 0
+    var inputTextFieldHeight : CGFloat!
+    var pics = [UIImage]()
+    var messageCount : Int = 0
+    var profilePic : String!
+    var oneMatch_Name : String!
 }
