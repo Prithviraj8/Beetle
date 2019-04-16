@@ -124,6 +124,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
                                     if let inMessageVC = value["In Message VC "] as? String {
                                         print("IN MESSAGE VC \(inMessageVC)")
 
+//                                        let state = UIApplication.shared.applicationState
+//                                        if state == .background  || state == .inactive{
+//                                            ref3.updateChildValues(["In Message VC ": "False "])
+//                                        }
+                                        
+                                        
                                         if inMessageVC == "False" {
                                             ref2.observe(.childAdded, with: { (message) in
                                                 if let snapshotValue1 = message.value as? NSDictionary {

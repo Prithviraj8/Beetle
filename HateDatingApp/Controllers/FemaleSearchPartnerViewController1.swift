@@ -25,6 +25,7 @@ class FemaleSearchPartnerViewController: UIViewController {
     @IBOutlet weak var dropMenuButton: BadgeButton!
     @IBOutlet weak var matches: BadgeButton!
     @IBOutlet weak var trailingConstraint: NSLayoutConstraint!
+    @IBOutlet weak var YourProfileButtonView: UIView!
     
     
     var IDs = [String]()
@@ -56,6 +57,9 @@ class FemaleSearchPartnerViewController: UIViewController {
     var count : Int = 0
     var maleNames = [String]()
     var user = User()
+    let potentialMatches = potentialMatchedUsers()
+
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -63,7 +67,7 @@ class FemaleSearchPartnerViewController: UIViewController {
         buttonUndo.alpha = 0
         fetchImagesAndPostThem()
         femaleSwippedMale(values: ["Name ": firstNametextLable as AnyObject])
-        print("FIRST NAME is\(firstNametextLable) & USER ID IS \(userID)")
+        print("FIRST NAME is\(String(describing: firstNametextLable)) & USER ID IS \(String(describing: userID))")
         initiateChat()
        
         messages.userID = userID
@@ -74,15 +78,19 @@ class FemaleSearchPartnerViewController: UIViewController {
         matches.setImage(UIImage(named: "Matches2")?.withRenderingMode(.alwaysOriginal), for: .normal)
         matches.badgeEdgeInsets = UIEdgeInsets(top: 20, left: 0, bottom: 0, right: 10)
         
-        var USER = Auth.auth().currentUser;
+        let USER = Auth.auth().currentUser;
         if USER!.isEmailVerified == false {
             USER?.sendEmailVerification(completion: { (error) in
                 if error == nil {
-                    print("SENT VERIFICATION TO \(USER?.email)")
+                    print("SENT VERIFICATION TO \(String(describing: USER?.email))")
                     self.alertTheUser(title: "Verification email sent", message: "Please verify your email.")
                 }
             })
         }
+    
+        checkPotentialMatches()
+
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -496,9 +504,62 @@ class FemaleSearchPartnerViewController: UIViewController {
         }
         
     }
-    
+    func checkPotentialMatches(){
+        
+        let ref = Database.database().reference().child("users").child("Male")
+        ref.observe(.childAdded) { (snapshot) in
+            let ref2 = ref.child(snapshot.key)
+            
+            ref2.observe(.value, with: { (snap) in
+                let snapValue = snap.value as! NSDictionary
+                //                print("Potential Matched users are \(snapshot)")
+                
+                
+                if (snapValue["Description "] as? String) != nil{
+                    self.potentialMatches.count = self.potentialMatches.count + 1
+                }
+            })
+        }
+    }
+    @IBAction func checkPotentialMatches(_ sender: Any) {
+
+        let ref = Database.database().reference(fromURL: "https://beetle-5b79a.firebaseio.com/").child("users").child("Female").child(userID!)
+        ref.observe(.value) { (snapshot) in
+            
+            let snapValue = snapshot.value as! NSDictionary
+            if (snapValue["Description "] as? String) != nil{
+                if self.potentialMatches.count == 0 {
+                    self.alertTheUser(title: "Sorry but we are still finding users that share your interests ", message: "Keep swiping so that we can judge your interests better. ")
+                }else{
+                    self.performSegue(withIdentifier: "PotentialMatch", sender: self)
+                }
+            }else{
+                self.alertUserProfile(title: "Write a description about yourself.", message: "Check out your profile to write a description about yourself. This will help us find some potential matches for you.")
+                UIView.animate(withDuration: 0.5, animations: {
+                    self.YourProfileButtonView.backgroundColor = UIColor.flatYellowColorDark()
+                    self.YourProfileButtonView.translatesAutoresizingMaskIntoConstraints = false
+                    self.YourProfileButtonView.layer.masksToBounds = true
+                    self.YourProfileButtonView.layer.cornerRadius = 6
+                })
+                
+            }
+        }
+    }
+    func alertUserProfile(title: String, message: String){
+        let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.alert)
+        //        let OK = UIAlertAction(title: "OK", style: .default, handler: nil)
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { (action) in
+            
+            alert.dismiss(animated: true, completion: nil)
+            UIView.animate(withDuration: 0.25, animations: {
+                self.YourProfileButtonView.backgroundColor = UIColor.clear
+                
+            })
+            
+        }))
+        self.present(alert, animated: true, completion: nil)
+    }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        var finalMatch =  [String]()
 
         if segue.identifier == "goToMatches" {
             let destinationVC = segue.destination as! UserTableFemaleTableViewController
@@ -555,6 +616,7 @@ class FemaleSearchPartnerViewController: UIViewController {
 
     
     @IBAction func matchesPressed(_ sender: Any) {
+        
         if messages.finalMatch.count>0{
             performSegue(withIdentifier: "goToMatches", sender: self)
         }else{

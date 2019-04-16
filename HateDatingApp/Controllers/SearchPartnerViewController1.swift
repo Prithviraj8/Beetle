@@ -25,8 +25,8 @@ class SearchPartnerViewController: UIViewController {
     @IBOutlet weak var dropMenuView: UIView!
     @IBOutlet weak var trailingConstraint: NSLayoutConstraint!
     @IBOutlet weak var dropMenuButton: BadgeButton!
-    @IBOutlet weak var topView: UIView!
     @IBOutlet weak var matches: BadgeButton!
+    @IBOutlet weak var YourProfileButtonView: UIView!
     
     var user = User()
     var age : Int!
@@ -88,8 +88,8 @@ class SearchPartnerViewController: UIViewController {
                 }
             })
         }
-        
         checkPotentialMatches()
+
         
     }
     
@@ -178,6 +178,8 @@ class SearchPartnerViewController: UIViewController {
         }
         currentLoadedCardsArray.remove(at: 0)
         currentIndex = currentIndex + 1
+        print("Current index is \(currentIndex)")
+        print("CURRENT LOADED COUNT IS \(currentLoadedCardsArray.count)")
         Timer.scheduledTimer(timeInterval: 1.01, target: self, selector: #selector(enableUndoButton), userInfo: currentIndex, repeats: false)
         
         if (currentIndex + currentLoadedCardsArray.count) < allCardsArray.count {
@@ -236,8 +238,8 @@ class SearchPartnerViewController: UIViewController {
     @IBAction func undoButtonAction(_ sender: Any) {
         
         currentIndex =  currentIndex - 1
+
         if currentLoadedCardsArray.count == MAX_BUFFER_SIZE1 {
-//            print("Current index is \(currentIndex)")
 //            print("current Loaded Cards array is \(currentLoadedCardsArray.count)")
             
             let lastCard = currentLoadedCardsArray.last
@@ -506,11 +508,9 @@ class SearchPartnerViewController: UIViewController {
             
             ref2.observe(.value, with: { (snap) in
                 let snapValue = snap.value as! NSDictionary
-                //                print("Potential Matched users are \(snapshot)")
                 
                 
-                if let description = snapValue["Description  "] as? String{
-                    
+                if (snapValue["Description "] as? String) != nil{
                     self.potentialMatches.count = self.potentialMatches.count + 1
                 }
             })
@@ -519,15 +519,42 @@ class SearchPartnerViewController: UIViewController {
     
     @IBAction func PotenialMatchesButton(_ sender: Any) {
         
-    
-   
-        if potentialMatches.count == 0 {
-            self.alertTheUser(title: "Sorry but we are still finding users that share your interests ", message: "Keep swiping so that we can judge your interests better. ")
-        }else{
-            self.performSegue(withIdentifier: "PotentialMatch", sender: self)
+
+        let ref = Database.database().reference(fromURL: "https://beetle-5b79a.firebaseio.com/").child("users").child("Male").child(userID!)
+        ref.observe(.value) { (snapshot) in
+            let snapValue = snapshot.value as! NSDictionary
+            if let description = snapValue["Description "] as? String  {
+
+                print("DESCRIPTION IS \(description)")
+                if self.potentialMatches.count == 0 {
+                    self.alertTheUser(title: "Sorry but we are still finding users that share your interests ", message: "Keep swiping so that we can judge your interests better. ")
+                }else{
+                    self.performSegue(withIdentifier: "PotentialMatch", sender: self)
+                }
+            }else{
+                self.alertUserProfile(title: "Write a description about yourself.", message: "Check out your profile to write a description about yourself. This will help us find some potential matches for you.")
+                UIView.animate(withDuration: 1, animations: {
+                    self.YourProfileButtonView.backgroundColor = UIColor.flatYellowColorDark()
+                    self.YourProfileButtonView.translatesAutoresizingMaskIntoConstraints = false
+                    self.YourProfileButtonView.layer.masksToBounds = true
+                    self.YourProfileButtonView.layer.cornerRadius = 6
+                })
+            }
         }
-       
-        
+    }
+    func alertUserProfile(title: String, message: String){
+        let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.alert)
+        //        let OK = UIAlertAction(title: "OK", style: .default, handler: nil)
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { (action) in
+            
+            alert.dismiss(animated: true, completion: nil)
+            UIView.animate(withDuration: 0.5, animations: {
+                self.YourProfileButtonView.backgroundColor = UIColor.clear
+                
+            })
+            
+        }))
+        self.present(alert, animated: true, completion: nil)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -590,9 +617,12 @@ class SearchPartnerViewController: UIViewController {
             destinationVC.firstNametextLable = firstNametextLable
             destinationVC.gender = "Female"
             destinationVC.currentUserGender = "Male"
+            destinationVC.checkFemaleSwipes = "Female Swipped Male"
+            destinationVC.checkMaleSwipes = "Male Swipped Female"
         }
         
     }
+  
     
     @IBAction func matchesButton(_ sender: Any) {
         if messages.finalMatch.count>0{

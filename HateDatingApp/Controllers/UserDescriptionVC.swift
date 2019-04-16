@@ -43,7 +43,7 @@ class UserDescriptionVC: UIViewController {
     @IBAction func Done(_ sender: Any) {
         if descriptionTV.text != "Write your description here. You may also only type in keywords seperated by a comma (,) such as (coffee , workout, adventure)" {
             let ref = Database.database().reference(fromURL: "https://beetle-5b79a.firebaseio.com/").child("users").child(gender).child(userId!)
-            ref.updateChildValues(["Description  ": descriptionTV.text])
+            ref.updateChildValues(["Description ": descriptionTV.text])
         }
         dismiss(animated: true, completion: nil)
         

@@ -27,33 +27,21 @@ class User {
         print("THE CURRENT USERS user ID is \(userID)")
 
         ref = Database.database().reference(fromURL: "https://beetle-5b79a.firebaseio.com/").child("users").child("MSF").child(userID!)
-//        ref = Database.database().reference(fromURL: "https://hatedateapp-ea81a.firebaseio.com/").child("users").child("FSM").childByAutoId()
 
-        ref.observeSingleEvent(of: .value, with: { (snapshot) in
-            let snapshotValue = snapshot.value as? NSDictionary
+        ref.observe(.value, with: { (snapshot) in
+            if let snapshotValue = snapshot.value as? NSDictionary {
             
-            self.firstNametextLable = snapshotValue?["Name "] as? String ?? ""
-            print("The name of the user is received \(self.firstNametextLable)")
+                self.firstNametextLable = (snapshotValue["Name "] as! String)
+                print("The name of the user is received \(self.firstNametextLable)")
             
             
             
-            self.ref2 = Database.database().reference(fromURL: "https://beetle-5b79a.firebaseio.com/").child("users").child("Male Swipped Female").child(userID!)
-//            self.ref2 = Database.database().reference(fromURL: "https://hatedateapp-ea81a.firebaseio.com/").child("users").child("Male Swipped Female").childByAutoId()
+                self.ref2 = Database.database().reference(fromURL: "https://beetle-5b79a.firebaseio.com/").child("users").child("Male Swipped Female").child(userID!)
 
-            let usersChildRef = self.ref2.child(self.firstNametextLable).child(Id).child(name)
-            usersChildRef.updateChildValues(["Added ": "True"])
-//            let usersChildRef = self.ref2.child(self.firstNametextLable).child(name).childByAutoId()
-            
-//            usersChildRef.setValue(name, withCompletionBlock: { (error, ref) in
-//                if error != nil {
-//                    print("ERROR WHILE SAVING information of user : \(error?.localizedDescription)")
-//
-//                } else {
-//                    print("The names of female users that the current logged in user swipped is SAVED")
-//
-//                }
-//            })
-            //self.names.append(self.firstNametextLable)
+                let usersChildRef = self.ref2.child(self.firstNametextLable).child(Id).child(name)
+                usersChildRef.updateChildValues(["Added ": "True"])
+
+        }
         })
 
     }
@@ -64,33 +52,21 @@ class User {
         print("THE CURRENT USERS user ID is \(userID)")
         messages.sender = userID!
         ref = Database.database().reference(fromURL: "https://beetle-5b79a.firebaseio.com/").child("users").child("FSM").child(userID!)
-//        ref = Database.database().reference(fromURL: "https://hatedateapp-ea81a.firebaseio.com/").child("users").child("FSM").childByAutoId()
 
-        ref.observeSingleEvent(of: .value, with: { (snapshot) in
-            let snapshotValue = snapshot.value as? NSDictionary
+        ref.observe(.value, with: { (snapshot) in
+            if let snapshotValue = snapshot.value as? NSDictionary {
             
-            self.firstNametextLable = snapshotValue?["Name "] as? String ?? ""
-            print("The name of the user is received \(self.firstNametextLable)")
+                self.firstNametextLable = (snapshotValue["Name "] as! String)
+                print("The name of the user is received \(self.firstNametextLable)")
             
             
             
-            self.ref2 = Database.database().reference(fromURL: "https://beetle-5b79a.firebaseio.com/").child("users").child("Female Swipped Male").child(userID!)
+                self.ref2 = Database.database().reference(fromURL: "https://beetle-5b79a.firebaseio.com/").child("users").child("Female Swipped Male").child(userID!)
 
-            let usersChildRef = self.ref2.child(self.firstNametextLable).child(Id).child(name)
-            usersChildRef.updateChildValues(["Added ": "True"])
+                let usersChildRef = self.ref2.child(self.firstNametextLable).child(Id).child(name)
+                usersChildRef.updateChildValues(["Added ": "True"])
 
-//            usersChildRef.setValue(name, withCompletionBlock: { (error, ref) in
-//                if error != nil {
-//                    print("ERROR WHILE SAVING information of user : \(error?.localizedDescription)")
-//
-//                } else {
-//                    print("The names of male users that the current logged in user swipped is SAVED")
-//
-//                }
-//            })
+            }
         })
-        
     }
-   
-    
 }

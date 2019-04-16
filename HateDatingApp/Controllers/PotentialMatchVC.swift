@@ -14,29 +14,32 @@ class PotentialMatchVC: UIViewController {
 
     @IBOutlet weak var TopVIew: UIView!
     @IBOutlet weak var viewTinderBackGround: UIView!
+    @IBOutlet weak var CheckBackLater: UILabel!
     
     var matches = [Matches]()
     var matchedUsers : [potentialMatchedUsers] = [potentialMatchedUsers]()
-    var users = potentialMatchedUsers()
+    var potentialUsers = potentialMatchedUsers()
+    var messages = message()
+    var notification = NotificationPublisher()
     var gender : String!
     var firstNametextLable : String!
     var currentUserGender : String!
     var user = User()
     var age : Int!
-    
-    var IDs = [String]()
+    var Names = [String]()
+    var namesSwipped = [String]()
     var userID = Auth.auth().currentUser?.uid
     var currentIndex = 0
-    var handler : Handler!
     var ref: DatabaseReference!
     var tinderCard : TinderCard!
-    var profilePic = [String]()
-    var name = [String]()
-    var profilePicOfLoggedInUser : String!
     var currentLoadedCardsArray = [TinderCard]()
     var allCardsArray = [TinderCard]()
     var cardArray = [UIView]()
-    
+    var checkFemaleSwipes : String!
+    var checkMaleSwipes : String!
+    var pics = [String]()
+    var names = [String]()
+    var ids = [String]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -44,6 +47,8 @@ class PotentialMatchVC: UIViewController {
         // Do any additional setup after loading the view.
         TopVIew.setGradientBackground(colorOne: Colors.orange, colorTwo: Colors.lightPink)
         getPotentialUsers()
+        CheckBackLater.isHidden = true
+//        getPotentialMatchedUser()
         
     }
     override func viewWillAppear(_ animated: Bool) {
@@ -56,48 +61,91 @@ class PotentialMatchVC: UIViewController {
     }
     
     func getPotentialUsers() {
-        print("FIRST NAME IS \(firstNametextLable)CURR GEND IS \(currentUserGender) & GEN IS \(gender)")
         let currentRef = Database.database().reference().child("users").child(currentUserGender).child(Auth.auth().currentUser!.uid)
         
-        
+        currentRef.observe(.value) { (snap1) in
+            if let snapValue = snap1.value as? NSDictionary {
+            if let CurrentUsersDescription = snapValue["Description "] as? String{
+                self.potentialUsers.CurrentUsersDesription = CurrentUsersDescription
+                let chararacterSet = CharacterSet.whitespacesAndNewlines.union(.punctuationCharacters)
+                let components = CurrentUsersDescription.components(separatedBy: chararacterSet)
+                let words = components.filter { !$0.isEmpty }
+                self.potentialUsers.currentDescriptionWords = words
+            }
+            }
+            
+        }
         let ref = Database.database().reference().child("users").child(gender)
         ref.observe(.childAdded) { (snapshot) in
             let ref2 = ref.child(snapshot.key)
-            
+            self.potentialUsers.count = 0
+
             ref2.observe(.value, with: { (snap) in
                 let snapValue = snap.value as! NSDictionary
-                //                print("Potential Matched users are \(snapshot)")
                 
                 
-                if let description = snapValue["Description  "] as? String{
+                if let description = snapValue["Description "] as? String{
+                    
+                    let chararacterSet = CharacterSet.whitespacesAndNewlines.union(.punctuationCharacters)
+                    let components = description.components(separatedBy: chararacterSet)
+                    let words = components.filter { !$0.isEmpty }
+                    
+                    print(" USERS DES \(self.potentialUsers.CurrentUsersDesription))")
+                    
+                    for word in words {
+                        if self.potentialUsers.currentDescriptionWords.contains(word) {
+                            self.potentialUsers.percentageC = self.potentialUsers.percentageC + 1
+                        }
+                    }
+                    print("WORDS THAT MATCH ARE \(self.potentialUsers.percentageC)")
+                    let percentageMatched = CGFloat((self.potentialUsers.percentageC/Float(words.count))*100)
+                    print("PERCENTAGE OF MATCHED WORDS IS \(percentageMatched)")
+                    if percentageMatched >= 55 {
+                        self.potentialUsers.count = self.potentialUsers.count + 1
+                        ref2.updateChildValues(["MATCH PERCENTAGE ": "percentageMatched"])
+                        self.getPotentialMatchedUser()
+
+                    }
+                    
+                }
+            })
+        }
+
+    }
+
+    func getPotentialMatchedUser()  {
+        let ref = Database.database().reference().child("users").child(gender)
+        ref.observe(.childAdded) { (snapshot) in
+            let ref2 = ref.child(snapshot.key)
+            ref2.observe(.value, with: { (snap) in
+                let snapValue = snap.value as! NSDictionary
+                if let matchedPercentage = snapValue["MATCH PERCENTAGE "] as? String {
                     let name = snapValue["Name "] as? String
                     let id = snapValue["UserId "] as? String
                     let profilePicURL = snapValue["Profile Pic "] as? String
-                    self.users.name = name!
-                    self.users.id = id!
-                    self.users.profilePicURL = profilePicURL!
-                    self.matchedUsers.append(self.users)
-                    print("Potential Matched users are \(self.matchedUsers.count)")
-                    let match = Matches(name: name, profilePic: profilePicURL)
-                    self.matches.append(match)
-                    print("MATCHES C IS \(self.matches.count)")
-                    self.users.pics.append(profilePicURL!)
-                    self.users.ids.append(id!)
-                    self.users.names.append(name!)
-                    self.loadCardValues(pics: self.users.pics, names: self.users.names, receiverIds: self.users.ids)
+                    self.potentialUsers.pics.append(profilePicURL!)
+                    self.potentialUsers.ids.append(id!)
+                    self.potentialUsers.names.append(name!)
+                    print("Potential Matched users are \(self.potentialUsers.count)")
+                    if self.potentialUsers.count == self.potentialUsers.pics.count{
+                        self.loadCardValues(pics: self.potentialUsers.pics, names: self.potentialUsers.names, receiverIds: self.potentialUsers.ids)
+
+                    }else{
+                    }
                 }
             })
         }
     }
     
     func loadCardValues(pics: [String], names: [String],receiverIds: [String]) {
-        
+//        print("COUNT OF USERS WITH SAME pic \(potentialUsers.pics.count)")
+
         if pics.count > 0 {
             
             let capCount = (pics.count > MAX_BUFFER_SIZE1) ? MAX_BUFFER_SIZE1 : pics.count
             
-            for (i,pic) in pics.enumerated() {
-                let newCard = createTinderCard(at: i,pic: pic,name: names[i],Id: receiverIds[i])
+            for (i,pic) in potentialUsers.pics.enumerated() {
+                let newCard = createTinderCard(at: i,pic: pics[i],name: names[i],Id: receiverIds[i])
                 
                 print("\(i): '\(pic)'")
                 
@@ -148,7 +196,10 @@ class PotentialMatchVC: UIViewController {
     
         currentLoadedCardsArray.remove(at: 0)
         currentIndex = currentIndex + 1
-        
+        potentialUsers.count = currentLoadedCardsArray.count
+        checkCardStack()
+
+        print("CURRENT INDEX IS \(currentIndex)")
         if (currentIndex + currentLoadedCardsArray.count) < allCardsArray.count {
             let card = allCardsArray[currentIndex + currentLoadedCardsArray.count]
             var frame = card.frame
@@ -174,6 +225,125 @@ class PotentialMatchVC: UIViewController {
             })
         }
     }
+    
+    
+    
+//    func femaleSwippedMale(values: [String: AnyObject]) {
+//        ref = Database.database().reference(fromURL: "https://beetle-5b79a.firebaseio.com/")
+//        let usersChildRef = ref.child("users").child("FSM").child(userID!)
+//
+//        usersChildRef.updateChildValues(values)
+//
+//    }
+//
+//    func initiateChat() {
+//        ref = Database.database().reference(fromURL: "https://beetle-5b79a.firebaseio.com/").child("users").child(checkFemaleSwipes)
+//        print("INITIATE CHAT")
+//
+//        ref.observe(.childAdded, with: { (snapshot) in
+//            //            print("Users in Female swipped Male database are::\(snapshot) ")
+//
+//            for name in snapshot.children {
+//                self.Names.append((name as AnyObject).key)
+//                let childSnap = name as! DataSnapshot
+//                //                print("The male names are \(self.maleNames)")
+//                //                print("KEYY IS : \(childSnap.key)")
+//                for names in childSnap.children {
+//                    let snap = names as! DataSnapshot
+//                    //                    print("The names of the females that this male-- \(name)  has liked are \(females)")
+//                    self.namesSwipped.append((names as AnyObject).key)
+//
+//
+//                }
+//                for names in self.namesSwipped {
+//                    //                    print("The names of males being checked are \(names)")
+//                    if(self.userID == names){
+//                        //                        print("YAYY THE HOT GUY::\(name) LIKES YOU::\(self.firstNametextLable)")
+//
+//                        self.checkMatch(Id: snapshot.key, Name: childSnap.key)
+//                        break;
+//
+//                    }
+//
+//
+//
+//                }
+//
+//            }
+//        })
+//    }
+//
+//    func checkMatch(Id: String,Name : String) {
+//        let ref2 = Database.database().reference(fromURL: "https://beetle-5b79a.firebaseio.com/").child("users").child(checkMaleSwipes).child(userID!)
+//
+//
+//        ref2.observe(.childAdded) { (snapshot) in
+//            for id in snapshot.children {
+//                //                if snapshot.key == self.firstNametextLable {
+//                if (id as AnyObject).key == Id {
+//
+//                    let ref = Database.database().reference(fromURL: "https://beetle-5b79a.firebaseio.com/").child("users").child(self.currentUserGender).child(Id)
+//                    ref.observeSingleEvent(of: .value) { (snap) in
+//                        let snapshotValue = snap.value as! NSDictionary
+//                        let profilePicURl = snapshotValue["Profile Pic "]
+//
+//                        self.matchFound(Id: Id, Name: Name, pic: profilePicURl as! String)
+//
+//                    }
+//                }
+//                //                }
+//            }
+//        }
+//    }
+//
+//    func matchFound(Id: String,Name : String,pic: String) {
+//
+//        messages.profilePicURL.append(pic)
+//        messages.IDS.append(Id)
+//        messages.finalMatch.append(Name)
+//        messages.maleName = Name
+//        messages.maleId = Id
+//        messages.imageURL = pic
+//
+//        notification.name = Name
+//        notification.id = Id
+//        notification.firstNametextLable = firstNametextLable
+//
+//        let badgeCountRef = Database.database().reference(fromURL: "https://beetle-5b79a.firebaseio.com/").child("users").child("Match").child(currentUserGender).child(userID!).child(firstNametextLable).child(Id)
+//        badgeCountRef.updateChildValues(["Badge ": 1])
+//        badgeCountRef.observe(.value) { (snapshot) in
+//            let snapshotValue = snapshot.value as? NSDictionary
+//            if  let badgeAdded = snapshotValue!["Badge added "] as? String {
+//            }else{
+//                self.messages.badgeCount = self.messages.badgeCount + 1
+////                self.dropMenuButton.badge = self.messages.badgeCount
+////                self.matches.badge = self.messages.badgeCount
+//                print("BADGE COUNT IS \(self.messages.badgeCount)")
+//
+//                if self.messages.badgeCount == 1 {
+//                    self.messages.oneMatch_Name = Name
+//                    self.messages.profilePic = pic
+//                    self.notification.sendNotification(title: "Match found", subtitle: "You have a new match", body: "You have been matched with \(Name)", badge: 1, delayInterval: 1)
+//                    self.performSegue(withIdentifier: "PopUpMatch", sender: self)
+//
+//                }else{
+//                    self.notification.sendNotification(title: "Multiple Matches found", subtitle: "Check out your matches page.", body: "", badge: 1, delayInterval: 1)
+//                }
+//            }
+//        }
+//    }
+    
+    
+    
+    func checkCardStack(){
+        if potentialUsers.count == 0{
+            CheckBackLater.isHidden = false
+        }
+    }
+    
+    
+    
+    
     
     
 }

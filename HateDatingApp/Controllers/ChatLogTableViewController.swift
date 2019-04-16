@@ -12,9 +12,9 @@ import FirebaseDatabase
 import UserNotifications
 
 struct ChatMessage {
-    let text : String
+    let text : String?
     let isIncoming : Bool
-//    let outGoing : Bool
+    let messageImageURL : String!
 }
 
 
@@ -59,10 +59,30 @@ class ChatLogTableViewController: UIViewController, UITableViewDelegate, UITable
     var bottomViewBottomAnchor : NSLayoutConstraint?
     var inputViewBottomAnchor : NSLayoutConstraint?
     var messageTVBottomAnchor : NSLayoutConstraint?
+    var window: UIWindow?
 
+    private func setupNotificationObservers(){
+        NotificationCenter.default.addObserver(self, selector: #selector(handleEnterForeground), name: .UIApplicationWillEnterForeground, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(handleEnterBackground), name: .UIApplicationWillResignActive, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(handleEnterBackground), name: .UIApplicationWillTerminate, object: nil)
+    }
+    
+    @objc func handleEnterForeground(){
+        let inMessageVC = Database.database().reference(fromURL: "https://beetle-5b79a.firebaseio.com/").child("users").child("Match").child("Male").child(userID!).child(firstNametextLable).child(femaleId).child(femaleName)
+        inMessageVC.updateChildValues(["In Message VC ": "True "])
+        print("WERE INNNN FOREEE")
+    }
+    
+    @objc func handleEnterBackground(){
+        let inMessageVC = Database.database().reference(fromURL: "https://beetle-5b79a.firebaseio.com/").child("users").child("Match").child("Male").child(userID!).child(firstNametextLable).child(femaleId).child(femaleName)
+        inMessageVC.updateChildValues(["In Message VC ": "False "])
+        print("WERE INNNN FOREEE")
+    }
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        setupNotificationObservers()
         navigationBar.translatesAutoresizingMaskIntoConstraints = false
         navigationBar.layer.masksToBounds = true
         navigationBar.topItem?.title = femaleName
@@ -120,7 +140,14 @@ class ChatLogTableViewController: UIViewController, UITableViewDelegate, UITable
  
         bottomView.setGradientBackground(colorOne: Colors.blue, colorTwo: Colors.skyBlue)
         
-        
+        Timer.scheduledTimer(withTimeInterval: 0.1, repeats: true, block: { (timer) in
+            if self.messageArray.count > 0{
+                let indexPath = NSIndexPath(item: self.messageArray.count - 1, section: 0)
+                self.messageTableView.scrollToRow(at: indexPath as IndexPath, at: .bottom, animated: false)
+            }
+            
+        })
+    
         
 }
 
@@ -409,10 +436,10 @@ class ChatLogTableViewController: UIViewController, UITableViewDelegate, UITable
          
                             if let ReceivedMessage = snapshotValue["ReceivedMessage "] {
                                 
-                                let message2 = ChatMessage(text: ReceivedMessage as! String, isIncoming: true)
+                                let message2 = ChatMessage(text: ReceivedMessage as! String, isIncoming: true,messageImageURL: nil)
                                 self.chatMessages.append(message2)
                                 let messages = message()
-                                messages.messageBody = ReceivedMessage as! String
+                                messages.messageBody = ReceivedMessage as? String
                                 self.messageArray.append(messages)
 //                                print("RE MESS ID \(snapshot.key)")
                                 
@@ -430,36 +457,41 @@ class ChatLogTableViewController: UIViewController, UITableViewDelegate, UITable
                                 })
                                 
                 }
-                if let ReceivedMessage = snapshotValue["ReceivedImage "] {
-                            
-                            let message2 = ChatMessage(text: ReceivedMessage as! String, isIncoming: true)
-                            self.chatMessages.append(message2)
-                            let messages = message()
-                            messages.messageBody = ReceivedMessage as! String
-                            self.messageArray.append(messages)
-                            
-                    }
+//                if let ReceivedMessage = snapshotValue["ReceivedImage "] {
+//
+//                    let message2 = ChatMessage(text: nil, isIncoming: true, messageImageURL: ReceivedMessage as! String)
+//                            self.chatMessages.append(message2)
+//                            let messages = message()
+//                            messages.messageImageURL = ReceivedMessage as? String
+//                            self.messageArray.append(messages)
+//
+//                    }
                         if let SentMessage = snapshotValue["SentMessage "] {
                                 
-                                let message1 = ChatMessage(text: SentMessage as! String, isIncoming: false)
+                            let message1 = ChatMessage(text: SentMessage as! String, isIncoming: false, messageImageURL: nil)
                                 self.chatMessages.append(message1)
                                 let messages = message()
-                                messages.messageBody = SentMessage as! String
+                                messages.messageBody = SentMessage as? String
                                 self.messageArray.append(messages)
-                                print("RE MESS ID \(snapshot.key)")
                                 messageDB.child(snapshot.key).updateChildValues(["Text Widht ": (SentMessage as! String).count])
-                            
+                           
+                            Timer.scheduledTimer(withTimeInterval: 0.1, repeats: true, block: { (timer) in
+                                if self.messageArray.count > 0{
+                                    let indexPath = NSIndexPath(item: self.messageArray.count - 1, section: 0)
+                                    self.messageTableView.scrollToRow(at: indexPath as IndexPath, at: .bottom, animated: false)
+                                }
+                                
+                            })
                             }
-                            
-                                            if let SentMessage = snapshotValue["SentImage "] {
-                            
-                            
-                                                let message1 = ChatMessage(text: SentMessage as! String, isIncoming: false)
-                                                self.chatMessages.append(message1)
-                                                let messages = message()
-                                                messages.messageBody = SentMessage as! String
-                                                self.messageArray.append(messages)
-                                            }
+
+//                if let SentMessage = snapshotValue["SentImage "] {
+//                            
+//                    let message1 = ChatMessage(text: nil, isIncoming: false, messageImageURL: SentMessage as! String)
+//                    self.chatMessages.append(message1)
+//                    let messages = message()
+//                    messages.messageImageURL = SentMessage as? String
+//                    self.messageArray.append(messages)
+//            }
                 
 
                     self.configureTableView()
@@ -487,38 +519,38 @@ class ChatLogTableViewController: UIViewController, UITableViewDelegate, UITable
         
         let Message  = chatMessages[indexPath.row]
         cell.chatMessage = Message
-        cell.selectionStyle = UITableViewCellSelectionStyle.none
-        let size = estimateFrameForText(text: Message.text )
-        
-//        if cell.messageLabel.text == Message.text {
-//        if size.width >= 150 {
-//            cell.messageLabel.widthAnchor.constraint(equalToConstant: 250).isActive = true
-//            }
-//        }
 
+        
+//        setupCell(cell: cell, message: Message)
+        cell.selectionStyle = UITableViewCellSelectionStyle.none
+//        if Message.text != nil {
+//            let size = estimateFrameForText(text: Message.text!)
+////            cell.width_Anchor.constant = size.width + 32
+//        }
+        
         let messageDB = Database.database().reference(fromURL: "https://beetle-5b79a.firebaseio.com/").child("users").child("Match").child("Female").child(femaleId).child(femaleName).child(userID!).child(firstNametextLable).child("Messages")
         messageDB.observe(.childAdded, with: { (snap1) in
-            
+
             if let snapshotValue = snap1.value as? NSDictionary {
                 if let ReceivedMessage = snapshotValue["ReceivedMessage "] {
                     let messageRead = snapshotValue["Message Read "] as! String
-                    
+
                     if cell.messageLabel.text == ReceivedMessage as? String{
-                    
-                    if messageRead == "True"{
+
+                        if messageRead == "True"{
                             UIView.animate(withDuration: 0.5, animations: {
                                 cell.bubbleView.backgroundColor = UIColor(red: 0, green: 0.7412, blue: 0.9686, alpha: 1.0)
                             })
-                        
-                    }else{
+
+                        }else{
 
                             UIView.animate(withDuration: 0.5, animations: {
                                 cell.bubbleView.backgroundColor = UIColor.gray
                             })
-                        
+
                         }
                     }
-                    
+
                 }
             }
         })
@@ -527,7 +559,98 @@ class ChatLogTableViewController: UIViewController, UITableViewDelegate, UITable
         return cell
     }
     
+    func setupCell(cell: ChatLogTableViewCell,message: ChatMessage){
+        print("Mess is \(message)")
+        if let textMessage = message.text {
+            
+            cell.messageConstraints.forEach { (const) in
+                const.isActive = true
+            }
+            cell.messageLabel.textColor = message.isIncoming ? .black : .white
+            cell.messageLabel.text = textMessage
+            cell.imageConstraints.forEach { (const) in
+                const.isActive = false
+            }
+            let messageDB = Database.database().reference(fromURL: "https://beetle-5b79a.firebaseio.com/").child("users").child("Match").child("Female").child(femaleId).child(femaleName).child(userID!).child(firstNametextLable).child("Messages")
+            messageDB.observe(.childAdded, with: { (snap1) in
+                
+                if let snapshotValue = snap1.value as? NSDictionary {
+                    if let ReceivedMessage = snapshotValue["ReceivedMessage "] {
+                        let messageRead = snapshotValue["Message Read "] as! String
+                        
+                        if textMessage == ReceivedMessage as? String{
+                            
+                            if messageRead == "True"{
+                                UIView.animate(withDuration: 0.5, animations: {
+                                    cell.bubbleView.backgroundColor = UIColor(red: 0, green: 0.7412, blue: 0.9686, alpha: 1.0)
+                                })
+                                
+                            }else{
+                                
+                                UIView.animate(withDuration: 0.5, animations: {
+                                    cell.bubbleView.backgroundColor = UIColor.gray
+                                })
+                                
+                            }
+                        }
+                        
+                    }
+                }
+            })
+            
+           
+        }else if let messageImage = message.messageImageURL {
+            cell.imageConstraints.forEach { (const) in
+                const.isActive = true
+            }
+            
+//            cell.messageConstraints.forEach { (const) in
+//                const.isActive = false
+//            }
+            if let url = URL(string: messageImage) {
+                URLSession.shared.dataTask(with: url, completionHandler: { (data, response, error) in
+                    if error != nil {
+                        //                        print("Failed while fetching images : \(error?.localizedDescription)")
+                        return
+                    } else {
+                        //Posting the downloaded image from firbase database onto the imageView.
+                        DispatchQueue.main.async {
+                            cell.messageImageView.image = UIImage(data: data!)
+                            
+                        }
+                    }
+                    
+                }).resume()
+            }
+        }
+       
+            if message.isIncoming == true {
+                cell.bubbleView.backgroundColor = .white
 
+                if message.messageImageURL != nil {
+                    cell.imageleadingConstraint.isActive = true
+                    cell.ImagetrailingConstraint.isActive = false
+                }else{
+                    cell.leadingConstraint.isActive = true
+                    cell.trailingConstraint.isActive = false
+                }
+                
+            }else{
+                if message.messageImageURL != nil {
+
+                    cell.imageleadingConstraint.isActive = false
+                    cell.ImagetrailingConstraint.isActive = true
+                    
+                }else{
+                
+                    cell.leadingConstraint.isActive = false
+                    cell.trailingConstraint.isActive = true
+                    
+                }
+            }
+        }
+    
+    
     //TODO: Declare configureTableView here:
     
     func configureTableView() {
@@ -546,10 +669,10 @@ class ChatLogTableViewController: UIViewController, UITableViewDelegate, UITable
         handleSend()
         inputTextField.text = ""
 
-        if messageArray.count > 0{
-            let indexPath = NSIndexPath(item: self.messageArray.count - 1, section: 0)
-            self.messageTableView.scrollToRow(at: indexPath as IndexPath, at: .bottom, animated: false)
-        }
+//        if messageArray.count > 0{
+//            let indexPath = NSIndexPath(item: self.messageArray.count - 1, section: 0)
+//            self.messageTableView.scrollToRow(at: indexPath as IndexPath, at: .bottom, animated: false)
+//        }
     }
     
 

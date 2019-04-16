@@ -13,7 +13,7 @@ class message {
 //    let userID = Auth.auth().currentUser?.uid
 //    var femaleIds = [String]()
     var IDS = [String]()
-    var messageBody = ""
+    var messageBody : String?
     var sender :String = ""
     var receiverID : String!
     var timeStamp : Double = 0.0
@@ -40,4 +40,5 @@ class message {
     var messageCount : Int = 0
     var profilePic : String!
     var oneMatch_Name : String!
+    var messageImageURL : String!
 }

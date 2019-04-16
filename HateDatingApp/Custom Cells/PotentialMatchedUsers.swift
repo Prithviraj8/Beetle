@@ -17,4 +17,8 @@ class potentialMatchedUsers {
     var names = [String]()
     var ids = [String]()
     var count = 0
+    var percentageC : Float = 0.0
+    var CurrentUsersDesription : String!
+    var currentDescriptionWords = [String]()
+    var snapshotKey : String!
 }

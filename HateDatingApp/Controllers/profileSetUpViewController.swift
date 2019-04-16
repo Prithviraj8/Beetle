@@ -70,7 +70,12 @@ class profileSetUpViewController: UIViewController, UIImagePickerControllerDeleg
     }
     
     @IBAction func nextToProfileVcPressed(_ sender: Any) {
-    uploadImageForMale()
+        if (maleImageView!.image == nil) {
+            alertTheUser(title: "No image has been attached.", message: "Please add an image to proceed with the creating your profile.")
+        }else{
+            uploadImageForMale()
+            
+        }
     }
     
     func uploadImageForMale() {
@@ -154,7 +159,11 @@ class profileSetUpViewController: UIViewController, UIImagePickerControllerDeleg
     @IBAction func femaleNextToProfileVcPressed(_ sender: Any) {
         
         //Saving image to Firebase
-    uploadImageForFemale()
+        if femaleImageView!.image == nil {
+            alertTheUser(title: "No image has been attached.", message: "Please add an image to proceed with the creating your profile.")
+        }else{
+            uploadImageForFemale()
+        }
 }
  
 
@@ -255,8 +264,19 @@ class profileSetUpViewController: UIViewController, UIImagePickerControllerDeleg
 
     }
     
-   
+    @IBAction func nextButton(_ sender: Any) {
+        
+    }
     
+    func alertTheUser(title: String, message: String){
+        let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.alert)
+        //        let OK = UIAlertAction(title: "OK", style: .default, handler: nil)
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { (action) in
+            alert.dismiss(animated: true, completion: nil)
+        }))
+        self.present(alert, animated: true, completion: nil)
+        
+    }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "goToMaleProfileVC"  {
             let destinationVC = segue.destination as! MaleProfileViewController

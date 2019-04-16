@@ -68,12 +68,7 @@ class TinderCardFemale: UIView{
         addGestureRecognizer(panGestureRecognizer)
         
         let backGroundImageView = UIImageView(frame:bounds)
-        //        backGroundImageView.image = UIImage(named:String(Int(1 + arc4random() % (8 - 1))))
-        //        backGroundImageView.contentMode = .scaleAspectFill
-        //        backGroundImageView.clipsToBounds = true;
-        //        addSubview(backGroundImageView)
-        
-        
+     
         
         guard let url = URL(string: pic) else {
             
@@ -109,44 +104,26 @@ class TinderCardFemale: UIView{
                     labelText.numberOfLines = 2
                     self.addSubview(labelText)
                     //let profileImageView = UIImageView(frame:CGRect(x: 20, y: self.frame.size.height - 80, width: 60, height: 60))
+
+                    self.imageViewStatus = UIImageView(frame: CGRect(x: (self.frame.size.width / 2) - 37.5, y: 25, width: 75, height: 75))
+                    self.imageViewStatus.alpha = 0
+                    self.addSubview(self.imageViewStatus)
                     
-                    
-                    
-                    
-                    
-                    
-                    //self.PartnerImage.image = UIImage(named: actualPic)
-                    
+                    self.overLayImage = UIImageView(frame:self.bounds)
+                    self.overLayImage.alpha = 0
+                    self.addSubview(self.overLayImage)
                 }
             }
             
         }).resume()
-        //
-        //
-        //        }, withCancel: nil)
-        
-        //        let profileImageView = UIImageView(frame:CGRect(x: 20, y: frame.size.height - 80, width: 60, height: 60))
-        //        profileImageView.image = UIImage(named:"profileimage1")
-        //        profileImageView.contentMode = .scaleAspectFill
-        //        profileImageView.layer.cornerRadius = 25
-        //        profileImageView.clipsToBounds = true
-        //        addSubview(profileImageView)
-        
-        //        let labelText = UILabel(frame:CGRect(x: 90, y: frame.size.height - 80, width: frame.size.width - 100, height: 60))
-        ////        let attributedText = NSMutableAttributedString(string: NAMES[Int(arc4random_uniform(UInt32(NAMES.count)))], attributes: [.foregroundColor: UIColor.white,.font:UIFont.boldSystemFont(ofSize: 25)])
-        //        let attributedText = NSMutableAttributedString(string: name, attributes: [.foregroundColor: UIColor.white,.font:UIFont.boldSystemFont(ofSize: 25)])
-        ////        attributedText.append(NSAttributedString(string: "\n\(value) mins", attributes: [.foregroundColor: UIColor.white,.font:UIFont.systemFont(ofSize: 18)]))
-        //        labelText.attributedText = attributedText
-        //        labelText.numberOfLines = 2
-        //        addSubview(labelText)
-        
-        imageViewStatus = UIImageView(frame: CGRect(x: (frame.size.width / 2) - 37.5, y: 25, width: 75, height: 75))
-        imageViewStatus.alpha = 0
-        addSubview(imageViewStatus)
-        
-        overLayImage = UIImageView(frame:bounds)
-        overLayImage.alpha = 0
-        addSubview(overLayImage)
+  
+//        imageViewStatus = UIImageView(frame: CGRect(x: (frame.size.width / 2) - 37.5, y: 25, width: 75, height: 75))
+//        imageViewStatus.alpha = 0
+//        addSubview(imageViewStatus)
+//
+//        overLayImage = UIImageView(frame:bounds)
+//        overLayImage.alpha = 0
+//        addSubview(overLayImage)
     }
     
     @objc func beingDragged(_ gestureRecognizer: UIPanGestureRecognizer) {

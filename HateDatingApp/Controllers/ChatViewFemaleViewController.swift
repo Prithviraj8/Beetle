@@ -49,8 +49,28 @@ class ChatViewFemaleViewController: UIViewController, UITableViewDelegate, UITab
     var bottomViewBottomAnchor : NSLayoutConstraint?
     var inputViewBottomAnchor : NSLayoutConstraint?
     var messageTVBottomAnchor : NSLayoutConstraint?
+    
+    private func setupNotificationObservers(){
+        NotificationCenter.default.addObserver(self, selector: #selector(handleEnterForeground), name: .UIApplicationWillEnterForeground, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(handleEnterBackground), name: .UIApplicationWillResignActive, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(handleEnterBackground), name: .UIApplicationWillTerminate, object: nil)
+    }
+    
+    @objc func handleEnterForeground(){
+        let inMessageVC = Database.database().reference(fromURL: "https://beetle-5b79a.firebaseio.com/").child("users").child("Match").child("Female").child(userID!).child(firstNametextLable).child(maleId).child(maleName)
+        inMessageVC.updateChildValues(["In Message VC ": "True "])
+    }
+    
+    @objc func handleEnterBackground(){
+        let inMessageVC = Database.database().reference(fromURL: "https://beetle-5b79a.firebaseio.com/").child("users").child("Match").child("Female").child(userID!).child(firstNametextLable).child(maleId).child(maleName)
+        inMessageVC.updateChildValues(["In Message VC ": "False "])
+    }
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        setupNotificationObservers()
         
         navigationBar.topItem?.title = maleName
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector (tableViewTapped))
@@ -93,12 +113,11 @@ class ChatViewFemaleViewController: UIViewController, UITableViewDelegate, UITab
         let inMessageVC = messageDB.child(firstNametextLable).child(maleId).child(maleName)
         inMessageVC.updateChildValues(["In Message VC ": "True "])
         
-        Timer.scheduledTimer(withTimeInterval: 0.5, repeats: true, block: { (timer) in
+        Timer.scheduledTimer(withTimeInterval: 0.1, repeats: true, block: { (timer) in
             if self.messageArray.count > 0{
                 let indexPath = NSIndexPath(item: self.messageArray.count - 1, section: 0)
-                self.messageTableView.scrollToRow(at: indexPath as IndexPath, at: .bottom, animated: true)
+                self.messageTableView.scrollToRow(at: indexPath as IndexPath, at: .bottom, animated: false)
             }
-            
         })
         messageTableView.keyboardDismissMode = .interactive
 //        originalMessageTVHeight = messageTVHeight.constant
@@ -130,7 +149,7 @@ class ChatViewFemaleViewController: UIViewController, UITableViewDelegate, UITab
     }
     
     override func viewDidDisappear(_ animated: Bool) {
-        let inMessageVC = Database.database().reference(fromURL: "https://beetle-5b79a.firebaseio.com/").child("users").child("Match").child("Female").child(firstNametextLable).child(maleId).child(maleName)
+        let inMessageVC = Database.database().reference(fromURL: "https://beetle-5b79a.firebaseio.com/").child("users").child("Match").child("Female").child(userID!).child(firstNametextLable).child(maleId).child(maleName)
         
         inMessageVC.updateChildValues(["In Message VC ": "False "])
 
@@ -339,9 +358,9 @@ class ChatViewFemaleViewController: UIViewController, UITableViewDelegate, UITab
         cell.selectionStyle = UITableViewCellSelectionStyle.none
         let size = estimateFrameForText(text: Message.text)
         
-        if size.width >= 150 {
-            cell.messageLabel.widthAnchor.constraint(equalToConstant: 250).isActive = true
-        }
+//        if size.width >= 150 {
+//            cell.messageLabel.widthAnchor.constraint(equalToConstant: 250).isActive = true
+//        }
 
         
         let messageDB = Database.database().reference(fromURL: "https://beetle-5b79a.firebaseio.com/").child("users").child("Match").child("Male").child(maleId).child(maleName).child(userID!).child(firstNametextLable).child("Messages")
@@ -397,10 +416,10 @@ class ChatViewFemaleViewController: UIViewController, UITableViewDelegate, UITab
 
         handleSend()
 //        inputTextField.endEditing(true)
-        if messageArray.count > 0{
-            let indexPath = NSIndexPath(item: self.messageArray.count - 1, section: 0)
-            self.messageTableView.scrollToRow(at: indexPath as IndexPath, at: .bottom, animated: true)
-        }
+//        if messageArray.count > 0{
+//            let indexPath = NSIndexPath(item: self.messageArray.count - 1, section: 0)
+//            self.messageTableView.scrollToRow(at: indexPath as IndexPath, at: .bottom, animated: true)
+//        }
     }
     
     
