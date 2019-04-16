@@ -1275,7 +1275,7 @@
                                             <color key="titleColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
                                         <connections>
-                                            <segue destination="bQl-f5-5z6" kind="presentation" identifier="goToSettings" modalTransitionStyle="flipHorizontal" id="EAV-Az-U9v"/>
+                                            <segue destination="bQl-f5-5z6" kind="presentation" identifier="goToSettings" modalPresentationStyle="overFullScreen" modalTransitionStyle="flipHorizontal" id="EAV-Az-U9v"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Kiy-DO-XbT" userLabel="Logout">
@@ -1570,7 +1570,7 @@
                                 <rect key="frame" x="0.0" y="802" width="414" height="94"/>
                                 <subviews>
                                     <textView multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="d9N-4p-7dm">
-                                        <rect key="frame" x="55" y="15" width="279" height="36"/>
+                                        <rect key="frame" x="18" y="15" width="316" height="36"/>
                                         <color key="backgroundColor" white="0.66666666666666663" alpha="0.53264126712328763" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="36" id="2PM-pb-PZa"/>
@@ -1602,30 +1602,16 @@
                                             <action selector="sendButton:" destination="zb6-6b-wnU" eventType="touchUpInside" id="yzk-ic-c1X"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MBD-gn-6Rh">
-                                        <rect key="frame" x="8" y="15" width="37" height="37"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="37" id="BLB-JT-vrJ"/>
-                                            <constraint firstAttribute="width" constant="37" id="X6S-Uk-Asl"/>
-                                        </constraints>
-                                        <state key="normal" image="images"/>
-                                        <connections>
-                                            <action selector="sendImage:" destination="zb6-6b-wnU" eventType="touchUpInside" id="sFz-SB-eLZ"/>
-                                        </connections>
-                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstItem="d9N-4p-7dm" firstAttribute="leading" secondItem="MBD-gn-6Rh" secondAttribute="trailing" constant="10" id="30f-Uo-6ZZ"/>
                                     <constraint firstItem="Xp0-pB-We1" firstAttribute="top" secondItem="Doo-Uz-Wpn" secondAttribute="top" constant="15" id="55r-7w-YZ2"/>
+                                    <constraint firstItem="d9N-4p-7dm" firstAttribute="leading" secondItem="Doo-Uz-Wpn" secondAttribute="leading" constant="18" id="8Jo-aR-Kab"/>
                                     <constraint firstAttribute="height" constant="94" id="LvU-F6-CLw"/>
                                     <constraint firstAttribute="bottom" secondItem="d9N-4p-7dm" secondAttribute="bottom" constant="43" id="VXe-U9-cGf"/>
                                     <constraint firstAttribute="trailing" secondItem="d9N-4p-7dm" secondAttribute="trailing" constant="80" id="Ygw-kJ-h43"/>
                                     <constraint firstAttribute="trailing" secondItem="Xp0-pB-We1" secondAttribute="trailing" constant="21.666666666666686" id="ake-rB-wHL"/>
-                                    <constraint firstAttribute="bottom" secondItem="MBD-gn-6Rh" secondAttribute="bottom" constant="42" id="cX9-vO-Sfc"/>
                                     <constraint firstItem="Xp0-pB-We1" firstAttribute="leading" secondItem="d9N-4p-7dm" secondAttribute="trailing" constant="21.333333333333314" id="oe6-1x-r4n"/>
-                                    <constraint firstItem="MBD-gn-6Rh" firstAttribute="top" secondItem="Doo-Uz-Wpn" secondAttribute="top" constant="15" id="qY9-rR-iJX"/>
-                                    <constraint firstItem="MBD-gn-6Rh" firstAttribute="leading" secondItem="Doo-Uz-Wpn" secondAttribute="leading" constant="8" id="zxz-zp-TAb"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -1660,7 +1646,7 @@
                     </view>
                     <connections>
                         <outlet property="BlockedMessage" destination="iC9-KH-rAg" id="fEn-MQ-gK7"/>
-                        <outlet property="backButton" destination="hoH-rF-ATw" id="0r0-iP-918"/>
+                        <outlet property="backButton" destination="hoH-rF-ATw" id="g5f-L3-UVn"/>
                         <outlet property="bottomView" destination="Doo-Uz-Wpn" id="2q9-9h-Aa0"/>
                         <outlet property="bottomViewHeight" destination="LvU-F6-CLw" id="fiE-1f-PBd"/>
                         <outlet property="gotBlockedMessage" destination="mu4-b6-lSc" id="nu9-dh-jbn"/>
@@ -1993,7 +1979,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jzF-aV-cPg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="14065" y="-465"/>
+            <point key="canvasLocation" x="11091" y="-514"/>
         </scene>
         <!--Report Abuse View Controller-->
         <scene sceneID="nBY-Pb-Sdx">
@@ -2188,21 +2174,6 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iS7-Nq-kHL" customClass="UIButtonX" customModule="HateDatingApp" customModuleProvider="target">
-                                <rect key="frame" x="58" y="824" width="295" height="38"/>
-                                <fontDescription key="fontDescription" type="italicSystem" pointSize="21"/>
-                                <state key="normal" title="Next">
-                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                        <real key="value" value="14"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                                <connections>
-                                    <segue destination="peg-fJ-aQ5" kind="presentation" identifier="descriptionSegue" modalPresentationStyle="overFullScreen" modalTransitionStyle="crossDissolve" id="dep-nj-OFI"/>
-                                </connections>
-                            </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TIq-1A-wzI">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="97"/>
                                 <subviews>
@@ -2238,6 +2209,21 @@
                                     <constraint firstAttribute="trailing" secondItem="g3y-lw-Hdl" secondAttribute="trailing" constant="79" id="yY1-d8-qJq"/>
                                 </constraints>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iS7-Nq-kHL" customClass="UIButtonX" customModule="HateDatingApp" customModuleProvider="target">
+                                <rect key="frame" x="58" y="811" width="295" height="38"/>
+                                <fontDescription key="fontDescription" type="italicSystem" pointSize="21"/>
+                                <state key="normal" title="Next">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="14"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <segue destination="peg-fJ-aQ5" kind="presentation" identifier="descriptionSegue" modalPresentationStyle="overFullScreen" modalTransitionStyle="crossDissolve" id="dep-nj-OFI"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -2249,7 +2235,7 @@
                             <constraint firstItem="wn2-yB-RWu" firstAttribute="height" secondItem="R1p-yJ-kE2" secondAttribute="height" id="Kwx-pT-76Y"/>
                             <constraint firstItem="CXZ-Ea-XTF" firstAttribute="top" secondItem="TIq-1A-wzI" secondAttribute="bottom" constant="16" id="NxM-Im-1bN"/>
                             <constraint firstItem="R1p-yJ-kE2" firstAttribute="top" secondItem="CXZ-Ea-XTF" secondAttribute="bottom" constant="8" id="ScS-ns-1Y4"/>
-                            <constraint firstItem="Tir-Ae-ctN" firstAttribute="bottom" secondItem="iS7-Nq-kHL" secondAttribute="bottom" id="Usd-LE-sHX"/>
+                            <constraint firstItem="Tir-Ae-ctN" firstAttribute="bottom" secondItem="iS7-Nq-kHL" secondAttribute="bottom" constant="13" id="Usd-LE-sHX"/>
                             <constraint firstItem="Tir-Ae-ctN" firstAttribute="trailing" secondItem="CXZ-Ea-XTF" secondAttribute="trailing" constant="77.675786572908692" id="eS9-4D-VGF"/>
                             <constraint firstItem="Tir-Ae-ctN" firstAttribute="trailing" secondItem="iS7-Nq-kHL" secondAttribute="trailing" constant="61" id="fUU-xV-az1"/>
                             <constraint firstItem="BVo-NQ-JpD" firstAttribute="width" secondItem="R1p-yJ-kE2" secondAttribute="width" id="fgU-Br-JET"/>
@@ -2266,7 +2252,7 @@
                             <constraint firstItem="Tir-Ae-ctN" firstAttribute="trailing" secondItem="R1p-yJ-kE2" secondAttribute="trailing" constant="20" id="vi4-qJ-rDC"/>
                             <constraint firstItem="wn2-yB-RWu" firstAttribute="width" secondItem="R1p-yJ-kE2" secondAttribute="width" id="wv4-V6-xfl"/>
                             <constraint firstItem="BVo-NQ-JpD" firstAttribute="top" secondItem="CXZ-Ea-XTF" secondAttribute="bottom" constant="8" id="zLN-8L-AKJ"/>
-                            <constraint firstItem="iS7-Nq-kHL" firstAttribute="top" secondItem="wn2-yB-RWu" secondAttribute="bottom" constant="35" id="zLf-gI-daP"/>
+                            <constraint firstItem="iS7-Nq-kHL" firstAttribute="top" secondItem="wn2-yB-RWu" secondAttribute="bottom" constant="22" id="zLf-gI-daP"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Tir-Ae-ctN"/>
                     </view>
@@ -2592,7 +2578,7 @@
                                     <navigationItem title="Settings" id="kN2-1x-Bpy">
                                         <barButtonItem key="leftBarButtonItem" image="BACK1" id="Cfo-vn-bf5">
                                             <connections>
-                                                <action selector="backToMaleOrFemale:" destination="bQl-f5-5z6" id="MJj-8W-IWj"/>
+                                                <action selector="backButton:" destination="bQl-f5-5z6" id="cvl-3y-hPP"/>
                                             </connections>
                                         </barButtonItem>
                                     </navigationItem>
@@ -2620,6 +2606,7 @@
                         <segue destination="Bsn-1s-9gq" kind="presentation" identifier="goToChangePassword" modalPresentationStyle="overFullScreen" modalTransitionStyle="crossDissolve" id="VTu-gQ-uzt"/>
                         <segue destination="9Jb-t7-4WI" kind="presentation" identifier="backToMale" modalTransitionStyle="flipHorizontal" id="Ib1-oR-xHj"/>
                         <segue destination="ixP-hw-WAh" kind="presentation" identifier="backToFemale" modalTransitionStyle="flipHorizontal" id="Zpd-Er-Gev"/>
+                        <segue destination="xJy-NK-yol" kind="presentation" identifier="Privacy and Terms" modalPresentationStyle="overFullScreen" modalTransitionStyle="crossDissolve" id="zJd-1G-sT5"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jGn-sQ-KJa" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -2665,7 +2652,7 @@
                                         </constraints>
                                         <state key="normal" image="settings-1"/>
                                         <connections>
-                                            <segue destination="bQl-f5-5z6" kind="presentation" identifier="goToSettings" modalTransitionStyle="flipHorizontal" id="p9B-ZZ-D8V"/>
+                                            <segue destination="bQl-f5-5z6" kind="presentation" identifier="goToSettings" modalPresentationStyle="overFullScreen" modalTransitionStyle="flipHorizontal" id="p9B-ZZ-D8V"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="t0r-3M-1Kw" userLabel="Logout">
@@ -3407,7 +3394,7 @@
                                     <navigationItem title="Change Email" id="gsU-TI-mym">
                                         <barButtonItem key="leftBarButtonItem" image="BACK1" id="om9-UX-cda">
                                             <connections>
-                                                <action selector="backButton:" destination="5ld-cc-tbL" id="zxj-kv-BFH"/>
+                                                <segue destination="bQl-f5-5z6" kind="presentation" identifier="backToSettings" modalPresentationStyle="overFullScreen" modalTransitionStyle="crossDissolve" id="fYi-Jm-OoR"/>
                                             </connections>
                                         </barButtonItem>
                                     </navigationItem>
@@ -3465,6 +3452,101 @@
             </objects>
             <point key="canvasLocation" x="13045" y="-1053"/>
         </scene>
+        <!--Settings View Controller-->
+        <scene sceneID="aWm-cW-Mz3">
+            <objects>
+                <viewController id="xJy-NK-yol" customClass="SettingsViewController" customModule="HateDatingApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="PnT-tp-Hx3">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="F5S-IW-36L">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="118"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wjv-Da-gQw">
+                                        <rect key="frame" x="8" y="49" width="48" height="48"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="48" id="KMG-iO-dEf"/>
+                                            <constraint firstAttribute="height" constant="48" id="xvm-Fs-rU3"/>
+                                        </constraints>
+                                        <state key="normal" image="BACK1"/>
+                                        <connections>
+                                            <action selector="privacyPageBackButton:" destination="xJy-NK-yol" eventType="touchUpInside" id="Oc9-bD-3Ew"/>
+                                        </connections>
+                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Privacy terms and policy." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yoO-fO-I06">
+                                        <rect key="frame" x="72" y="49" width="270" height="48"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="48" id="apV-1d-yKn"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="wjv-Da-gQw" firstAttribute="top" secondItem="F5S-IW-36L" secondAttribute="top" constant="49" id="072-CG-3Sr"/>
+                                    <constraint firstItem="yoO-fO-I06" firstAttribute="top" secondItem="F5S-IW-36L" secondAttribute="top" constant="49" id="Wof-eg-r8V"/>
+                                    <constraint firstItem="yoO-fO-I06" firstAttribute="leading" secondItem="wjv-Da-gQw" secondAttribute="trailing" constant="16" id="czS-80-4GT"/>
+                                    <constraint firstAttribute="bottom" secondItem="yoO-fO-I06" secondAttribute="bottom" constant="21" id="eMY-nF-MOZ"/>
+                                    <constraint firstAttribute="height" constant="118" id="exe-s1-yor"/>
+                                    <constraint firstItem="wjv-Da-gQw" firstAttribute="leading" secondItem="F5S-IW-36L" secondAttribute="leading" constant="8" id="hcg-nT-qcQ"/>
+                                    <constraint firstAttribute="bottom" secondItem="wjv-Da-gQw" secondAttribute="bottom" constant="21" id="o06-Pt-3pF"/>
+                                    <constraint firstAttribute="trailing" secondItem="yoO-fO-I06" secondAttribute="trailing" constant="72" id="p5D-HK-zmZ"/>
+                                </constraints>
+                            </view>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Re6-De-e23">
+                                <rect key="frame" x="0.0" y="126" width="414" height="770"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <mutableString key="text">Beetle App End User License Agreement
+This End User License Agreement (“Agreement”) is between you and Beetle and governs use of this app made available through the Apple App Store. By installing the Beetle App, you agree to be bound by this Agreement and understand that there is no tolerance for objectionable content. If you do not agree with the terms and conditions of this Agreement, you are not entitled to use the Beetle App.
+
+In order to ensure Beetle provides the best experience possible for everyone, we strongly enforce a no tolerance policy for objectionable content. If you see inappropriate content, please use the "Report abuse " feature found under each user profile.
+
+1. Parties This Agreement is between you and Beetle only, and not Apple, Inc. (“Apple”). Notwithstanding the foregoing, you acknowledge that Apple and its subsidiaries are third party beneficiaries of this Agreement and Apple has the right to enforce this Agreement against you. Beetle, not Apple, is solely responsible for the Beetle App and its content.
+
+2. Privacy Beetle may collect and use information about your usage of the Beetle App, including certain types of information from and about your device. Beetle may use this information, as long as it is in a form that does not personally identify you, to measure the use and performance of the Beetle App.
+
+3. Limited License Beetle grants you a limited, non-exclusive, non-transferable, revocable license to use the Beetle App for your personal, non-commercial purposes. You may only use the Beetle App on Apple devices that you own or control and as permitted by the App Store Terms of Service.
+
+4. Age Restrictions By using the Beetle App, you represent and warrant that (a) you are 17 years of age or older and you agree to be bound by this Agreement; (b) if you are under 17 years of age, you have obtained verifiable consent from a parent or legal guardian; and (c) your use of the Beetle App does not violate any applicable law or regulation. Your access to the Beetle App may be terminated without warning if Beetle believes, in its sole discretion, that you are under the age of 17 years and have not obtained verifiable consent from a parent or legal guardian. If you are a parent or legal guardian and you provide your consent to your child's use of the Beetle App, you agree to be bound by this Agreement in respect to your child's use of the Beetle App.
+
+5. Objectionable Content Policy Content may not be submitted to Beetle, who will moderate all content and ultimately decide whether or not to post a submission to the extent such content includes, is in conjunction with, or alongside any, Objectionable Content. Objectionable Content includes, but is not limited to: (i) sexually explicit materials; (ii) obscene, defamatory, libelous, slanderous, violent and/or unlawful content or profanity; (iii) content that infringes upon the rights of any third party, including copyright, trademark, privacy, publicity or other personal or proprietary right, or that is deceptive or fraudulent; (iv) content that promotes the use or sale of illegal or regulated substances, tobacco products, ammunition and/or firearms; and (v) gambling, including without limitation, any online casino, sports books, bingo or poker.
+
+6. Warranty Beetle disclaims all warranties about the Beetle App to the fullest extent permitted by law. To the extent any warranty exists under law that cannot be disclaimed, Beetle, not Apple, shall be solely responsible for such warranty.
+
+7. Maintenance and Support Beetle does provide minimal maintenance or support for it but not to the extent that any maintenance or support is required by applicable law, Beetle, not Apple, shall be obligated to furnish any such maintenance or support.
+
+8. Product Claims Beetle, not Apple, is responsible for addressing any claims by you relating to the Beetle App or use of it, including, but not limited to: (i) any product liability claim; (ii) any claim that the Beetle App fails to conform to any applicable legal or regulatory requirement; and (iii) any claim arising under consumer protection or similar legislation. Nothing in this Agreement shall be deemed an admission that you may have such claims.
+
+9. Third Party Intellectual Property Claims Beetle shall not be obligated to indemnify or defend you with respect to any third party claim arising out or relating to the Beetle App. To the extent Beetle is required to provide indemnification by applicable law, Beetle, not Apple, shall be solely responsible for the investigation, defense, settlement and discharge of any claim that the Beetle App or your use of it infringes any third party intellectual property right.</mutableString>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="F5S-IW-36L" firstAttribute="leading" secondItem="t1B-y9-NQy" secondAttribute="leading" id="4Bg-KY-h8G"/>
+                            <constraint firstItem="t1B-y9-NQy" firstAttribute="trailing" secondItem="Re6-De-e23" secondAttribute="trailing" id="8yu-cf-9uy"/>
+                            <constraint firstItem="Re6-De-e23" firstAttribute="leading" secondItem="t1B-y9-NQy" secondAttribute="leading" id="K2Z-q7-TMt"/>
+                            <constraint firstItem="Re6-De-e23" firstAttribute="bottom" secondItem="t1B-y9-NQy" secondAttribute="bottom" constant="34" id="NdG-ni-jj1"/>
+                            <constraint firstItem="t1B-y9-NQy" firstAttribute="trailing" secondItem="F5S-IW-36L" secondAttribute="trailing" id="aUm-5t-T1d"/>
+                            <constraint firstItem="Re6-De-e23" firstAttribute="top" secondItem="F5S-IW-36L" secondAttribute="bottom" constant="8" id="cjr-A2-rg4"/>
+                            <constraint firstItem="t1B-y9-NQy" firstAttribute="top" secondItem="F5S-IW-36L" secondAttribute="top" constant="44" id="sKU-kK-kWO"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="t1B-y9-NQy"/>
+                    </view>
+                    <connections>
+                        <outlet property="PrivacyLabel" destination="Re6-De-e23" id="STc-r9-DEA"/>
+                        <outlet property="TopViewPivacy" destination="F5S-IW-36L" id="48I-mt-4t2"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="92S-Ya-18L" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="13850.72463768116" y="-1119.6428571428571"/>
+        </scene>
         <!--Password Change View Controller-->
         <scene sceneID="I0F-s0-9OM">
             <objects>
@@ -3490,8 +3572,7 @@
                                             <barButtonItem id="PUZ-XW-7F8"/>
                                             <barButtonItem image="BACK1" id="ScQ-0Q-zTf">
                                                 <connections>
-                                                    <action selector="backButton:" destination="Bsn-1s-9gq" id="9yZ-a5-46u"/>
-                                                    <segue destination="bQl-f5-5z6" kind="presentation" identifier="backToSettings" modalTransitionStyle="flipHorizontal" id="ura-q3-juJ"/>
+                                                    <segue destination="bQl-f5-5z6" kind="presentation" identifier="backToSettings" modalPresentationStyle="overFullScreen" modalTransitionStyle="crossDissolve" id="ajm-5b-jRJ"/>
                                                 </connections>
                                             </barButtonItem>
                                         </leftBarButtonItems>
@@ -3968,7 +4049,6 @@
         <image name="background1" width="1200" height="795"/>
         <image name="buttonUndo" width="50" height="50"/>
         <image name="heart-1" width="64" height="64"/>
-        <image name="images" width="100" height="100"/>
         <image name="noButton" width="100" height="100"/>
         <image name="password" width="52" height="52"/>
         <image name="potential" width="96" height="96"/>
@@ -3976,17 +4056,17 @@
         <image name="settings-1" width="100" height="100"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="2hx-be-X5W"/>
-        <segue reference="GyN-VP-uT6"/>
-        <segue reference="Zpd-Er-Gev"/>
-        <segue reference="EAV-Az-U9v"/>
+        <segue reference="skW-X6-ccg"/>
+        <segue reference="15y-Nz-f28"/>
+        <segue reference="97I-Kd-of3"/>
+        <segue reference="fYi-Jm-OoR"/>
         <segue reference="SgQ-pX-2LV"/>
-        <segue reference="ijE-jE-htY"/>
+        <segue reference="f5x-np-a14"/>
         <segue reference="m8w-3d-fJH"/>
-        <segue reference="dsA-Vt-Vld"/>
+        <segue reference="kS9-Lb-U2o"/>
         <segue reference="Wll-ko-xbH"/>
         <segue reference="sQq-an-IiB"/>
-        <segue reference="Ib1-oR-xHj"/>
+        <segue reference="hhC-mK-J61"/>
         <segue reference="qHb-3S-3aW"/>
         <segue reference="bgv-LG-L4o"/>
         <segue reference="KDy-py-A5f"/>

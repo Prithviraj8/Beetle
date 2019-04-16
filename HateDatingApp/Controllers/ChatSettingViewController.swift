@@ -90,8 +90,11 @@ class ChatSettingViewController: UIViewController {
     @IBAction func backButton(_ sender: Any) {
         if gender == "Male" {
             performSegue(withIdentifier: "backToMaleChatting", sender: self)
+            dismiss(animated: true, completion: nil)
+
         }else{
             performSegue(withIdentifier: "backToFemaleChatting", sender: self)
+            dismiss(animated: true, completion: nil)
 
         }
     }

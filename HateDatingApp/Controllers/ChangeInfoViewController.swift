@@ -27,9 +27,9 @@ class ChangeInfoViewController: UIViewController {
         email.text = Auth.auth().currentUser?.email
         
     }
- 
+
     @IBAction func backButton(_ sender: Any) {
-        dismiss(animated: true, completion: nil)
+
     }
     
     
@@ -81,6 +81,8 @@ class ChangeInfoViewController: UIViewController {
             let VC = segue.destination as! SettingsViewController
             VC.firstNametextLable = firstNametextLable
             VC.userID = userID
+            dismiss(animated: true, completion: nil)
+
         }
     }
     

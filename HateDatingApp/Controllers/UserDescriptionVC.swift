@@ -37,8 +37,9 @@ class UserDescriptionVC: UIViewController {
         Done.setGradientBackground(colorOne: Colors.brightOrange, colorTwo: Colors.lightPink)
         textViewDidChange(descriptionTV)
         textViewDidBeginEditing(descriptionTV)
-        descriptionTV.text = "Write your description here. You may also only type in keywords seperated by a comma (,) such as (coffee , workout, adventure)"
+        
         descriptionTV.textColor = UIColor.lightGray
+        getUserDescription()
     }
     @IBAction func Done(_ sender: Any) {
         if descriptionTV.text != "Write your description here. You may also only type in keywords seperated by a comma (,) such as (coffee , workout, adventure)" {
@@ -57,7 +58,23 @@ class UserDescriptionVC: UIViewController {
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.view.endEditing(true)
+        getUserDescription()
     }
+    
+    func getUserDescription(){
+        let ref = Database.database().reference(fromURL: "https://beetle-5b79a.firebaseio.com/").child("users").child(gender).child(userId!)
+        ref.observe(.value) { (snap) in
+            if let snapValue = snap.value as? NSDictionary {
+                if let description = snapValue["Description "] as? String {
+                    self.descriptionTV.text = description
+                }else{
+                    self.descriptionTV.text = "Write your description here. You may also only type in keywords seperated by a comma (,) such as (coffee , workout, adventure)"
+                }
+            }
+        }
+        
+    }
+    
 }
 extension UserDescriptionVC : UITextViewDelegate {
     func textViewDidBeginEditing(_ textView: UITextView) {

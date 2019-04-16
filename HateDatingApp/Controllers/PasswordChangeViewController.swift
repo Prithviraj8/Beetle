@@ -26,9 +26,9 @@ class PasswordChangeViewController: UIViewController,UITextFieldDelegate {
         incorrectPasswordMSG.isHidden = true
         print("EM IS \(Auth.auth().currentUser?.email)")
     }
+
     @IBAction func backButton(_ sender: Any) {
         dismiss(animated: true, completion: nil)
-        
     }
     
     @IBAction func currentPasswordField(_ sender: Any) {
@@ -105,10 +105,12 @@ class PasswordChangeViewController: UIViewController,UITextFieldDelegate {
     
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "backToSetting" {
+        if segue.identifier == "backToSettings" {
             let VC = segue.destination as! SettingsViewController
             VC.firstNametextLable = firstNametextLable
             VC.gender = gender
+            dismiss(animated: true, completion: nil)
+
         }
     }
 

@@ -37,6 +37,7 @@ class UserTableFemaleTableViewController: UIViewController, UITextFieldDelegate,
 //        searchController.searchResultsUpdater = self
         searchController.dimsBackgroundDuringPresentation = false
         definesPresentationContext = true
+        matchesTableView.separatorStyle = .none
         matchesTableView.register(UserCell.self, forCellReuseIdentifier: "Cell")
     }
 
@@ -53,6 +54,7 @@ class UserTableFemaleTableViewController: UIViewController, UITextFieldDelegate,
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! UserCell
         
         //         Configure the cell...
+//        cell.selectionStyle = UITableViewCellSelectionStyle.none
         let name = maleNames[indexPath.row]
         let profilePic = profilePicURL[indexPath.row]
         let id = Ids[indexPath.row]
@@ -106,13 +108,9 @@ class UserTableFemaleTableViewController: UIViewController, UITextFieldDelegate,
                 let snapshotValue = snapshot.value as! NSDictionary
                 
                 if let ReceivedTimeStamp = snapshotValue["Time Stamp Received "] as? Double {
-                    
-                    //                            print("LATEST TIME STAMP OF THE MESSAGE RECEIVED IS \(String(describing: ReceivedTimeStamp))")
-                    
+          
                     let ReceivedTimeStampDate = Date(timeIntervalSince1970: ReceivedTimeStamp )
                     ReceivedMessageTime.append(ReceivedTimeStampDate)
-                    
-                    
                     
                     let dateFormatter = DateFormatter()
                     dateFormatter.dateFormat = "hh:mm:ss a"
@@ -170,6 +168,7 @@ class UserTableFemaleTableViewController: UIViewController, UITextFieldDelegate,
             let VC = segue.destination as! FemaleSearchPartnerViewController
             VC.firstNametextLable = firstNametextLable
             VC.IDs = Ids
+            dismiss(animated: true, completion: nil)
 
         }
     }

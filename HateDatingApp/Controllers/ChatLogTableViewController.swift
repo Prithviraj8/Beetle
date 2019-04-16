@@ -12,9 +12,9 @@ import FirebaseDatabase
 import UserNotifications
 
 struct ChatMessage {
-    let text : String?
+    let text : String
     let isIncoming : Bool
-    let messageImageURL : String!
+//    let messageImageURL : String!
 }
 
 
@@ -436,7 +436,7 @@ class ChatLogTableViewController: UIViewController, UITableViewDelegate, UITable
          
                             if let ReceivedMessage = snapshotValue["ReceivedMessage "] {
                                 
-                                let message2 = ChatMessage(text: ReceivedMessage as! String, isIncoming: true,messageImageURL: nil)
+                                let message2 = ChatMessage(text: ReceivedMessage as! String, isIncoming: true)
                                 self.chatMessages.append(message2)
                                 let messages = message()
                                 messages.messageBody = ReceivedMessage as? String
@@ -457,18 +457,18 @@ class ChatLogTableViewController: UIViewController, UITableViewDelegate, UITable
                                 })
                                 
                 }
-//                if let ReceivedMessage = snapshotValue["ReceivedImage "] {
-//
+                if let ReceivedMessage = snapshotValue["ReceivedImage "] {
+                            
 //                    let message2 = ChatMessage(text: nil, isIncoming: true, messageImageURL: ReceivedMessage as! String)
 //                            self.chatMessages.append(message2)
-//                            let messages = message()
-//                            messages.messageImageURL = ReceivedMessage as? String
-//                            self.messageArray.append(messages)
-//
-//                    }
+                            let messages = message()
+                            messages.messageImageURL = ReceivedMessage as? String
+                            self.messageArray.append(messages)
+                            
+                    }
                         if let SentMessage = snapshotValue["SentMessage "] {
                                 
-                            let message1 = ChatMessage(text: SentMessage as! String, isIncoming: false, messageImageURL: nil)
+                            let message1 = ChatMessage(text: SentMessage as! String, isIncoming: false)
                                 self.chatMessages.append(message1)
                                 let messages = message()
                                 messages.messageBody = SentMessage as? String
@@ -484,14 +484,14 @@ class ChatLogTableViewController: UIViewController, UITableViewDelegate, UITable
                             })
                             }
 
-//                if let SentMessage = snapshotValue["SentImage "] {
-//                            
+                if let SentMessage = snapshotValue["SentImage "] {
+                            
 //                    let message1 = ChatMessage(text: nil, isIncoming: false, messageImageURL: SentMessage as! String)
 //                    self.chatMessages.append(message1)
-//                    let messages = message()
-//                    messages.messageImageURL = SentMessage as? String
-//                    self.messageArray.append(messages)
-//            }
+                    let messages = message()
+                    messages.messageImageURL = SentMessage as? String
+                    self.messageArray.append(messages)
+            }
                 
 
                     self.configureTableView()
@@ -559,96 +559,96 @@ class ChatLogTableViewController: UIViewController, UITableViewDelegate, UITable
         return cell
     }
     
-    func setupCell(cell: ChatLogTableViewCell,message: ChatMessage){
-        print("Mess is \(message)")
-        if let textMessage = message.text {
-            
-            cell.messageConstraints.forEach { (const) in
-                const.isActive = true
-            }
-            cell.messageLabel.textColor = message.isIncoming ? .black : .white
-            cell.messageLabel.text = textMessage
-            cell.imageConstraints.forEach { (const) in
-                const.isActive = false
-            }
-            let messageDB = Database.database().reference(fromURL: "https://beetle-5b79a.firebaseio.com/").child("users").child("Match").child("Female").child(femaleId).child(femaleName).child(userID!).child(firstNametextLable).child("Messages")
-            messageDB.observe(.childAdded, with: { (snap1) in
-                
-                if let snapshotValue = snap1.value as? NSDictionary {
-                    if let ReceivedMessage = snapshotValue["ReceivedMessage "] {
-                        let messageRead = snapshotValue["Message Read "] as! String
-                        
-                        if textMessage == ReceivedMessage as? String{
-                            
-                            if messageRead == "True"{
-                                UIView.animate(withDuration: 0.5, animations: {
-                                    cell.bubbleView.backgroundColor = UIColor(red: 0, green: 0.7412, blue: 0.9686, alpha: 1.0)
-                                })
-                                
-                            }else{
-                                
-                                UIView.animate(withDuration: 0.5, animations: {
-                                    cell.bubbleView.backgroundColor = UIColor.gray
-                                })
-                                
-                            }
-                        }
-                        
-                    }
-                }
-            })
-            
-           
-        }else if let messageImage = message.messageImageURL {
-            cell.imageConstraints.forEach { (const) in
-                const.isActive = true
-            }
-            
+//    func setupCell(cell: ChatLogTableViewCell,message: ChatMessage){
+//        print("Mess is \(message)")
+//        if let textMessage = message.text {
+//
 //            cell.messageConstraints.forEach { (const) in
+//                const.isActive = true
+//            }
+//            cell.messageLabel.textColor = message.isIncoming ? .black : .white
+//            cell.messageLabel.text = textMessage
+//            cell.imageConstraints.forEach { (const) in
 //                const.isActive = false
 //            }
-            if let url = URL(string: messageImage) {
-                URLSession.shared.dataTask(with: url, completionHandler: { (data, response, error) in
-                    if error != nil {
-                        //                        print("Failed while fetching images : \(error?.localizedDescription)")
-                        return
-                    } else {
-                        //Posting the downloaded image from firbase database onto the imageView.
-                        DispatchQueue.main.async {
-                            cell.messageImageView.image = UIImage(data: data!)
-                            
-                        }
-                    }
-                    
-                }).resume()
-            }
-        }
-       
-            if message.isIncoming == true {
-                cell.bubbleView.backgroundColor = .white
-
-                if message.messageImageURL != nil {
-                    cell.imageleadingConstraint.isActive = true
-                    cell.ImagetrailingConstraint.isActive = false
-                }else{
-                    cell.leadingConstraint.isActive = true
-                    cell.trailingConstraint.isActive = false
-                }
-                
-            }else{
-                if message.messageImageURL != nil {
-
-                    cell.imageleadingConstraint.isActive = false
-                    cell.ImagetrailingConstraint.isActive = true
-                    
-                }else{
-                
-                    cell.leadingConstraint.isActive = false
-                    cell.trailingConstraint.isActive = true
-                    
-                }
-            }
-        }
+//            let messageDB = Database.database().reference(fromURL: "https://beetle-5b79a.firebaseio.com/").child("users").child("Match").child("Female").child(femaleId).child(femaleName).child(userID!).child(firstNametextLable).child("Messages")
+//            messageDB.observe(.childAdded, with: { (snap1) in
+//
+//                if let snapshotValue = snap1.value as? NSDictionary {
+//                    if let ReceivedMessage = snapshotValue["ReceivedMessage "] {
+//                        let messageRead = snapshotValue["Message Read "] as! String
+//
+//                        if textMessage == ReceivedMessage as? String{
+//
+//                            if messageRead == "True"{
+//                                UIView.animate(withDuration: 0.5, animations: {
+//                                    cell.bubbleView.backgroundColor = UIColor(red: 0, green: 0.7412, blue: 0.9686, alpha: 1.0)
+//                                })
+//
+//                            }else{
+//
+//                                UIView.animate(withDuration: 0.5, animations: {
+//                                    cell.bubbleView.backgroundColor = UIColor.gray
+//                                })
+//
+//                            }
+//                        }
+//
+//                    }
+//                }
+//            })
+//
+//
+//        }else if let messageImage = message.messageImageURL {
+//            cell.imageConstraints.forEach { (const) in
+//                const.isActive = true
+//            }
+//
+////            cell.messageConstraints.forEach { (const) in
+////                const.isActive = false
+////            }
+//            if let url = URL(string: messageImage) {
+//                URLSession.shared.dataTask(with: url, completionHandler: { (data, response, error) in
+//                    if error != nil {
+//                        //                        print("Failed while fetching images : \(error?.localizedDescription)")
+//                        return
+//                    } else {
+//                        //Posting the downloaded image from firbase database onto the imageView.
+//                        DispatchQueue.main.async {
+//                            cell.messageImageView.image = UIImage(data: data!)
+//
+//                        }
+//                    }
+//
+//                }).resume()
+//            }
+//        }
+//
+//            if message.isIncoming == true {
+//                cell.bubbleView.backgroundColor = .white
+//
+//                if message.messageImageURL != nil {
+//                    cell.imageleadingConstraint.isActive = true
+//                    cell.ImagetrailingConstraint.isActive = false
+//                }else{
+//                    cell.leadingConstraint.isActive = true
+//                    cell.trailingConstraint.isActive = false
+//                }
+//
+//            }else{
+//                if message.messageImageURL != nil {
+//
+//                    cell.imageleadingConstraint.isActive = false
+//                    cell.ImagetrailingConstraint.isActive = true
+//
+//                }else{
+//
+//                    cell.leadingConstraint.isActive = false
+//                    cell.trailingConstraint.isActive = true
+//
+//                }
+//            }
+//        }
     
     
     //TODO: Declare configureTableView here:
@@ -739,6 +739,8 @@ class ChatLogTableViewController: UIViewController, UITableViewDelegate, UITable
             VC.firstNametextLable = firstNametextLable
             VC.IDs = IDs
             VC.profilePicURL = profilePicURL
+            dismiss(animated: true, completion: nil)
+
         }else if segue.identifier == "chatSettings" {
 
             let VC = segue.destination as! ChatSettingViewController

@@ -59,7 +59,11 @@ class PotentialMatchVC: UIViewController {
     @IBAction func backButton(_ sender: Any) {
         dismiss(animated: true, completion: nil)
     }
-    
+    func checkCardStack(){
+        if potentialUsers.count == 0{
+            CheckBackLater.isHidden = false
+        }
+    }
     func getPotentialUsers() {
         let currentRef = Database.database().reference().child("users").child(currentUserGender).child(Auth.auth().currentUser!.uid)
         
@@ -100,11 +104,13 @@ class PotentialMatchVC: UIViewController {
                     print("WORDS THAT MATCH ARE \(self.potentialUsers.percentageC)")
                     let percentageMatched = CGFloat((self.potentialUsers.percentageC/Float(words.count))*100)
                     print("PERCENTAGE OF MATCHED WORDS IS \(percentageMatched)")
-                    if percentageMatched >= 55 {
+                    if percentageMatched >= 44 {
                         self.potentialUsers.count = self.potentialUsers.count + 1
                         ref2.updateChildValues(["MATCH PERCENTAGE ": "percentageMatched"])
                         self.getPotentialMatchedUser()
 
+                    }else{
+                        self.CheckBackLater.isHidden == false
                     }
                     
                 }
@@ -335,11 +341,7 @@ class PotentialMatchVC: UIViewController {
     
     
     
-    func checkCardStack(){
-        if potentialUsers.count == 0{
-            CheckBackLater.isHidden = false
-        }
-    }
+   
     
     
     

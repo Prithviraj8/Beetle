@@ -45,8 +45,12 @@ class UserTableViewController: UIViewController, UITextFieldDelegate, UITableVie
         searchController.dimsBackgroundDuringPresentation = false
         definesPresentationContext = true
         matchesTableView.register(UserCell.self, forCellReuseIdentifier: "Cell")
-    
+        matchesTableView.separatorStyle = .none
         
+    }
+    
+    @IBAction func backButton(_ sender: Any) {
+        dismiss(animated: true, completion: nil)
     }
 
      func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -60,7 +64,8 @@ class UserTableViewController: UIViewController, UITextFieldDelegate, UITableVie
 //        let cell = UITableViewCell(style: .subtitle, reuseIdentifier: "Cell")
 //         Configure the cell...
     
-        
+//        cell.selectionStyle = UITableViewCellSelectionStyle.none
+
         let name = femaleNames[indexPath.row]
         print("PRO IS \(profilePicURL)")
 
@@ -183,6 +188,8 @@ class UserTableViewController: UIViewController, UITextFieldDelegate, UITableVie
             let VC = segue.destination as! SearchPartnerViewController
             VC.firstNametextLable = firstNametextLable
             VC.IDs = IDs
+            dismiss(animated: true, completion: nil)
+
         }
         
     }

@@ -35,7 +35,7 @@ class PotentialTableViewController: UIViewController, UITableViewDelegate, UITab
         PotentialMatchesTV.clipsToBounds = true
         configureTableView()
         getPotentialUsers()
-        print("ROW COUNT IS \(matchedUsers.count)")
+        print("ROW COUNT IS \(matches.count)")
         
         if matches.count > 0{
             let indexPath = NSIndexPath(item: matches.count - 1, section: 0)

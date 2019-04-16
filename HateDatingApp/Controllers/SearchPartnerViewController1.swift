@@ -569,6 +569,7 @@ class SearchPartnerViewController: UIViewController {
             destinationVC.profilePicURL = messages.profilePicURL
             destinationVC.age = age
             destinationVC.gender = "Male"
+            
         }
         
         if segue.identifier == "goToSettings" {

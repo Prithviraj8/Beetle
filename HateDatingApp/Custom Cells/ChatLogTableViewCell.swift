@@ -42,28 +42,7 @@ class ChatLogTableViewCell: UITableViewCell {
         didSet {
 //            bubbleView.backgroundColor = chatMessage.isIncoming ? .white : .gray
             messageLabel.textColor = chatMessage.isIncoming ? .black : .white
-//            if let messageImage = messages.imageURL {
-//            if let url = URL(string: chatMessage!.text!) {
-//                    URLSession.shared.dataTask(with: url, completionHandler: { (data, response, error) in
-//                        if error != nil {
-//                            //                        print("Failed while fetching images : \(error?.localizedDescription)")
-//                            return
-//                        } else {
-//                            //Posting the downloaded image from firbase database onto the imageView.
-//                            DispatchQueue.main.async {
-//                                self.messageImageView.image = UIImage(data: data!)
-////                                self.messageLabel.text = ""
-//                            }
-//                        }
-//
-//                    }).resume()
-////                }
-//
-//            }else{
-                    messageLabel.text = chatMessage.text
-//                }
-
-//            }
+            messageLabel.text = chatMessage.text
 
             if chatMessage.isIncoming == true {
                 bubbleView.backgroundColor = .white

@@ -116,7 +116,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
                                 let NAME = fname.key
                                 print("FNAMES \(fname.key)")
                                 
-                                //                    for messages in fname.children {
+                            if NAME != "Badge " && NAME != "Badge added " && NAME != "Pressed " {
                                 let ref2 = messageDB.child(fid).child(NAME).child("Messages")
                                 let ref3 = messageDB.child(fid).child(NAME)
                                 ref3.observe(.value, with: { (snap) in
@@ -124,13 +124,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
                                     if let inMessageVC = value["In Message VC "] as? String {
                                         print("IN MESSAGE VC \(inMessageVC)")
 
-//                                        let state = UIApplication.shared.applicationState
-//                                        if state == .background  || state == .inactive{
-//                                            ref3.updateChildValues(["In Message VC ": "False "])
-//                                        }
+                                        let state = UIApplication.shared.applicationState
+                                        if state == .background  || state == .inactive{
+                                            ref3.updateChildValues(["In Message VC ": "False "])
+                                        }
                                         
                                         
-                                        if inMessageVC == "False" {
+                                        if inMessageVC == "False " {
                                             ref2.observe(.childAdded, with: { (message) in
                                                 if let snapshotValue1 = message.value as? NSDictionary {
                                                     
@@ -170,10 +170,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
                                     }
                                 })
                                 
-                                //                    }
+                                }
+                                
                             }
                         }
-//                    }
                 }
             }
             //Female side notification displayer
@@ -192,23 +192,31 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
                         messageDB.observe(.childAdded) { (snapshot) in
                             
                             for maleNames in snapshot.children {
-                                print("FIDS \(snapshot.key)")
                                 let Mname = maleNames as! DataSnapshot
                                 fnames.append(Mname.key)
                                 let mid = snapshot.key
                                 let NAME = Mname.key
-                                
+
+                                if NAME != "Badge " && NAME != "Badge added " && NAME != "Pressed " {
+                                    print("MNAMES \(NAME)")
                                 let ref2 = messageDB.child(mid).child(NAME).child("Messages")
                                 let ref3 = messageDB.child(mid).child(NAME)
+                                   
+                                    let state = UIApplication.shared.applicationState
+                                    if state == .background  || state == .inactive{
+                                        ref3.updateChildValues(["In Message VC ": "False "])
+                                    }
+                                    
+                                    
                                 ref3.observe(.value, with: { (snap) in
                                     if let value = snap.value as? NSDictionary {
                                         if let inMessageVC = value["In Message VC "] as? String {
-                                            if inMessageVC == "False" {
+                                            if inMessageVC == "False " {
                                             ref2.observe(.childAdded, with: { (message) in
                                                 let snapshotValue1 = message.value as! NSDictionary
-                                                
+                                                print("WE ARE IN NOTIFY CODE")
+
                                                 if let ReceivedMessage = snapshotValue1["ReceivedMessage "] {
-                                                    
                                                     
                                                     let messageTimeStamp = snapshotValue1["Time Stamp Received "] as! Double
                                                     ReceivedMessageTime.append(messageTimeStamp)
@@ -216,7 +224,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
                                                     
                                                     let messageRead = snapshotValue1["Message Read "] as! String
                                                     let notified = snapshotValue1["Message Notified "] as! String
-                                                    print("WE ARE IN NOTIFY CODE")
                                                     
                                                     
                                                     if messageRead == "False" {
@@ -244,6 +251,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
                                     }
 
                                 })
+                                    
+                                }
                                 
                             }
                         }

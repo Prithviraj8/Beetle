@@ -155,7 +155,9 @@ class ChatViewFemaleViewController: UIViewController, UITableViewDelegate, UITab
 
     }
     
-    
+    @IBAction func backButton(_ sender: Any) {
+        dismiss(animated: true, completion: nil)
+    }
     func setupKeyBoardObservers(){
         
         
@@ -415,7 +417,7 @@ class ChatViewFemaleViewController: UIViewController, UITableViewDelegate, UITab
     @IBAction func sendButton(_ sender: Any) {
 
         handleSend()
-//        inputTextField.endEditing(true)
+        inputTextField.text = ""
 //        if messageArray.count > 0{
 //            let indexPath = NSIndexPath(item: self.messageArray.count - 1, section: 0)
 //            self.messageTableView.scrollToRow(at: indexPath as IndexPath, at: .bottom, animated: true)
@@ -591,7 +593,8 @@ class ChatViewFemaleViewController: UIViewController, UITableViewDelegate, UITab
             VC.firstNametextLable = firstNametextLable
             VC.Ids = Ids
             VC.profilePicURL = profilePicURL
-            
+            dismiss(animated: true, completion: nil)
+
         }
         
         if segue.identifier == "goToChatSettings" {
