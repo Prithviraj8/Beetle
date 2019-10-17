@@ -125,7 +125,12 @@ class DateOfBirthViewController: UIViewController {
         if messages.age == nil {
             alertTheUser(title: "Your age is required to create a profile.", message: "Please enter your age")
         }else{
-            performSegue(withIdentifier: "goToGenderChange", sender: self)
+            if messages.age < 18 {
+                alertTheUser(title: "Only people above the age of 18+ are allowed.", message: "")
+            }else{
+                performSegue(withIdentifier: "goToGenderChange", sender: self)
+                
+            }
         }
     }
     

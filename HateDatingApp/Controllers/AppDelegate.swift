@@ -116,39 +116,40 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
                                 let NAME = fname.key
                                 print("FNAMES \(fname.key)")
                                 
-                            if NAME != "Badge " && NAME != "Badge added " && NAME != "Pressed " {
+                            if NAME != "Badge " || NAME != "Badge added " || NAME != "Pressed " {
                                 let ref2 = messageDB.child(fid).child(NAME).child("Messages")
                                 let ref3 = messageDB.child(fid).child(NAME)
-                                ref3.observe(.value, with: { (snap) in
+                                ref3.observe(.childAdded, with: { (snap) in
                                     if let value = snap.value as? NSDictionary {
-                                    if let inMessageVC = value["In Message VC "] as? String {
+                                    if let inMessageVC = value["In Message VC "] as? Bool {
                                         print("IN MESSAGE VC \(inMessageVC)")
 
                                         let state = UIApplication.shared.applicationState
-                                        if state == .background  || state == .inactive{
-                                            ref3.updateChildValues(["In Message VC ": "False "])
-                                        }
+//                                        if state == .background  || state == .inactive{
+//                                            ref3.updateChildValues(["In Message VC ": "False "])
+//                                        }
                                         
                                         
-                                        if inMessageVC == "False " {
+                                        if inMessageVC == false {
                                             ref2.observe(.childAdded, with: { (message) in
                                                 if let snapshotValue1 = message.value as? NSDictionary {
-                                                    
-                                                    if let ReceivedMessage = snapshotValue1["ReceivedMessage "] {
-                                                        
-                                                        
+                                                    print("WE ARE IN NOTIFICATION FUNC")
+                                                    let fromId = snapshotValue1["fromId"] as? String
+                                                    if fromId != Auth.auth().currentUser?.uid {
+                                                        if let ReceivedMessage = snapshotValue1["text "] as? String {
+//                                                        print("UNREAD RECEIVED MESSAGE IS \(ReceivedMessage)")
+
                                                         let messageTimeStamp = snapshotValue1["Time Stamp Received "] as! Double
                                                         ReceivedMessageTime.append(messageTimeStamp)
                                                         let currentTimeStamp = NSDate().timeIntervalSince1970
                                                         
                                                         
-                                                        let messageRead = snapshotValue1["Message Read "] as! String
-                                                        let notified = snapshotValue1["Message Notified "] as! String
-                                                        print("WE ARE IN NOTIFY CODE")
+                                                        let messageRead = snapshotValue1["Message Read "] as! Bool
+                                                            if let notified = snapshotValue1["Message Notified "] as? Bool{
                                                         
-                                                        if messageRead == "False" {
-                                                            if notified == "False" {
-                                                                self.notificationPublisher.sendNotification(title: NAME, subtitle: "YOU HAVE A NEW MESSAGE", body: ReceivedMessage as! String, badge: count, delayInterval: 3)
+                                                        if messageRead == false {
+                                                            if notified == false {
+                                                                self.notificationPublisher.sendNotification(title: NAME, subtitle: "YOU HAVE A NEW MESSAGE", body: ReceivedMessage , badge: count, delayInterval: 1)
                                                                 self.notificationPublisher.name = NAME
                                                                 self.notificationPublisher.firstNametextLable = name
                                                                 self.notificationPublisher.id = snapshot.key
@@ -158,8 +159,48 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
                                                             }
                                                         }
                                                         
-                                                    }else{
-                                                        print("NO MESSAGEE")
+                                                    }
+                                                            
+                                                }else if let imageUrl = snapshotValue1["ImageUrl"] as? String {
+                                                            print("NO TEXT MESSAGEE")
+                                                            
+                                                        if let messageRead = snapshotValue1["Message Read "] as? Bool {
+                                                            if  let notified = snapshotValue1["Message Notified "] as? Bool {
+                                                            
+                                                            
+                                                            if messageRead == false {
+                                                                if notified == false {
+                                                                    self.notificationPublisher.sendNotification(title: NAME, subtitle: "YOU HAVE A NEW MESSAGE", body: "Media received. Check Messages", badge: count, delayInterval: 3)
+                                                                    self.notificationPublisher.name = NAME
+                                                                    self.notificationPublisher.firstNametextLable = name
+                                                                    self.notificationPublisher.id = snapshot.key
+                                                                    ref2.child(message.key).updateChildValues(["Message Notified ": "True"])
+                                                                    count = count + 1
+                                                                    
+                                                                }
+                                                                }
+                                                                
+                                                            }
+                                                            
+                                                            }
+                                                        }else if let videoUrl = snapshotValue1["videoUrl"] as? String {
+                                                            let messageRead = snapshotValue1["Message Read "] as! Bool
+                                                            let notified = snapshotValue1["Message Notified "] as! Bool
+                                                            
+                                                            
+                                                            if messageRead == false {
+                                                                if notified == false {
+                                                                    self.notificationPublisher.sendNotification(title: NAME, subtitle: "YOU HAVE A NEW MESSAGE", body: "Media received. Check Messages", badge: count, delayInterval: 3)
+                                                                    self.notificationPublisher.name = NAME
+                                                                    self.notificationPublisher.firstNametextLable = name
+                                                                    self.notificationPublisher.id = snapshot.key
+                                                                    ref2.child(message.key).updateChildValues(["Message Notified ": "True"])
+                                                                    count = count + 1
+                                                                    
+                                                                }
+                                                            }
+                                                        }
+                                                    
                                                     }
                                                     
                                                 }
@@ -197,65 +238,111 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
                                 let mid = snapshot.key
                                 let NAME = Mname.key
 
-                                if NAME != "Badge " && NAME != "Badge added " && NAME != "Pressed " {
+                                if NAME != "Badge " || NAME != "Badge added " || NAME != "Pressed " {
                                     print("MNAMES \(NAME)")
                                 let ref2 = messageDB.child(mid).child(NAME).child("Messages")
                                 let ref3 = messageDB.child(mid).child(NAME)
                                    
                                     let state = UIApplication.shared.applicationState
-                                    if state == .background  || state == .inactive{
-                                        ref3.updateChildValues(["In Message VC ": "False "])
-                                    }
+//                                    if state == .background  || state == .inactive{
+//                                        ref3.updateChildValues(["In Message VC ": "False "])
+//                                    }
                                     
                                     
-                                ref3.observe(.value, with: { (snap) in
+                                    ref3.observe(.childAdded, with: { (snap) in
                                     if let value = snap.value as? NSDictionary {
-                                        if let inMessageVC = value["In Message VC "] as? String {
-                                            if inMessageVC == "False " {
+                                        if let inMessageVC = value["In Message VC "] as? Bool {
+                                            
+                                            if inMessageVC == false {
                                             ref2.observe(.childAdded, with: { (message) in
                                                 let snapshotValue1 = message.value as! NSDictionary
                                                 print("WE ARE IN NOTIFY CODE")
+                                                
+                                                let fromId = snapshotValue1["fromId"] as? String
 
-                                                if let ReceivedMessage = snapshotValue1["ReceivedMessage "] {
+                                                if fromId != Auth.auth().currentUser?.uid {
+                                                    if let ReceivedMessage = snapshotValue1["text "] as? String {
+//                                                        print("UNREAD RECEIVED MESSAGE IS \(ReceivedMessage)")
+
+//                                                    let messageTimeStamp = snapshotValue1["Time Stamp Received "] as! Double
+//                                                    ReceivedMessageTime.append(messageTimeStamp)
+//                                                    let currentTimeStamp = NSDate().timeIntervalSince1970
                                                     
-                                                    let messageTimeStamp = snapshotValue1["Time Stamp Received "] as! Double
-                                                    ReceivedMessageTime.append(messageTimeStamp)
-                                                    let currentTimeStamp = NSDate().timeIntervalSince1970
+                                                    let messageRead = snapshotValue1["Message Read "] as! Bool
+                                                        if let notified = snapshotValue1["Message Notified "] as? Bool {
+                                                        print("WE ARE IN NOTIFY CODE")
+
                                                     
-                                                    let messageRead = snapshotValue1["Message Read "] as! String
-                                                    let notified = snapshotValue1["Message Notified "] as! String
-                                                    
-                                                    
-                                                    if messageRead == "False" {
-                                                        if notified == "False" {
-                                                            self.notificationPublisher.sendNotification(title: NAME, subtitle: "YOU HAVE A NEW MESSAGE", body: ReceivedMessage as! String, badge: count, delayInterval: 3)
+                                                    if messageRead == false {
+                                                        if notified == false {
+                                                            self.notificationPublisher.sendNotification(title: NAME, subtitle: "YOU HAVE A NEW MESSAGE", body: ReceivedMessage, badge: count, delayInterval: 3)
                                                             self.notificationPublisher.name = NAME
                                                             self.notificationPublisher.firstNametextLable = name
                                                             self.notificationPublisher.id = snapshot.key
-                                                            //                                                    print("UNREAD RECEIVED MESSAGE IS \(ReceivedMessage)")
+                                                            print("UNREAD RECEIVED MESSAGE IS \(ReceivedMessage)")
                                                             ref2.child(message.key).updateChildValues(["Message Notified ": "True"])
+
                                                             count = count + 1
                                                             print("NOTIFIED IN ACTIVE \(notified)")
                                                             
                                                         }
-                                                        
                                                     }
-                                                }else{
-                                                    print("NO MESSAGEE")
                                                 }
-                                            })
-                                        
-                                        }
-                                        }
+                                                        
+                                                }else if let imageUrl = snapshotValue1["ImageUrl"] as? String {
+                                                    print("NO TEXT MESSAGEE")
+                                                        
+                                                        let messageRead = snapshotValue1["Message Read "] as! Bool
+                                                        let notified = snapshotValue1["Message Notified "] as! Bool
+                                                        
+                                                        
+                                                        if messageRead == false {
+                                                            if notified == false {
+                                                                self.notificationPublisher.sendNotification(title: NAME, subtitle: "YOU HAVE A NEW MESSAGE", body: "Media received. Check Messages", badge: count, delayInterval: 3)
+                                                                self.notificationPublisher.name = NAME
+                                                                self.notificationPublisher.firstNametextLable = name
+                                                                self.notificationPublisher.id = snapshot.key
+                                                                ref2.child(message.key).updateChildValues(["Message Notified ": "True"])
+                                                                
+                                                                count = count + 1
+                                                                print("NOTIFIED IN ACTIVE \(notified)")
+                                                                
+                                                            }
+                                                        }
+                                                    }else if let videoUrl = snapshotValue1["videoUrl"] as? String {
+                                                        let messageRead = snapshotValue1["Message Read "] as! Bool
+                                                        let notified = snapshotValue1["Message Notified "] as! Bool
+                                                        
+                                                        
+                                                        if messageRead == false {
+                                                            if notified == false {
+                                                                self.notificationPublisher.sendNotification(title: NAME, subtitle: "YOU HAVE A NEW MESSAGE", body: "Media received. Check Messages", badge: count, delayInterval: 3)
+                                                                self.notificationPublisher.name = NAME
+                                                                self.notificationPublisher.firstNametextLable = name
+                                                                self.notificationPublisher.id = snapshot.key
+                                                                ref2.child(message.key).updateChildValues(["Message Notified ": "True"])
+                                                                
+                                                                count = count + 1
+                                                                print("NOTIFIED IN ACTIVE \(notified)")
+                                                                
+                                                            }
+                                                        }
+                                                    }
+                                                    
+                                            }
+                                        })
                                         
                                     }
-
-                                })
-                                    
                                 }
-                                
+                                        
                             }
-                        }
+
+                        })
+                                    
+                    }
+                                
+                }
+            }
 //                    }
                 }
             }

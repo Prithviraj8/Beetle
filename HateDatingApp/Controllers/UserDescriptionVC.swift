@@ -18,7 +18,7 @@ class UserDescriptionVC: UIViewController {
     
     var userId = Auth.auth().currentUser?.uid
     var firstNametextLable : String!
-    var gender : String!
+    var CurrentUserGender : String!
     var user = User()
 
 
@@ -42,10 +42,10 @@ class UserDescriptionVC: UIViewController {
         getUserDescription()
     }
     @IBAction func Done(_ sender: Any) {
-        if descriptionTV.text != "Write your description here. You may also only type in keywords seperated by a comma (,) such as (coffee , workout, adventure)" {
-            let ref = Database.database().reference(fromURL: "https://beetle-5b79a.firebaseio.com/").child("users").child(gender).child(userId!)
-            ref.updateChildValues(["Description ": descriptionTV.text])
-        }
+//        if descriptionTV.text != "Write your description here. You may also only type in keywords seperated by a comma (,) such as (coffee , workout, adventure)" {
+//        }
+        let ref = Database.database().reference(fromURL: "https://beetle-5b79a.firebaseio.com/").child("users").child(CurrentUserGender).child(userId!)
+        ref.updateChildValues(["Description ": descriptionTV.text])
         dismiss(animated: true, completion: nil)
         
     }
@@ -58,11 +58,11 @@ class UserDescriptionVC: UIViewController {
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.view.endEditing(true)
-        getUserDescription()
+//        getUserDescription()
     }
     
     func getUserDescription(){
-        let ref = Database.database().reference(fromURL: "https://beetle-5b79a.firebaseio.com/").child("users").child(gender).child(userId!)
+        let ref = Database.database().reference(fromURL: "https://beetle-5b79a.firebaseio.com/").child("users").child(CurrentUserGender).child(userId!)
         ref.observe(.value) { (snap) in
             if let snapValue = snap.value as? NSDictionary {
                 if let description = snapValue["Description "] as? String {

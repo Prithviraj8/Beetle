@@ -17,7 +17,7 @@ class NotificationPublisher: NSObject {
     var messages = message()
     var name : String = ""
     var id : String = ""
-    var firstNametextLable : String = ""
+    var firstNametextLable : String!
     
     func sendNotification(
         title: String,
@@ -85,16 +85,18 @@ extension NotificationPublisher : UNUserNotificationCenterDelegate {
         case UNNotificationDefaultActionIdentifier:
             print("USER OPENED THE NOTIFCATION FROM THE APP")
             notifyCount = 1
-            completionHandler()
-            print("FIRST IS \(Auth.auth().currentUser?.uid) & id is \(id)")
+//            completionHandler()
+
+            print("FIRST IS \(Auth.auth().currentUser?.uid) & id is \(id) and name passed is \(firstNametextLable)")
             if id != ""{
             let notificationPressedMale = Database.database().reference(fromURL: "https://beetle-5b79a.firebaseio.com/").child("users").child("Match").child("Male").child(Auth.auth().currentUser!.uid).child(firstNametextLable).child(id)
-            notificationPressedMale.updateChildValues(["Pressed ": "True"])
+            notificationPressedMale.updateChildValues(["Pressed ": true])
             
             let notificationPressedFemale = Database.database().reference(fromURL: "https://beetle-5b79a.firebaseio.com/").child("users").child("Match").child("Female").child(Auth.auth().currentUser!.uid).child(firstNametextLable).child(id)
-            notificationPressedFemale.updateChildValues(["Pressed ": "True"])
+            notificationPressedFemale.updateChildValues(["Pressed ": true])
             }
-            
+            completionHandler()
+
         default:
             print("THE DEFAULT CASE WAS CALLED ")
             completionHandler()

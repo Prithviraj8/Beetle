@@ -23,16 +23,17 @@ class UserTableViewController: UIViewController, UITextFieldDelegate, UITableVie
     var IDs = [String]()
     let searchController = UISearchController(searchResultsController: nil)
     var firstNametextLable : String = ""
-    var femaleId : String = ""
-    var femaleName : String = ""
+    var ID : String = ""
+    var NAME : String = ""
     let userID = Auth.auth().currentUser?.uid
     var messages = message()
     var ref : DatabaseReference!
     var NAMES : [names] = [names]()
-    var femaleNames = [String]()
+    var MatchedNames = [String]()
     var age : Int!
     var gender : String = ""
-    
+    var currentUsersGender : String = ""
+    var newMessageReceived : Bool?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -45,18 +46,18 @@ class UserTableViewController: UIViewController, UITextFieldDelegate, UITableVie
         searchController.dimsBackgroundDuringPresentation = false
         definesPresentationContext = true
         matchesTableView.register(UserCell.self, forCellReuseIdentifier: "Cell")
-        matchesTableView.separatorStyle = .none
-        
+        matchesTableView.separatorStyle = .none        
     }
     
     @IBAction func backButton(_ sender: Any) {
-        dismiss(animated: true, completion: nil)
+//        dismiss(animated: true, completion: nil)
+        performSegue(withIdentifier: "BackToMainPage", sender: self)
     }
 
      func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
         // #warning Incomplete implementation, return the number of rows
-        return femaleNames.count
+        return MatchedNames.count
     }
 
      func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -66,15 +67,24 @@ class UserTableViewController: UIViewController, UITextFieldDelegate, UITableVie
     
 //        cell.selectionStyle = UITableViewCellSelectionStyle.none
 
-        let name = femaleNames[indexPath.row]
-        print("PRO IS \(profilePicURL)")
-
+        let name = MatchedNames[indexPath.row]
         let profilePic = profilePicURL[indexPath.row]
-        print("PRO IS \(profilePic)")
-
         let id = IDs[indexPath.row]
+        if newMessageReceived == true {
+//            print("NEW MESSAGE FOR HER \(femaleName)")
 
-        let badgeCountRef = Database.database().reference(fromURL: "https://beetle-5b79a.firebaseio.com/").child("users").child("Match").child("Male").child(userID!).child(firstNametextLable).child(id)
+            if NAME == cell.textLabel?.text {
+
+                UIView.animate(withDuration: 2, animations: {
+                    cell.setGradientBackground(colorOne: Colors.lightBlue, colorTwo: Colors.darkBlue)
+                }) { (true) in
+                    UIView.animate(withDuration: 1, animations: {
+                        cell.backgroundColor = .white
+                    })
+                }
+            }
+        }
+        let badgeCountRef = Database.database().reference(fromURL: "https://beetle-5b79a.firebaseio.com/").child("users").child("Match").child(currentUsersGender).child(userID!).child(firstNametextLable).child(id)
         badgeCountRef.observe(.value) { (snap) in
             if let snapshotValue = snap.value as? NSDictionary{
                 if let badge = snapshotValue["Badge added "] as? String {
@@ -89,7 +99,7 @@ class UserTableViewController: UIViewController, UITextFieldDelegate, UITableVie
                             }) { (true) in
                                     UIView.animate(withDuration: 1, animations: {
                                         cell.backgroundColor = .white
-                                    })
+                                })
                         }
                     }
                 }
@@ -118,7 +128,7 @@ class UserTableViewController: UIViewController, UITextFieldDelegate, UITableVie
             var ReceivedMessageTime = [Date]()
             var SentMessageTime = [Date]()
 
-            let ref = Database.database().reference(fromURL: "https://beetle-5b79a.firebaseio.com/").child("users").child("Match").child("Male").child((Auth.auth().currentUser?.uid)!).child(firstNametextLable).child(id).child(name).child("Messages")
+            let ref = Database.database().reference(fromURL: "https://beetle-5b79a.firebaseio.com/").child("users").child("Match").child(currentUsersGender).child((Auth.auth().currentUser?.uid)!).child(firstNametextLable).child(id).child(name).child("Messages")
                 ref.observe(.childAdded) { (snapshot) in
                     
                     if  let snapshotValue = snapshot.value as? NSDictionary {
@@ -167,28 +177,31 @@ class UserTableViewController: UIViewController, UITextFieldDelegate, UITableVie
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "goToChat" {
             if let indexPath = self.matchesTableView.indexPathForSelectedRow {
-                let VC = segue.destination as! ChatLogTableViewController
-                let femaleName = femaleNames[indexPath.row]
+                let VC = segue.destination as! ChatLogController
+                let femaleName = MatchedNames[indexPath.row]
                 let Id = IDs[indexPath.row]
                 let profilePic = profilePicURL[indexPath.row]
                 print("THE MALE NAME PASSED IS \(firstNametextLable)")
                 VC.firstNametextLable = firstNametextLable
-                VC.femaleName = femaleName
-                VC.femaleId = Id
-                VC.femaleNames = femaleNames
+                VC.name = femaleName
+                VC.id = Id
+                VC.names = MatchedNames
                 VC.IDs = IDs
                 VC.profilePicURL = profilePicURL
                 VC.profilePic = profilePic
                 VC.age = age
-                VC.gender = "Male"
+                VC.gender = gender
+                VC.currentUsersGender = currentUsersGender
             }
         }
         
-        if segue.identifier == "goBackToMaleSearch" {
+        if segue.identifier == "BackToMainPage" {
+//            dismiss(animated: true, completion: nil)
             let VC = segue.destination as! SearchPartnerViewController
             VC.firstNametextLable = firstNametextLable
             VC.IDs = IDs
-            dismiss(animated: true, completion: nil)
+            VC.gender = gender
+            VC.CurrentUserGender = currentUsersGender
 
         }
         

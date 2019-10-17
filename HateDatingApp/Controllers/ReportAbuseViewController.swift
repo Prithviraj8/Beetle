@@ -20,7 +20,9 @@ class ReportAbuseViewController: UIViewController {
     
     
     var messages = message()
+    var currentUsersGender : String = ""
     var gender : String = ""
+
     var firstNameTextLabel : String = ""
     var profilePic : String = ""
     var profilePicURL = [String]()
@@ -67,17 +69,10 @@ class ReportAbuseViewController: UIViewController {
     
     @IBAction func submitReviewPressed(_ sender: Any) {
         
-        if gender == "Male"{
-            let ref = Database.database().reference(fromURL: "https://beetle-5b79a.firebaseio.com/").child("users").child("Report Abuse").child("Male").child(userID!).child(firstNameTextLabel).child(id).child(name).child("Report")
+            let ref = Database.database().reference(fromURL: "https://beetle-5b79a.firebaseio.com/").child("users").child("Report Abuse").child(currentUsersGender).child(userID!).child(firstNameTextLabel).child(id).child(name).child("Report")
             ref.childByAutoId().updateChildValues(["Report ": messageTV.text!])
-        }else{
-            let ref = Database.database().reference(fromURL: "https://beetle-5b79a.firebaseio.com/").child("users").child("Report Abuse").child("Female").child(userID!).child(firstNameTextLabel).child(id).child(name).child("Report")
-            ref.childByAutoId().updateChildValues(["Report ": messageTV.text!])
-        }
         
-        
-        
-        alertTheUser(title: "Report Submitted", message: "You shall receive an email within 24-48 hours regarding the status of your report.")
+            alertTheUser(title: "Report Submitted", message: "You shall receive an email within 24-48 hours regarding the status of your report.")
     }
     
     

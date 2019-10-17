@@ -16,6 +16,7 @@ class PasswordChangeViewController: UIViewController,UITextFieldDelegate {
     @IBOutlet weak var incorrectPasswordMSG: UILabel!
     
     var firstNametextLable : String!
+    var currentUserGender : String!
     var gender : String!
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,22 +38,12 @@ class PasswordChangeViewController: UIViewController,UITextFieldDelegate {
         let email = Auth.auth().currentUser?.email
         
         let credential = EmailAuthProvider.credential(withEmail: email!, password: currentPassword.text!)
-        let ref = Database.database().reference(fromURL: "https://beetle-5b79a.firebaseio.com/").child("users").child(gender).child((Auth.auth().currentUser?.uid)!)
-    
-//        ref.observeSingleEvent(of: .value) { (snapshot) in
-//            let snapshotValue = snapshot.value as! NSDictionary
-//            let current_password = snapshotValue["Password "] as! String
-//            if self.currentPassword.text != current_password {
-//                self.incorrectPasswordMSG.isHidden = false
-//            }else{
-//
-//            }
-//        }
+        let ref = Database.database().reference(fromURL: "https://beetle-5b79a.firebaseio.com/").child("users").child(currentUserGender).child((Auth.auth().currentUser?.uid)!)
+ 
     }
     
     @IBAction func changePassword(_ sender: Any) {
         
-        SVProgressHUD.show()
         let user = Auth.auth().currentUser
         let email = Auth.auth().currentUser?.email
         
@@ -60,6 +51,7 @@ class PasswordChangeViewController: UIViewController,UITextFieldDelegate {
         
         
         if newPassword.text != "" {
+            SVProgressHUD.show()
             user?.reauthenticateAndRetrieveData(with: credential, completion: { (result, error) in
                 if error != nil{
                     print("Error changing user's password")
@@ -108,6 +100,7 @@ class PasswordChangeViewController: UIViewController,UITextFieldDelegate {
         if segue.identifier == "backToSettings" {
             let VC = segue.destination as! SettingsViewController
             VC.firstNametextLable = firstNametextLable
+            VC.currentUserGender = currentUserGender
             VC.gender = gender
             dismiss(animated: true, completion: nil)
 

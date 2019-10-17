@@ -17,13 +17,13 @@ target 'HateDatingApp' do
   end
 
    pod 'Firebase'
+   pod 'Firebase/Core'
    pod 'Firebase/Auth'
    pod 'Firebase/Database'
    pod 'Firebase/Storage'
    pod 'SVProgressHUD'
    pod 'ChameleonFramework'
    # pod 'RealmSwift' 
-   pod 'Firebase/Core'
    pod 'JSQMessagesViewController'
    pod 'SDWebImage'
    pod 'SwiftKeychainWrapper'
@@ -33,10 +33,11 @@ target 'HateDatingApp' do
    pod 'IQAudioRecorderController'
    #pod 'JSQMessagesViewController', '7.3.3'
    pod 'IDMPhotoBrowser'
-#pod 'gooey-cell', '~> 1.0'
   pod 'CBStoreHouseRefreshControl'
-#pod 'PullToMakeSoup', '~> 2.0'
  pod 'GoogleSignIn'
+
+#pod 'gooey-cell', '~> 1.0'
+#pod 'PullToMakeSoup', '~> 2.0'
  # pod "Keynode"
 
 

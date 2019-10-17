@@ -31,6 +31,12 @@ class TinderCard: UIView{
     var originalPoint = CGPoint.zero
     var imageViewStatus = UIImageView()
     var overLayImage = UIImageView()
+  
+    var like1 = UIImageView()
+    var like2 = UIImageView()
+    var like3 = UIImageView()
+    
+    var showInfoButton = UIButtonX()
     var isLiked = false
     var NAME : String = ""
     var ref = Database.database().reference()
@@ -38,6 +44,8 @@ class TinderCard: UIView{
     var user = User()
     weak var delegate: TinderCardDelegate?
     var receiverId : String = ""
+    var emojiOpstions : EmojiOptionsOverlay!
+    
     
     public init(frame: CGRect, pic: String, name: String,Id: String) {
         super.init(frame: frame)
@@ -67,12 +75,13 @@ class TinderCard: UIView{
         let panGestureRecognizer = UIPanGestureRecognizer(target: self, action: #selector(self.beingDragged))
         addGestureRecognizer(panGestureRecognizer)
         
+//        let infoRecognizer = UIGestureRecognizer(target: self, action: #selector(self.showInfo))
         let backGroundImageView = UIImageView(frame:bounds)
         //        backGroundImageView.image = UIImage(named:String(Int(1 + arc4random() % (8 - 1))))
         //        backGroundImageView.contentMode = .scaleAspectFill
         //        backGroundImageView.clipsToBounds = true;
         //        addSubview(backGroundImageView)
-        
+
         
         
         guard let url = URL(string: pic) else {
@@ -99,7 +108,7 @@ class TinderCard: UIView{
                     backGroundImageView.contentMode = .scaleAspectFill
                     backGroundImageView.clipsToBounds = true;
                     self.addSubview(backGroundImageView)
-                    
+
                     
                                             let labelText = UILabel(frame:CGRect(x: 90, y: self.frame.size.height - 80, width: self.frame.size.width - 100, height: 60))
 
@@ -117,18 +126,24 @@ class TinderCard: UIView{
                     self.overLayImage.alpha = 0
                     self.addSubview(self.overLayImage)
                     
-                    
+                    self.like1 = UIImageView(frame: CGRect(x: (self.frame.size.width/2) - 38, y: 100, width: 100, height: 100))
+                    self.addSubview(self.like1)
+                    self.like1.alpha = 0
+                    self.like2 = UIImageView(frame: CGRect(x: (self.frame.size.width/2) - 38, y: 200, width: 100, height: 100))
+                    self.addSubview(self.like2)
+                    self.like2.alpha = 0
+                    self.like3 = UIImageView(frame: CGRect(x: (self.frame.size.width/2) - 38, y: 300, width: 100, height: 100))
+                    self.addSubview(self.like3)
+                    self.like3.alpha = 0
                     
                 }
             }
             
         }).resume()
-  
-      
     }
-    
+  
     @objc func beingDragged(_ gestureRecognizer: UIPanGestureRecognizer) {
-        
+
         xCenter = gestureRecognizer.translation(in: self).x
         yCenter = gestureRecognizer.translation(in: self).y
         switch gestureRecognizer.state {
@@ -145,7 +160,7 @@ class TinderCard: UIView{
             let transforms = CGAffineTransform(rotationAngle: rotationAngel)
             let scaleTransform: CGAffineTransform = transforms.scaledBy(x: scale, y: scale)
             self.transform = scaleTransform
-            updateOverlay(xCenter)
+            updateOverlay(distanceX: xCenter,distanceY: yCenter)
             break;
             
         // swipe ended
@@ -159,13 +174,66 @@ class TinderCard: UIView{
         }
     }
     
-    func updateOverlay(_ distance: CGFloat) {
+    func updateOverlay(distanceX: CGFloat, distanceY : CGFloat) {
         
-        imageViewStatus.image = distance > 0 ? #imageLiteral(resourceName: "btn_like_pressed") : #imageLiteral(resourceName: "btn_skip_pressed")
-        overLayImage.image = distance > 0 ? #imageLiteral(resourceName: "overlay_like") : #imageLiteral(resourceName: "overlay_skip")
-        imageViewStatus.alpha = min(fabs(distance) / 100, 0.5)
-        overLayImage.alpha = min(fabs(distance) / 100, 0.5)
-        delegate?.currentCardStatus(card: self, distance: distance)
+        imageViewStatus.image = distanceX > 0 ? #imageLiteral(resourceName: "btn_like_pressed") : #imageLiteral(resourceName: "btn_skip_pressed")
+        overLayImage.image = distanceX > 0 ? #imageLiteral(resourceName: "overlay_like") : #imageLiteral(resourceName: "overlay_skip")
+        imageViewStatus.alpha = min(fabs(distanceX) / 100, 0.5)
+        overLayImage.alpha = min(fabs(distanceX) / 100, 0.5)
+        delegate?.currentCardStatus(card: self, distance: distanceX)
+
+//     print("DISTANCE Y IS \(distanceY)")
+        print("Threshhold margin \(THRESHOLD_MARGIN)")
+        if distanceX > 0{
+            if distanceY <= -10{
+                UIView.animate(withDuration: 0.3) {
+                    self.like1.image = UIImage(named: "like1")
+//                    self.like1.alpha = min(fabs(distanceY)/100,1)
+                    self.like1.alpha = 1
+                    self.like2.alpha = 0
+                    self.like3.alpha = 0
+
+                }
+            }else if distanceY > -20 && distanceY <= 30{
+                UIView.animate(withDuration: 0.3) {
+                    self.like2.image = UIImage(named: "like2")
+                    self.like1.alpha = 0
+                    self.like3.alpha = 0
+                    self.like2.alpha = 1
+                }
+            }else if distanceY > 30 {
+                UIView.animate(withDuration: 0.3) {
+                    self.like3.image = UIImage(named: "like3")
+                    self.like3.alpha = 1
+                    self.like1.alpha = 0
+                    self.like2.alpha = 0
+                    
+                }
+            }else{
+                UIView.animate(withDuration: 0.1) {
+                    self.like1.alpha = 0
+                    self.like2.alpha = 0
+                    self.like3.alpha = 0
+                }
+            }
+        }else{
+            UIView.animate(withDuration: 0.1) {
+                self.like1.alpha = 0
+                self.like2.alpha = 0
+                self.like3.alpha = 0
+            }
+            
+        }
+        if distanceY == 0 {
+            UIView.animate(withDuration: 0.1) {
+                self.like1.alpha = 0
+                self.like2.alpha = 0
+                self.like3.alpha = 0
+            }
+        }
+        
+        
+        
     }
 //    func getLoggedInUserName(name: String) {
 //        firstNametextLable = name
@@ -173,6 +241,9 @@ class TinderCard: UIView{
     
     func afterSwipeAction() {
         
+        like1.alpha = 0
+        like2.alpha = 0
+        like3.alpha = 0
         
         if xCenter > THERESOLD_MARGIN {
             rightAction()
@@ -193,7 +264,6 @@ class TinderCard: UIView{
     }
    
     
-    
     func rightAction() {
         
         let finishPoint = CGPoint(x: frame.size.width*2, y: 2 * yCenter + originalPoint.y)
@@ -208,7 +278,7 @@ class TinderCard: UIView{
        
         print("The NAME OF THE pic being viewed: \(self.NAME)")
         
-        user.save_Info_For_Male_User_who_Swipped_A_Female_User(name: NAME,Id : receiverId)
+        user.Save_Info_For_User(name: NAME,Id : receiverId)
         
 
         
@@ -251,7 +321,7 @@ class TinderCard: UIView{
         print("The NAME OF THE pic being viewed: \(self.NAME)")
         
 
-        user.save_Info_For_Male_User_who_Swipped_A_Female_User(name: NAME,Id: receiverId)
+        user.Save_Info_For_User(name: NAME,Id: receiverId)
 
     }
     // left click action

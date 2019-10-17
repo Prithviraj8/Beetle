@@ -18,7 +18,10 @@ class SettingsViewController: UIViewController, UITextFieldDelegate, UITableView
     var firstNametextLable : String = ""
     let changeTypes = ["Change email","Change Password","Privacy and Terms"]
     var userID = Auth.auth().currentUser?.uid
+    var currentUserGender : String!
     var gender : String!
+
+    
     @IBOutlet var ChangeTableView: UITableView!
     @IBOutlet weak var navigationBar: UINavigationBar!
     @IBOutlet weak var backToMaleOrFemale: UIBarButtonItem!
@@ -56,11 +59,8 @@ class SettingsViewController: UIViewController, UITextFieldDelegate, UITableView
    
     @IBAction func backButton(_ sender: Any) {
 
-        if gender == "Male"{
-            performSegue(withIdentifier: "backToMale", sender: self)
-        }else{
-            performSegue(withIdentifier: "backToFemale", sender: self)
-        }
+            dismiss(animated: true, completion: nil)
+            performSegue(withIdentifier: "BackToMainPage", sender: self)
     }
     @IBAction func privacyPageBackButton(_ sender: Any) {
         dismiss(animated: true, completion: nil)
@@ -119,20 +119,18 @@ class SettingsViewController: UIViewController, UITextFieldDelegate, UITableView
 
         }else if segue.identifier == "goToChangePassword" {
             let destinationVC = segue.destination as! PasswordChangeViewController
-            destinationVC.gender = gender
+            destinationVC.currentUserGender = currentUserGender
             destinationVC.firstNametextLable = firstNametextLable
+            destinationVC.gender = gender
             
         
-        }else if segue.identifier == "backToMale"{
+        }else if segue.identifier == "BackToMainPage"{
             let destinationVC = segue.destination as! SearchPartnerViewController
             destinationVC.firstNametextLable = firstNametextLable
-            
-        }else if segue.identifier == "backToFemale"{
-            let destinationVC = segue.destination as! FemaleSearchPartnerViewController
-            destinationVC.firstNametextLable = firstNametextLable
+            destinationVC.CurrentUserGender = currentUserGender
+            destinationVC.gender = gender
         }
-
     }
-    
+
 
 }

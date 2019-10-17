@@ -31,6 +31,7 @@ class TinderCardFemale: UIView{
     var originalPoint = CGPoint.zero
     var imageViewStatus = UIImageView()
     var overLayImage = UIImageView()
+    var showInfoButton = UIButtonX()
     var isLiked = false
     var NAME : String = ""
     var ref = Database.database().reference()
@@ -66,7 +67,8 @@ class TinderCardFemale: UIView{
         
         let panGestureRecognizer = UIPanGestureRecognizer(target: self, action: #selector(self.beingDragged))
         addGestureRecognizer(panGestureRecognizer)
-        
+//        let infoRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(self.showInfo))
+
         let backGroundImageView = UIImageView(frame:bounds)
      
         
@@ -94,7 +96,7 @@ class TinderCardFemale: UIView{
                     backGroundImageView.contentMode = .scaleAspectFill
                     backGroundImageView.clipsToBounds = true;
                     self.addSubview(backGroundImageView)
-                    
+
                     
                     let labelText = UILabel(frame:CGRect(x: 90, y: self.frame.size.height - 80, width: self.frame.size.width - 100, height: 60))
                     
@@ -112,20 +114,24 @@ class TinderCardFemale: UIView{
                     self.overLayImage = UIImageView(frame:self.bounds)
                     self.overLayImage.alpha = 0
                     self.addSubview(self.overLayImage)
+                    
+//                    self.showInfoButton = UIButtonX(frame: CGRect(x: (self.frame.size.width - 60), y: 320, width: 37, height: 37))
+//                    self.showInfoButton.setImage(UIImage(named: "info")?.withRenderingMode(.alwaysOriginal), for: .normal)
+//                    self.showInfoButton.addTarget(self, action: #selector(self.showInfo), for: .touchUpInside)
+//                    self.addSubview(self.showInfoButton)
+                    
                 }
             }
             
         }).resume()
   
-//        imageViewStatus = UIImageView(frame: CGRect(x: (frame.size.width / 2) - 37.5, y: 25, width: 75, height: 75))
-//        imageViewStatus.alpha = 0
-//        addSubview(imageViewStatus)
-//
-//        overLayImage = UIImageView(frame:bounds)
-//        overLayImage.alpha = 0
-//        addSubview(overLayImage)
     }
-    
+    @objc func showInfo(){
+        let showInfo = Show_Info()
+        showInfo.name = NAME
+        showInfo.Id = receiverId
+        showInfo.gender = "Female"
+    }
     @objc func beingDragged(_ gestureRecognizer: UIPanGestureRecognizer) {
         
         xCenter = gestureRecognizer.translation(in: self).x

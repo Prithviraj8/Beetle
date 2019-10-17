@@ -22,12 +22,13 @@ class ProfileUpdateViewController: UIViewController,UIImagePickerControllerDeleg
     
     var userId = Auth.auth().currentUser?.uid
     var firstNametextLable : String!
+    var CurrentUserGender : String!
     var gender : String!
-    var user = User()
+    var user : User!
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        user.gender = gender
+//        user.CurrentUserGender = CurrentUserGender
 
         // Do any additional setup after loading the view.
     
@@ -65,8 +66,8 @@ class ProfileUpdateViewController: UIViewController,UIImagePickerControllerDeleg
         ProfilePic3?.addGestureRecognizer(tapGesture2)
         ProfilePic4?.addGestureRecognizer(tapGesture3)
 
-        NextButton?.translatesAutoresizingMaskIntoConstraints = false
-        NextButton?.layer.masksToBounds = true
+//        NextButton?.translatesAutoresizingMaskIntoConstraints = false
+//        NextButton?.layer.masksToBounds = true
         NextButton?.setGradientBackground(colorOne: Colors.brightOrange, colorTwo: Colors.lightPink)
         
         
@@ -79,9 +80,8 @@ class ProfileUpdateViewController: UIViewController,UIImagePickerControllerDeleg
     }
     
     func uploadImage(){
-        print("gender is \(user.gender)")
 
-        let ref = Database.database().reference(fromURL: "https://beetle-5b79a.firebaseio.com/").child("users").child(user.gender).child(self.userId!)
+        let ref = Database.database().reference(fromURL: "https://beetle-5b79a.firebaseio.com/").child("users").child(CurrentUserGender).child(self.userId!)
 
         ref.observe(.value) { (snap) in
             if let value = snap.value as? NSDictionary {
@@ -99,13 +99,7 @@ class ProfileUpdateViewController: UIViewController,UIImagePickerControllerDeleg
                                     let height : CGFloat = (image?.size.height)!
                                     let ratio = width/height
                                     print("MAIN PIC RATIO \(ratio)")
-//                                    if self.mainProfilePic.frame.width >= self.mainProfilePic.frame.height {
-//                                        let newHeight = self.mainProfilePic.frame.width / ratio
-//                                        self.mainProfilePic.frame.size = CGSize(width: self.mainProfilePic.frame.width, height: newHeight)
-//                                    }else{
-//                                        let newWidth = self.mainProfilePic.frame.height * ratio
-//                                        self.mainProfilePic.frame.size = CGSize(width: newWidth, height: self.mainProfilePic.frame.height)
-//                                    }
+
                                     self.mainProfilePic?.image = UIImage(data: data!)
                                     SVProgressHUD.dismiss()
                                 }
@@ -250,7 +244,7 @@ class ProfileUpdateViewController: UIViewController,UIImagePickerControllerDeleg
                         let downloadURL = url?.absoluteString
                         
                         
-                        let ref = Database.database().reference(fromURL: "https://beetle-5b79a.firebaseio.com/").child("users").child(self.gender).child(self.userId!)
+                        let ref = Database.database().reference(fromURL: "https://beetle-5b79a.firebaseio.com/").child("users").child(self.CurrentUserGender).child(self.userId!)
                         if self.user.imageTapped == "ProfilePic2" {
                             ref.updateChildValues(["Extra pic2 ": downloadURL])
                         }else if self.user.imageTapped == "ProfilePic3" {
@@ -275,7 +269,7 @@ class ProfileUpdateViewController: UIViewController,UIImagePickerControllerDeleg
         if segue.identifier == "descriptionSegue"{
             let VC = segue.destination as? UserDescriptionVC
             VC?.firstNametextLable = firstNametextLable
-            VC?.gender = gender
+            VC?.CurrentUserGender = CurrentUserGender
         }
     }
     

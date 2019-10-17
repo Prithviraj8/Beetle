@@ -41,6 +41,8 @@ class MaleProfileViewController: UIViewController {
             destinationVC.firstNametextLable = stringHolder
             destinationVC.userID = userID
             destinationVC.age = age
+            destinationVC.CurrentUserGender = "Male"
+            destinationVC.gender = "Female"
         }
     }
     

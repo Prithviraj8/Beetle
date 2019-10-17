@@ -20,29 +20,52 @@ class User {
     var age : Int!
     var COUNT : Int!
     var imageTapped: String!
+    var CurrentUserGender : String!
+    var ids = [String]()
+    var pics = [String]()
     var gender : String!
+//    var cardDisY : CGFloat!
+//    var cardDisX : CGFloat!
     
-    func save_Info_For_Male_User_who_Swipped_A_Female_User(name: String,Id: String){
+    
+    
+    func Save_Info_For_User(name: String,Id: String){
         let userID = Auth.auth().currentUser?.uid
-        print("THE CURRENT USERS user ID is \(userID)")
-
-        ref = Database.database().reference(fromURL: "https://beetle-5b79a.firebaseio.com/").child("users").child("MSF").child(userID!)
-
-        ref.observe(.value, with: { (snapshot) in
-            if let snapshotValue = snapshot.value as? NSDictionary {
+        if CurrentUserGender == "Male" {
+            ref = Database.database().reference(fromURL: "https://beetle-5b79a.firebaseio.com/").child("users").child("MSF").child(userID!)
             
-                self.firstNametextLable = (snapshotValue["Name "] as! String)
-                print("The name of the user is received \(self.firstNametextLable)")
+            ref.observe(.value, with: { (snapshot) in
+                if let snapshotValue = snapshot.value as? NSDictionary {
+                    
+                    self.firstNametextLable = (snapshotValue["Name "] as! String)
+                    
+                    self.ref2 = Database.database().reference(fromURL: "https://beetle-5b79a.firebaseio.com/").child("users").child("Male Swipped Female").child(userID!)
+                    
+                    let usersChildRef = self.ref2.child(self.firstNametextLable).child(Id).child(name)
+                    usersChildRef.updateChildValues(["Added ": "True"])
+                    
+                }
+            })
+        }else{
+            ref = Database.database().reference(fromURL: "https://beetle-5b79a.firebaseio.com/").child("users").child("FSM").child(userID!)
             
-            
-            
-                self.ref2 = Database.database().reference(fromURL: "https://beetle-5b79a.firebaseio.com/").child("users").child("Male Swipped Female").child(userID!)
-
-                let usersChildRef = self.ref2.child(self.firstNametextLable).child(Id).child(name)
-                usersChildRef.updateChildValues(["Added ": "True"])
-
+            ref.observe(.value, with: { (snapshot) in
+                if let snapshotValue = snapshot.value as? NSDictionary {
+                    
+                    self.firstNametextLable = (snapshotValue["Name "] as! String)
+                    print("The name of the user is received \(self.firstNametextLable)")
+                    
+                    
+                    
+                    self.ref2 = Database.database().reference(fromURL: "https://beetle-5b79a.firebaseio.com/").child("users").child("Female Swipped Male").child(userID!)
+                    
+                    let usersChildRef = self.ref2.child(self.firstNametextLable).child(Id).child(name)
+                    usersChildRef.updateChildValues(["Added ": "True"])
+                    
+                }
+            })
         }
-        })
+     
 
     }
     
@@ -51,22 +74,6 @@ class User {
         let messages = message()
         print("THE CURRENT USERS user ID is \(userID)")
         messages.sender = userID!
-        ref = Database.database().reference(fromURL: "https://beetle-5b79a.firebaseio.com/").child("users").child("FSM").child(userID!)
-
-        ref.observe(.value, with: { (snapshot) in
-            if let snapshotValue = snapshot.value as? NSDictionary {
-            
-                self.firstNametextLable = (snapshotValue["Name "] as! String)
-                print("The name of the user is received \(self.firstNametextLable)")
-            
-            
-            
-                self.ref2 = Database.database().reference(fromURL: "https://beetle-5b79a.firebaseio.com/").child("users").child("Female Swipped Male").child(userID!)
-
-                let usersChildRef = self.ref2.child(self.firstNametextLable).child(Id).child(name)
-                usersChildRef.updateChildValues(["Added ": "True"])
-
-            }
-        })
+       
     }
 }

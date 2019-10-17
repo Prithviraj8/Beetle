@@ -116,6 +116,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate, GIDSignInDeleg
     
     func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
         if error != nil {
+            SVProgressHUD.show()
             print("ERROR WHILE GOOGLE SIGNING IN IS \(error.localizedDescription)")
         }else{
             print("SUCCESSFULLY LOGGED IN GOOGLE USER \(user)")
@@ -124,13 +125,15 @@ class LoginViewController: UIViewController, UITextFieldDelegate, GIDSignInDeleg
             Auth.auth().signInAndRetrieveData(with: credentials) { (result, err) in
                 if err != nil {
                     print("ERROR \(String(describing: err))")
+                    
                 }else{
                     self.SignInInfo.email = (result?.user.email)!
                     self.SignInInfo.name = (result?.user.displayName)!
                     self.SignInInfo.userID = (result?.user.uid)!
                     print("Google users uid is \(result!.user.uid))")
+                    self.SignInInfo.IDToken = user.authentication.idToken
+                    self.SignInInfo.accessToken = user.authentication.accessToken
                     self.handleGoogleSignIn()
-                    
                 }
             }
         }
@@ -143,46 +146,105 @@ class LoginViewController: UIViewController, UITextFieldDelegate, GIDSignInDeleg
         let maleRef = Database.database().reference(fromURL: "https://beetle-5b79a.firebaseio.com/").child("users").child("Male")
         let femaleRef = Database.database().reference(fromURL: "https://beetle-5b79a.firebaseio.com/").child("users").child("Female")
         
+//        GoogleAuthProvider.credential(withIDToken: SignInInfo.IDToken, accessToken: SignInInfo.accessToken)
         
-        
-        maleRef.observe(.childAdded, with: { (snapshot) in
-            let snapshotValue = snapshot.value as! NSDictionary
-            let name = snapshotValue["Name "] as! String
-            let userID = snapshotValue["UserId "] as! String
-            let email = snapshotValue["Email "] as! String
-            let age = snapshotValue["Age "] as! Int
-            if self.SignInInfo.userID == userID {
-                print("THE NAME PASSED IS \(name)")
-                self.user.name = name
-                self.user.id = userID
-                self.user.age = age
-                print("Login Completed")
-                
-                self.performSegue(withIdentifier: "goToMaleSelectPartner", sender: self)
-                SVProgressHUD.dismiss()
-            }
+        var ids = [String]()
+        var userids = [String]()
+        maleRef.observeSingleEvent(of: DataEventType.value, with: { (snap) in
             
-        })
-        
-        
-        femaleRef.observe(.childAdded, with: { (snapshot) in
-            let snapshotValue = snapshot.value as! NSDictionary
-            let name = snapshotValue["Name "] as! String
-            let userID = snapshotValue["UserId "] as! String
-            let age = snapshotValue["Age "] as! Int
+        if snap.hasChild(self.SignInInfo.userID) {
+            let ref = maleRef.child(self.SignInInfo.userID)
+            ref.observeSingleEvent(of: .value, with: { (snapshot) in
+                let snapshotValue = snapshot.value as! NSDictionary
+                let name = snapshotValue["Name "] as! String
+                let userID = snapshotValue["UserId "] as! String
+                let email = snapshotValue["Email "] as! String
+                let age = snapshotValue["Age "] as! Int
+                let currentUserGender = snapshotValue["Gender "]as! String
+
+                
+                userids.append(userID)
+                if self.SignInInfo.userID == userID {
+                    ids.append(userID)
+                    let signInConfirmed = maleRef.child(userID)
+                    signInConfirmed.updateChildValues(["Signed In " : "True"])
+                    print("THE NAME PASSED IS \(name)")
+                    self.user.name = name
+                    self.user.id = userID
+                    self.user.age = age
+                    self.user.CurrentUserGender = currentUserGender
+                    self.user.gender = "Female"
+                    print("Login Completed")
+                    
+                    self.performSegue(withIdentifier: "Main", sender: self)
+                    SVProgressHUD.dismiss()
+                    
+                }
+            })
             
-            let email = snapshotValue["Email "] as! String
-            if self.SignInInfo.email == email {
-                self.user.name = name
-                self.user.id = userID
-                self.user.age = age
-                print("Login Completed")
                 
-                self.performSegue(withIdentifier: "goToFemaleSelectPartner", sender: self)
-                SVProgressHUD.dismiss()
+            }else{
+//                self.alertUserForSignUp(title: "No user detected with the email", message: "Provide an existing email please.")
+//                SVProgressHUD.dismiss()
+            
+            femaleRef.observeSingleEvent(of: DataEventType.value, with: { (snap) in
                 
+                if snap.hasChild(self.SignInInfo.userID) {
+                    let ref = maleRef.child(self.SignInInfo.userID)
+                    ref.observeSingleEvent(of: .value, with: { (snapshot) in
+                        
+                        let snapshotValue = snapshot.value as! NSDictionary
+                        let name = snapshotValue["Name "] as! String
+                        let userID = snapshotValue["UserId "] as! String
+                        let age = snapshotValue["Age "] as! Int
+                        let currentUserGender = snapshotValue["Gender "]as! String
+                        let email = snapshotValue["Email "] as! String
+                        
+                        userids.append(userID)
+                        
+                        if self.SignInInfo.userID == userID {
+                            ids.append(userID)
+                            
+                            let signInConfirmed = femaleRef.child(userID)
+                            signInConfirmed.updateChildValues(["Signed In " : "True"])
+                            self.user.name = name
+                            self.user.id = userID
+                            self.user.age = age
+                            self.user.CurrentUserGender = currentUserGender
+                            self.user.gender = "Male"
+
+                            print("Login Completed")
+                            
+                            self.performSegue(withIdentifier: "Main", sender: self)
+                            SVProgressHUD.dismiss()
+                        }
+                        
+                    })
+                    
+                }else{
+                    self.alertUserForSignUp(title: "No user detected with the email", message: "Provide an existing email please.")
+                    SVProgressHUD.dismiss()
+                }
+            })
             }
+
         })
+      
+
+        
+        
+
+      
+    }
+
+    func alertUserForSignUp(title: String, message: String){
+        let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.alert)
+        //        let OK = UIAlertAction(title: "OK", style: .default, handler: nil)
+        alert.addAction(UIAlertAction(title: "Sign Up", style: .default, handler: { (action) in
+            self.performSegue(withIdentifier: "FirstName", sender: self)
+            alert.dismiss(animated: true, completion: nil)
+        }))
+        self.present(alert, animated: true, completion: nil)
     }
     
     func handleLogin(){
@@ -200,34 +262,43 @@ class LoginViewController: UIViewController, UITextFieldDelegate, GIDSignInDeleg
             let userID = snapshotValue["UserId "] as! String
             let email = snapshotValue["Email "] as! String
             let age = snapshotValue["Age "] as! Int
+            let currentUserGender = snapshotValue["Gender "] as! String
+
             if self.emailTextField.text == email {
                 print("THE NAME PASSED IS \(name)")
                 self.user.name = name
                 self.user.id = userID
                 self.user.age = age
-                print("Login Completed")
+                self.user.CurrentUserGender = "Male"
+                self.user.gender = "Female"
 
-                self.performSegue(withIdentifier: "goToMaleSelectPartner", sender: self)
+                print("Login Completed")
+                
+                
+                self.performSegue(withIdentifier: "Main", sender: self)
                 SVProgressHUD.dismiss()
             }
             
         })
         
-        
+
         femaleRef.observe(.childAdded, with: { (snapshot) in
             let snapshotValue = snapshot.value as! NSDictionary
             let name = snapshotValue["Name "] as! String
             let userID = snapshotValue["UserId "] as! String
             let age = snapshotValue["Age "] as! Int
-
+            let currentUserGender = snapshotValue["Gender "] as! String
             let email = snapshotValue["Email "] as! String
+            
             if self.emailTextField.text == email {
                 self.user.name = name
                 self.user.id = userID
                 self.user.age = age
+                self.user.CurrentUserGender = "Female"
+                self.user.gender = "Male"
                 print("Login Completed")
 
-                self.performSegue(withIdentifier: "goToFemaleSelectPartner", sender: self)
+                self.performSegue(withIdentifier: "Main", sender: self)
                 SVProgressHUD.dismiss()
                 
             }
@@ -283,18 +354,25 @@ class LoginViewController: UIViewController, UITextFieldDelegate, GIDSignInDeleg
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
 
-        if segue.identifier == "goToMaleSelectPartner" {
+        if segue.identifier == "Main" {
 
             let destinationVC = segue.destination as! SearchPartnerViewController
             destinationVC.firstNametextLable = user.name
             destinationVC.userID = user.id
             destinationVC.age = user.age
-        }else if segue.identifier == "goToFemaleSelectPartner" {
-            let destinationVC = segue.destination as! FemaleSearchPartnerViewController
-            destinationVC.firstNametextLable = user.name
-            destinationVC.userID = user.id
-            destinationVC.age = user.age
-
+            destinationVC.CurrentUserGender = user.CurrentUserGender
+            destinationVC.gender = user.gender
+            
+//            if user.CurrentUserGender == "Male"{
+//                destinationVC.gender = "Female"
+//            }else{
+//                destinationVC.gender = "Male"
+//            }
+        }
+        else if segue.identifier == "FirstName" {
+            let destinationVC = segue.destination as! FirstNameViewController
+            destinationVC.emailTextField = SignInInfo.email
+            destinationVC.userID = SignInInfo.userID
         }
     }
     

@@ -29,9 +29,11 @@ class FemaleProfileViewController: UIViewController {
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "goToSearchPartner"{
-            let destinationVC = segue.destination as! FemaleSearchPartnerViewController
+            let destinationVC = segue.destination as! SearchPartnerViewController
             destinationVC.firstNametextLable = stringHolder
             destinationVC.userID = userID
+            destinationVC.CurrentUserGender = "Female"
+            destinationVC.gender = "Male"
 
         }
     }

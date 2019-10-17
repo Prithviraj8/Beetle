@@ -10,5 +10,7 @@ class names: NSObject {
     
     var usernames: String?
     var Id: String?
-    
+    var unMatchedUsers = [String]()
+    var count = 0
+    var unMatchedPics = [String]()
 }

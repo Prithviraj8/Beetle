@@ -14,4 +14,7 @@ class SingInInfo {
     var givenName : String = ""
     var userID : String = ""
     var age : Int!
+    var IDToken : String!
+    var accessToken : String!
+    var userExists : Bool!
 }

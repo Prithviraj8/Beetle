@@ -16,7 +16,9 @@ class ChatSettingViewController: UIViewController {
     @IBOutlet weak var profilePicImageView: UIImageViewX!
     
     var messages = message()
+    var currentUsersGender : String = ""
     var gender : String = ""
+
     var firstNameTextLabel : String = ""
     var profilePic : String = ""
     var profilePicURL = [String]()
@@ -31,8 +33,8 @@ class ChatSettingViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        print("PASSED INFO IS \(gender), \(firstNameTextLabel), \(id)")
-        let blockRef = Database.database().reference(fromURL: "https://beetle-5b79a.firebaseio.com/").child("users").child("Match").child(gender).child(userID!).child(firstNameTextLabel).child(id)
+        print("PASSED INFO IS \(currentUsersGender), \(firstNameTextLabel), \(id)")
+        let blockRef = Database.database().reference(fromURL: "https://beetle-5b79a.firebaseio.com/").child("users").child("Match").child(currentUsersGender).child(userID!).child(firstNameTextLabel).child(id)
         blockRef.observe(.value) { (snapshot) in
             let snapshotValue = snapshot.value as! NSDictionary
             if let blocked = snapshotValue["Blocked "] as? String {
@@ -48,7 +50,7 @@ class ChatSettingViewController: UIViewController {
         }
         print("AGE IS \(age)")
         
-        if gender == "Male"{
+        if currentUsersGender == "Male"{
             let ageRef = Database.database().reference(fromURL: "https://beetle-5b79a.firebaseio.com/").child("users").child("Female").child(id)
             ageRef.observe(.value) { (snap) in
                 let snapValue = snap.value as! NSDictionary
@@ -88,15 +90,9 @@ class ChatSettingViewController: UIViewController {
     }
  
     @IBAction func backButton(_ sender: Any) {
-        if gender == "Male" {
-            performSegue(withIdentifier: "backToMaleChatting", sender: self)
             dismiss(animated: true, completion: nil)
+            performSegue(withIdentifier: "backToChatting", sender: self)
 
-        }else{
-            performSegue(withIdentifier: "backToFemaleChatting", sender: self)
-            dismiss(animated: true, completion: nil)
-
-        }
     }
     
     @IBAction func reportAbusePressed(_ sender: Any) {
@@ -107,38 +103,31 @@ class ChatSettingViewController: UIViewController {
     @IBAction func blockToggle(_ sender: UISwitch) {
         
         if blockToggleButton.isOn == true {
-            let blockRef = Database.database().reference(fromURL: "https://beetle-5b79a.firebaseio.com/").child("users").child("Match").child(gender).child(userID!).child(firstNameTextLabel).child(id)
+            let blockRef = Database.database().reference(fromURL: "https://beetle-5b79a.firebaseio.com/").child("users").child("Match").child(currentUsersGender).child(userID!).child(firstNameTextLabel).child(id)
             blockRef.updateChildValues(["Blocked ": "True"])
         }else{
-            let blockRef = Database.database().reference(fromURL: "https://beetle-5b79a.firebaseio.com/").child("users").child("Match").child(gender).child(userID!).child(firstNameTextLabel).child(id)
+            let blockRef = Database.database().reference(fromURL: "https://beetle-5b79a.firebaseio.com/").child("users").child("Match").child(currentUsersGender).child(userID!).child(firstNameTextLabel).child(id)
             blockRef.updateChildValues(["Blocked ": "False"])
         }
         
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "backToMaleChatting" {
-            let VC = segue.destination as! ChatLogTableViewController
-            VC.femaleNames = names
+        if segue.identifier == "backToChatting" {
+            let VC = segue.destination as! ChatLogController
+            VC.names = names
             VC.IDs = IDs
-            VC.femaleName = name
+            VC.name = name
             VC.firstNametextLable = firstNameTextLabel
             VC.profilePic = profilePic
-            VC.femaleId = id
+            VC.id = id
             VC.profilePicURL = profilePicURL
             VC.age = age
-
-        }else if segue.identifier == "backToFemaleChatting" {
-            let VC = segue.destination as! ChatViewFemaleViewController
-            VC.maleNames = names
-            VC.Ids = IDs
-            VC.maleName = name
-            VC.firstNametextLable = firstNameTextLabel
-            VC.profilePic = profilePic
-            VC.maleId = id
-            VC.profilePicURL = profilePicURL
-            VC.age = age
-        }else if segue.identifier == "ReportAbuse"{
+            VC.currentUsersGender = currentUsersGender
+            VC.gender = gender
+        }
+     
+        if segue.identifier == "ReportAbuse"{
             let VC = segue.destination as! ReportAbuseViewController
             VC.names = names
             VC.IDs = IDs
@@ -148,7 +137,7 @@ class ChatSettingViewController: UIViewController {
             VC.id = id
             VC.profilePicURL = profilePicURL
             VC.age = age
-            VC.gender = gender
+            VC.currentUsersGender = currentUsersGender
         }
         
         

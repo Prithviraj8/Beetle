@@ -19,14 +19,14 @@ class message {
     var timeStamp : Double = 0.0
     var sentMessage = ""
     var finalMatch =  [String]()
-    var imageURL : String!
-    var count : Int!
+    var imageUrl : String!
+    var count : Int = 0
     var imageHeight : NSNumber!
     var imageWidth : NSNumber!
     var backButtonPressed : Int!
     var currentUserName: String!
-    var femaleName : String!
-    var femaleId : String!
+    var Name : String!
+    var ID : String!
     var maleId : String!
     var maleName: String!
     var userID : String!
@@ -36,9 +36,45 @@ class message {
     var badgeCount : Int = 0
     var chatMessageLength : Int = 0
     var inputTextFieldHeight : CGFloat!
-    var pics = [UIImage]()
     var messageCount : Int = 0
     var profilePic : String!
     var oneMatch_Name : String!
-    var messageImageURL : String!
+    var messageImageURL = [String]()
+    var typeOfCell : UITableViewCell!
+//    var chatMessage : ChatMessage!
+    
+
+}
+
+
+import UIKit
+import Firebase
+
+class Message: NSObject {
+    
+    var fromId: String?
+    var text: String?
+    var timestamp: NSNumber?
+    var toId: String?
+    var imageUrl: String?
+    var videoUrl: String?
+    var imageWidth: NSNumber?
+    var imageHeight: NSNumber?
+    
+    init(dictionary: [String: Any]) {
+        self.fromId = dictionary["fromId"] as? String
+        self.text = dictionary["text "] as? String
+        self.toId = dictionary["toId"] as? String
+        self.timestamp = dictionary["timestamp"] as? NSNumber
+        self.imageUrl = dictionary["imageUrl"] as? String
+        self.videoUrl = dictionary["videoUrl"] as? String
+        
+        self.imageWidth = dictionary["imageWidth"] as? NSNumber
+        self.imageHeight = dictionary["imageHeight"] as? NSNumber
+    }
+    
+    func chatPartnerId() -> String? {
+        return fromId == Auth.auth().currentUser?.uid ? toId : fromId
+    }
+    
 }

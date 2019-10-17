@@ -20,7 +20,6 @@ class SignUpViewController: UIViewController, UITextFieldDelegate, GIDSignInUIDe
     @IBOutlet weak var passwordTextField: UITextFieldX!
     @IBOutlet weak var SignInPressed: UIButtonX!
     @IBOutlet weak var GoogleSignInButton: GIDSignInButton!
-    @IBOutlet weak var image: UIImageView!
     //    var user: [User] = [User]()
     var messages = message()
     var SignInInfo = SingInInfo()

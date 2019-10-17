@@ -20,11 +20,11 @@ class PopNewMatchViewController: UIViewController {
     var messages = message()
     var ref : DatabaseReference!
     var NAMES : [names] = [names]()
-    var femaleNames = [String]()
+    var MatchedNames = [String]()
     var age : Int!
     var gender : String = ""
     var pic : String!
-    
+    var currentUserGender : String!
     
     @IBOutlet weak var Views: UIView!
     @IBOutlet weak var name: UILabel!
@@ -35,9 +35,9 @@ class PopNewMatchViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        
         for id in IDs {
-            if gender == "Male"{
-        let badgeCountRef = Database.database().reference(fromURL: "https://beetle-5b79a.firebaseio.com/").child("users").child("Match").child("Male").child(userID!).child(firstNametextLable).child(id)
+        let badgeCountRef = Database.database().reference(fromURL: "https://beetle-5b79a.firebaseio.com/").child("users").child("Match").child(currentUserGender).child(userID!).child(firstNametextLable).child(id)
         badgeCountRef.observe(.value) { (snap) in
             if let snapshotValue = snap.value as? NSDictionary{
                 if let badge = snapshotValue["Badge added "] as? String {
@@ -47,21 +47,8 @@ class PopNewMatchViewController: UIViewController {
                 }
             }
         }
-                
-    }else{
-         
-                let FemalebadgeCountRef = Database.database().reference(fromURL: "https://beetle-5b79a.firebaseio.com/").child("users").child("Match").child("Female").child(userID!).child(firstNametextLable).child(id)
-                FemalebadgeCountRef.observe(.value) { (snap) in
-                    if let snapshotValue = snap.value as? NSDictionary{
-                        if let badge = snapshotValue["Badge added "] as? String {
-                        }else{
-                            FemalebadgeCountRef.updateChildValues(["Badge added ": "True"])
-                        
-                        }
-                    }
-                }
-            }
-        }
+    }
+            
         print("AGE IN POP IS \(firstNametextLable)")
         if let url = URL(string: pic){
             
@@ -85,15 +72,16 @@ class PopNewMatchViewController: UIViewController {
         ProfilePic.layer.masksToBounds = true
         ProfilePic.layer.borderWidth = 2
         ProfilePic.layer.borderColor = UIColor.gray.cgColor
-        ProfilePic.layer.cornerRadius = 24
-        
+//        ProfilePic.layer.cornerRadius = 24
+        ProfilePic.layer.cornerRadius = ProfilePic.frame.width/2.0
+
 //        ProfilePic.contentMode = .scaleAspectFill
 //
         name.translatesAutoresizingMaskIntoConstraints = false
         name.layer.masksToBounds = true
         name.layer.cornerRadius = 12
         
-        OK.setGradientBackground(colorOne: Colors.brightOrange, colorTwo: Colors.orange)
+        OK.setGradientBackground(colorOne: Colors.brightOrange, colorTwo: Colors.lightPink)
         
     }
 

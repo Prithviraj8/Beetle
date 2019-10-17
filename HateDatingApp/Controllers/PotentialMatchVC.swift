@@ -15,6 +15,7 @@ class PotentialMatchVC: UIViewController {
     @IBOutlet weak var TopVIew: UIView!
     @IBOutlet weak var viewTinderBackGround: UIView!
     @IBOutlet weak var CheckBackLater: UILabel!
+    @IBOutlet weak var profilePicImage: UIImageView!
     
     var matches = [Matches]()
     var matchedUsers : [potentialMatchedUsers] = [potentialMatchedUsers]()
@@ -49,6 +50,8 @@ class PotentialMatchVC: UIViewController {
         getPotentialUsers()
         CheckBackLater.isHidden = true
 //        getPotentialMatchedUser()
+        profilePicImage.layer.cornerRadius = profilePicImage.frame.width/2.0
+
         
     }
     override func viewWillAppear(_ animated: Bool) {
@@ -56,12 +59,59 @@ class PotentialMatchVC: UIViewController {
         view.layoutIfNeeded()
         //loadCardValues()
     }
+    
+    
+    
     @IBAction func backButton(_ sender: Any) {
         dismiss(animated: true, completion: nil)
     }
+    
+    var pulseLayers = [CAShapeLayer]()
+    func createPulse(){
+        for _ in 0...2 {
+            let circularPath = UIBezierPath(arcCenter: .zero, radius: UIScreen.main.bounds.size.width/2.0, startAngle: 0, endAngle: 2 * .pi, clockwise: true)
+            let pulseLayer = CAShapeLayer()
+            pulseLayer.path = circularPath.cgPath
+            pulseLayer.lineWidth = 2.0
+            pulseLayer.fillColor = UIColor.clear.cgColor
+            pulseLayer.strokeColor = UIColor.green.cgColor
+            pulseLayer.lineCap = kCALineCapRound
+            pulseLayer.position = CGPoint(x: view.center.x, y: view.center.y)
+            view.layer.addSublayer(pulseLayer)
+            pulseLayers.append(pulseLayer)
+        }
+        DispatchQueue.main.asyncAfter(deadline: .now()+0.2) {
+            self.pulseAnimation(index: 0)
+            DispatchQueue.main.asyncAfter(deadline: .now()+0.4) {
+                self.pulseAnimation(index: 1)
+                DispatchQueue.main.asyncAfter(deadline: .now()+0.6) {
+                    self.pulseAnimation(index: 2)
+                }
+            }
+        }
+    }
+    func pulseAnimation(index: Int){
+            let scaleAnimation = CABasicAnimation(keyPath: "transform.scale")
+            scaleAnimation.duration = 2.0
+            scaleAnimation.fromValue = 0.0
+            scaleAnimation.toValue = 0.9
+            scaleAnimation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseOut)
+            scaleAnimation.repeatCount = .greatestFiniteMagnitude
+            pulseLayers[index].add(scaleAnimation, forKey: "scale")
+        
+            let opacityAnime = CABasicAnimation(keyPath: #keyPath(CALayer.opacity))
+            opacityAnime.duration = 2.0
+            opacityAnime.fromValue = 0.9
+            opacityAnime.toValue = 0.0
+            opacityAnime.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseOut)
+            opacityAnime.repeatCount = .greatestFiniteMagnitude
+            pulseLayers[index].add(opacityAnime, forKey: "opacity")
+    }
     func checkCardStack(){
         if potentialUsers.count == 0{
-            CheckBackLater.isHidden = false
+//            CheckBackLater.isHidden = false
+            createPulse()
+
         }
     }
     func getPotentialUsers() {
@@ -69,6 +119,28 @@ class PotentialMatchVC: UIViewController {
         
         currentRef.observe(.value) { (snap1) in
             if let snapValue = snap1.value as? NSDictionary {
+                if let profilePic = snapValue["Profile Pic "] as? String {
+                    if let url = URL(string: profilePic){
+                        
+                        URLSession.shared.dataTask(with: url, completionHandler: { (data, response, error) in
+                            if error != nil {
+                                //                            print("Failed while fetching images : \(error?.localizedDescription)")
+                                return
+                            }else {
+                                DispatchQueue.main.async {
+                                    let image = UIImage(data: data!)
+                                    let width : CGFloat = (image?.size.width)!
+                                    let height : CGFloat = (image?.size.height)!
+                                    let ratio = width/height
+                                    print("MAIN PIC RATIO \(ratio)")
+                                    
+                                    self.profilePicImage?.image = UIImage(data: data!)
+                                }
+                            }
+                            
+                        }).resume()
+                    }
+                }
             if let CurrentUsersDescription = snapValue["Description "] as? String{
                 self.potentialUsers.CurrentUsersDesription = CurrentUsersDescription
                 let chararacterSet = CharacterSet.whitespacesAndNewlines.union(.punctuationCharacters)
@@ -174,19 +246,19 @@ class PotentialMatchVC: UIViewController {
                 }
             }
             animateCardAfterSwiping()
-            perform(#selector(loadInitialDummyAnimation), with: nil, afterDelay: 1.0)
+//            perform(#selector(loadInitialDummyAnimation), with: nil, afterDelay: 1.0)
         }
         print("THE PROFILE PIC ARRAY IS EMPTY!!!!!!!")
         
     }
     
     
-    @objc func loadInitialDummyAnimation() {
-        
-        let dummyCard = currentLoadedCardsArray.first;
-        dummyCard?.shakeAnimationCard()
-
-    }
+//    @objc func loadInitialDummyAnimation() {
+//        
+//        let dummyCard = currentLoadedCardsArray.first;
+//        dummyCard?.shakeAnimationCard()
+//
+//    }
     
     
     func createTinderCard(at index: Int , pic :String, name: String, Id: String) -> TinderCard {
@@ -205,7 +277,7 @@ class PotentialMatchVC: UIViewController {
         potentialUsers.count = currentLoadedCardsArray.count
         checkCardStack()
 
-        print("CURRENT INDEX IS \(currentIndex)")
+        print("CURRENT INDEX IS \(currentLoadedCardsArray.count)")
         if (currentIndex + currentLoadedCardsArray.count) < allCardsArray.count {
             let card = allCardsArray[currentIndex + currentLoadedCardsArray.count]
             var frame = card.frame

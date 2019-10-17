@@ -62,6 +62,9 @@ class profileSetUpViewController: UIViewController, UIImagePickerControllerDeleg
         femaleImageButton?.layer.cornerRadius = 10
         //uploadImg()
         // Do any additional setup after loading the view.
+        
+        
+        
     }
 
     override func didReceiveMemoryWarning() {
