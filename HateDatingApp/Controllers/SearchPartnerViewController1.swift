@@ -87,7 +87,7 @@ class SearchPartnerViewController: UIViewController {
         if USER!.isEmailVerified == false {
             USER?.sendEmailVerification(completion: { (error) in
                 if error == nil {
-                    print("SENT VERIFICATION TO \(USER?.email)")
+                    print("SENT VERIFICATION TO \(String(describing: USER?.email))")
                     self.alertTheUser(title: "Verification email sent", message: "Please verify your email.")
                 }
             })
@@ -100,11 +100,14 @@ class SearchPartnerViewController: UIViewController {
 //        ProfilePicImage.layer.shadowColor = UIColor.blue.cgColor
     }
     
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         view.layoutIfNeeded()
         //loadCardValues()
     }
+    
+    
     
     func getLoggedInUserInfo() -> String{
         return user.name
@@ -457,6 +460,8 @@ class SearchPartnerViewController: UIViewController {
       //  tinderCard.getLoggedInUserName(name: firstNametextLable)
         
     }
+    
+    
     func initiateChat() {
         if CurrentUserGender == "Male" {
 
